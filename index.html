@@ -267,7 +267,14 @@
     position: relative;
   }
   @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .page { padding: 40px 24px 80px; }
+    .holes { left: 8px; top: 60px; gap: 70px; }
+    .holes span { width: 12px; height: 12px; }
+    .hero-anno { display: none; }
+    .legend { display: none; }
+  }
 
   .card {
     position: relative;
