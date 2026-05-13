@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>peppinch — paper sketch</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Gloria+Hallelujah&family=Architects+Daughter&display=swap" rel="stylesheet" />
+
+<script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
+
+<style>
+  @font-face {
+    font-family: "Kyobo";
+    src: url("/fonts/KyoboHandwriting2019.otf") format("opentype");
+    font-display: swap;
+  }
+  :root {
+    --paper: #faf6ec;
+    --paper-shade: #efe9d8;
+    --ink: #2a2823;
+    --pencil: #3a352c;
+    --red: #c8412c;
+    --blue: #2f5fa8;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background:
+      /* coffee ring stain */
+      radial-gradient(ellipse 90px 30px at 85% 12%, rgba(168,120,60,.10), transparent 60%),
+      /* page grain */
+      var(--paper);
+    color: var(--ink);
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* paper texture — fibers */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      repeating-linear-gradient(91deg, transparent 0 38px, rgba(0,0,0,.012) 38px 39px),
+      repeating-linear-gradient(2deg, transparent 0 46px, rgba(0,0,0,.012) 46px 47px);
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    z-index: 1;
+  }
+  /* paper grain noise */
+  body::after {
+    content: "";
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.15  0 0 0 0 0.13  0 0 0 0 0.08  0 0 0 0.16 0'/></filter><rect width='220' height='220' filter='url(%23n)' opacity='0.5'/></svg>");
+    opacity: .45;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    z-index: 2;
+  }
+
+  .page {
+    position: relative;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 60px 56px 120px;
+    z-index: 3;
+  }
+
+  /* hole-punch dots on left margin */
+  .holes {
+    position: absolute;
+    left: 22px; top: 80px;
+    display: flex; flex-direction: column;
+    gap: 90px;
+    z-index: 4;
+  }
+  .holes span {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 35% 35%, #d4cdb8 0%, #c0b89e 60%, #a8a087 100%);
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,.25), 0 1px 0 rgba(255,255,255,.5);
+  }
+
+  /* TOP BAR — sticky note style header */
+  .topbar {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    margin-bottom: 60px;
+    position: relative;
+  }
+  .logo {
+    font-family: "Kyobo", "Caveat", cursive;
+    font-weight: 700;
+    font-size: clamp(64px, 9vw, 124px);
+    line-height: .9;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.01em;
+    transform: rotate(-1.4deg);
+    position: relative;
+    display: inline-block;
+  }
+  .logo .dot {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--red);
+    margin-left: 8px;
+    transform: translateY(-8px);
+  }
+  .logo .underline {
+    display: block;
+    width: 100%; height: 18px;
+    margin-top: -8px;
+  }
+
+  .stamp {
+    transform: rotate(6deg);
+    border: 2.5px solid var(--red);
+    color: var(--red);
+    padding: 8px 14px 6px;
+    font-family: "Kyobo", "Architects Daughter", sans-serif;
+    font-size: 13px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    box-shadow: inset 0 0 0 1px rgba(200,65,44,.3);
+    opacity: .85;
+    text-align: center;
+  }
+  .stamp small {
+    display: block;
+    font-size: 9px;
+    opacity: .85;
+  }
+
+  .meta {
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-size: 13px;
+    color: var(--pencil);
+    opacity: .75;
+    text-align: right;
+    line-height: 1.5;
+    transform: rotate(-.5deg);
+  }
+  .meta b { color: var(--ink); font-weight: 700; }
+
+  /* annotations */
+  .anno {
+    font-family: "Kyobo", "Caveat", cursive;
+    color: var(--red);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.1;
+    pointer-events: none;
+  }
+  .anno-blue { color: var(--blue); }
+
+  /* HERO area */
+  .hero {
+    margin-bottom: 70px;
+    position: relative;
+  }
+  .hero-line1 {
+    font-family: "Kyobo", "Caveat", cursive;
+    font-weight: 600;
+    font-size: clamp(60px, 11vw, 160px);
+    line-height: .9;
+    color: var(--ink);
+    margin: 0;
+    transform: rotate(-.8deg);
+    letter-spacing: -0.01em;
+  }
+  .hero-line1 em {
+    font-style: italic;
+    color: var(--red);
+    font-weight: 400;
+  }
+  .hero-ko {
+    font-family: "Kyobo", "Gaegu", sans-serif;
+    font-size: clamp(28px, 4vw, 52px);
+    margin-top: 24px;
+    color: var(--pencil);
+    transform: rotate(.5deg);
+    display: inline-block;
+    opacity: .75;
+  }
+  .hero-sub {
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 480px;
+    margin-top: 30px;
+    color: var(--pencil);
+    transform: rotate(-.2deg);
+  }
+  .hero-anno {
+    position: absolute;
+    right: 4%;
+    top: 30%;
+    transform: rotate(-6deg);
+    text-align: center;
+    max-width: 220px;
+  }
+  .hero-anno svg { display: block; margin: 6px auto 0; }
+
+  /* NAV chips */
+  .nav {
+    display: flex; gap: 22px; flex-wrap: wrap;
+    margin: 30px 0 40px;
+  }
+  .nav-chip {
+    font-family: "Kyobo", "Caveat", cursive;
+    font-weight: 500;
+    font-size: 24px;
+    color: var(--ink);
+    padding: 6px 18px 4px;
+    position: relative;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .nav-chip[data-active] { color: var(--red); }
+  .nav-chip svg { position: absolute; inset: 0; pointer-events: none; }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family: "Kyobo", "Caveat", cursive;
+    font-weight: 500;
+    font-size: 30px;
+    color: var(--ink);
+    margin: 60px 0 8px;
+    display: inline-block;
+    position: relative;
+    transform: rotate(-.4deg);
+  }
+  .section-label .num {
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-size: 14px;
+    color: var(--red);
+    margin-right: 12px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .section-sub {
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-size: 14px;
+    color: var(--pencil);
+    opacity: .7;
+    margin-bottom: 30px;
+  }
+
+  /* PROJECT CARD GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 28px;
+    margin-top: 28px;
+    position: relative;
+  }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    position: relative;
+    padding: 28px 24px 22px;
+    min-height: 220px;
+    transform: rotate(var(--r, 0deg));
+    display: flex; flex-direction: column;
+  }
+  .card svg.frame { position: absolute; inset: 0; pointer-events: none; width: 100%; height: 100%; }
+  .card .num {
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .15em;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+  .card .name {
+    font-family: "Kyobo", "Caveat", cursive;
+    font-weight: 700;
+    font-size: 38px;
+    line-height: .95;
+    color: var(--ink);
+    margin: 0 0 6px;
+  }
+  .card .ko {
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-size: 14px;
+    color: var(--pencil);
+    opacity: .8;
+    margin-bottom: 14px;
+  }
+  .card .line {
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--pencil);
+    flex: 1;
+  }
+  .card .foot {
+    margin-top: 14px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--pencil);
+    opacity: .7;
+  }
+  .card .foot .arrow { font-family: "Kyobo", "Caveat", cursive; font-size: 18px; color: var(--red); }
+
+  /* sticky note for "wip" */
+  .card.wip::after {
+    content: "WIP";
+    position: absolute;
+    top: -10px; right: -8px;
+    background: #fde88a;
+    font-family: "Kyobo", "Architects Daughter", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink);
+    padding: 6px 10px 4px;
+    transform: rotate(8deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    letter-spacing: .1em;
+    z-index: 5;
+  }
+
+  /* TODO list */
+  .todo {
+    margin-top: 60px;
+    padding: 32px 36px;
+    position: relative;
+    transform: rotate(-.6deg);
+  }
+  .todo svg.frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .todo h3 {
+    font-family: "Kyobo", "Caveat", cursive;
+    font-weight: 700;
+    font-size: 36px;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+  .todo ul {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 8px 24px;
+  }
+  .todo li {
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-size: 16px;
+    color: var(--pencil);
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    padding: 4px 0;
+  }
+  .todo li .box {
+    flex-shrink: 0; width: 16px; height: 16px;
+    border: 1.5px solid var(--pencil);
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-top: 2px;
+    position: relative;
+  }
+  .todo li.done .box::after {
+    content: "✓";
+    position: absolute;
+    inset: -8px -4px auto auto;
+    font-family: "Kyobo", "Caveat", cursive;
+    font-size: 26px;
+    color: var(--red);
+    line-height: 1;
+  }
+  .todo li.done { text-decoration: line-through; opacity: .55; }
+
+  /* FOOTER scribble */
+  .foot-scrib {
+    margin-top: 70px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 24px; flex-wrap: wrap;
+    font-family: "Kyobo", "Caveat", cursive;
+    font-size: 22px;
+    color: var(--pencil);
+    border-top: 2px dashed rgba(58,53,44,.2);
+    padding-top: 20px;
+  }
+  .foot-scrib b { color: var(--red); }
+
+  /* arrows scattered */
+  .arrow-anno {
+    position: absolute;
+    font-family: "Kyobo", "Caveat", cursive;
+    color: var(--blue);
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* color legend bottom right */
+  .legend {
+    position: fixed;
+    right: 24px; bottom: 24px;
+    background: #fff8e0;
+    padding: 14px 16px 12px;
+    transform: rotate(2.5deg);
+    box-shadow: 0 4px 14px rgba(0,0,0,.15);
+    font-family: "Kyobo", "Kalam", sans-serif;
+    font-size: 12px;
+    color: var(--pencil);
+    z-index: 50;
+    max-width: 200px;
+  }
+  .legend b { font-family: "Kyobo", "Caveat", cursive; font-size: 18px; color: var(--ink); display: block; margin-bottom: 6px; font-weight: 700; }
+  .legend .row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+  .legend .sw { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,.2); }
+</style>
+</head>
+<body>
+
+<div class="holes">
+  <span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<div class="page">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div>
+      <h1 class="logo">
+        peppinch<span class="dot"></span>
+        <svg class="underline" viewBox="0 0 400 18" preserveAspectRatio="none">
+          <path d="M2,10 Q60,2 130,8 T270,9 T395,6" fill="none" stroke="#c8412c" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </h1>
+      <div style="font-family: 'Kyobo', 'Kalam', sans-serif; font-size: 14px; color: var(--pencil); margin-top: 4px; transform: rotate(-.8deg); display:inline-block;">
+        = <em>A Pinch Of Pepper.</em> &nbsp;·&nbsp; 한 꼬집의 후추
+      </div>
+    </div>
+    <div style="display:flex; gap: 20px; align-items: center;">
+      <div class="stamp">
+        WIREFRAME<br>
+        <small>v0.3 — paper draft</small>
+      </div>
+      <div class="meta">
+        <b>peppinch.com</b><br>
+        sketch — 2026.05.13<br>
+        for: solo lab homepage
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO sketch -->
+  <div class="hero">
+    <h2 class="hero-line1">A Pinch Of <em>Pepper.</em></h2>
+    <div class="hero-ko">한 꼬집의 후추.</div>
+    <p class="hero-sub">
+      신사업을 기획하고, 만들고 — 가끔은 갈아 엎는다.<br>
+      혼자, AI와 함께. solo lab in seoul.
+    </p>
+
+    <div class="hero-anno">
+      <span class="anno">↖ 마우스 갖다대면<br>글자가 두꺼워짐</span>
+      <svg width="120" height="60" viewBox="0 0 120 60">
+        <path d="M10,50 Q40,10 100,20" fill="none" stroke="#c8412c" stroke-width="2" stroke-linecap="round"/>
+        <path d="M95,12 L102,20 L92,24" fill="none" stroke="#c8412c" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- NAV chips -->
+  <div class="nav">
+    <a class="nav-chip" data-active href="/">
+      home
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,3 50,5 T95,7 Q97,20 95,32 Q60,38 30,35 T5,32 Q3,20 5,8 Z" fill="none" stroke="#c8412c" stroke-width="2"/></svg>
+    </a>
+    <a class="nav-chip" href="/business/">
+      business
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,5 T95,8 Q98,20 95,33 Q60,36 30,34 T5,32 Q4,20 5,8 Z" fill="none" stroke="#3a352c" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
+    </a>
+    <a class="nav-chip" href="/blog/">
+      blog
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,6 T95,7 Q97,21 96,32 Q60,37 30,34 T5,33 Q3,20 5,8 Z" fill="none" stroke="#3a352c" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
+    </a>
+    <a class="nav-chip" href="mailto:pepper@peppinch.com">
+      contact
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,5 T95,8 Q98,20 96,33 Q60,36 30,34 T5,32 Q4,20 5,8 Z" fill="none" stroke="#3a352c" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
+    </a>
+  </div>
+
+  <!-- WORKS section -->
+  <div style="position:relative;">
+    <span class="section-label"><span class="num">02 —</span>인덱스 · works</span>
+    <div class="section-sub">click to expand 💡 (페이지 길어지지 않게)</div>
+
+    <div class="grid" id="grid">
+      <!-- cards filled by JS -->
+    </div>
+
+    <span class="arrow-anno" style="right: -10px; top: 40px; transform: rotate(8deg);">
+      ↑ 카드 더 추가될 자리
+    </span>
+  </div>
+
+  <!-- TODO sticky -->
+  <div class="todo" id="todo">
+    <svg class="frame"></svg>
+    <h3>🧂 todo / 다음 작업</h3>
+    <ul>
+      <li class="done"><span class="box"></span> 히어로 문구 확정</li>
+      <li class="done"><span class="box"></span> 색 팔레트 3개 (한지/새벽/골목)</li>
+      <li class="done"><span class="box"></span> 인덱스 click-to-expand 구조</li>
+      <li><span class="box"></span> 프로젝트 카드 썸네일 디자인</li>
+      <li><span class="box"></span> '지금' 섹션에 진짜 글 쓰기</li>
+      <li><span class="box"></span> 모바일에서 커서 효과 어떻게 할지</li>
+      <li><span class="box"></span> 파비콘 (🧂?)</li>
+      <li><span class="box"></span> og:image 만들기</li>
+    </ul>
+  </div>
+
+  <div class="foot-scrib">
+    <span>made slow, in seoul — <b>peppinch</b> 🧂</span>
+    <span>pepper@peppinch.com · @peppinch_</span>
+  </div>
+
+</div>
+
+<div class="legend">
+  <b>legend</b>
+  <div class="row"><span class="sw" style="background:#c8412c"></span> active / accent</div>
+  <div class="row"><span class="sw" style="background:#2f5fa8"></span> note to self</div>
+  <div class="row"><span class="sw" style="background:#3a352c"></span> pencil / body</div>
+  <div class="row" style="margin-top:6px; opacity:.7; font-style: italic;">— not pixel-final —</div>
+</div>
+
+<script>
+/* Rough.js sketchy frames */
+const PROJECTS = [
+  { n:"01", name:"Publace",   ko:"퍼블레이스", line:"도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.", meta:"2024 · concept" },
+  { n:"02", name:"EatScan",   ko:"잇스캔",   line:"라벨을 한 번 비추면, 먹어도 되는지 아닌지 조용히 알려준다.", meta:"2024 · solo build" },
+  { n:"03", name:"이달여행",   ko:"IdalTrip", line:"이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.", meta:"2025 · concept" },
+  { n:"04", name:"잡솔트",     ko:"JobSort",  line:"공고는 너무 많고, 나에게 맞는 건 늘 한두 개.", meta:"2025 · WIP", wip:true },
+  { n:"05", name:"TickDeck",  ko:"틱덱",     line:"URL 한 줄을, 발표 슬라이드 한 벌로.", meta:"2025 · solo build" },
+  { n:"06", name:"혜택잡이",   ko:"Hyetjabi", line:"흩어진 혜택들. 누가 쓰고 있는지조차 모를 때가 많다.", meta:"2025 · WIP", wip:true },
+];
+
+const grid = document.getElementById("grid");
+const rotations = [-1.5, .8, -.6, 1.2, -1.1, .5];
+PROJECTS.forEach((p, i) => {
+  const div = document.createElement("div");
+  div.className = "card" + (p.wip ? " wip" : "");
+  div.style.setProperty("--r", rotations[i] + "deg");
+  div.innerHTML = `
+    <svg class="frame"></svg>
+    <div class="num">PROJECT · ${p.n}</div>
+    <h4 class="name">${p.name}</h4>
+    <div class="ko">${p.ko}</div>
+    <p class="line">${p.line}</p>
+    <div class="foot">
+      <span>${p.meta}</span>
+      <span class="arrow">→ open</span>
+    </div>
+  `;
+  grid.appendChild(div);
+});
+
+/* Draw rough rectangles into every .frame svg */
+function drawFrames() {
+  document.querySelectorAll("svg.frame").forEach(svg => {
+    const parent = svg.parentElement;
+    const r = parent.getBoundingClientRect();
+    svg.setAttribute("viewBox", `0 0 ${r.width} ${r.height}`);
+    svg.innerHTML = "";
+    const rc = rough.svg(svg);
+    const isTodo = parent.classList.contains("todo");
+    const node = rc.rectangle(4, 4, r.width - 8, r.height - 8, {
+      stroke: isTodo ? "#c8412c" : "#3a352c",
+      strokeWidth: isTodo ? 2.4 : 1.8,
+      roughness: 2.4,
+      bowing: 2.2,
+      fillStyle: "hachure",
+      hachureAngle: -41 + Math.random() * 10,
+      hachureGap: 9,
+      fill: isTodo ? "rgba(200,65,44,0.05)" : "rgba(58,53,44,0.035)",
+    });
+    svg.appendChild(node);
+
+    // little corner tick for non-todo cards
+    if (!isTodo) {
+      const tick = rc.line(r.width - 28, 6, r.width - 6, 28, {
+        stroke: "#c8412c", strokeWidth: 1.5, roughness: 2
+      });
+      svg.appendChild(tick);
+    }
+  });
+}
+
+window.addEventListener("load", drawFrames);
+window.addEventListener("resize", () => {
+  clearTimeout(window.__rt);
+  window.__rt = setTimeout(drawFrames, 150);
+});
+</script>
+
+</body>
+</html>
