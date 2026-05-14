@@ -274,8 +274,8 @@
     /* Shantell Sans 1순위 — 영문 글리프 영역 variable wght 활성 의무 (Kyobo가 영문 영역 갖고 있으면 fallback X) */
     font-family: "Shantell Sans", "Kyobo", cursive;
     font-weight: 600;
-    font-size: clamp(60px, 11vw, 160px);
-    line-height: .9;
+    font-size: clamp(64px, 16vw, 280px);
+    line-height: .85;
     color: var(--ink);
     margin: 0;
     transform: rotate(-.8deg);
@@ -400,7 +400,7 @@
 
     /* hero */
     .hero { margin-bottom: 48px; }
-    .hero-line1 { font-size: clamp(48px, 13vw, 72px); line-height: .92; }
+    .hero-line1 { line-height: .88; }
     .hero-ko { font-size: clamp(26px, 7vw, 36px); margin-top: 16px; }
     .hero-sub { font-size: 16px; line-height: 1.55; margin-top: 22px; }
 
@@ -439,7 +439,7 @@
   @media (max-width: 380px) {
     .page { padding: 32px 18px 64px; }
     .logo { font-size: 56px; }
-    .hero-line1 { font-size: clamp(42px, 12vw, 60px); }
+    /* 380px 영역 = clamp 영역으로 정합 (별도 룰 X) */
     .card .name { font-size: 26px; }
     .topbar { margin-bottom: 32px; }
   }
