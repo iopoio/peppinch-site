@@ -66,7 +66,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet" />
 
 <script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js" integrity="sha384-1NLkwxMO2sOqcq7rQkFBhIAUJtbt8ziLxhVKVgKfFGMEU8pF+GEq5LVogviveup6" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js"></script>
 
 <style>
   @font-face {
@@ -479,25 +478,56 @@
     transition: letter-spacing 0.3s, color 0.3s;
     transform-origin: left;
   }
-  /* card hover — 색 빨강 (SVG stroke 영역 = JS·CSS 영역 별도 처리) */
+  /* card hover — 색 빨강 (SVG stroke = JS·CSS 별도 처리) */
   .card:hover .name {
     letter-spacing: 0.04em;
     color: var(--red);
     font-variation-settings: "wght" 750, "BNCE" 0, "INFM" 60;
   }
-  /* Handwriting SVG path 영역 — opentype.js 영역 생성 */
-  .card .name .handwrite-svg {
+  /* 수동 SVG handwriting — 잡솔트 시범 */
+  .name .hw-svg {
     display: inline-block;
-    vertical-align: baseline;
+    width: auto;
+    height: 1.05em;
+    vertical-align: middle;
     overflow: visible;
   }
-  .card .name .handwrite-path {
+  .name .hw {
     fill: none;
     stroke: var(--red);
-    stroke-width: 6;
+    stroke-width: 4;
     stroke-linecap: round;
     stroke-linejoin: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
   }
+  .name.hw-on .hw {
+    animation: hw-draw 0.22s ease-out forwards;
+  }
+  @keyframes hw-draw { to { stroke-dashoffset: 0; } }
+  /* stagger — 22 stroke 각 0.1s 간격 */
+  .name.hw-on .hw:nth-child(1)  { animation-delay: 0.00s; }
+  .name.hw-on .hw:nth-child(2)  { animation-delay: 0.10s; }
+  .name.hw-on .hw:nth-child(3)  { animation-delay: 0.20s; }
+  .name.hw-on .hw:nth-child(4)  { animation-delay: 0.30s; }
+  .name.hw-on .hw:nth-child(5)  { animation-delay: 0.40s; }
+  .name.hw-on .hw:nth-child(6)  { animation-delay: 0.50s; }
+  .name.hw-on .hw:nth-child(7)  { animation-delay: 0.60s; }
+  .name.hw-on .hw:nth-child(8)  { animation-delay: 0.70s; }
+  .name.hw-on .hw:nth-child(9)  { animation-delay: 0.80s; }
+  .name.hw-on .hw:nth-child(10) { animation-delay: 0.90s; }
+  .name.hw-on .hw:nth-child(11) { animation-delay: 1.00s; }
+  .name.hw-on .hw:nth-child(12) { animation-delay: 1.10s; }
+  .name.hw-on .hw:nth-child(13) { animation-delay: 1.20s; }
+  .name.hw-on .hw:nth-child(14) { animation-delay: 1.30s; }
+  .name.hw-on .hw:nth-child(15) { animation-delay: 1.40s; }
+  .name.hw-on .hw:nth-child(16) { animation-delay: 1.50s; }
+  .name.hw-on .hw:nth-child(17) { animation-delay: 1.60s; }
+  .name.hw-on .hw:nth-child(18) { animation-delay: 1.70s; }
+  .name.hw-on .hw:nth-child(19) { animation-delay: 1.80s; }
+  .name.hw-on .hw:nth-child(20) { animation-delay: 1.90s; }
+  .name.hw-on .hw:nth-child(21) { animation-delay: 2.00s; }
+  .name.hw-on .hw:nth-child(22) { animation-delay: 2.10s; }
   .card .ko {
     font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-size: 20px;
@@ -877,64 +907,48 @@ function endTypewriter(el) {
   if (el.dataset.original) el.textContent = el.dataset.original;
 }
 
-/* Handwriting SVG stroke hover — opentype.js + Kyobo OTF 영역 (Publace·잡솔트 시범) */
-let _kyoboFont = null;
-let _fontPromise = null;
-function loadKyoboFont() {
-  if (_fontPromise) return _fontPromise;
-  _fontPromise = new Promise((resolve) => {
-    opentype.load('/fonts/KyoboHandwriting2019.otf', (err, font) => {
-      if (err) { console.warn('font load X', err); resolve(null); return; }
-      _kyoboFont = font;
-      resolve(font);
-    });
-  });
-  return _fontPromise;
-}
-async function startHandwriting(el) {
-  const original = el.dataset.original;
-  if (!original) return;
-  const font = await loadKyoboFont();
-  if (!font || el._handwriting) return; // 중복 차단
-  el._handwriting = true;
+/* 잡솔트 수동 SVG handwriting — 자모 자가 stroke (시범·5/14) */
+const JAPSALT_SVG = `<svg class="hw-svg" viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- 잡: ㅈ + ㅏ + ㅂ -->
+  <path class="hw" d="M 6,10 Q 22,8 38,11" pathLength="100"/>
+  <path class="hw" d="M 22,12 Q 14,22 6,30" pathLength="100"/>
+  <path class="hw" d="M 22,12 Q 30,22 38,30" pathLength="100"/>
+  <path class="hw" d="M 50,6 Q 49,28 49,46" pathLength="100"/>
+  <path class="hw" d="M 49,24 Q 56,23 62,24" pathLength="100"/>
+  <path class="hw" d="M 12,34 Q 11,46 12,60" pathLength="100"/>
+  <path class="hw" d="M 12,34 Q 25,33 40,34" pathLength="100"/>
+  <path class="hw" d="M 12,46 Q 25,45 40,46" pathLength="100"/>
+  <path class="hw" d="M 40,34 Q 40,46 40,60" pathLength="100"/>
+  <!-- 솔: ㅅ + ㅗ + ㄹ -->
+  <path class="hw" d="M 90,8 Q 82,18 73,30" pathLength="100"/>
+  <path class="hw" d="M 90,8 Q 100,18 110,30" pathLength="100"/>
+  <path class="hw" d="M 92,32 Q 91,38 92,44" pathLength="100"/>
+  <path class="hw" d="M 76,44 Q 92,43 108,44" pathLength="100"/>
+  <path class="hw" d="M 78,50 Q 95,49 108,50 L 108,56" pathLength="100"/>
+  <path class="hw" d="M 78,58 Q 92,57 108,58" pathLength="100"/>
+  <path class="hw" d="M 78,62 Q 78,68 78,72 Q 92,73 108,72" pathLength="100"/>
+  <!-- 트: ㅌ + ㅡ -->
+  <path class="hw" d="M 150,10 Q 175,9 200,10" pathLength="100"/>
+  <path class="hw" d="M 150,10 Q 149,30 150,52" pathLength="100"/>
+  <path class="hw" d="M 150,30 Q 175,29 200,30" pathLength="100"/>
+  <path class="hw" d="M 150,52 Q 175,51 200,52" pathLength="100"/>
+  <path class="hw" d="M 150,64 Q 175,63 200,64" pathLength="100"/>
+</svg>`;
 
-  const cs = getComputedStyle(el);
-  const fontSize = parseFloat(cs.fontSize);
-  const path = font.getPath(original, 0, fontSize * 0.85, fontSize);
-  const bbox = path.getBoundingBox();
-  const w = bbox.x2 - bbox.x1;
-  const h = bbox.y2 - bbox.y1;
-  const pathData = path.toPathData(2);
-
-  const svgNS = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(svgNS, 'svg');
-  svg.setAttribute('viewBox', `${bbox.x1} ${bbox.y1} ${w} ${h}`);
-  svg.setAttribute('class', 'handwrite-svg');
-  svg.style.width = w + 'px';
-  svg.style.height = (h * 1.05) + 'px';
-  svg.style.display = 'block';
-
-  const pathEl = document.createElementNS(svgNS, 'path');
-  pathEl.setAttribute('d', pathData);
-  pathEl.setAttribute('class', 'handwrite-path');
-  svg.appendChild(pathEl);
-
-  el.textContent = '';
-  el.appendChild(svg);
-
-  const total = pathEl.getTotalLength();
-  pathEl.style.strokeDasharray = total;
-  pathEl.style.strokeDashoffset = total;
-  pathEl.style.transition = `stroke-dashoffset ${Math.max(0.9, total / 600)}s linear`;
-  requestAnimationFrame(() => { pathEl.style.strokeDashoffset = 0; });
+function startHandwriting(el) {
+  if (el._hw) return;
+  el._hw = true;
+  el.innerHTML = JAPSALT_SVG;
+  // 다음 frame 영역 = animation 트리거 (initial dashoffset 적용 후)
+  requestAnimationFrame(() => el.classList.add('hw-on'));
 }
 function endHandwriting(el) {
-  el._handwriting = false;
+  el._hw = false;
+  el.classList.remove('hw-on');
   el.textContent = el.dataset.original || '';
 }
 
-/* 각 카드 영역 hover 영역 — Publace·잡솔트 = handwriting / 그 외 = typewriter */
-const HANDWRITING_NAMES = new Set(['Publace', '잡솔트']);
+const HANDWRITING_NAMES = new Set(['잡솔트']);
 document.querySelectorAll('.card').forEach(card => {
   const nameEl = card.querySelector('.name');
   const isHandwriting = HANDWRITING_NAMES.has(nameEl.dataset.original);
