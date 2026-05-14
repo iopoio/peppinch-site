@@ -213,7 +213,8 @@
     position: relative;
   }
   .hero-line1 {
-    font-family: "Kyobo", "Shantell Sans", cursive;
+    /* Shantell Sans 1순위 — 영문 글리프 영역 variable wght 활성 의무 (Kyobo가 영문 영역 갖고 있으면 fallback X) */
+    font-family: "Shantell Sans", "Kyobo", cursive;
     font-weight: 600;
     font-size: clamp(60px, 11vw, 160px);
     line-height: .9;
@@ -308,10 +309,12 @@
     margin-bottom: 30px;
   }
 
-  /* PROJECT CARD GRID */
+  /* PROJECT CARD GRID — grid-auto-rows: 1fr 영역으로 행별 동일 height·card frame 어긋남 회피 */
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    align-items: stretch;
     gap: 32px 28px;
     margin-top: 28px;
     position: relative;
@@ -330,6 +333,7 @@
     position: relative;
     padding: 28px 24px 22px;
     min-height: 240px;
+    height: 100%;
     transform: rotate(var(--r, 0deg));
     display: flex; flex-direction: column;
     transition: transform 0.3s;
@@ -407,14 +411,14 @@
   }
   .card .foot .arrow { font-family: "Kyobo", "Shantell Sans", cursive; font-size: 18px; color: var(--red); }
 
-  /* sticky note for "wip" */
+  /* sticky note — 한글 영역 ("작업중") */
   .card.wip::after {
-    content: "WIP";
+    content: "작업중";
     position: absolute;
     top: -10px; right: -8px;
     background: #fde88a;
     font-family: "Kyobo", "Shantell Sans", sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--ink);
     padding: 6px 10px 4px;
@@ -612,6 +616,7 @@
       <li class="done"><span class="box"></span> 파비콘 (🧂)</li>
       <li class="done"><span class="box"></span> toys 카드 영역</li>
       <li class="done"><span class="box"></span> 비즈니스 페이지 (cinematic 톤)</li>
+      <li><span class="box"></span> 블로그 섹션 만들어서 글 써보기</li>
       <li><span class="box"></span> 프로젝트 카드 썸네일</li>
       <li><span class="box"></span> '지금' 섹션 진짜 글</li>
       <li><span class="box"></span> 모바일 디테일 polish</li>
@@ -640,9 +645,9 @@ const PROJECTS = [
   { n:"01", name:"Publace",   ko:"퍼블레이스", line:"도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.", meta:"2024 · concept",   detail:"공공 유휴공간 × 사용자 매칭. 아직은 아이디어 스케치 단계." },
   { n:"02", name:"EatScan",   ko:"잇스캔",   line:"라벨을 한 번 비추면, 먹어도 되는지 아닌지 조용히 알려준다.", meta:"2024 · solo build", detail:"식품 라벨 OCR 스캐너. 조용히, 확실하게." },
   { n:"03", name:"이달여행",   ko:"IdalTrip", line:"이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.", meta:"2025 · live", url:"https://idaltrip.vercel.app", detail:"시즌 축제 기반 AI 여행 코스 큐레이션. 지금 방문 가능." },
-  { n:"04", name:"잡솔트",     ko:"JobSort",  line:"공고는 너무 많고, 나에게 맞는 건 늘 한두 개.", meta:"2025 · WIP", wip:true, detail:"채용 영역에서 더 빠른 매칭. 조용히 다듬는 중." },
+  { n:"04", name:"잡솔트",     ko:"JobSort",  line:"공고는 너무 많고, 나에게 맞는 건 늘 한두 개.", meta:"2025 · 작업중", wip:true, detail:"채용 영역에서 더 빠른 매칭. 조용히 다듬는 중." },
   { n:"05", name:"TickDeck",  ko:"틱덱",     line:"URL 한 줄을, 발표 슬라이드 한 벌로.", meta:"2025 · solo build", detail:"긴 글을 구조화된 슬라이드로. 발표 준비 시간 한 꼬집." },
-  { n:"06", name:"toys",      ko:"토이즈",   line:"틈틈이 재미로 만든 작은 도구들의 진열대.", meta:"2025 · WIP", wip:true, detail:"준비 중. 한 꼬집씩 모이는 토이 묶음. 곧 공개." }
+  { n:"06", name:"toys",      ko:"토이즈",   line:"틈틈이 재미로 만든 작은 도구들의 진열대.", meta:"2025 · 작업중", wip:true, detail:"준비 중. 한 꼬집씩 모이는 토이 묶음. 곧 공개." }
 ];
 
 const grid = document.getElementById("grid");
@@ -666,22 +671,20 @@ PROJECTS.forEach((p, i) => {
     </div>
     <div class="foot">
       <span>${p.meta}</span>
-      <span class="arrow">${p.url ? '→ open' : '→ wip'}</span>
+      <span class="arrow">${p.url ? '→ 열기' : '→ 작업중'}</span>
     </div>
   `;
   grid.appendChild(div);
 });
 
-/* Scramble hover — 영문 카드명만. 한글 (이달여행·잡솔트·토이즈) 영역은 CSS hover (BNCE·letter-spacing·color) 만 */
+/* Scramble hover — 영문·한글 모두 영역 (chat 정본 명세 정합·"한글은 영문 chars 사이를 떠다니다 제자리로") */
 const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%&";
 function startScramble(el) {
   const original = el.dataset.original;
   if (!original) return;
-  // 한글 영역 점검 — 한글이면 scramble 영역 X (글자 깨짐 방지)
-  if (/[ㄱ-힝]/.test(original)) return;
   clearInterval(el._sint);
   let iter = 0;
-  const totalFrames = 40;  // 약 1.2초 영역 (50ms × 24 = 1200ms)
+  const totalFrames = 40;  // 약 1.2초 영역 (50ms × 24)
   const step = original.length / totalFrames;
   el._sint = setInterval(() => {
     el.textContent = original.split('').map((ch, i) => {
@@ -758,7 +761,15 @@ function drawFrames() {
   });
 }
 
-window.addEventListener("load", drawFrames);
+window.addEventListener("load", () => {
+  drawFrames();
+  // 폰트 load 후 layout shift 영역 정합 = 다시 draw (Shantell Sans·Kyobo 폰트 영역 load 시점에 카드 영역 size 변경 영역)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => setTimeout(drawFrames, 100));
+  }
+  // 추가 안전 영역 — 1초 후 한 번 더
+  setTimeout(drawFrames, 1000);
+});
 window.addEventListener("resize", () => {
   clearTimeout(window.__rt);
   window.__rt = setTimeout(drawFrames, 150);
