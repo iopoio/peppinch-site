@@ -488,7 +488,7 @@ function App() {
         <div className="label">04 — 연락 · ping me</div>
         <h2>
           말 걸어요.<br/>
-          <a href="mailto:pepper@peppinch.com">pepper@peppinch.com</a>
+          <a href="mailto:pepper@peppinch.com" style={{ fontSize: "0.5em", wordBreak: "break-all" }}>pepper@peppinch.com</a>
         </h2>
         <div className="lines">
           <div>
