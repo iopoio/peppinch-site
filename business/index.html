@@ -507,7 +507,10 @@
     font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
     color: var(--muted);
     gap: 24px; flex-wrap: wrap;
+    line-height: 1.7;
   }
+  footer .foot-line { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  footer .foot-icon { display: inline-flex; align-items: center; font-size: 1em; line-height: 1; transform: translateY(-1px); }
   footer .pinch { color: var(--accent); }
 
   /* TYPOGRAPHY: cursor-reactive variable weight */
@@ -515,7 +518,15 @@
 
   /* small media */
   @media (max-width: 720px) {
-    .frame .corner { padding: 16px 20px; font-size: 9px; }
+    /* frame 모바일 영역 — corner 4개 중 TL "메인 사이트 보기" 만 살림·나머지 hide */
+    .frame::before, .frame::after { display: none; }
+    .frame .corner.tr,
+    .frame .corner.bl,
+    .frame .corner.br { display: none; }
+    .frame .corner { padding: 14px 22px; font-size: 9px; }
+    .frame .corner.tl::before { display: none; }
+    .frame .corner.tl .corner-text { display: none; }
+    .frame .corner.tl .corner-link { font-size: 11px; }
 
     /* section padding·min-height — 모바일 영역 vh 영역 과대 회피 */
     section { padding: 7vh 6vw 6vh; min-height: auto; }
@@ -554,7 +565,8 @@
     .contact .lines div { font-size: 14px; }
 
     /* footer */
-    footer { padding: 3vh 6vw; font-size: 10px; gap: 12px; flex-direction: column; align-items: flex-start; }
+    footer { padding: 4vh 6vw 6vh; font-size: 10px; gap: 10px; flex-direction: column; align-items: flex-start; line-height: 1.75; }
+    footer .foot-line { gap: 6px; }
   }
 </style>
 

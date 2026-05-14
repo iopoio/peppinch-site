@@ -417,8 +417,8 @@ function App() {
     <>
       <div className="frame">
         <div className="corner tl" style={{ pointerEvents: "auto", zIndex: 100 }}>
-          PEPPINCH<br/>SOLO STUDIO · KR<br/><br/>
-          <a href="/" style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1.5px solid var(--accent)", padding: "2px 0", letterSpacing: ".12em", pointerEvents: "auto", position: "relative", zIndex: 101 }}>← 메인 사이트 보기</a>
+          <span className="corner-text">PEPPINCH<br/>SOLO STUDIO · KR<br/><br/></span>
+          <a href="/" className="corner-link" style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1.5px solid var(--accent)", padding: "2px 0", letterSpacing: ".12em", pointerEvents: "auto", position: "relative", zIndex: 101 }}>← 메인 사이트 보기</a>
         </div>
         <div className="corner tr">PALETTE — {palette.label}<br/>{palette.sub}</div>
         <div className="corner bl">EST. 2024</div>
@@ -511,7 +511,7 @@ function App() {
           </div>
           <div>
             <strong>site</strong>
-            <a href="https://peppinch.com">peppinch.com</a>
+            <a href="https://peppinch.com">www.peppinch.com</a>
           </div>
           <div>
             <strong>roles</strong>
@@ -521,8 +521,8 @@ function App() {
       </section>
 
       <footer>
-        <span>© {new Date().getFullYear()} <span className="pinch">peppinch</span> — pinch of pepper</span>
-        <span>made slow, in seoul · 🧂</span>
+        <span className="foot-line">© {new Date().getFullYear()} <span className="pinch">peppinch</span> — pinch of pepper</span>
+        <span className="foot-line">made slow, in seoul <span className="foot-icon" aria-hidden="true">🧂</span></span>
       </footer>
 
       {/* TWEAKS PANEL */}
