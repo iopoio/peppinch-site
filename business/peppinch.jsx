@@ -441,8 +441,8 @@ function App() {
           </span>
         </h1>
         <p className="sub">
-          신사업을 기획하고, 만들고 — 가끔은 갈아 엎는다.{' '}
-          <em>혼자, AI와 함께.</em><br/>
+          세상을 바꾸진 않지만, 당신의 오늘 하루는 조금 낫게.<br/>
+          가끔은 갈아엎는다, <em>혼자 혹은 AI와 함께.</em><br/>
           A solo lab in Seoul, building small useful things.
           The kind that don't change the world, only your Tuesday.
         </p>
