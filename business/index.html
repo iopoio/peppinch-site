@@ -518,15 +518,29 @@
 
   /* small media */
   @media (max-width: 720px) {
-    /* frame 모바일 영역 — corner 4개 중 TL "메인 사이트 보기" 만 살림·나머지 hide */
+    /* frame 모바일 영역 — TR/BL/BR hide·TL은 PEPPINCH 로고 + 메인 사이트 보기 살림 */
     .frame::before, .frame::after { display: none; }
     .frame .corner.tr,
     .frame .corner.bl,
     .frame .corner.br { display: none; }
-    .frame .corner { padding: 14px 22px; font-size: 9px; }
+    .frame .corner { padding: 14px 6vw; font-size: 11px; }
+    .frame .corner.tl {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--bg);
+      border-bottom: 1px solid var(--hairline);
+    }
     .frame .corner.tl::before { display: none; }
-    .frame .corner.tl .corner-text { display: none; }
-    .frame .corner.tl .corner-link { font-size: 11px; }
+    .frame .corner.tl br { display: none; }
+    .frame .corner.tl .corner-brand { font-weight: 700; font-size: 12px; letter-spacing: .18em; color: var(--ink); opacity: .9; }
+    .frame .corner.tl .corner-sub { display: none; }
+    .frame .corner.tl .corner-link { font-size: 10.5px; }
+    /* 첫 hero section 영역 top spacing — corner.tl 영역 안 겹치게 */
+    section.hero { padding-top: 12vh; }
 
     /* section padding·min-height — 모바일 영역 vh 영역 과대 회피 */
     section { padding: 7vh 6vw 6vh; min-height: auto; }
