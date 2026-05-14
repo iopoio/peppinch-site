@@ -14,7 +14,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@300;400;700&family=Gloria+Hallelujah&family=Architects+Daughter&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght,BNCE,INFM,SPAC@0,300..800,-500..500,0..100,0..100;1,300..800,-500..500,0..100,0..100&family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet" />
 
 <script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
 
@@ -42,8 +42,8 @@
       /* page grain */
       var(--paper);
     color: var(--ink);
-    font-family: "Kyobo", "Kalam", sans-serif;
-    font-weight: 300;
+    font-family: "Kyobo", "Shantell Sans", sans-serif;
+    font-weight: 400;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
@@ -79,7 +79,7 @@
     z-index: 3;
   }
 
-  /* hole-punch dots on left margin */
+  /* hole-punch dots on left margin — 1440px 이상 화면에서 page 영역 옆에 고정 */
   .holes {
     position: absolute;
     left: 22px; top: 80px;
@@ -94,6 +94,14 @@
       radial-gradient(circle at 35% 35%, #d4cdb8 0%, #c0b89e 60%, #a8a087 100%);
     box-shadow: inset 1px 1px 2px rgba(0,0,0,.25), 0 1px 0 rgba(255,255,255,.5);
   }
+  /* 1320px 이상 화면 영역 — holes를 page 영역 옆 30px 자리 고정 (와이드 화면 어색함 회피) */
+  @media (min-width: 1320px) {
+    .holes { left: calc(50vw - 660px - 30px); }
+  }
+  /* 1440px 이상 영역에서도 동일 영역 (page max 1320px 정합) */
+  @media (min-width: 1440px) {
+    .holes { left: calc(50vw - 660px - 30px); }
+  }
 
   /* TOP BAR — sticky note style header */
   .topbar {
@@ -103,7 +111,7 @@
     position: relative;
   }
   .logo {
-    font-family: "Kyobo", "Caveat", cursive;
+    font-family: "Kyobo", "Shantell Sans", cursive;
     font-weight: 700;
     font-size: clamp(64px, 9vw, 124px);
     line-height: .9;
@@ -133,7 +141,7 @@
     border: 2.5px solid var(--red);
     color: var(--red);
     padding: 8px 14px 6px;
-    font-family: "Kyobo", "Architects Daughter", sans-serif;
+    font-family: "Kyobo", "Shantell Sans", sans-serif;
     font-size: 13px;
     letter-spacing: .12em;
     text-transform: uppercase;
@@ -149,7 +157,7 @@
   }
 
   .meta {
-    font-family: "Kyobo", "Kalam", sans-serif;
+    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-size: 13px;
     color: var(--pencil);
     opacity: .75;
@@ -161,7 +169,7 @@
 
   /* annotations */
   .anno {
-    font-family: "Kyobo", "Caveat", cursive;
+    font-family: "Kyobo", "Shantell Sans", cursive;
     color: var(--red);
     font-size: 22px;
     font-weight: 500;
@@ -176,7 +184,7 @@
     position: relative;
   }
   .hero-line1 {
-    font-family: "Kyobo", "Caveat", cursive;
+    font-family: "Kyobo", "Shantell Sans", cursive;
     font-weight: 600;
     font-size: clamp(60px, 11vw, 160px);
     line-height: .9;
@@ -184,6 +192,9 @@
     margin: 0;
     transform: rotate(-.8deg);
     letter-spacing: -0.01em;
+    /* Shantell Sans variable axis — cursor-reactive (JS에서 wght·BNCE·INFM 동적 변경) */
+    font-variation-settings: "wght" 500, "BNCE" 0, "INFM" 30;
+    transition: font-variation-settings 0.15s ease-out;
   }
   .hero-line1 em {
     font-style: italic;
@@ -200,8 +211,8 @@
     opacity: .75;
   }
   .hero-sub {
-    font-family: "Kyobo", "Kalam", sans-serif;
-    font-weight: 300;
+    font-family: "Kyobo", "Shantell Sans", sans-serif;
+    font-weight: 400;
     font-size: 18px;
     line-height: 1.6;
     max-width: 480px;
@@ -211,13 +222,16 @@
   }
   .hero-anno {
     position: absolute;
-    right: 4%;
-    top: 30%;
+    /* 후추님 #1 — 실제 글자 옆 가까이 배치 (hero h2 우측 상단 영역) */
+    left: 48%;
+    top: -30px;
     transform: rotate(-6deg);
     text-align: center;
     max-width: 220px;
+    z-index: 5;
   }
   .hero-anno svg { display: block; margin: 6px auto 0; }
+  @media (max-width: 900px) { .hero-anno { left: 50%; top: -60px; } }
 
   /* NAV chips */
   .nav {
@@ -225,7 +239,7 @@
     margin: 30px 0 40px;
   }
   .nav-chip {
-    font-family: "Kyobo", "Caveat", cursive;
+    font-family: "Kyobo", "Shantell Sans", cursive;
     font-weight: 500;
     font-size: 24px;
     color: var(--ink);
@@ -239,7 +253,7 @@
 
   /* SECTION LABEL */
   .section-label {
-    font-family: "Kyobo", "Caveat", cursive;
+    font-family: "Kyobo", "Shantell Sans", cursive;
     font-weight: 500;
     font-size: 30px;
     color: var(--ink);
@@ -249,7 +263,7 @@
     transform: rotate(-.4deg);
   }
   .section-label .num {
-    font-family: "Kyobo", "Kalam", sans-serif;
+    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-size: 14px;
     color: var(--red);
     margin-right: 12px;
@@ -258,7 +272,7 @@
     font-weight: 700;
   }
   .section-sub {
-    font-family: "Kyobo", "Kalam", sans-serif;
+    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-size: 14px;
     color: var(--pencil);
     opacity: .7;
@@ -286,13 +300,15 @@
   .card {
     position: relative;
     padding: 28px 24px 22px;
-    min-height: 220px;
+    min-height: 240px;
     transform: rotate(var(--r, 0deg));
     display: flex; flex-direction: column;
+    transition: transform 0.3s;
   }
+  .card:hover { transform: rotate(0deg); z-index: 10; }
   .card svg.frame { position: absolute; inset: 0; pointer-events: none; width: 100%; height: 100%; }
   .card .num {
-    font-family: "Kyobo", "Kalam", sans-serif;
+    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-weight: 700;
     font-size: 12px;
     letter-spacing: .15em;
@@ -300,38 +316,67 @@
     margin-bottom: 8px;
   }
   .card .name {
-    font-family: "Kyobo", "Caveat", cursive;
+    font-family: "Kyobo", "Shantell Sans", cursive;
     font-weight: 700;
     font-size: 38px;
     line-height: .95;
     color: var(--ink);
     margin: 0 0 6px;
+    /* Shantell Sans variable axis hover 인터랙션 영역 (영문 카드명 영역) */
+    font-variation-settings: "wght" 700, "BNCE" 0, "INFM" 30;
+    transition: font-variation-settings 0.35s ease, letter-spacing 0.3s, color 0.3s;
+    transform-origin: left;
+  }
+  /* card hover — Bounce axis + Informality + color (인디 personality 영역) */
+  .card:hover .name {
+    font-variation-settings: "wght" 750, "BNCE" 280, "INFM" 80;
+    letter-spacing: 0.04em;
+    color: var(--red);
   }
   .card .ko {
-    font-family: "Kyobo", "Kalam", sans-serif;
+    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-size: 14px;
     color: var(--pencil);
     opacity: .8;
     margin-bottom: 14px;
   }
   .card .line {
-    font-family: "Kyobo", "Kalam", sans-serif;
+    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-size: 13.5px;
     line-height: 1.5;
     color: var(--pencil);
     flex: 1;
   }
+  /* 항상 펼침 영역 — 후추님 #3 결정 (collapse X·details 영역 일관 visible) */
+  .card .details {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(0,0,0,0.12);
+    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--pencil);
+    opacity: 0.85;
+  }
+  .card .details a {
+    color: var(--red);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-underline-offset: 3px;
+    font-weight: 700;
+  }
+  .card .details .ready { opacity: 0.55; pointer-events: none; font-style: italic; }
   .card .foot {
     margin-top: 14px;
     display: flex; justify-content: space-between; align-items: baseline;
-    font-family: "Kyobo", "Kalam", sans-serif;
+    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-size: 11px;
     letter-spacing: .08em;
     text-transform: uppercase;
     color: var(--pencil);
     opacity: .7;
   }
-  .card .foot .arrow { font-family: "Kyobo", "Caveat", cursive; font-size: 18px; color: var(--red); }
+  .card .foot .arrow { font-family: "Kyobo", "Shantell Sans", cursive; font-size: 18px; color: var(--red); }
 
   /* sticky note for "wip" */
   .card.wip::after {
@@ -339,7 +384,7 @@
     position: absolute;
     top: -10px; right: -8px;
     background: #fde88a;
-    font-family: "Kyobo", "Architects Daughter", sans-serif;
+    font-family: "Kyobo", "Shantell Sans", sans-serif;
     font-size: 11px;
     font-weight: 700;
     color: var(--ink);
@@ -359,7 +404,7 @@
   }
   .todo svg.frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
   .todo h3 {
-    font-family: "Kyobo", "Caveat", cursive;
+    font-family: "Kyobo", "Shantell Sans", cursive;
     font-weight: 700;
     font-size: 36px;
     margin: 0 0 16px;
@@ -371,7 +416,7 @@
     gap: 8px 24px;
   }
   .todo li {
-    font-family: "Kyobo", "Kalam", sans-serif;
+    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-size: 16px;
     color: var(--pencil);
     display: flex;
@@ -391,7 +436,7 @@
     content: "✓";
     position: absolute;
     inset: -8px -4px auto auto;
-    font-family: "Kyobo", "Caveat", cursive;
+    font-family: "Kyobo", "Shantell Sans", cursive;
     font-size: 26px;
     color: var(--red);
     line-height: 1;
@@ -403,7 +448,7 @@
     margin-top: 70px;
     display: flex; justify-content: space-between; align-items: baseline;
     gap: 24px; flex-wrap: wrap;
-    font-family: "Kyobo", "Caveat", cursive;
+    font-family: "Kyobo", "Shantell Sans", cursive;
     font-size: 22px;
     color: var(--pencil);
     border-top: 2px dashed rgba(58,53,44,.2);
@@ -414,7 +459,7 @@
   /* arrows scattered */
   .arrow-anno {
     position: absolute;
-    font-family: "Kyobo", "Caveat", cursive;
+    font-family: "Kyobo", "Shantell Sans", cursive;
     color: var(--blue);
     font-size: 20px;
     pointer-events: none;
@@ -429,13 +474,13 @@
     padding: 14px 16px 12px;
     transform: rotate(2.5deg);
     box-shadow: 0 4px 14px rgba(0,0,0,.15);
-    font-family: "Kyobo", "Kalam", sans-serif;
+    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-size: 12px;
     color: var(--pencil);
     z-index: 50;
     max-width: 200px;
   }
-  .legend b { font-family: "Kyobo", "Caveat", cursive; font-size: 18px; color: var(--ink); display: block; margin-bottom: 6px; font-weight: 700; }
+  .legend b { font-family: "Kyobo", "Shantell Sans", cursive; font-size: 18px; color: var(--ink); display: block; margin-bottom: 6px; font-weight: 700; }
   .legend .row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
   .legend .sw { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,.2); }
 </style>
@@ -515,7 +560,7 @@
   <!-- WORKS section -->
   <div style="position:relative;">
     <span class="section-label"><span class="num">02 —</span>인덱스 · works</span>
-    <div class="section-sub">click to expand 💡 (페이지 길어지지 않게)</div>
+    <div class="section-sub">호버 시 글자가 살짝 들썩 — 살아있는 진열대</div>
 
     <div class="grid" id="grid">
       <!-- cards filled by JS -->
@@ -532,13 +577,15 @@
     <h3>🧂 todo / 다음 작업</h3>
     <ul>
       <li class="done"><span class="box"></span> 히어로 문구 확정</li>
-      <li class="done"><span class="box"></span> 색 팔레트 3개 (한지/새벽/골목)</li>
-      <li class="done"><span class="box"></span> 인덱스 click-to-expand 구조</li>
-      <li><span class="box"></span> 프로젝트 카드 썸네일 디자인</li>
-      <li><span class="box"></span> '지금' 섹션에 진짜 글 쓰기</li>
-      <li><span class="box"></span> 모바일에서 커서 효과 어떻게 할지</li>
-      <li><span class="box"></span> 파비콘 (🧂?)</li>
-      <li><span class="box"></span> og:image 만들기</li>
+      <li class="done"><span class="box"></span> 색 팔레트 (한지·새벽·골목)</li>
+      <li class="done"><span class="box"></span> 인덱스 펼침 구조</li>
+      <li class="done"><span class="box"></span> 파비콘 (🧂)</li>
+      <li class="done"><span class="box"></span> toys 카드 영역</li>
+      <li class="done"><span class="box"></span> 비즈니스 페이지 (cinematic 톤)</li>
+      <li><span class="box"></span> 프로젝트 카드 썸네일</li>
+      <li><span class="box"></span> '지금' 섹션 진짜 글</li>
+      <li><span class="box"></span> 모바일 디테일 polish</li>
+      <li><span class="box"></span> og:image 한 장 그리기</li>
     </ul>
   </div>
 
@@ -558,14 +605,14 @@
 </div>
 
 <script>
-/* Rough.js sketchy frames */
+/* PROJECTS — 메인 + /business 데이터 공유. 6번째 toys 영역 (혜택잡이 → toys). */
 const PROJECTS = [
-  { n:"01", name:"Publace",   ko:"퍼블레이스", line:"도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.", meta:"2024 · concept" },
-  { n:"02", name:"EatScan",   ko:"잇스캔",   line:"라벨을 한 번 비추면, 먹어도 되는지 아닌지 조용히 알려준다.", meta:"2024 · solo build" },
-  { n:"03", name:"이달여행",   ko:"IdalTrip", line:"이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.", meta:"2025 · concept" },
-  { n:"04", name:"잡솔트",     ko:"JobSort",  line:"공고는 너무 많고, 나에게 맞는 건 늘 한두 개.", meta:"2025 · WIP", wip:true },
-  { n:"05", name:"TickDeck",  ko:"틱덱",     line:"URL 한 줄을, 발표 슬라이드 한 벌로.", meta:"2025 · solo build" },
-  { n:"06", name:"혜택잡이",   ko:"Hyetjabi", line:"흩어진 혜택들. 누가 쓰고 있는지조차 모를 때가 많다.", meta:"2025 · WIP", wip:true },
+  { n:"01", name:"Publace",   ko:"퍼블레이스", line:"도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.", meta:"2024 · concept",   detail:"공공 유휴공간 × 사용자 매칭. 아직은 아이디어 스케치 단계." },
+  { n:"02", name:"EatScan",   ko:"잇스캔",   line:"라벨을 한 번 비추면, 먹어도 되는지 아닌지 조용히 알려준다.", meta:"2024 · solo build", detail:"식품 라벨 OCR 스캐너. 조용히, 확실하게." },
+  { n:"03", name:"이달여행",   ko:"IdalTrip", line:"이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.", meta:"2025 · live", url:"https://idaltrip.vercel.app", detail:"시즌 축제 기반 AI 여행 코스 큐레이션. 지금 방문 가능." },
+  { n:"04", name:"잡솔트",     ko:"JobSort",  line:"공고는 너무 많고, 나에게 맞는 건 늘 한두 개.", meta:"2025 · WIP", wip:true, detail:"채용 영역에서 더 빠른 매칭. 조용히 다듬는 중." },
+  { n:"05", name:"TickDeck",  ko:"틱덱",     line:"URL 한 줄을, 발표 슬라이드 한 벌로.", meta:"2025 · solo build", detail:"긴 글을 구조화된 슬라이드로. 발표 준비 시간 한 꼬집." },
+  { n:"06", name:"toys",      ko:"토이즈",   line:"틈틈이 재미로 만든 작은 도구들의 진열대.", meta:"2025 · WIP", wip:true, detail:"준비 중. 한 꼬집씩 모이는 토이 묶음. 곧 공개." }
 ];
 
 const grid = document.getElementById("grid");
@@ -574,19 +621,82 @@ PROJECTS.forEach((p, i) => {
   const div = document.createElement("div");
   div.className = "card" + (p.wip ? " wip" : "");
   div.style.setProperty("--r", rotations[i] + "deg");
+  const linkHtml = p.url
+    ? `<a href="${p.url}" target="_blank" rel="noopener">→ 방문하기</a>`
+    : `<span class="ready">→ 준비 중</span>`;
   div.innerHTML = `
     <svg class="frame"></svg>
     <div class="num">PROJECT · ${p.n}</div>
-    <h4 class="name">${p.name}</h4>
+    <h4 class="name" data-original="${p.name}">${p.name}</h4>
     <div class="ko">${p.ko}</div>
     <p class="line">${p.line}</p>
+    <div class="details">
+      <p>${p.detail}</p>
+      <div style="margin-top:8px;">${linkHtml}</div>
+    </div>
     <div class="foot">
       <span>${p.meta}</span>
-      <span class="arrow">→ open</span>
+      <span class="arrow">${p.url ? '→ open' : '→ wip'}</span>
     </div>
   `;
   grid.appendChild(div);
 });
+
+/* Scramble hover — 영문 카드명만. 한글 (이달여행·잡솔트·토이즈) 영역은 CSS hover (BNCE·letter-spacing·color) 만 */
+const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%&";
+function startScramble(el) {
+  const original = el.dataset.original;
+  if (!original) return;
+  // 한글 영역 점검 — 한글이면 scramble 영역 X (글자 깨짐 방지)
+  if (/[ㄱ-힝]/.test(original)) return;
+  clearInterval(el._sint);
+  let iter = 0;
+  const totalFrames = 40;  // 약 1.2초 영역 (50ms × 24 = 1200ms)
+  const step = original.length / totalFrames;
+  el._sint = setInterval(() => {
+    el.textContent = original.split('').map((ch, i) => {
+      if (i < iter) return original[i];
+      if (ch === ' ') return ' ';
+      if (i % 3 === 0) return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+      return original[i];
+    }).join('');
+    iter += step;
+    if (iter >= original.length + 1) {
+      clearInterval(el._sint);
+      el.textContent = original;
+    }
+  }, 50);
+}
+function endScramble(el) {
+  clearInterval(el._sint);
+  if (el.dataset.original) el.textContent = el.dataset.original;
+}
+document.querySelectorAll('.card').forEach(card => {
+  const nameEl = card.querySelector('.name');
+  card.addEventListener('mouseenter', () => startScramble(nameEl));
+  card.addEventListener('mouseleave', () => endScramble(nameEl));
+});
+
+/* Hero cursor-reactive variable wght — 마우스가 hero 가까울수록 글자 두꺼워짐 (Shantell Sans wght 300~800·BNCE 동시) */
+const heroLine = document.querySelector('.hero-line1');
+if (heroLine) {
+  let lastFrame = 0;
+  window.addEventListener('mousemove', (e) => {
+    const now = performance.now();
+    if (now - lastFrame < 16) return; // throttle ~60fps
+    lastFrame = now;
+    const rect = heroLine.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+    const max = 700;
+    const t = Math.max(0, Math.min(1, 1 - dist / max));  // 0~1 영역
+    const wght = 300 + t * 500;     // 300~800
+    const bnce = -200 + t * 400;    // -200~200
+    const infm = 20 + t * 60;       // 20~80
+    heroLine.style.fontVariationSettings = `"wght" ${wght}, "BNCE" ${bnce}, "INFM" ${infm}`;
+  });
+}
 
 /* Draw rough rectangles into every .frame svg */
 function drawFrames() {

@@ -93,11 +93,11 @@ const PROJECTS = [
     href: "#"
   },
   {
-    id: 6, name: "혜택잡이", ko: "Hyetjabi",
-    line: "흩어진 혜택들. 누가 쓰고 있는지조차 모를 때가 많다.",
-    tag: "카드·페이·공공혜택 분석기",
+    id: 6, name: "toys", ko: "토이즈",
+    line: "틈틈이 재미로 만든 작은 도구들의 진열대.",
+    tag: "작은 실험 묶음",
     year: "2025",
-    role: "In progress",
+    role: "WIP",
     href: "#"
   }
 ];
@@ -406,7 +406,10 @@ function App() {
   return (
     <>
       <div className="frame">
-        <div className="corner tl">PEPPINCH<br/>SOLO STUDIO · KR</div>
+        <div className="corner tl">
+          PEPPINCH<br/>SOLO STUDIO · KR<br/><br/>
+          <a href="../index.html" style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1.5px solid var(--accent)", padding: "2px 0", letterSpacing: ".12em" }}>← 메인 사이트 보기</a>
+        </div>
         <div className="corner tr">PALETTE — {palette.label}<br/>{palette.sub}</div>
         <div className="corner bl">EST. 2024</div>
         <div className="corner br">{pairing.label}</div>
