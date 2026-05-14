@@ -526,7 +526,7 @@ function App() {
       <footer>
         <span className="foot-line">© {new Date().getFullYear()} <span className="pinch">peppinch</span> — pinch of pepper</span>
         <span className="foot-line">made slow, in seoul <span className="foot-icon" aria-hidden="true">🧂</span></span>
-        <div className="biz-info" style={{ flexBasis: "100%", width: "100%", marginTop: "0.5em", fontSize: "0.72em", color: "rgba(120,120,120,0.55)", lineHeight: 1.7, letterSpacing: "0.02em" }}>
+        <div className="biz-info" style={{ flex: "1 1 auto", textAlign: "center", fontSize: "0.72em", color: "rgba(120,120,120,0.55)", lineHeight: 1.7, letterSpacing: "0.02em" }}>
           <div>운영 주체: 시즌드 · 대표 채영화 · 사업자등록번호 890-19-01928</div>
           <div>업태 정보통신업 · 종목 컴퓨터 프로그래밍 서비스업 · 서울특별시 관악구</div>
         </div>

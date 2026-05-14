@@ -143,17 +143,7 @@
     border-bottom: 1px solid var(--hairline);
     pointer-events: none;
   }
-  .frame::after {
-    content: "";
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 76px;
-    background: color-mix(in oklab, var(--bg) 65%, transparent);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border-top: 1px solid var(--hairline);
-    pointer-events: none;
-  }
+  /* .frame::after 폐기 — 후추님 5/14 결정 (빈 bar 사고·footer 안 시즌드 가운데 정렬) */
   .frame .corner {
     position: absolute;
     font-family: var(--mono-font);
