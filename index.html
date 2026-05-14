@@ -473,27 +473,10 @@
     line-height: .95;
     color: var(--ink);
     margin: 0 0 6px;
-    /* Shantell Sans variable axis hover 인터랙션 영역 (영문 카드명 영역) */
+    /* 가만 있을 땐 정적 — Shantell Sans variable axis 영역 default */
     font-variation-settings: "wght" 700, "BNCE" 0, "INFM" 30;
-    transition: font-variation-settings 0.35s ease, letter-spacing 0.3s, color 0.3s;
+    transition: letter-spacing 0.3s, color 0.3s;
     transform-origin: left;
-    /* 손으로 써내려가는 영역 효과 — 왼→오 clip-path 영역 */
-    animation: write-in 1.1s ease-out backwards;
-  }
-  @keyframes write-in {
-    from { clip-path: inset(0 100% 0 0); }
-    to   { clip-path: inset(0 0 0 0); }
-  }
-  /* 카드 영역 순차 stagger — 6 카드 영역 0.15s 간격 */
-  .grid .card:nth-child(1) .name { animation-delay: 0.1s; }
-  .grid .card:nth-child(2) .name { animation-delay: 0.25s; }
-  .grid .card:nth-child(3) .name { animation-delay: 0.4s; }
-  .grid .card:nth-child(4) .name { animation-delay: 0.55s; }
-  .grid .card:nth-child(5) .name { animation-delay: 0.7s; }
-  .grid .card:nth-child(6) .name { animation-delay: 0.85s; }
-  /* 모션 줄이기 선호 사용자 영역 = 정적 fallback */
-  @media (prefers-reduced-motion: reduce) {
-    .card .name { animation: none; clip-path: none; }
   }
   /* card hover — 쓱삭쓱싹 손으로 써내려가는 효과 (왼→오 clip-path 0.7s + 미세 손 흔들림) */
   .card:hover .name {
@@ -503,11 +486,8 @@
     animation: write-in-hover 0.7s ease-out forwards;
   }
   @keyframes write-in-hover {
-    0%   { clip-path: inset(0 100% 0 0); transform: rotate(0deg); }
-    20%  { transform: rotate(-0.4deg); }
-    45%  { transform: rotate(0.3deg); }
-    70%  { transform: rotate(-0.2deg); }
-    100% { clip-path: inset(0 0 0 0); transform: rotate(0deg); }
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
   }
   /* 모션 줄이기 선호 사용자 영역 = 정적 fallback */
   @media (prefers-reduced-motion: reduce) {
