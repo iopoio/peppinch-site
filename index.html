@@ -478,11 +478,41 @@
     transition: letter-spacing 0.3s, color 0.3s;
     transform-origin: left;
   }
-  /* card hover — 색만 빨강 (typewriter 영역 = JS 영역 처리) */
+  /* card hover — 색 빨강 + 손으로 그어지는 underline 영역 (SVG stroke-dashoffset) */
   .card:hover .name {
     letter-spacing: 0.04em;
     color: var(--red);
     font-variation-settings: "wght" 750, "BNCE" 0, "INFM" 60;
+  }
+  /* .name 영역 = inline-block 영역으로 underline 영역 위치 잡기 */
+  .card .name {
+    position: relative;
+    display: inline-block;
+  }
+  .card .name .name-text { position: relative; z-index: 2; }
+  .card .underline-doodle {
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 10px;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .card .underline-doodle path {
+    fill: none;
+    stroke: var(--red);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 0.65s ease-out;
+  }
+  .card:hover .underline-doodle path {
+    stroke-dashoffset: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card .underline-doodle path { transition: none; stroke-dashoffset: 0; }
   }
   .card .ko {
     font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
@@ -831,7 +861,12 @@ PROJECTS.forEach((p, i) => {
   div.innerHTML = `
     <svg class="frame"></svg>
     <div class="num">PROJECT · ${p.n}</div>
-    <h4 class="name" data-original="${p.name}">${p.name}</h4>
+    <h4 class="name" data-original="${p.name}">
+      <span class="name-text">${p.name}</span>
+      <svg class="underline-doodle" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M 2,6 Q 25,2 50,5 T 98,4" pathLength="100" />
+      </svg>
+    </h4>
     <div class="ko">${p.ko}</div>
     <p class="line">${p.line}</p>
     <div class="details">
