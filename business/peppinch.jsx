@@ -99,7 +99,7 @@ const PROJECTS = [
     href: "#"
   },
   {
-    id: 6, name: "toys", ko: "토이즈",
+    id: 6, name: "etc", ko: "기타",
     line: "틈틈이 재미로 만든 작은 도구들의 진열대.",
     tag: "작은 실험 묶음",
     year: "2025",
