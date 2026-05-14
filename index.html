@@ -478,10 +478,12 @@
     transition: letter-spacing 0.3s, color 0.3s;
     transform-origin: left;
   }
-  /* .name 영역 = 한 줄 keep + 너비 변화 차단 (typewriter·hover 시 카드 영역 움찔 방지) */
+  /* .name 영역 = 한 줄 keep + 너비·높이 변화 차단 (typewriter 글자 변화 시 카드 영역 움찔 방지) */
   .card .name {
     white-space: nowrap;
     overflow: hidden;
+    line-height: 1;
+    height: 1em;
   }
   /* card hover — 색 빨강 (SVG stroke = JS·CSS 별도 처리) */
   .card:hover .name {
@@ -899,7 +901,7 @@ function startTypewriter(el) {
   const original = el.dataset.original;
   if (!original) return;
   clearInterval(el._sint);
-  el.textContent = '';
+  el.textContent = '​'; // zero-width space — 높이 영역 keep (움찔 차단)
   let i = 0;
   el._sint = setInterval(() => {
     i++;
