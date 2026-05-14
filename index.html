@@ -13,6 +13,45 @@
 <meta property="og:type" content="website" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LZ7ZXMFEBM');
+</script>
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.peppinch.com/#org",
+      "name": "peppinch",
+      "alternateName": "펩핀치",
+      "url": "https://www.peppinch.com/",
+      "logo": "https://www.peppinch.com/favicon.svg",
+      "description": "1인 인디해커 스튜디오. 마이크로 SaaS·자동화·콘텐츠 빌드.",
+      "sameAs": [
+        "https://x.com/peppinch_"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.peppinch.com/#site",
+      "url": "https://www.peppinch.com/",
+      "name": "peppinch",
+      "description": "한 꼬집의 후추 — 마이크로 도구·실험·시스템 진열대.",
+      "publisher": { "@id": "https://www.peppinch.com/#org" },
+      "inLanguage": "ko-KR"
+    }
+  ]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet" />
