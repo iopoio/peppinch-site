@@ -143,17 +143,7 @@
     border-bottom: 1px solid var(--hairline);
     pointer-events: none;
   }
-  .frame::after {
-    content: "";
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 60px;
-    background: color-mix(in oklab, var(--bg) 65%, transparent);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border-top: 1px solid var(--hairline);
-    pointer-events: none;
-  }
+  /* .frame::after 영역 폐기 — 페이지 하단 빈 bar 영역·footer 영역과 분리 영역 보임 (5/14 후추님 지적) */
   .frame .corner {
     position: absolute;
     font-family: var(--mono-font);
