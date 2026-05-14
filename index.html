@@ -760,9 +760,9 @@ PROJECTS.forEach((p, i) => {
   const div = document.createElement("div");
   div.className = "card" + (p.wip ? " wip" : "");
   div.style.setProperty("--r", rotations[i] + "deg");
-  const linkHtml = p.url
-    ? `<a href="${p.url}" target="_blank" rel="noopener noreferrer">→ 방문하기</a>`
-    : `<span class="ready">→ 준비 중</span>`;
+  const footCta = p.url
+    ? `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="arrow">→ 열기</a>`
+    : `<span class="arrow ready">→ 작업중</span>`;
   div.innerHTML = `
     <svg class="frame"></svg>
     <div class="num">PROJECT · ${p.n}</div>
@@ -771,11 +771,10 @@ PROJECTS.forEach((p, i) => {
     <p class="line">${p.line}</p>
     <div class="details">
       <p>${p.detail}</p>
-      <div style="margin-top:8px;">${linkHtml}</div>
     </div>
     <div class="foot">
       <span>${p.meta}</span>
-      <span class="arrow">${p.url ? '→ 열기' : '→ 작업중'}</span>
+      ${footCta}
     </div>
   `;
   grid.appendChild(div);
