@@ -416,10 +416,10 @@
     /* cards */
     .card { padding: 22px 20px 18px; min-height: 200px; }
     .card .name { font-size: 30px; }
-    .card .ko { font-size: 13px; margin-bottom: 10px; }
-    .card .line { font-size: 13px; line-height: 1.5; }
-    .card .details { font-size: 12.5px; margin-top: 10px; padding-top: 8px; }
-    .card .foot { font-size: 10.5px; margin-top: 12px; }
+    .card .ko { font-size: 15px; margin-bottom: 10px; }
+    .card .line { font-size: 14.5px; line-height: 1.55; }
+    .card .details { font-size: 14px; margin-top: 10px; padding-top: 8px; }
+    .card .foot { font-size: 12px; margin-top: 12px; }
     .card.wip::after { font-size: 11px; padding: 5px 8px 3px; top: -8px; right: -6px; }
 
     /* todo */
@@ -477,21 +477,31 @@
   }
   /* card hover — Bounce axis + Informality + color (인디 personality 영역) */
   .card:hover .name {
-    font-variation-settings: "wght" 750, "BNCE" 280, "INFM" 80;
     letter-spacing: 0.04em;
     color: var(--red);
+    animation: name-wobble 1.6s ease-in-out infinite;
+  }
+  @keyframes name-wobble {
+    0%, 100% { font-variation-settings: "wght" 750, "BNCE" 280, "INFM" 80; }
+    25%      { font-variation-settings: "wght" 750, "BNCE" 80,  "INFM" 60; }
+    50%      { font-variation-settings: "wght" 750, "BNCE" 320, "INFM" 95; }
+    75%      { font-variation-settings: "wght" 750, "BNCE" 50,  "INFM" 50; }
+  }
+  /* 모션 줄이기 선호 사용자 영역 = 정적 영역 fallback */
+  @media (prefers-reduced-motion: reduce) {
+    .card:hover .name { animation: none; font-variation-settings: "wght" 750, "BNCE" 280, "INFM" 80; }
   }
   .card .ko {
     font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--pencil);
     opacity: .8;
     margin-bottom: 14px;
   }
   .card .line {
     font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 13.5px;
-    line-height: 1.5;
+    font-size: 15px;
+    line-height: 1.55;
     color: var(--pencil);
     flex: 1;
   }
@@ -501,8 +511,8 @@
     padding-top: 10px;
     border-top: 1px dashed rgba(0,0,0,0.12);
     font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 13px;
-    line-height: 1.55;
+    font-size: 14.5px;
+    line-height: 1.6;
     color: var(--pencil);
     opacity: 0.85;
   }
@@ -518,7 +528,7 @@
     margin-top: 14px;
     display: flex; justify-content: space-between; align-items: baseline;
     font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 11px;
+    font-size: 12.5px;
     letter-spacing: .08em;
     text-transform: uppercase;
     color: var(--pencil);
@@ -761,7 +771,7 @@
   <!-- TODO sticky -->
   <div class="todo" id="todo">
     <svg class="frame"></svg>
-    <h3>🧂 todo / 다음 작업</h3>
+    <h3>🧂 to-do / 다음 작업</h3>
     <ul>
       <li class="done"><span class="box"></span> 히어로 문구 확정</li>
       <li class="done"><span class="box"></span> 색 팔레트 (한지·새벽·골목)</li>
