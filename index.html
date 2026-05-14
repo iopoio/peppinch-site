@@ -329,17 +329,6 @@
   }
   .nav-chip[data-active] { color: var(--red); }
   .nav-chip svg { position: absolute; inset: 0; pointer-events: none; }
-  .nav-chip .mail {
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 0.55em;
-    opacity: 0.72;
-    margin-left: 4px;
-    letter-spacing: 0;
-    font-weight: 400;
-  }
-  @media (max-width: 600px) {
-    .nav-chip .mail { display: none; }
-  }
 
   /* SECTION LABEL */
   .section-label {
@@ -728,8 +717,8 @@
       blog
       <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,6 T95,7 Q97,21 96,32 Q60,37 30,34 T5,33 Q3,20 5,8 Z" fill="none" stroke="#3a352c" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
     </a>
-    <a class="nav-chip nav-chip-contact" href="mailto:pepper@peppinch.com" title="pepper@peppinch.com (클릭 = 메일 앱·우클릭 = 주소 복사)">
-      contact <span class="mail">· pepper@peppinch.com</span>
+    <a class="nav-chip" href="mailto:pepper@peppinch.com" title="pepper@peppinch.com">
+      contact
       <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,5 T95,8 Q98,20 96,33 Q60,36 30,34 T5,32 Q4,20 5,8 Z" fill="none" stroke="#3a352c" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
     </a>
   </div>
