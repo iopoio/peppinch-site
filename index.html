@@ -86,11 +86,7 @@
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    background:
-      /* coffee ring stain */
-      radial-gradient(ellipse 90px 30px at 85% 12%, rgba(168,120,60,.10), transparent 60%),
-      /* page grain */
-      var(--paper);
+    background: var(--paper);
     color: var(--ink);
     font-family: "Kyobo", "Shantell Sans", sans-serif;
     font-weight: 400;
@@ -104,8 +100,8 @@
     content: "";
     position: fixed; inset: 0;
     background-image:
-      repeating-linear-gradient(91deg, transparent 0 38px, rgba(0,0,0,.012) 38px 39px),
-      repeating-linear-gradient(2deg, transparent 0 46px, rgba(0,0,0,.012) 46px 47px);
+      repeating-linear-gradient(91deg, transparent 0 38px, rgba(0,0,0,.022) 38px 39px),
+      repeating-linear-gradient(2deg, transparent 0 46px, rgba(0,0,0,.022) 46px 47px);
     pointer-events: none;
     mix-blend-mode: multiply;
     z-index: 1;
