@@ -478,6 +478,11 @@
     transition: letter-spacing 0.3s, color 0.3s;
     transform-origin: left;
   }
+  /* .name 영역 = 한 줄 keep + 너비 변화 차단 (typewriter·hover 시 카드 영역 움찔 방지) */
+  .card .name {
+    white-space: nowrap;
+    overflow: hidden;
+  }
   /* card hover — 색 빨강 (SVG stroke = JS·CSS 별도 처리) */
   .card:hover .name {
     letter-spacing: 0.04em;
