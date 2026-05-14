@@ -406,9 +406,9 @@ function App() {
   return (
     <>
       <div className="frame">
-        <div className="corner tl">
+        <div className="corner tl" style={{ pointerEvents: "auto", zIndex: 100 }}>
           PEPPINCH<br/>SOLO STUDIO · KR<br/><br/>
-          <a href="../index.html" style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1.5px solid var(--accent)", padding: "2px 0", letterSpacing: ".12em" }}>← 메인 사이트 보기</a>
+          <a href="/" style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1.5px solid var(--accent)", padding: "2px 0", letterSpacing: ".12em", pointerEvents: "auto", position: "relative", zIndex: 101 }}>← 메인 사이트 보기</a>
         </div>
         <div className="corner tr">PALETTE — {palette.label}<br/>{palette.sub}</div>
         <div className="corner bl">EST. 2024</div>

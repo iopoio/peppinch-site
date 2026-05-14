@@ -89,6 +89,8 @@
     opacity: .6;
     padding: 28px 40px;
   }
+  /* corner 안 link 영역 = click 영역 의무 (부모 .frame pointer-events none 영역 우회) */
+  .frame .corner a { pointer-events: auto !important; cursor: pointer; }
   .corner.tl { top: 0; left: 0; }
   .corner.tr { top: 0; right: 0; text-align: right; }
   .corner.bl { bottom: 0; left: 0; }
