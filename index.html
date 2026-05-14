@@ -495,21 +495,23 @@
   @media (prefers-reduced-motion: reduce) {
     .card .name { animation: none; clip-path: none; }
   }
-  /* card hover — Bounce axis + Informality + color (인디 personality 영역) */
+  /* card hover — 쓱삭쓱싹 손으로 써내려가는 효과 (왼→오 clip-path 0.7s + 미세 손 흔들림) */
   .card:hover .name {
     letter-spacing: 0.04em;
     color: var(--red);
-    animation: name-wobble 1.6s ease-in-out infinite;
+    font-variation-settings: "wght" 750, "BNCE" 0, "INFM" 60;
+    animation: write-in-hover 0.7s ease-out forwards;
   }
-  @keyframes name-wobble {
-    0%, 100% { font-variation-settings: "wght" 750, "BNCE" 280, "INFM" 80; }
-    25%      { font-variation-settings: "wght" 750, "BNCE" 80,  "INFM" 60; }
-    50%      { font-variation-settings: "wght" 750, "BNCE" 320, "INFM" 95; }
-    75%      { font-variation-settings: "wght" 750, "BNCE" 50,  "INFM" 50; }
+  @keyframes write-in-hover {
+    0%   { clip-path: inset(0 100% 0 0); transform: rotate(0deg); }
+    20%  { transform: rotate(-0.4deg); }
+    45%  { transform: rotate(0.3deg); }
+    70%  { transform: rotate(-0.2deg); }
+    100% { clip-path: inset(0 0 0 0); transform: rotate(0deg); }
   }
-  /* 모션 줄이기 선호 사용자 영역 = 정적 영역 fallback */
+  /* 모션 줄이기 선호 사용자 영역 = 정적 fallback */
   @media (prefers-reduced-motion: reduce) {
-    .card:hover .name { animation: none; font-variation-settings: "wght" 750, "BNCE" 280, "INFM" 80; }
+    .card:hover .name { animation: none; clip-path: none; transform: none; }
   }
   .card .ko {
     font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
