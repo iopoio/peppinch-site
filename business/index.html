@@ -11,6 +11,15 @@
 <meta property="og:image" content="https://www.peppinch.com/og-image.png" />
 <meta property="og:url" content="https://www.peppinch.com/business/" />
 <meta property="og:type" content="website" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@peppinch_" />
+<meta name="twitter:creator" content="@peppinch_" />
+<meta name="twitter:title" content="peppinch — 사업 소개" />
+<meta name="twitter:description" content="1인 인디해커 스튜디오 펩핀치. 마이크로 SaaS·자동화·콘텐츠 빌드." />
+<meta name="twitter:image" content="https://www.peppinch.com/og-image.png" />
+
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 <!-- Google Analytics 4 -->
@@ -20,6 +29,45 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-LZ7ZXMFEBM');
+</script>
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.peppinch.com/#org",
+      "name": "peppinch",
+      "alternateName": "펩핀치",
+      "url": "https://www.peppinch.com/",
+      "logo": "https://www.peppinch.com/favicon.svg",
+      "description": "1인 인디해커 스튜디오. 마이크로 SaaS·자동화·콘텐츠 빌드.",
+      "sameAs": [
+        "https://x.com/peppinch_"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.peppinch.com/business/#page",
+      "url": "https://www.peppinch.com/business/",
+      "name": "peppinch — 사업 소개",
+      "description": "1인 인디해커 스튜디오 펩핀치. 마이크로 SaaS·자동화·콘텐츠 빌드. 회사 소개·서비스·연락처.",
+      "isPartOf": { "@id": "https://www.peppinch.com/#site" },
+      "about": { "@id": "https://www.peppinch.com/#org" },
+      "inLanguage": "ko-KR"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.peppinch.com/#site",
+      "url": "https://www.peppinch.com/",
+      "name": "peppinch",
+      "publisher": { "@id": "https://www.peppinch.com/#org" },
+      "inLanguage": "ko-KR"
+    }
+  ]
+}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />

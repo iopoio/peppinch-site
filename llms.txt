@@ -1,0 +1,33 @@
+# peppinch
+
+> 한 꼬집의 후추 — 1인 인디해커 스튜디오·서울 기반. 마이크로 SaaS·자동화·콘텐츠 빌드. "made slow, in seoul" 모토로 작은 도구를 천천히 만들어 누적.
+
+peppinch(펩핀치)는 1인 인디해커가 운영하는 마이크로 도구 진열대입니다. 실험·실패·다음 시도를 솔직하게 기록하며 작은 SaaS·자동화 도구를 빌드합니다.
+
+## Projects
+
+- [IdalTrip](https://idaltrip.vercel.app): 시즌 축제 기반 여행 큐레이션. 이번 달 어디서 무엇을 먹고 어떤 축제를 스칠지 안내
+- [잡솔트 (JobSort)](https://jobsort.peppinch.com): 공공기관 채용공고 PDF를 NCS 능력단위로 매칭하는 도구. 채용 매칭을 더 빠르게
+- [TickDeck (틱덱)](https://www.peppinch.com/business/): URL 한 줄을 발표 슬라이드 한 벌로 변환. 발표 준비 시간 단축
+- [EatScan](https://www.peppinch.com/business/): 식품 라벨·식단 분석 도구 (작업 중)
+- [이달여행 외 etc](https://www.peppinch.com/): 틈틈이 재미로 만든 작은 도구들의 진열대
+
+## Pages
+
+- [메인 (paper sketch)](https://www.peppinch.com/): 작품 인덱스·진행 중 도구·todo 진열대
+- [Business (사업 소개)](https://www.peppinch.com/business/): B2B·서비스·연락처. 시즌드 운영 주체 정보
+- [Blog](https://www.peppinch.com/blog/): 빌드·실험 누적. 작업 흐름·결과·실패·다음 시도 기록
+
+## About
+
+- 운영자: 1인 인디해커
+- 위치: 서울
+- 톤: "made slow" — 천천히·솔직하게·작은 도구
+- 컨셉: 마이크로 SaaS·자동화·콘텐츠 빌드
+- 연락: pepper@peppinch.com
+- X (Twitter): [@peppinch_](https://x.com/peppinch_)
+
+## Optional
+
+- [Sitemap](https://www.peppinch.com/sitemap.xml)
+- [Robots](https://www.peppinch.com/robots.txt)

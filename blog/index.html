@@ -11,6 +11,15 @@
 <meta property="og:image" content="https://www.peppinch.com/og-image.png" />
 <meta property="og:url" content="https://www.peppinch.com/blog/" />
 <meta property="og:type" content="website" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@peppinch_" />
+<meta name="twitter:creator" content="@peppinch_" />
+<meta name="twitter:title" content="peppinch — blog" />
+<meta name="twitter:description" content="1인 인디해커 빌드·실험 누적. 작업 흐름·결과·실패·다음 시도 기록." />
+<meta name="twitter:image" content="https://www.peppinch.com/og-image.png" />
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧂</text></svg>" />
 
 <!-- Google Analytics 4 -->
@@ -20,6 +29,35 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-LZ7ZXMFEBM');
+</script>
+
+<!-- JSON-LD structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "@id": "https://www.peppinch.com/blog/#blog",
+      "url": "https://www.peppinch.com/blog/",
+      "name": "peppinch — blog",
+      "description": "1인 인디해커 빌드·실험 누적. 작업 흐름·결과·실패·다음 시도 기록.",
+      "publisher": { "@id": "https://www.peppinch.com/#org" },
+      "inLanguage": "ko-KR"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.peppinch.com/#org",
+      "name": "peppinch",
+      "alternateName": "펩핀치",
+      "url": "https://www.peppinch.com/",
+      "logo": "https://www.peppinch.com/favicon.svg",
+      "sameAs": [
+        "https://x.com/peppinch_"
+      ]
+    }
+  ]
+}
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
