@@ -68,14 +68,23 @@
     <circle cx="28" cy="-17" r="0.9" fill="#2A2823"/>
   </g>
 
-  <!-- main title "peppinch" — big handwritten 톤 (Helvetica + 회전 + underline) -->
-  <text x="100" y="370" font-family="Apple SD Gothic Neo, AppleGothic, Noto Sans CJK KR, Helvetica, Arial, sans-serif" font-size="200" font-weight="900"
-        fill="#2A2823" letter-spacing="-6" transform="rotate(-1.4 100 370)">peppinch</text>
-  <!-- 빨간 dot -->
-  <circle cx="985" cy="385" r="18" fill="#C8412C" transform="rotate(-1.4 100 370)"/>
+  <!-- main title "peppinch" — 글자별 font-weight gradient (왼쪽 가늘게 → 오른쪽 굵게) -->
+  <g transform="rotate(-1.4 100 370)" font-family="Apple SD Gothic Neo, AppleGothic, Noto Sans CJK KR, Helvetica, Arial, sans-serif" font-size="200" fill="#2A2823" letter-spacing="-6">
+    <text x="100"  y="370" font-weight="200">p</text>
+    <text x="217"  y="370" font-weight="300">e</text>
+    <text x="328"  y="370" font-weight="400">p</text>
+    <text x="445"  y="370" font-weight="500">p</text>
+    <text x="566"  y="370" font-weight="600">i</text>
+    <text x="630"  y="370" font-weight="700">n</text>
+    <text x="755"  y="370" font-weight="800">c</text>
+    <text x="868"  y="370" font-weight="900">h</text>
+  </g>
 
-  <!-- underline -->
-  <path d="M105,395 Q300,375 600,388 T1010,378" fill="none" stroke="#C8412C" stroke-width="6" stroke-linecap="round" transform="rotate(-1.4 100 370)"/>
+  <!-- 빨간 dot — peppinch 마지막 "h" 옆·underline 끝점 영역 (살짝 위) -->
+  <circle cx="1000" cy="365" r="18" fill="#C8412C" transform="rotate(-1.4 100 370)"/>
+
+  <!-- underline — dot 영역 옆에서 자연스럽게 끝남 -->
+  <path d="M105,395 Q300,375 600,388 T985,378" fill="none" stroke="#C8412C" stroke-width="6" stroke-linecap="round" transform="rotate(-1.4 100 370)"/>
 
   <!-- tagline 영문 -->
   <text x="100" y="445" font-family="Apple SD Gothic Neo, AppleGothic, Noto Sans CJK KR, Helvetica, Arial, sans-serif" font-size="32" font-style="italic"
