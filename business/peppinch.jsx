@@ -87,8 +87,8 @@ const PROJECTS = [
     line: "공고는 너무 많고, 나에게 맞는 건 늘 한두 개.",
     tag: "공공기관 직무 매칭",
     year: "2025",
-    role: "In progress",
-    href: "#"
+    role: "WIP · Live",
+    href: "https://jobsort.peppinch.com"
   },
   {
     id: 5, name: "TickDeck", ko: "틱덱",
@@ -430,7 +430,9 @@ function App() {
       <section className="hero">
         <div className="eyebrow"><span className="dot"></span>peppinch.com — solo lab, kr</div>
         <h1>
-          <span className="pinch">A Pinch Of</span>{' '}
+          <span className="pinch">
+            <SplitText text="A Pinch Of" reactive={pairing.variable} />
+          </span>{' '}
           <span className="pepper">
             <SplitText text="Pepper." className="" reactive={pairing.variable} />
           </span>

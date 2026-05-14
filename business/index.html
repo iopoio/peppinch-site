@@ -73,11 +73,28 @@
     pointer-events: none;
     z-index: 50;
   }
-  .frame::before, .frame::after {
+  /* 상단·하단 가로 바 영역 (corner 영역 통합) — 후추님 5/14 view 정합 */
+  .frame::before {
     content: "";
     position: absolute;
-    background: var(--ink);
-    opacity: .9;
+    top: 0; left: 0; right: 0;
+    height: 76px;
+    background: color-mix(in oklab, var(--bg) 65%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--hairline);
+    pointer-events: none;
+  }
+  .frame::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: color-mix(in oklab, var(--bg) 65%, transparent);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-top: 1px solid var(--hairline);
+    pointer-events: none;
   }
   .frame .corner {
     position: absolute;
@@ -86,8 +103,7 @@
     letter-spacing: .12em;
     text-transform: uppercase;
     color: var(--muted);
-    padding: 28px 40px;
-    background: var(--bg);
+    padding: 26px 40px;
   }
   /* corner 안 link 영역 = click 영역 의무 (부모 .frame pointer-events none 영역 우회) */
   .frame .corner a { pointer-events: auto !important; cursor: pointer; }

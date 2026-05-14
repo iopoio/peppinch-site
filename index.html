@@ -748,8 +748,8 @@
 const PROJECTS = [
   { n:"01", name:"Publace",   ko:"퍼블레이스", line:"도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.", meta:"2024 · 베타", url:"https://publace.site", detail:"도시 빈 공간 매칭. 베타 운영 중·다음 단계 준비." },
   { n:"02", name:"EatScan",   ko:"잇스캔",   line:"라벨을 한 번 비추면, 먹어도 되는지 아닌지 조용히 알려준다.", meta:"2024 · 가동중", url:"https://eatscan.site", detail:"식품 라벨 한 번 비추면 끝. 조용히, 확실하게." },
-  { n:"03", name:"이달여행",   ko:"IdalTrip", line:"이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.", meta:"2025 · 가동중", url:"https://idaltrip.vercel.app", detail:"시즌 축제 기반 여행 큐레이션. 지금 가볼 수 있음." },
-  { n:"04", name:"잡솔트",     ko:"JobSort",  line:"공고는 너무 많고, 나에게 맞는 건 늘 한두 개.", meta:"2025 · 작업중", wip:true, detail:"채용 매칭 더 빠르게. 조용히 다듬는 중." },
+  { n:"03", name:"이달여행",   ko:"IdalTrip", line:"이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.", meta:"2025 · 작업중·가동중", wip:true, url:"https://idaltrip.vercel.app", detail:"시즌 축제 기반 여행 큐레이션. 지금 가볼 수 있음·계속 다듬는 중." },
+  { n:"04", name:"잡솔트",     ko:"JobSort",  line:"공고는 너무 많고, 나에게 맞는 건 늘 한두 개.", meta:"2025 · 작업중·가동중", wip:true, url:"https://jobsort.peppinch.com", detail:"채용 매칭 더 빠르게. 조용히 다듬는 중·미리 둘러봐도 OK." },
   { n:"05", name:"TickDeck",  ko:"틱덱",     line:"URL 한 줄을, 발표 슬라이드 한 벌로.", meta:"2025 · 작업중", wip:true, detail:"긴 글을 슬라이드로. 발표 준비 시간 한 꼬집." },
   { n:"06", name:"toys",      ko:"토이즈",   line:"틈틈이 재미로 만든 작은 도구들의 진열대.", meta:"2025 · 작업중", wip:true, detail:"한 꼬집씩 모이는 토이 묶음. 곧 공개." }
 ];
@@ -813,11 +813,10 @@ document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('mouseleave', () => endScramble(nameEl));
 });
 
-/* Hero cursor-reactive variable wght — 글자별 영역 (chat 정본 명세 useReactiveType 정합·각 글자 마우스 거리 따라 wght) */
-const heroLine = document.querySelector('.hero-line1');
-if (heroLine) {
-  // 글자별 영역 span 영역 분리 (em 영역 영역 보존)
-  const walker = document.createTreeWalker(heroLine, NodeFilter.SHOW_TEXT);
+/* Hero cursor-reactive variable wght — 영문 hero-line1 + 한글 hero-ko 통일 */
+const heroTargets = document.querySelectorAll('.hero-line1, .hero-ko');
+heroTargets.forEach(target => {
+  const walker = document.createTreeWalker(target, NodeFilter.SHOW_TEXT);
   const textNodes = [];
   let node;
   while ((node = walker.nextNode())) textNodes.push(node);
@@ -827,15 +826,16 @@ if (heroLine) {
     text.split('').forEach(ch => {
       const span = document.createElement('span');
       span.className = 'ch';
-      // 공백 영역 = non-breaking space 영역으로 (inline-block 영역에서 collapse 회피)
       span.textContent = ch === ' ' ? ' ' : ch;
       span.style.display = 'inline-block';
-      span.style.transition = 'font-variation-settings 0.12s ease-out, font-weight 0.12s ease-out';
+      span.style.transition = 'font-variation-settings 0.12s ease-out, font-weight 0.12s ease-out, text-shadow 0.12s ease-out';
       frag.appendChild(span);
     });
     tn.parentNode.replaceChild(frag, tn);
   });
+});
 
+if (heroTargets.length) {
   let lastFrame = 0;
   let mx = -9999, my = -9999;
   window.addEventListener('mousemove', (e) => {
@@ -844,20 +844,28 @@ if (heroLine) {
   });
   function tick() {
     const now = performance.now();
-    if (now - lastFrame >= 16) {  // ~60fps throttle
+    if (now - lastFrame >= 16) {
       lastFrame = now;
-      const chars = heroLine.querySelectorAll('.ch');
-      const radius = 280;
-      chars.forEach(ch => {
-        const r = ch.getBoundingClientRect();
-        if (r.bottom < -100 || r.top > window.innerHeight + 100) return;
-        const cx = r.left + r.width / 2;
-        const cy = r.top + r.height / 2;
-        const dist = Math.hypot(mx - cx, my - cy);
-        const t = Math.max(0, Math.min(1, 1 - dist / radius));
-        const wght = Math.round(300 + t * 500);  // 300~800
-        ch.style.fontVariationSettings = `"wght" ${wght}`;
-        ch.style.fontWeight = wght;
+      heroTargets.forEach(target => {
+        const chars = target.querySelectorAll('.ch');
+        const isKo = target.classList.contains('hero-ko');
+        const radius = isKo ? 200 : 280;
+        chars.forEach(ch => {
+          const r = ch.getBoundingClientRect();
+          if (r.bottom < -100 || r.top > window.innerHeight + 100) return;
+          const cx = r.left + r.width / 2;
+          const cy = r.top + r.height / 2;
+          const dist = Math.hypot(mx - cx, my - cy);
+          const t = Math.max(0, Math.min(1, 1 - dist / radius));
+          const wght = Math.round(300 + t * 500);
+          ch.style.fontVariationSettings = `"wght" ${wght}`;
+          ch.style.fontWeight = wght;
+          // Kyobo 폰트 variable axis 없음 → text-shadow로 굵음 시뮬레이션
+          if (isKo) {
+            const s = (t * 1.1).toFixed(2);
+            ch.style.textShadow = t > 0.05 ? `0 0 ${s}px currentColor, ${(s*0.3).toFixed(2)}px 0 0 currentColor, -${(s*0.3).toFixed(2)}px 0 0 currentColor` : 'none';
+          }
+        });
       });
     }
     requestAnimationFrame(tick);
