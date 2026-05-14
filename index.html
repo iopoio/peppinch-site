@@ -745,7 +745,8 @@ if (heroLine) {
     text.split('').forEach(ch => {
       const span = document.createElement('span');
       span.className = 'ch';
-      span.textContent = ch;
+      // 공백 영역 = non-breaking space 영역으로 (inline-block 영역에서 collapse 회피)
+      span.textContent = ch === ' ' ? ' ' : ch;
       span.style.display = 'inline-block';
       span.style.transition = 'font-variation-settings 0.12s ease-out, font-weight 0.12s ease-out';
       frag.appendChild(span);
