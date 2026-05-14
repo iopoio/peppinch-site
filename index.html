@@ -845,30 +845,7 @@ PROJECTS.forEach((p, i) => {
   grid.appendChild(div);
 });
 
-/* Typewriter hover — 한 글자씩 영역 그어지는 효과 (영문·한글 모두) */
-function startTypewriter(el) {
-  const original = el.dataset.original;
-  if (!original) return;
-  clearInterval(el._sint);
-  el.textContent = '';
-  // 보이지 않는 placeholder 영역으로 layout 영역 유지 (글자 그려질 자리 영역)
-  el.style.minHeight = el.style.minHeight || (el.offsetHeight + 'px');
-  let i = 0;
-  el._sint = setInterval(() => {
-    i++;
-    el.textContent = original.slice(0, i);
-    if (i >= original.length) clearInterval(el._sint);
-  }, 90); // 90ms 영역 per char
-}
-function endTypewriter(el) {
-  clearInterval(el._sint);
-  if (el.dataset.original) el.textContent = el.dataset.original;
-}
-document.querySelectorAll('.card').forEach(card => {
-  const nameEl = card.querySelector('.name');
-  card.addEventListener('mouseenter', () => startTypewriter(nameEl));
-  card.addEventListener('mouseleave', () => endTypewriter(nameEl));
-});
+/* 메인 영역 카드 hover = 색만 변경 (CSS 영역 처리·JS 영역 X) */
 
 /* Hero cursor-reactive variable wght — 영문 hero-line1 + 한글 hero-ko 통일 */
 const heroTargets = document.querySelectorAll('.hero-line1, .hero-ko');

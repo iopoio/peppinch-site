@@ -178,51 +178,24 @@ function ScrambleText({ text, className }) {
   // Reset displayed text when source changes
   useEffect(() => { setOut(text); }, [text]);
 
+  // typewriter \u2014 \uD55C \uAE00\uC790\uC529 \uC601\uC5ED \uADF8\uC5B4\uC9C0\uB294 \uC601\uC5ED (5/14 \uD6C4\uCD94\uB2D8 \uACB0\uC815\u00B7scramble \uC601\uC5ED \uD3D0\uAE30)
   const play = useCallback(() => {
     if (playingRef.current) return;
     playingRef.current = true;
-    const original = text;
-    const len = original.length;
-
-    // Slower: ~80 frames total (~1.3s @60fps), and only swap a random char every ~3 frames
-    const totalFrames = 80;
-    // Each char settles in sequence, left to right
-    const settleAt = original.split("").map((_, i) =>
-      Math.floor((i / Math.max(1, len - 1)) * totalFrames * 0.85) + 6
-    );
-
-    cancelAnimationFrame(rafRef.current);
-    let frame = 0;
-    let lastChars = original.split(""); // start as original; gradually scramble unsettled positions
-    const tick = () => {
-      const s = [];
-      for (let i = 0; i < len; i++) {
-        const ch = original[i];
-        if (ch === " " || ch === "\u00A0") { s.push(ch); continue; }
-        if (frame >= settleAt[i]) {
-          s.push(ch);
-          lastChars[i] = ch;
-        } else {
-          // only swap every 3 frames so it's not strobing
-          if (frame % 3 === 0) {
-            lastChars[i] = SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-          }
-          s.push(lastChars[i]);
-        }
-      }
-      setOut(s.join(""));
-      frame++;
-      if (frame <= totalFrames) {
-        rafRef.current = requestAnimationFrame(tick);
-      } else {
-        setOut(original);
+    clearInterval(rafRef.current);
+    setOut("");
+    let i = 0;
+    rafRef.current = setInterval(() => {
+      i++;
+      setOut(text.slice(0, i));
+      if (i >= text.length) {
+        clearInterval(rafRef.current);
         playingRef.current = false;
       }
-    };
-    rafRef.current = requestAnimationFrame(tick);
+    }, 90);
   }, [text]);
 
-  useEffect(() => () => cancelAnimationFrame(rafRef.current), []);
+  useEffect(() => () => clearInterval(rafRef.current), []);
 
   return (
     <span
