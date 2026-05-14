@@ -460,17 +460,17 @@ function App() {
         {tweaks.saltMotif && <SaltCanvas enabled={true} accent={palette.accent} ink={palette.ink} />}
         <div className="label">03 — 지금 · what i'm on this month</div>
         <h2>
-          요즘은 <em>혜택잡이</em>를 다듬고 — <br/>
-          잡솔트의 매칭 로직을 다시 짜는 중.
+          요즘은 <em>잡솔트</em>와 <em>이달여행</em>을<br/>
+          한 꼬집씩 다듬는 중.
         </h2>
         <ul>
           <li>
             <strong>지금 / now</strong>
-            혜택잡이 v0.4 — 카드사 데이터 정규화
+            잡솔트 — 채용 매칭 더 빠르게
           </li>
           <li>
             <strong>다음 / next</strong>
-            잡솔트 — 공고 임베딩 재훈련
+            이달여행 — 추천 흐름 더 자연스럽게
           </li>
           <li>
             <strong>읽는 중 / reading</strong>
