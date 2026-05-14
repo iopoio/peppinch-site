@@ -419,16 +419,7 @@ function App() {
         <div className="corner tl" style={{ pointerEvents: "auto", zIndex: 100 }}>
           <span className="corner-brand">PEPPINCH</span><br/>
           <span className="corner-sub">SOLO STUDIO · KR</span><br/><br/>
-          <a href="/" className="corner-link" style={{ color: "var(--accent)", textDecoration: "none", padding: "6px 14px", letterSpacing: ".12em", pointerEvents: "auto", position: "relative", zIndex: 101, display: "inline-block" }}>
-            <span style={{ position: "relative", zIndex: 2 }}>← 메인 사이트 보기</span>
-            <svg className="link-doodle" viewBox="0 0 220 56" preserveAspectRatio="none" aria-hidden="true" style={{ position: "absolute", inset: "-6px -10px", width: "calc(100% + 20px)", height: "calc(100% + 12px)", pointerEvents: "none", overflow: "visible" }}>
-              <ellipse cx="110" cy="28" rx="103" ry="22" fill="none" stroke="currentColor" strokeWidth="1.4" opacity=".75" transform="rotate(-1.8 110 28)" strokeLinecap="round"/>
-              <ellipse cx="110" cy="28" rx="108" ry="24" fill="none" stroke="currentColor" strokeWidth="1.2" opacity=".55" transform="rotate(2.6 110 28)" strokeLinecap="round" strokeDasharray="3,2"/>
-              <ellipse cx="110" cy="28" rx="100" ry="20" fill="none" stroke="currentColor" strokeWidth="1.3" opacity=".5" transform="rotate(-4 110 28)" strokeLinecap="round"/>
-              <path d="M 14,30 Q 60,6 130,10 T 214,26 Q 200,48 100,50 Q 16,46 8,28" fill="none" stroke="currentColor" strokeWidth="1.4" opacity=".42" strokeLinecap="round"/>
-              <path d="M 18,34 Q 70,12 140,16 T 210,32" fill="none" stroke="currentColor" strokeWidth="1.1" opacity=".35" strokeLinecap="round"/>
-            </svg>
-          </a>
+          <a href="/" className="corner-link" style={{ color: "var(--accent)", textDecoration: "none", borderBottom: "1.5px solid var(--accent)", padding: "2px 0", letterSpacing: ".12em", pointerEvents: "auto", position: "relative", zIndex: 101 }}>← 메인 사이트 보기</a>
         </div>
         <div className="corner tr">PALETTE — {palette.label}<br/>{palette.sub}</div>
         <div className="corner bl">EST. 2024</div>
