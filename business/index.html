@@ -516,6 +516,45 @@
   /* small media */
   @media (max-width: 720px) {
     .frame .corner { padding: 16px 20px; font-size: 9px; }
+
+    /* section padding·min-height — 모바일 영역 vh 영역 과대 회피 */
+    section { padding: 7vh 6vw 6vh; min-height: auto; }
+    .hero { padding-top: 10vh; padding-bottom: 6vh; }
+    .hero .eyebrow { margin-bottom: 4vh; font-size: 11px; }
+    .hero h1 { font-size: clamp(48px, 13vw, 96px); }
+    .hero .sub { font-size: 15px; line-height: 1.5; margin-top: 4vh; }
+    .hero .scrolltip { display: none; }
+
+    /* manifesto */
+    .manifesto .number { margin-bottom: 4vh; }
+    .manifesto p { font-size: clamp(28px, 7vw, 44px); }
+    .manifesto .signoff { margin-top: 6vh; font-size: 10px; flex-direction: column; gap: 6px; align-items: flex-start; }
+
+    /* index */
+    .index { padding-bottom: 8vh; }
+    .index .label { margin-bottom: 4vh; }
+    .idx-row { padding: 18px 0; gap: 12px; }
+    .idx-name { font-size: clamp(24px, 6.5vw, 38px); gap: 12px; }
+    .idx-name .ko { font-size: .4em; }
+    .idx-line { font-size: clamp(16px, 4vw, 20px); margin-bottom: 18px; padding-top: 4px; }
+    .idx-foot { padding-bottom: 20px; padding-right: 0; gap: 12px; }
+    .idx-tag, .idx-visit { font-size: 10px; }
+
+    /* now */
+    .now .label { margin-bottom: 3vh; }
+    .now h2 { font-size: clamp(26px, 7vw, 44px); }
+    .now ul { margin-top: 4vh; grid-template-columns: 1fr; gap: 3vh 0; }
+    .now li { font-size: 15px; }
+
+    /* contact */
+    .contact { padding-bottom: 10vh; }
+    .contact .label { margin-bottom: 3vh; }
+    .contact h2 { font-size: clamp(32px, 11vw, 64px); margin-bottom: 4vh; }
+    .contact .lines { gap: 3vh 0; grid-template-columns: 1fr; }
+    .contact .lines div { font-size: 14px; }
+
+    /* footer */
+    footer { padding: 3vh 6vw; font-size: 10px; gap: 12px; flex-direction: column; align-items: flex-start; }
   }
 </style>
 
