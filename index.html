@@ -389,11 +389,11 @@
 
     /* top bar */
     .topbar { margin-bottom: 40px; gap: 16px; }
-    .logo-row { gap: 12px !important; flex-wrap: wrap; }
-    .logo-row .shaker { width: 58px !important; height: 74px !important; margin-bottom: 4px !important; }
-    .logo { font-size: 60px; }
-    .logo .underline { height: 14px; margin-top: -6px; }
-    .logo .dot { width: 11px; height: 11px; margin-left: 6px; transform: translateY(-6px); }
+    .logo-row { gap: 10px !important; flex-wrap: wrap; }
+    .logo-row .shaker { width: 44px !important; height: 56px !important; margin-bottom: 4px !important; }
+    .logo { font-size: 44px; }
+    .logo .underline { height: 11px; margin-top: -5px; }
+    .logo .dot { width: 9px; height: 9px; margin-left: 5px; transform: translateY(-5px); }
     .stamp { font-size: 11px; padding: 6px 10px 5px; }
     .stamp small { font-size: 8px; }
     .meta { font-size: 12px; line-height: 1.5; }
@@ -439,8 +439,9 @@
   }
   @media (max-width: 380px) {
     .page { padding: 32px 18px 64px; }
-    .logo { font-size: 56px; }
-    /* 380px 영역 = clamp 영역으로 정합 (별도 룰 X) */
+    .logo { font-size: 38px; }
+    .logo-row .shaker { width: 38px !important; height: 48px !important; }
+    /* 380px 영역 = hero clamp 영역으로 정합 (별도 룰 X) */
     .card .name { font-size: 26px; }
     .topbar { margin-bottom: 32px; }
   }
