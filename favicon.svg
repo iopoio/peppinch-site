@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -10 80 105">
+  <!-- 후추알 떨어짐 (상단) -->
+  <circle cx="30" cy="-6" r="1.8" fill="#2a2823"/>
+  <circle cx="38" cy="-8" r="1.6" fill="#2a2823"/>
+  <circle cx="33" cy="-12" r="1.4" fill="#2a2823"/>
+  <circle cx="42" cy="-14" r="1.5" fill="#2a2823"/>
+  <!-- cap -->
+  <path d="M14,8 Q15,5 18,4 L52,4 Q56,5 57,8 L58,22 Q57,24 54,24 L16,24 Q13,24 12,22 Z"
+        fill="#3a352c" stroke="#3a352c" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- cap dots -->
+  <circle cx="22" cy="13" r="1.8" fill="#faf6ec"/>
+  <circle cx="30" cy="11" r="1.8" fill="#faf6ec"/>
+  <circle cx="38" cy="13" r="1.8" fill="#faf6ec"/>
+  <circle cx="46" cy="11" r="1.8" fill="#faf6ec"/>
+  <circle cx="26" cy="17" r="1.8" fill="#faf6ec"/>
+  <circle cx="34" cy="18" r="1.8" fill="#faf6ec"/>
+  <circle cx="42" cy="17" r="1.8" fill="#faf6ec"/>
+  <!-- body -->
+  <path d="M10,26 Q10,24 13,24 L57,24 Q60,24 60,27 L60,80 Q60,84 56,85 L14,85 Q10,84 10,80 Z"
+        fill="#faf6ec" stroke="#3a352c" stroke-width="3" stroke-linejoin="round"/>
+  <!-- label oval -->
+  <ellipse cx="35" cy="55" rx="16" ry="14" fill="none" stroke="#c8412c" stroke-width="3"/>
+</svg>
