@@ -579,8 +579,8 @@
     <h2 class="hero-line1">A Pinch Of <em>Pepper.</em></h2>
     <div class="hero-ko">한 꼬집의 후추.</div>
     <p class="hero-sub">
-      신사업을 기획하고, 만들고 — 가끔은 갈아 엎는다.<br>
-      혼자, AI와 함께. solo lab in seoul.
+      이런 거 왜 없지 싶은 걸, 한 꼬집씩 만듭니다.<br>
+      혼자, AI랑 같이. 서울에서 슬렁슬렁.
     </p>
 
     <div class="hero-anno">
@@ -638,10 +638,10 @@
       <li class="done"><span class="box"></span> toys 카드 영역</li>
       <li class="done"><span class="box"></span> 비즈니스 페이지 (cinematic 톤)</li>
       <li><span class="box"></span> 블로그 섹션 만들어서 글 써보기</li>
-      <li><span class="box"></span> 프로젝트 카드 썸네일</li>
-      <li><span class="box"></span> '지금' 섹션 진짜 글</li>
-      <li><span class="box"></span> 모바일 디테일 polish</li>
-      <li><span class="box"></span> og:image 한 장 그리기</li>
+      <li><span class="box"></span> 카드마다 작은 그림 한 장씩</li>
+      <li><span class="box"></span> 지금 뭐 하는지 솔직히 쓰기</li>
+      <li><span class="box"></span> 폰에서도 어색하지 않게 다듬기</li>
+      <li><span class="box"></span> 공유 시 뜨는 그림 한 장</li>
     </ul>
   </div>
 
@@ -663,12 +663,12 @@
 <script>
 /* PROJECTS — 메인 + /business 데이터 공유. 6번째 toys 영역 (혜택잡이 → toys). */
 const PROJECTS = [
-  { n:"01", name:"Publace",   ko:"퍼블레이스", line:"도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.", meta:"2024 · concept",   detail:"공공 유휴공간 × 사용자 매칭. 아직은 아이디어 스케치 단계." },
-  { n:"02", name:"EatScan",   ko:"잇스캔",   line:"라벨을 한 번 비추면, 먹어도 되는지 아닌지 조용히 알려준다.", meta:"2024 · solo build", detail:"식품 라벨 OCR 스캐너. 조용히, 확실하게." },
-  { n:"03", name:"이달여행",   ko:"IdalTrip", line:"이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.", meta:"2025 · live", url:"https://idaltrip.vercel.app", detail:"시즌 축제 기반 AI 여행 코스 큐레이션. 지금 방문 가능." },
-  { n:"04", name:"잡솔트",     ko:"JobSort",  line:"공고는 너무 많고, 나에게 맞는 건 늘 한두 개.", meta:"2025 · 작업중", wip:true, detail:"채용 영역에서 더 빠른 매칭. 조용히 다듬는 중." },
-  { n:"05", name:"TickDeck",  ko:"틱덱",     line:"URL 한 줄을, 발표 슬라이드 한 벌로.", meta:"2025 · solo build", detail:"긴 글을 구조화된 슬라이드로. 발표 준비 시간 한 꼬집." },
-  { n:"06", name:"toys",      ko:"토이즈",   line:"틈틈이 재미로 만든 작은 도구들의 진열대.", meta:"2025 · 작업중", wip:true, detail:"준비 중. 한 꼬집씩 모이는 토이 묶음. 곧 공개." }
+  { n:"01", name:"Publace",   ko:"퍼블레이스", line:"도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.", meta:"2024 · 아이디어",   detail:"도시 빈 공간 매칭. 아직 아이디어만 굴리는 중." },
+  { n:"02", name:"EatScan",   ko:"잇스캔",   line:"라벨을 한 번 비추면, 먹어도 되는지 아닌지 조용히 알려준다.", meta:"2024 · 혼자 만듦", detail:"식품 라벨 한 번 비추면 끝. 조용히, 확실하게." },
+  { n:"03", name:"이달여행",   ko:"IdalTrip", line:"이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.", meta:"2025 · 가동중", url:"https://idaltrip.vercel.app", detail:"시즌 축제 기반 여행 큐레이션. 지금 가볼 수 있음." },
+  { n:"04", name:"잡솔트",     ko:"JobSort",  line:"공고는 너무 많고, 나에게 맞는 건 늘 한두 개.", meta:"2025 · 작업중", wip:true, detail:"채용 매칭 더 빠르게. 조용히 다듬는 중." },
+  { n:"05", name:"TickDeck",  ko:"틱덱",     line:"URL 한 줄을, 발표 슬라이드 한 벌로.", meta:"2025 · 혼자 만듦", detail:"긴 글을 슬라이드로. 발표 준비 시간 한 꼬집." },
+  { n:"06", name:"toys",      ko:"토이즈",   line:"틈틈이 재미로 만든 작은 도구들의 진열대.", meta:"2025 · 작업중", wip:true, detail:"한 꼬집씩 모이는 토이 묶음. 곧 공개." }
 ];
 
 const grid = document.getElementById("grid");
@@ -678,7 +678,7 @@ PROJECTS.forEach((p, i) => {
   div.className = "card" + (p.wip ? " wip" : "");
   div.style.setProperty("--r", rotations[i] + "deg");
   const linkHtml = p.url
-    ? `<a href="${p.url}" target="_blank" rel="noopener">→ 방문하기</a>`
+    ? `<a href="${p.url}" target="_blank" rel="noopener noreferrer">→ 방문하기</a>`
     : `<span class="ready">→ 준비 중</span>`;
   div.innerHTML = `
     <svg class="frame"></svg>

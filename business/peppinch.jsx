@@ -358,7 +358,7 @@ function ProjectIndex({ projects }) {
                   <p className="idx-line">{p.line}</p>
                   <div className="idx-foot">
                     <span className="idx-tag">{p.year} · {p.role}</span>
-                    <a className="idx-visit" href={p.href} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
+                    <a className="idx-visit" href={p.href} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                       {p.ko} 보러가기 <span aria-hidden="true">→</span>
                     </a>
                   </div>
@@ -497,7 +497,7 @@ function App() {
           </div>
           <div>
             <strong>twitter / x</strong>
-            <a href="https://x.com/peppinch_" target="_blank" rel="noreferrer">@peppinch_</a>
+            <a href="https://x.com/peppinch_" target="_blank" rel="noopener noreferrer">@peppinch_</a>
           </div>
           <div>
             <strong>site</strong>
