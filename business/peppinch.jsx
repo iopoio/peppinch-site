@@ -529,7 +529,6 @@ function App() {
         <div className="biz-info" style={{ marginTop: "1.5em", fontSize: "0.72em", color: "rgba(120,120,120,0.55)", lineHeight: 1.7, letterSpacing: "0.02em" }}>
           <div>운영 주체: 시즌드 · 대표 채영화 · 사업자등록번호 890-19-01928</div>
           <div>업태 정보통신업 · 종목 컴퓨터 프로그래밍 서비스업 · 서울특별시 관악구</div>
-          <div>문의 <a href="mailto:pepper@peppinch.com" style={{ color: "inherit", textDecoration: "underline", opacity: 1 }}><span style={{ color: "var(--ink, #1a1a1a)", opacity: 0.85 }}>pepper@peppinch.com</span></a></div>
         </div>
       </footer>
 
