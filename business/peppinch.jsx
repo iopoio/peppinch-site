@@ -63,24 +63,24 @@ const PROJECTS = [
     line: "도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.",
     tag: "공공 유휴공간 × AI 매칭",
     year: "2024",
-    role: "Concept / Build",
-    href: "#"
+    role: "Beta",
+    href: "https://publace.site"
   },
   {
     id: 2, name: "EatScan", ko: "잇스캔",
     line: "라벨을 한 번 비추면, 먹어도 되는지 아닌지를 조용히 알려준다.",
     tag: "식품 알레르기 라벨 스캐너",
     year: "2024",
-    role: "Solo build",
-    href: "#"
+    role: "Live",
+    href: "https://eatscan.site"
   },
   {
     id: 3, name: "이달여행", ko: "IdalTrip",
     line: "이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.",
     tag: "축제 기반 여행 코스",
     year: "2025",
-    role: "Concept / Build",
-    href: "#"
+    role: "Live",
+    href: "https://idaltrip.vercel.app"
   },
   {
     id: 4, name: "잡솔트", ko: "JobSort",
@@ -364,9 +364,13 @@ function ProjectIndex({ projects }) {
                   <p className="idx-line">{p.line}</p>
                   <div className="idx-foot">
                     <span className="idx-tag">{p.year} · {p.role}</span>
-                    <a className="idx-visit" href={p.href} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-                      {p.ko} 보러가기 <span aria-hidden="true">→</span>
-                    </a>
+                    {p.href && p.href !== "#" ? (
+                      <a className="idx-visit" href={p.href} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                        {p.ko} 보러가기 <span aria-hidden="true">→</span>
+                      </a>
+                    ) : (
+                      <span className="idx-visit" style={{ opacity: .35, borderColor: "var(--hairline)" }}>준비 중</span>
+                    )}
                   </div>
                 </div>
               </div>
