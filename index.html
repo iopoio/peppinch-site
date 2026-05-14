@@ -14,7 +14,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght,BNCE,INFM,SPAC@0,300..800,-500..500,0..100,0..100;1,300..800,-500..500,0..100,0..100&family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet" />
 
 <script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js"></script>
 
@@ -167,6 +167,35 @@
   }
   .meta b { color: var(--ink); font-weight: 700; }
 
+  /* B2B link — 비즈니스 페이지 진입 강조 (헤더·푸터 양쪽) */
+  .b2b-link {
+    font-family: "Kyobo", "Shantell Sans", cursive;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-underline-offset: 4px;
+    transform: rotate(-1deg);
+    margin-top: 12px;
+    display: inline-block;
+    transition: color 0.2s, transform 0.25s;
+    padding: 4px 0;
+  }
+  .b2b-link:hover { color: var(--red); transform: rotate(-1deg) translateX(4px); }
+  .b2b-link-foot {
+    font-family: "Kyobo", "Shantell Sans", cursive;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--blue);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-underline-offset: 4px;
+    margin-left: 16px;
+    transition: color 0.2s;
+  }
+  .b2b-link-foot:hover { color: var(--red); }
+
   /* annotations */
   .anno {
     font-family: "Kyobo", "Shantell Sans", cursive;
@@ -192,9 +221,9 @@
     margin: 0;
     transform: rotate(-.8deg);
     letter-spacing: -0.01em;
-    /* Shantell Sans variable axis — cursor-reactive (JS에서 wght·BNCE·INFM 동적 변경) */
-    font-variation-settings: "wght" 500, "BNCE" 0, "INFM" 30;
-    transition: font-variation-settings 0.15s ease-out;
+    /* Shantell Sans variable wght — cursor-reactive (JS에서 wght 동적 변경) */
+    font-variation-settings: "wght" 500;
+    transition: font-variation-settings 0.15s ease-out, font-weight 0.15s ease-out;
   }
   .hero-line1 em {
     font-style: italic;
@@ -222,16 +251,16 @@
   }
   .hero-anno {
     position: absolute;
-    /* 후추님 #1 — 실제 글자 옆 가까이 배치 (hero h2 우측 상단 영역) */
-    left: 48%;
-    top: -30px;
+    /* 글자 영역 겹침 회피 — hero 우상단 외측 영역 */
+    right: 2%;
+    top: -10px;
     transform: rotate(-6deg);
     text-align: center;
-    max-width: 220px;
+    max-width: 200px;
     z-index: 5;
   }
   .hero-anno svg { display: block; margin: 6px auto 0; }
-  @media (max-width: 900px) { .hero-anno { left: 50%; top: -60px; } }
+  @media (max-width: 900px) { .hero-anno { display: none; } }
 
   /* NAV chips */
   .nav {
@@ -513,8 +542,9 @@
       </div>
       <div class="meta">
         <b>peppinch.com</b><br>
-        sketch — 2026.05.13<br>
-        for: solo lab homepage
+        sketch — 2026.05.14<br>
+        for: solo lab homepage<br>
+        <a href="/business/" class="b2b-link">비즈니스 ver 사이트 보기 →</a>
       </div>
     </div>
   </div>
@@ -566,8 +596,8 @@
       <!-- cards filled by JS -->
     </div>
 
-    <span class="arrow-anno" style="right: -10px; top: 40px; transform: rotate(8deg);">
-      ↑ 카드 더 추가될 자리
+    <span class="arrow-anno" style="right: 10px; bottom: -32px; transform: rotate(-2deg);">
+      ← 카드 더 추가될 자리
     </span>
   </div>
 
@@ -591,7 +621,7 @@
 
   <div class="foot-scrib">
     <span>made slow, in seoul — <b>peppinch</b> 🧂</span>
-    <span>pepper@peppinch.com · @peppinch_</span>
+    <span>pepper@peppinch.com · @peppinch_ <a href="/business/" class="b2b-link-foot">비즈니스 ver 사이트 보기 →</a></span>
   </div>
 
 </div>
@@ -677,7 +707,7 @@ document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('mouseleave', () => endScramble(nameEl));
 });
 
-/* Hero cursor-reactive variable wght — 마우스가 hero 가까울수록 글자 두꺼워짐 (Shantell Sans wght 300~800·BNCE 동시) */
+/* Hero cursor-reactive variable wght — 마우스가 hero 가까울수록 글자 두꺼워짐 (Shantell Sans wght 300~800) */
 const heroLine = document.querySelector('.hero-line1');
 if (heroLine) {
   let lastFrame = 0;
@@ -690,11 +720,10 @@ if (heroLine) {
     const cy = rect.top + rect.height / 2;
     const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
     const max = 700;
-    const t = Math.max(0, Math.min(1, 1 - dist / max));  // 0~1 영역
-    const wght = 300 + t * 500;     // 300~800
-    const bnce = -200 + t * 400;    // -200~200
-    const infm = 20 + t * 60;       // 20~80
-    heroLine.style.fontVariationSettings = `"wght" ${wght}, "BNCE" ${bnce}, "INFM" ${infm}`;
+    const t = Math.max(0, Math.min(1, 1 - dist / max));
+    const wght = 300 + t * 500;  // 300~800
+    heroLine.style.fontVariationSettings = `"wght" ${wght}`;
+    heroLine.style.fontWeight = wght;  // fallback for browsers that ignore variation-settings
   });
 }
 
