@@ -3,7 +3,7 @@ const { useState, useEffect, useRef, useCallback, useMemo } = React;
 
 /* ------------- TWEAK DEFAULTS ------------- */
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "palette": "alley",
+  "palette": "fog",
   "pairing": "hahmlet",
   "cursorReactive": true,
   "saltMotif": true,
@@ -29,6 +29,12 @@ const PALETTES = {
     sub: "After-rain alley",
     bg: "#2A2F33", ink: "#EFEAE0", accent: "#FF9B3D",
     muted: "rgba(239,234,224,.55)", hairline: "rgba(239,234,224,.16)"
+  },
+  fog: {
+    label: "옅은 안개",
+    sub: "Fog grey",
+    bg: "#4D545B", ink: "#F2EFE8", accent: "#FFB066",
+    muted: "rgba(242,239,232,.55)", hairline: "rgba(242,239,232,.18)"
   }
 };
 
@@ -488,7 +494,7 @@ function App() {
         <div className="label">04 — 연락 · ping me</div>
         <h2>
           말 걸어요.<br/>
-          <a href="mailto:pepper@peppinch.com" style={{ fontSize: "0.5em", wordBreak: "break-all" }}>pepper@peppinch.com</a>
+          <a href="mailto:pepper@peppinch.com" style={{ fontSize: "0.65em", wordBreak: "break-all" }}>pepper@peppinch.com</a>
         </h2>
         <div className="lines">
           <div>
@@ -517,12 +523,13 @@ function App() {
 
       {/* TWEAKS PANEL */}
       <TweaksPanel>
-        <TweakSection label="Palette · 한지에 먹">
+        <TweakSection label={`Palette · ${palette.label}`}>
           <TweakRadio
             label="scheme"
             value={tweaks.palette}
             onChange={(v) => setTweak("palette", v)}
             options={[
+              { value: "fog", label: "안개" },
               { value: "hanji", label: "한지" },
               { value: "subway", label: "새벽" },
               { value: "alley", label: "골목" },
