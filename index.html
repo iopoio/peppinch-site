@@ -594,6 +594,18 @@
     padding-top: 20px;
   }
   .foot-scrib b { color: var(--red); }
+  .foot-scrib .foot-link {
+    color: var(--pencil);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: rgba(58,53,44,0.35);
+    text-underline-offset: 3px;
+    transition: color 0.2s, text-decoration-color 0.2s;
+  }
+  .foot-scrib .foot-link:hover {
+    color: var(--red);
+    text-decoration-color: var(--red);
+  }
 
   /* arrows scattered */
   .arrow-anno {
@@ -758,7 +770,7 @@
 
   <div class="foot-scrib">
     <span>made slow, in seoul — <b>peppinch</b> 🧂</span>
-    <span>pepper@peppinch.com · @peppinch_ <a href="/business/" class="b2b-link-foot">
+    <span><a href="mailto:pepper@peppinch.com" class="foot-link">pepper@peppinch.com</a> · <a href="https://x.com/peppinch_" target="_blank" rel="noopener noreferrer" class="foot-link">@peppinch_</a> <a href="/business/" class="b2b-link-foot">
       <span style="position:relative; z-index:2;">비즈니스 ver 사이트 보기 →</span>
       <svg class="link-doodle" viewBox="0 0 230 50" preserveAspectRatio="none" aria-hidden="true">
         <ellipse cx="115" cy="25" rx="108" ry="20" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".75" transform="rotate(-2 115 25)" stroke-linecap="round"/>
