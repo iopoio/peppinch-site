@@ -320,14 +320,71 @@
     margin-top: 28px;
     position: relative;
   }
-  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); gap: 26px 22px; } }
   @media (max-width: 600px) {
-    .grid { grid-template-columns: 1fr; }
-    .page { padding: 40px 24px 80px; }
-    .holes { left: 8px; top: 60px; gap: 70px; }
-    .holes span { width: 12px; height: 12px; }
+    /* layout */
+    .grid { grid-template-columns: 1fr; gap: 22px; margin-top: 20px; }
+    .page { padding: 36px 22px 72px; }
+    .holes { display: none; }
     .hero-anno { display: none; }
     .legend { display: none; }
+
+    /* top bar */
+    .topbar { margin-bottom: 40px; gap: 16px; }
+    .logo-row { gap: 12px !important; flex-wrap: wrap; }
+    .logo-row .shaker { width: 58px !important; height: 74px !important; margin-bottom: 4px !important; }
+    .logo { font-size: 60px; }
+    .logo .underline { height: 14px; margin-top: -6px; }
+    .logo .dot { width: 11px; height: 11px; margin-left: 6px; transform: translateY(-6px); }
+    .stamp { font-size: 11px; padding: 6px 10px 5px; }
+    .stamp small { font-size: 8px; }
+    .meta { font-size: 12px; line-height: 1.5; }
+    .b2b-link { font-size: 18px; margin-top: 8px; }
+
+    /* hero */
+    .hero { margin-bottom: 48px; }
+    .hero-line1 { font-size: clamp(48px, 13vw, 72px); line-height: .92; }
+    .hero-ko { font-size: clamp(26px, 7vw, 36px); margin-top: 16px; }
+    .hero-sub { font-size: 16px; line-height: 1.55; margin-top: 22px; }
+
+    /* nav */
+    .nav { gap: 14px 18px; margin: 22px 0 28px; }
+    .nav-chip { font-size: 20px; padding: 5px 14px 3px; }
+
+    /* section labels */
+    .section-label { font-size: 26px; margin: 44px 0 8px; }
+    .section-label .num { font-size: 12px; margin-right: 8px; }
+    .section-sub { font-size: 13px; margin-bottom: 22px; }
+
+    /* cards */
+    .card { padding: 22px 20px 18px; min-height: 200px; }
+    .card .name { font-size: 30px; }
+    .card .ko { font-size: 13px; margin-bottom: 10px; }
+    .card .line { font-size: 13px; line-height: 1.5; }
+    .card .details { font-size: 12.5px; margin-top: 10px; padding-top: 8px; }
+    .card .foot { font-size: 10.5px; margin-top: 12px; }
+    .card.wip::after { font-size: 11px; padding: 5px 8px 3px; top: -8px; right: -6px; }
+
+    /* todo */
+    .todo { margin-top: 44px; padding: 24px 22px 22px; }
+    .todo h3 { font-size: 28px; margin-bottom: 12px; }
+    .todo ul { grid-template-columns: 1fr; gap: 4px 16px; }
+    .todo li { font-size: 14px; padding: 3px 0; }
+
+    /* footer */
+    .foot-scrib { margin-top: 50px; font-size: 16px; padding-top: 16px; gap: 14px; }
+    .foot-scrib > div { width: 100%; }
+    .b2b-link-foot { font-size: 17px; margin-left: 10px; }
+
+    /* anno / arrow scatter — mobile 영역에서 거추장스러우니 숨김 */
+    .arrow-anno { display: none; }
+  }
+  @media (max-width: 380px) {
+    .page { padding: 32px 18px 64px; }
+    .logo { font-size: 56px; }
+    .hero-line1 { font-size: clamp(42px, 12vw, 60px); }
+    .card .name { font-size: 26px; }
+    .topbar { margin-bottom: 32px; }
   }
 
   .card {
