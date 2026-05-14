@@ -3,7 +3,7 @@ const { useState, useEffect, useRef, useCallback, useMemo } = React;
 
 /* ------------- TWEAK DEFAULTS ------------- */
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "palette": "fog",
+  "palette": "alley",
   "pairing": "hahmlet",
   "cursorReactive": true,
   "saltMotif": true,
