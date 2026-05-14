@@ -339,7 +339,7 @@ function ProjectIndex({ projects }) {
   const [openId, setOpenId] = useState(null);
   return (
     <section className="index">
-      <div className="label">02 — 인덱스 · index of works ({String(projects.length).padStart(2,"0")})</div>
+      <h2 className="label">02 — 인덱스 · index of works ({String(projects.length).padStart(2,"0")})</h2>
       <ol>
         {projects.map((p, i) => {
           const isOpen = openId === p.id;
@@ -451,7 +451,7 @@ function App() {
 
       {/* MANIFESTO */}
       <section className="manifesto">
-        <div className="number">01 — 작업 노트</div>
+        <h2 className="number">01 — 작업 노트</h2>
         <p>
           크지 않게.{' '}
           <span className="strike">빠르게.</span>{' '}
@@ -471,7 +471,7 @@ function App() {
       {/* NOW + SALT */}
       <section className="now">
         {tweaks.saltMotif && <SaltCanvas enabled={true} accent={palette.accent} ink={palette.ink} />}
-        <div className="label">03 — 지금 · what i'm on this month</div>
+        <h2 className="label">03 — 지금 · what i'm on this month</h2>
         <h2>
           요즘은 <em>잡솔트</em>와 <em>이달여행</em>을<br/>
           한 꼬집씩 다듬는 중.
@@ -498,7 +498,7 @@ function App() {
 
       {/* CONTACT */}
       <section className="contact">
-        <div className="label">04 — 연락 · ping me</div>
+        <h2 className="label">04 — 연락 · ping me</h2>
         <h2>
           말 걸어요.<br/>
           <a href="mailto:pepper@peppinch.com" style={{ fontSize: "0.65em", wordBreak: "break-all" }}>pepper@peppinch.com</a>
