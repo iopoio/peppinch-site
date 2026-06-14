@@ -54,7 +54,7 @@ body{background:var(--paper);color:var(--ink);font-family:"Pretendard",-apple-sy
 h1.ptitle{font-size:clamp(25px,4.4vw,34px);line-height:1.32;font-weight:800;letter-spacing:-.01em;margin:8px 0 18px;color:var(--ink)}
 
 /* 리포트 — 원래 모습 그대로 (끼워넣기) */
-.rpt{display:block;width:100%;border:1px solid var(--line);border-radius:12px;min-height:2200px;background:#f5f7f8}
+.rpt{display:block;width:100%;border:1px solid var(--line);border-radius:12px;min-height:600px;background:#f5f7f8;overflow:hidden}
 
 /* 내 생각 */
 .myview{border-left:4px solid var(--red);padding:4px 0 4px 18px;margin:36px 0 4px}
@@ -92,14 +92,14 @@ footer b{color:var(--red)}
   <h1 class="ptitle">앤트로픽 Fable 백래시 · AI 국유화 · 인플레 재점화</h1>
 
   <!-- 리포트 그대로 -->
-  <iframe class="rpt" id="rpt" src="/blog/posts/2026-06-13-all-in-fable5-report" title="All-In 정리 리포트" loading="eager"></iframe>
+  <iframe class="rpt" id="rpt" src="/blog/posts/2026-06-13-all-in-fable5-report" title="All-In 정리 리포트" loading="eager" scrolling="no"></iframe>
 
   <section class="myview">
     <div class="lbl">✍️ 내 생각</div>
     <p>Fable 5, 아예 처음부터 막든가 — 맛만 보여주고 전 세계 사람들 개빡치게 만들었다. 여기저기 피해 사례도 속출하고.</p>
     <p>이거 마치 미국이 중국한테 엔비디아 최신 그래픽카드 못 팔게 하는 거랑 같은 방향 아닌가? ㅋㅋ 접근을 막아서 통제하겠다는 거.</p>
     <p>비미국 사용자 입장에선 솔직히 좀 서럽다. 근데 웃긴 게 — AI 대부급인 안드레 카파시도 캐나다 사람(슬로바키아 태생·캐나다에서 자람)이라는 거다. 결국 이 판도 이민자·비미국인들이 같이 만든 건데.</p>
-    <p class="ask">여러분은 이 흐름 어떻게 보세요 — 이렇게 가두는 쪽, 아니면 오픈소스 반사이익? 비미국 입장에선 좀 서러운 판이네요.</p>
+    <p class="ask">중국 AI 모델은 기존 AI들보다 훨씬 싼데, 비슷한 품질로 계속 업그레이드되고 있더라. 지금이야 퀄리티 차이가 있지만, 그 차이가 좁아지는 시점이 오면 사람들이 과연 어디로 갈지 궁금하다.</p>
   </section>
 
   <div class="likebar">
@@ -115,10 +115,17 @@ footer b{color:var(--red)}
 
 <script>
 (function(){
-  // 리포트 iframe 높이 자동 맞춤 (같은 출처)
+  // 리포트 iframe 높이 자동 맞춤 (같은 출처·내부 스크롤 제거)
   var f=document.getElementById('rpt');
-  function fit(){ try{ var d=f.contentWindow.document; f.style.height=Math.max(d.documentElement.scrollHeight,d.body.scrollHeight)+'px'; }catch(e){} }
-  f.addEventListener('load',function(){ fit(); setTimeout(fit,400); });
+  function fit(){ try{ var d=f.contentWindow.document; var h=Math.max(d.documentElement.scrollHeight,d.body.scrollHeight,d.documentElement.offsetHeight); if(h>50) f.style.height=h+'px'; }catch(e){} }
+  f.addEventListener('load',function(){
+    fit(); setTimeout(fit,300); setTimeout(fit,1000);
+    try{
+      var w=f.contentWindow;
+      if(w.document.fonts&&w.document.fonts.ready){ w.document.fonts.ready.then(fit); }
+      if(window.ResizeObserver){ new ResizeObserver(fit).observe(w.document.body); }
+    }catch(e){}
+  });
   window.addEventListener('resize',function(){ clearTimeout(window.__rt); window.__rt=setTimeout(fit,200); });
   // 좋아요 토글
   var KEY='peppinch_like_2026-06-13-all-in-fable5';
