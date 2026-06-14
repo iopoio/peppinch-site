@@ -55,28 +55,28 @@
   #content a { color:var(--blue); }
   hr { border:0; border-top:1px solid var(--line); margin:30px 0; }
 
-  /* ── 회의록 브리핑 박스 ── */
-  .brief { background:#faf6ec; border:1px solid var(--line); border-radius:12px; padding:8px 22px 18px; margin:24px 0; }
-  .brief-head { font-size:15px; font-weight:700; color:var(--ink); margin:18px 0 4px; }
-  .brief-tag { display:inline-block; background:var(--red); color:#fff; font-size:11.5px; font-weight:700; padding:3px 9px; border-radius:999px; margin-right:8px; }
-  .brief-note { font-size:12.5px; color:var(--pencil); margin:0 0 6px; }
-  .brief-note a { color:var(--blue); }
-  .bs { padding:16px 0; border-top:1px solid var(--line); }
-  .bs-t { font-size:13.5px; font-weight:800; color:var(--red); letter-spacing:.04em; margin:0 0 10px; text-transform:uppercase; }
-  .bs > p { margin:0 0 10px; font-size:15.5px; color:#322f29; }
+  /* ── 회의록 브리핑 박스 (네이비 리포트 카드 — 이 부분만 네이비) ── */
+  .brief { background:#12313a; color:#dbe7e8; border-radius:12px; padding:6px 24px 20px; margin:24px 0; }
+  .brief-head { font-size:15px; font-weight:700; color:#fff; margin:18px 0 4px; }
+  .brief-tag { display:inline-block; background:#1f766f; color:#fff; font-size:11.5px; font-weight:700; padding:3px 9px; border-radius:999px; margin-right:8px; }
+  .brief-note { font-size:12.5px; color:#9fbbb9; margin:0 0 6px; }
+  .brief-note a { color:#9bd7ff; }
+  .bs { padding:16px 0; border-top:1px solid rgba(255,255,255,.12); }
+  .bs-t { font-size:13px; font-weight:800; color:#7fd3c8; letter-spacing:.05em; margin:0 0 10px; text-transform:uppercase; }
+  .bs > p { margin:0 0 10px; font-size:15.5px; color:#e3edee; }
   .bs > ul { margin:0; padding-left:18px; }
-  .bs > ul > li { font-size:15px; line-height:1.6; margin:6px 0; color:#3a372f; }
+  .bs > ul > li { font-size:15px; line-height:1.6; margin:6px 0; color:#cfdedf; }
   .topic { margin:14px 0; }
-  .topic h4 { font-size:15.5px; font-weight:800; margin:0 0 7px; color:var(--ink); }
+  .topic h4 { font-size:15.5px; font-weight:800; margin:0 0 7px; color:#fff; }
   .topic ul { margin:0; padding-left:0; list-style:none; }
-  .topic li { font-size:14.5px; line-height:1.6; color:#3a372f; margin:6px 0; padding-left:14px; position:relative; }
-  .topic li::before { content:"·"; position:absolute; left:3px; color:var(--red); font-weight:700; }
-  .who { color:var(--blue); font-weight:700; margin-right:3px; }
-  .topic .judge { font-size:13.5px; background:#f0ece1; border-radius:6px; padding:7px 11px; margin:8px 0 0; color:#4a463d; }
-  .topic .judge b { color:var(--red); }
-  .bs.warn { border-top:0; background:#fff7e8; border:1px solid #ead6a8; border-radius:8px; padding:10px 16px 12px; margin-top:16px; }
-  .bs.warn .bs-t { color:#8a5a00; }
-  .bs.warn ul > li { color:#5f3d00; }
+  .topic li { font-size:14.5px; line-height:1.6; color:#cfdedf; margin:6px 0; padding-left:14px; position:relative; }
+  .topic li::before { content:"·"; position:absolute; left:3px; color:#7fd3c8; font-weight:700; }
+  .who { color:#7fd3c8; font-weight:700; margin-right:3px; }
+  .topic .judge { font-size:13.5px; background:rgba(255,255,255,.06); border-left:3px solid #1f766f; border-radius:0 6px 6px 0; padding:8px 11px; margin:8px 0 0; color:#cfe0e0; }
+  .topic .judge b { color:#fff; }
+  .bs.warn { border-top:0; background:rgba(255,200,120,.1); border:1px solid rgba(255,200,120,.28); border-radius:8px; padding:10px 16px 12px; margin-top:16px; }
+  .bs.warn .bs-t { color:#e6b566; }
+  .bs.warn ul > li { color:#e0cba6; }
 
   /* ── 내 생각 박스 ── */
   .opinion { border-left:4px solid var(--red); background:rgba(200,65,44,.045); border-radius:0 10px 10px 0; padding:16px 22px; margin:28px 0 4px; }
