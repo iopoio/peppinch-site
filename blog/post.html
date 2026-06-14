@@ -24,7 +24,7 @@
 
 <style>
   @font-face { font-family:"Kyobo"; src:url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),url("/fonts/KyoboHandwriting2019.otf") format("opentype"); font-display:swap; }
-  :root { --paper:#faf6ec; --ink:#23211c; --pencil:#5a554b; --red:#c8412c; --blue:#2f5fa8; --line:#ded7c7; }
+  :root { --paper:#faf6ec; --ink:#1f2a31; --pencil:#5b6670; --red:#c8412c; --blue:#1565c0; --line:#dfe4e6; }
   * { box-sizing:border-box; }
   html, body { margin:0; padding:0; max-width:100%; overflow-x:clip; }
   body {
@@ -32,7 +32,7 @@
     font-family:"Pretendard",-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
     line-height:1.7; -webkit-font-smoothing:antialiased;
   }
-  .page { max-width:740px; margin:0 auto; padding:40px 22px 90px; }
+  .page { max-width:860px; margin:0 auto; padding:40px 22px 90px; }
 
   .nav { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:28px; }
   .nav a { font-family:"Kyobo","Caveat",cursive; font-weight:500; font-size:21px; color:var(--pencil); text-decoration:none; line-height:1; }
@@ -41,8 +41,8 @@
 
   /* 흰 문서 카드 */
   .doc {
-    background:#fffdf9; border:1px solid var(--line); border-radius:16px;
-    padding:42px 40px; box-shadow:0 1px 4px rgba(60,50,30,.05);
+    background:#ffffff; border:1px solid var(--line); border-radius:16px;
+    padding:42px 40px; box-shadow:0 1px 4px rgba(20,40,60,.06);
   }
 
   .meta-date { font-size:12.5px; letter-spacing:.12em; color:var(--red); font-weight:700; }
@@ -51,7 +51,7 @@
   .source a { color:var(--blue); }
 
   #content { font-size:16.5px; }
-  #content > p { margin:14px 0; color:#322f29; }
+  #content > p { margin:14px 0; color:#3d474e; }
   #content a { color:var(--blue); }
   hr { border:0; border-top:1px solid var(--line); margin:30px 0; }
 
@@ -79,10 +79,10 @@
   .bs.warn ul > li { color:#e0cba6; }
 
   /* ── 내 생각 박스 ── */
-  .opinion { border-left:4px solid var(--red); background:rgba(200,65,44,.045); border-radius:0 10px 10px 0; padding:16px 22px; margin:28px 0 4px; }
-  .opinion-label { font-size:14.5px; font-weight:800; color:var(--red); margin-bottom:6px; }
-  .opinion p { margin:11px 0; font-size:16px; color:#322f29; }
-  .opinion .ask { font-weight:700; color:var(--ink); margin-top:14px; }
+  .opinion { margin:36px 0 4px; padding-top:26px; border-top:1px solid var(--line); }
+  .opinion-label { font-size:17px; font-weight:800; color:var(--red); margin-bottom:10px; }
+  .opinion p { margin:14px 0; font-size:16.5px; line-height:1.8; color:#3d474e; }
+  .opinion .ask { font-weight:700; color:var(--ink); margin-top:16px; }
 
   .table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; margin:14px 0; }
   #content table { border-collapse:collapse; font-size:14px; width:100%; min-width:min(100%,520px); }
