@@ -4,60 +4,25 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>peppinch — blog</title>
-<meta name="description" content="펩핀치 블로그 — 1인 인디해커 빌드·실험 누적. 작업 흐름·결과·실패·다음 시도 기록." />
+<meta name="description" content="펩핀치 블로그 — 흥미롭고 관심있는 주제를 끄적입니다. 천천히, 한 꼬집씩." />
 <link rel="canonical" href="https://www.peppinch.com/blog/" />
 <meta property="og:title" content="peppinch — blog" />
-<meta property="og:description" content="1인 인디해커 빌드·실험 누적. 작업 흐름·결과·실패·다음 시도 기록." />
+<meta property="og:description" content="흥미롭고 관심있는 주제를 끄적입니다. 천천히, 한 꼬집씩." />
 <meta property="og:image" content="https://www.peppinch.com/og-image.png" />
 <meta property="og:url" content="https://www.peppinch.com/blog/" />
 <meta property="og:type" content="website" />
-
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@peppinch_" />
-<meta name="twitter:creator" content="@peppinch_" />
 <meta name="twitter:title" content="peppinch — blog" />
-<meta name="twitter:description" content="1인 인디해커 빌드·실험 누적. 작업 흐름·결과·실패·다음 시도 기록." />
+<meta name="twitter:description" content="흥미롭고 관심있는 주제를 끄적입니다." />
 <meta name="twitter:image" content="https://www.peppinch.com/og-image.png" />
-
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧂</text></svg>" />
 
-<!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LZ7ZXMFEBM');
-</script>
-
-<!-- JSON-LD structured data -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Blog",
-      "@id": "https://www.peppinch.com/blog/#blog",
-      "url": "https://www.peppinch.com/blog/",
-      "name": "peppinch — blog",
-      "description": "1인 인디해커 빌드·실험 누적. 작업 흐름·결과·실패·다음 시도 기록.",
-      "publisher": { "@id": "https://www.peppinch.com/#org" },
-      "inLanguage": "ko-KR"
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://www.peppinch.com/#org",
-      "name": "peppinch",
-      "alternateName": "펩핀치",
-      "url": "https://www.peppinch.com/",
-      "logo": "https://www.peppinch.com/favicon.svg",
-      "sameAs": [
-        "https://x.com/peppinch_"
-      ]
-    }
-  ]
-}
+  gtag('js', new Date()); gtag('config', 'G-LZ7ZXMFEBM');
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,137 +36,70 @@
          url("/fonts/KyoboHandwriting2019.otf") format("opentype");
     font-display: swap;
   }
-  :root {
-    --paper: #faf6ec;
-    --ink: #2a2823;
-    --pencil: #3a352c;
-    --red: #c8412c;
-  }
-
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
+  :root { --paper:#faf6ec; --ink:#2a2823; --pencil:#3a352c; --red:#c8412c; --blue:#2f5fa8; }
+  * { box-sizing:border-box; }
+  html, body { margin:0; padding:0; max-width:100%; overflow-x:clip; }
   body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Kyobo", "Kalam", sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
+    background:var(--paper); color:var(--ink);
+    font-family:"Kyobo","Kalam",sans-serif; font-weight:300;
+    min-height:100vh; position:relative; overflow-x:hidden;
   }
-
   body::before {
-    content: "";
-    position: fixed; inset: 0;
+    content:""; position:fixed; inset:0;
     background-image:
       repeating-linear-gradient(91deg, transparent 0 38px, rgba(0,0,0,.012) 38px 39px),
       repeating-linear-gradient(2deg, transparent 0 46px, rgba(0,0,0,.012) 46px 47px);
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    z-index: 1;
+    pointer-events:none; mix-blend-mode:multiply; z-index:1;
   }
+  .page { position:relative; max-width:760px; margin:0 auto; padding:72px 32px 120px; z-index:3; }
 
-  .page {
-    position: relative;
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 80px 32px 120px;
-    z-index: 3;
-  }
-
-  .nav {
-    display: flex; gap: 22px; flex-wrap: wrap;
-    margin-bottom: 60px;
-  }
+  .nav { display:flex; gap:22px; flex-wrap:wrap; margin-bottom:54px; }
   .nav a {
-    font-family: "Kyobo", "Caveat", cursive;
-    font-weight: 500;
-    font-size: 22px;
-    color: var(--pencil);
-    text-decoration: none;
-    line-height: 1;
-    padding: 6px 14px 4px;
-    border: 1.5px dashed transparent;
-    transition: color .25s, border-color .25s;
+    font-family:"Kyobo","Caveat",cursive; font-weight:500; font-size:22px;
+    color:var(--pencil); text-decoration:none; line-height:1; padding:6px 14px 4px;
+    border:1.5px dashed transparent; transition:.25s; position:relative;
   }
-  .nav a:hover { color: var(--red); border-color: var(--red); }
-  .nav a[data-active] { color: var(--red); border-color: var(--red); border-style: solid; border-width: 2px; }
+  .nav a:hover { color:var(--red); }
+  .nav a[data-active] { color:var(--red); }
 
   h1 {
-    font-family: "Kyobo", "Caveat", cursive;
-    font-weight: 700;
-    font-size: clamp(48px, 8vw, 88px);
-    line-height: .95;
-    margin: 0 0 16px;
-    transform: rotate(-.8deg);
-    color: var(--ink);
+    font-family:"Kyobo","Caveat",cursive; font-weight:700;
+    font-size:clamp(46px,8vw,84px); line-height:.95; margin:0 0 16px;
+    transform:rotate(-.8deg); color:var(--ink);
   }
   .sub {
-    font-family: "Kyobo", "Kalam", sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
-    color: var(--pencil);
-    opacity: .85;
-    max-width: 520px;
-    margin-bottom: 60px;
+    font-family:"Kyobo","Kalam",sans-serif; font-size:17px; line-height:1.6;
+    color:var(--pencil); opacity:.85; max-width:520px; margin:0 0 12px;
   }
-  .sub em { color: var(--red); font-style: normal; font-weight: 500; }
+  .sub em { color:var(--red); font-style:normal; font-weight:500; }
 
-  .stack {
-    display: flex; flex-direction: column;
-    gap: 0;
-    border-top: 2px dashed rgba(58,53,44,.2);
+  /* ── 손그림 선(rough.js가 그려줌) ── */
+  .rline { width:100%; height:14px; line-height:0; }
+  .rline svg { display:block; width:100%; }
+
+  /* ── 카테고리 섹션 ── */
+  .cat { margin:6px 0; }
+  .cat-title {
+    font-family:"Kyobo","Caveat",cursive; font-weight:700; font-size:30px; line-height:1.1;
+    color:var(--ink); margin:18px 0 4px; display:inline-block; transform:rotate(-.6deg);
   }
-  .post {
-    display: flex; flex-direction: column;
-    padding: 28px 0;
-    border-bottom: 2px dashed rgba(58,53,44,.2);
-  }
+  .stack { display:flex; flex-direction:column; }
+  .post { display:block; padding:20px 2px; text-decoration:none; color:inherit; }
   .post .date {
-    font-family: "Kyobo", "Kalam", sans-serif;
-    font-size: 12px;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 6px;
-    font-weight: 700;
+    font-family:"Kyobo","Kalam",sans-serif; font-size:12px; letter-spacing:.15em;
+    text-transform:uppercase; color:var(--red); margin-bottom:6px; font-weight:700;
   }
-  .post .title {
-    font-family: "Kyobo", "Caveat", cursive;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 1.1;
-    color: var(--ink);
-    margin: 0 0 8px;
-  }
-  .post .summary {
-    font-family: "Kyobo", "Kalam", sans-serif;
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--pencil);
-    margin: 0;
-  }
-  .empty {
-    font-family: "Kyobo", "Kalam", sans-serif;
-    font-size: 16px;
-    color: var(--pencil);
-    opacity: .65;
-    text-align: center;
-    padding: 60px 0;
-    font-style: italic;
-  }
+  .post .title { font-family:"Kyobo","Caveat",cursive; font-weight:700; font-size:30px; line-height:1.1; color:var(--ink); margin:0 0 8px; }
+  .post:hover .title { color:var(--red); }
+  .post .summary { font-family:"Kyobo","Kalam",sans-serif; font-size:15px; line-height:1.55; color:var(--pencil); margin:0; }
+  .empty { font-family:"Kyobo","Kalam",sans-serif; font-size:15px; color:var(--pencil); opacity:.5; padding:18px 2px; font-style:italic; }
 
   footer {
-    margin-top: 80px;
-    padding-top: 24px;
-    border-top: 2px dashed rgba(58,53,44,.2);
-    display: flex; justify-content: space-between;
-    font-family: "Kyobo", "Caveat", cursive;
-    font-size: 18px;
-    color: var(--pencil);
-    flex-wrap: wrap; gap: 16px;
+    margin-top:40px; display:flex; justify-content:space-between;
+    font-family:"Kyobo","Caveat",cursive; font-size:18px; color:var(--pencil);
+    flex-wrap:wrap; gap:16px;
   }
-  footer b { color: var(--red); }
+  footer b { color:var(--red); }
 </style>
 </head>
 <body>
@@ -214,30 +112,62 @@
     </nav>
 
     <h1>blog · 흩어진 메모</h1>
-    <p class="sub">
-      흥미롭고 관심있는 주제를 끄적여봅니다.
-      <em>천천히, 한 꼬집씩.</em>
-    </p>
+    <p class="sub">흥미롭고 관심있는 주제를 끄적여봅니다. <em>천천히, 한 꼬집씩.</em></p>
 
-    <div class="stack">
-      <!-- 새 글 추가: 아래 .empty div 위에 .post snippet 삽입 (posts/GUIDE.md 참조)
-      <article class="post">
-        <span class="date">YYYY · MM · DD</span>
-        <h2 class="title">제목 한 줄</h2>
-        <p class="summary">2~3줄 요약. 흩어진 메모니까 길게 X.</p>
-      </article>
-      -->
-      <a class="post" href="/blog/post.html?p=2026-06-13-all-in-fable5" style="text-decoration:none">
-        <span class="date">2026 · 06 · 13</span>
-        <h2 class="title">All-In 정리 — Fable 5 백래시, AI 국유화, 인플레</h2>
-        <p class="summary">1시간 42분짜리 All-In, 정치 빼고 AI·마켓 핵심만 표로. + 앤트로픽 Fable 5 백래시에 대한 내 생각. <span style="color:var(--red)">→ 읽기</span></p>
-      </a>
-    </div>
+    <div class="rline" data-color="pencil" style="margin:14px 0 4px"></div>
+
+    <section class="cat">
+      <h2 class="cat-title">AI랑 만들기</h2>
+      <div class="stack"><div class="empty">— 곧 —</div></div>
+    </section>
+    <div class="rline" data-color="pencil"></div>
+
+    <section class="cat">
+      <h2 class="cat-title">관심있는 것들 정리</h2>
+      <div class="stack">
+        <a class="post" href="/blog/post.html?p=2026-06-13-all-in-fable5">
+          <span class="date">2026 · 06 · 13</span>
+          <h2 class="title">All-In 정리 — Fable 5 백래시, AI 국유화, 인플레</h2>
+          <p class="summary">1시간 42분짜리 All-In, 정치 빼고 AI·마켓 핵심만 표로. + 앤트로픽 Fable 5 백래시에 대한 내 생각. <span style="color:var(--red)">→ 읽기</span></p>
+        </a>
+      </div>
+    </section>
+    <div class="rline" data-color="pencil"></div>
+
+    <section class="cat">
+      <h2 class="cat-title">주식 이야기</h2>
+      <div class="stack"><div class="empty">— 곧 —</div></div>
+    </section>
+    <div class="rline" data-color="pencil" style="margin:10px 0 0"></div>
 
     <footer>
       <span>made slow, in seoul — <b>peppinch</b> 🧂</span>
       <span>pepper@peppinch.com · @peppinch_</span>
     </footer>
   </div>
+
+  <!-- 손그림 선 엔진 -->
+  <script src="https://cdn.jsdelivr.net/npm/roughjs@4.6.6/bundled/rough.js"></script>
+  <script>
+    (function () {
+      var COL = { pencil: '#3a352c', red: '#c8412c' };
+      function draw() {
+        if (!window.rough) return;
+        document.querySelectorAll('.rline').forEach(function (el) {
+          el.innerHTML = '';
+          var w = el.clientWidth || 320, h = 14;
+          var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          svg.setAttribute('width', w); svg.setAttribute('height', h);
+          var rc = rough.svg(svg);
+          var c = COL[el.dataset.color] || COL.pencil;
+          svg.appendChild(rc.line(4, 7, w - 4, 7, { stroke: c, strokeWidth: 1.4, roughness: 2.2, bowing: 2 }));
+          el.appendChild(svg);
+        });
+      }
+      var t; function deb() { clearTimeout(t); t = setTimeout(draw, 160); }
+      if (document.readyState === 'complete') draw(); else window.addEventListener('load', draw);
+      window.addEventListener('resize', deb);
+    })();
+  </script>
 </body>
 </html>
