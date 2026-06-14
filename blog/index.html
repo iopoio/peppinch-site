@@ -80,11 +80,12 @@
   /* ── 카테고리 섹션 ── */
   .cat { margin:6px 0; }
   .cat-title {
-    font-family:"Kyobo","Caveat",cursive; font-weight:700; font-size:30px; line-height:1.1;
-    color:var(--ink); margin:18px 0 4px; display:inline-block; transform:rotate(-.6deg);
+    font-family:"Kyobo","Caveat",cursive; font-weight:700; font-size:19px; line-height:1.1;
+    color:var(--pencil); margin:22px 0 0; display:inline-block; letter-spacing:.03em;
   }
+  .cat-title::before { content:"▸ "; color:var(--red); }
   .stack { display:flex; flex-direction:column; }
-  .post { display:block; padding:20px 2px; text-decoration:none; color:inherit; }
+  .post { display:block; padding:14px 2px 16px 18px; text-decoration:none; color:inherit; }
   .post .date {
     font-family:"Kyobo","Kalam",sans-serif; font-size:12px; letter-spacing:.15em;
     text-transform:uppercase; color:var(--red); margin-bottom:6px; font-weight:700;

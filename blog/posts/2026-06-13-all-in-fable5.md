@@ -5,48 +5,70 @@ slug: 2026-06-13-all-in-fable5
 category: 관심있는 것들 정리
 source: All-In Podcast · 1:42:00
 source_url: https://youtu.be/gH4FTjDm9FQ
-summary: 1시간 42분짜리 All-In, 정치 빼고 AI·마켓 핵심만. 누가 무슨 말 했나 회의록처럼 정리 + 앤트로픽 Fable 5 백래시에 대한 내 생각.
+summary: 1시간 42분짜리 All-In, 정치 빼고 AI·마켓 핵심만. 요약·화자별 정리·다음 액션 + 앤트로픽 Fable 5 백래시에 대한 내 생각.
 ---
 
 # All-In 정리 — Fable 5 백래시, AI 국유화, 인플레 재점화
 
-1시간 42분짜리라, 정치(캘리포니아 선거)는 빼고 AI·마켓 핵심만 추렸다. 먼저 **누가 무슨 말 했는지** 브리핑으로 정리하고, 그 아래 **내 생각**.
+1시간 42분짜리라, 정치(캘리포니아 선거)는 빼고 AI·마켓 핵심만 추렸다. 먼저 **브리핑**으로 정리하고, 그 아래 **내 생각**.
 
 <div class="brief">
   <div class="brief-head"><span class="brief-tag">팟캐스트 브리핑</span> All-In Podcast · 1시간 42분</div>
-  <p class="brief-note">1시간 42분을 요약·재정리한 것이라 토씨 그대로는 아닙니다. 정확한 워딩·맥락은 <a href="https://youtu.be/gH4FTjDm9FQ">원본 영상</a>에서 확인하세요.</p>
+  <p class="brief-note">1시간 42분을 요약·재정리한 것이라 토씨 그대로는 아닙니다. 정확한 워딩·맥락은 <a href="https://youtu.be/gH4FTjDm9FQ">원본 영상</a>에서.</p>
 
-  <div class="topic">
-    <h3>1 · 앤트로픽 Fable 5 백래시</h3>
+  <div class="bs">
+    <h3 class="bs-t">한 줄 요약</h3>
+    <p>AI 기업이 규제를 끌어들여 통제하려 하고, 그 반작용으로 오픈소스(특히 중국)가 뜬다. 동시에 인플레가 다시 달아오른다.</p>
     <ul>
-      <li><b class="who">David Sacks</b> 벤치 최고 성능. 단 Opus 2배 가격, 프롬프트 30일 저장, 경쟁 AI 연구 시 사용자 차단.</li>
-      <li><b class="who">Chamath</b> 검열 위험이 커지고, 기업이 모르는 새 규정을 위반해 차단될 수 있어 위험.</li>
-      <li><b class="who">Friedberg</b> 제한 탓에 오픈소스로 가야 하는데, 지금은 중국 오픈소스가 더 우수해 우려.</li>
+      <li>앤트로픽 Fable 5 — 성능 1등이지만 데이터 저장·사용 제한 논란</li>
+      <li>접근 제한이 오히려 중국 오픈소스 성장을 촉진할 거란 우려</li>
+      <li>규제 방향 — 기술 자체 vs 무기화되는 결과</li>
+      <li>AI 일자리 — 감소 경고 vs 생산성으로 새 기회, 논쟁</li>
+      <li>막대한 이익의 사회 환원(국부펀드) 논의</li>
     </ul>
   </div>
 
-  <div class="topic">
-    <h3>2 · AI 규제 — 통제 vs 개방</h3>
-    <ul>
-      <li><b class="who">Sacks</b> 앤트로픽이 의도적으로 규제를 유도하는 듯. 오픈소스 견제가 목적일 수 있다.</li>
-      <li><b class="who">Chamath</b> AI는 핵분열 같은 양날의 검. 기술이 아니라 무기화되는 결과를 규제해야 한다.</li>
-    </ul>
+  <div class="bs">
+    <h3 class="bs-t">누가 무슨 말 했나</h3>
+
+    <div class="topic">
+      <h4>1 · 앤트로픽 Fable 5 백래시</h4>
+      <ul>
+        <li><b class="who">David Sacks</b> 벤치 최고 성능. 단 Opus 2배 가격, 프롬프트 30일 저장, 경쟁 AI 연구 시 사용자 차단.</li>
+        <li><b class="who">Chamath</b> 검열 위험이 커지고, 기업이 모르는 새 규정을 위반해 차단될 수 있어 위험.</li>
+        <li><b class="who">Friedberg</b> 제한 탓에 오픈소스로 가야 하는데, 지금은 중국 오픈소스가 더 우수해 우려.</li>
+      </ul>
+    </div>
+    <div class="topic">
+      <h4>2 · AI 규제 — 통제 vs 개방</h4>
+      <ul>
+        <li><b class="who">Sacks</b> 앤트로픽이 의도적으로 규제를 유도하는 듯. 오픈소스 견제가 목적일 수 있다.</li>
+        <li><b class="who">Chamath</b> AI는 핵분열 같은 양날의 검. 기술이 아니라 무기화되는 결과를 규제해야 한다.</li>
+      </ul>
+    </div>
+    <div class="topic">
+      <h4>3 · AI와 일자리 / 부의 환원</h4>
+      <ul>
+        <li><b class="who">Friedberg</b> AI는 비용절감보다 생산성으로 새 기회를 만든다. 지금 고용시장은 오히려 인력 부족.</li>
+        <li><b class="who">Bernie Sanders</b> (인용) AI는 집단지성으로 만든 공공자원이니 이익의 절반은 대중에게.</li>
+        <li><b class="who">Sacks</b> 사회 환원(국부펀드) 논의는 가능하나, 강제 몰수는 부적절.</li>
+      </ul>
+    </div>
+    <div class="topic">
+      <h4>4 · 인플레이션 재점화</h4>
+      <ul>
+        <li><b class="who">Sacks</b> CPI·PPI가 예상보다 높게 나왔고, 시장은 금리 인상을 예상.</li>
+        <li><b class="who">Chamath</b> 이란發 에너지 가격 + 정부의 통제 불가능한 지출이 근본 원인.</li>
+      </ul>
+    </div>
   </div>
 
-  <div class="topic">
-    <h3>3 · AI와 일자리 / 부의 환원</h3>
+  <div class="bs">
+    <h3 class="bs-t">다음 액션 — 보고 해볼 만한 것</h3>
     <ul>
-      <li><b class="who">Friedberg</b> AI는 비용절감보다 생산성으로 새 기회를 만든다. 지금 고용시장은 오히려 인력 부족.</li>
-      <li><b class="who">Bernie Sanders</b> (인용) AI는 집단지성으로 만든 공공자원이니 이익의 절반은 대중에게.</li>
-      <li><b class="who">Sacks</b> 사회 환원(국부펀드) 논의는 가능하나, 강제 몰수는 부적절하다.</li>
-    </ul>
-  </div>
-
-  <div class="topic">
-    <h3>4 · 인플레이션 재점화</h3>
-    <ul>
-      <li><b class="who">Sacks</b> CPI·PPI가 예상보다 높게 나왔고, 시장은 금리 인상을 예상한다.</li>
-      <li><b class="who">Chamath</b> 이란發 에너지 가격 + 정부의 통제 불가능한 지출이 근본 원인.</li>
+      <li>지금 쓰는 AI 모델의 <b>데이터 보관·사용 약관</b>을 한 번 확인 (Fable 5의 30일 저장처럼 뭐가 걸려 있는지).</li>
+      <li>대안으로 <b>오픈소스 모델 하나 가볍게 테스트</b> (중국 오픈소스 포함, 진짜 우수한지 체감).</li>
+      <li>서학개미라면 — <b>인플레 재점화</b>로 금리·유가 변동성 체크하고, <b>AI 규제 뉴스</b>를 밸류에이션 변수로 주시.</li>
     </ul>
   </div>
 </div>
