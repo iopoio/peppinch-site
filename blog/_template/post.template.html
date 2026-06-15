@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}} · peppinch blog</title>
+<meta name="description" content="{{DESC}}">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{OG_DESC}}">
+<meta property="og:image" content="https://www.peppinch.com/og-image.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.peppinch.com/blog/posts/{{SLUG}}">
+<meta property="og:site_name" content="peppinch">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="{{DATE_ISO}}">
+<meta property="article:section" content="{{SECTION}}">
+<meta name="author" content="peppinch">
+<meta name="keywords" content="{{KEYWORDS}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@peppinch_">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{OG_DESC}}">
+<meta name="twitter:image" content="https://www.peppinch.com/og-image.png">
+<link rel="canonical" href="https://www.peppinch.com/blog/posts/{{SLUG}}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧂</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"{{TITLE}}","description":"{{DESC}}","datePublished":"{{DATE_ISO}}","dateModified":"{{DATE_ISO}}","inLanguage":"ko-KR","url":"https://www.peppinch.com/blog/posts/{{SLUG}}","mainEntityOfPage":"https://www.peppinch.com/blog/posts/{{SLUG}}","image":"https://www.peppinch.com/og-image.png","keywords":"{{KEYWORDS}}","author":{"@type":"Person","name":"peppinch","url":"https://www.peppinch.com/"},"publisher":{"@type":"Organization","name":"peppinch","logo":{"@type":"ImageObject","url":"https://www.peppinch.com/favicon.svg"}}{{IS_BASED_ON}}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LZ7ZXMFEBM');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+@font-face{font-family:"Kyobo";src:url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),url("/fonts/KyoboHandwriting2019.otf") format("opentype");font-display:swap}
+:root{--paper:#faf6ec;--ink:#1f2a31;--pencil:#5b6670;--red:#c8412c;--blue:#1565c0;--line:#dfe4e6}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:"Pretendard",-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.page{max-width:1180px;margin:0 auto;padding:40px 22px 90px}
+
+/* 상단 메뉴 — 손글씨 (사이트 정체성) */
+.nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.nav a{font-family:"Kyobo","Caveat",cursive;font-weight:500;font-size:21px;color:var(--pencil);text-decoration:none;line-height:1}
+.nav a:hover{color:var(--red)}
+.nav a[data-active]{color:var(--red)}
+
+/* 제목 — 단정한 폰트 */
+.meta-date{font-size:12.5px;letter-spacing:.12em;color:var(--red);font-weight:700}
+h1.ptitle{font-size:clamp(25px,4.4vw,34px);line-height:1.32;font-weight:800;letter-spacing:-.01em;margin:8px 0 18px;color:var(--ink);word-break:keep-all;overflow-wrap:anywhere}
+
+/* 검색 노출용 요약 (실텍스트·맥락 먼저) */
+.lead-sum{font-size:16px;color:#3d474e;line-height:1.85;margin:0 0 22px}
+
+/* 리포트 — Pepwrap 생성 HTML을 그대로 임베드 (높이는 리포트가 postMessage로 알려줌) */
+.rpt{display:block;width:100%;border:1px solid var(--line);border-radius:12px;min-height:500px;background:#f6f8f9;overflow:hidden;margin:0 0 26px}
+
+/* 내 생각 */
+.myview{border-left:4px solid var(--red);padding:4px 0 4px 18px;margin:36px 0 4px}
+.myview .lbl{font-size:17px;font-weight:800;color:var(--red);margin-bottom:6px}
+.myview p{font-size:16.5px;color:#3d474e;line-height:1.85;margin:12px 0}
+.myview .ask{font-weight:700;color:var(--ink)}
+
+/* 좋아요 (localStorage 토글 · 공유 카운트는 백엔드 필요) */
+.likebar{display:flex;align-items:center;gap:12px;margin:24px 0 4px;flex-wrap:wrap}
+.likebtn{font:inherit;font-size:15px;font-weight:700;color:var(--red);background:#fff;border:1.5px solid var(--red);border-radius:999px;padding:8px 18px;cursor:pointer;transition:.15s}
+.likebtn:hover{background:#fdeceb}
+.likebtn.on{background:var(--red);color:#fff}
+.likenote{color:var(--pencil);font-size:13px}
+
+/* 다음 글 */
+.nextnav{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:30px;padding-top:22px;font-size:14px}
+.nextnav a{color:var(--blue);font-weight:700;text-decoration:none}
+.nextnav a:hover{color:var(--red)}
+.nextnav span{color:var(--pencil)}
+
+footer{margin-top:40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:"Kyobo","Caveat",cursive;font-size:18px;color:var(--pencil)}
+footer b{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="nav">
+    <a href="/">home</a>
+    <a href="/business/">business</a>
+    <a href="/blog/" data-active>blog</a>
+    <a href="mailto:pepper@peppinch.com">contact</a>
+  </nav>
+
+  <span class="meta-date">{{DATE_DISPLAY}}</span>
+  <h1 class="ptitle">{{TITLE}}</h1>
+
+  <!-- 검색 노출용 요약 3~4줄 (실텍스트). 리포트는 iframe+noindex라 이 텍스트가 SEO 본문 -->
+  <p class="lead-sum">{{SUMMARY}}</p>
+
+  <!-- 리포트 그대로 (주제별 논의는 리포트 안에서 토픽별로 접힘) -->
+  <iframe class="rpt" id="rpt" src="/blog/posts/{{REPORT_SLUG}}" title="{{TITLE}} 리포트" loading="eager" scrolling="no"></iframe>
+
+  <section class="myview">
+    <div class="lbl">✍️ 내 생각</div>
+    {{MYVIEW_PARAGRAPHS}}
+  </section>
+
+  <div class="likebar">
+    <button id="likeBtn" class="likebtn" aria-pressed="false">♡ 좋아요 <span id="likeCount"></span></button>
+    <span class="likenote">댓글은 준비 중이에요. 좋아요로 반응 남겨주시면 힘이 됩니다 🙏</span>
+  </div>
+
+  <nav class="nextnav">
+    <a href="/blog/">← 다른 글 보기</a>
+  </nav>
+</div>
+
+<script>
+(function(){
+  var f=document.getElementById('rpt');
+  // 폴백: 같은 출처에서 직접 높이 읽기
+  function fit(){ try{ var d=f.contentWindow.document; var h=Math.max(d.documentElement.scrollHeight,d.body.scrollHeight,d.documentElement.offsetHeight); if(h>50) f.style.height=h+'px'; }catch(e){} }
+  f.addEventListener('load',function(){
+    fit(); setTimeout(fit,300); setTimeout(fit,1000);
+    try{
+      var w=f.contentWindow;
+      if(w.document.fonts&&w.document.fonts.ready){ w.document.fonts.ready.then(fit); }
+      if(window.ResizeObserver){ new ResizeObserver(fit).observe(w.document.body); }
+    }catch(e){}
+  });
+  window.addEventListener('resize',function(){ clearTimeout(window.__rt); window.__rt=setTimeout(fit,200); });
+  // 주: 리포트(자식)가 postMessage로 정확한 높이를 보냄 (레이스 없음·아코디언 펼침 포함)
+  window.addEventListener('message',function(e){ var h=e.data&&e.data.rptH; if(h&&h>50&&h<60000) f.style.height=h+'px'; });
+  // 좋아요 토글
+  var KEY='peppinch_like_{{SLUG}}';
+  var b=document.getElementById('likeBtn');
+  var liked=localStorage.getItem(KEY)==='1';
+  function render(){ b.classList.toggle('on',liked); b.firstChild.textContent=(liked?'♥ 좋아요 ':'♡ 좋아요 '); b.setAttribute('aria-pressed',liked); }
+  render();
+  b.addEventListener('click',function(){ liked=!liked; localStorage.setItem(KEY,liked?'1':'0'); render(); if(window.gtag) gtag('event',liked?'like':'unlike',{post:'{{SLUG}}'}); });
+})();
+</script>
+</body>
+</html>
