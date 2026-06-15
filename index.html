@@ -335,6 +335,28 @@
   }
   .nav-chip[data-active] { color: var(--red); }
   .nav-chip svg { position: absolute; inset: 0; pointer-events: none; }
+  .nav-chip.blog-nav-chip {
+    color: var(--blue);
+  }
+  .nav-chip .blog-pointer {
+    position: absolute;
+    right: -28px;
+    top: -19px;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 13px;
+    line-height: 1;
+    color: var(--blue);
+    transform: rotate(-7deg);
+    white-space: nowrap;
+  }
+  .nav-chip .blog-pointer svg {
+    position: static;
+    inset: auto;
+    width: 24px;
+    height: 14px;
+  }
 
   /* SECTION LABEL */
   h2.section-label {
@@ -783,9 +805,10 @@
       business
       <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,5 T95,8 Q98,20 95,33 Q60,36 30,34 T5,32 Q4,20 5,8 Z" fill="none" stroke="#3a352c" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
     </a>
-    <a class="nav-chip" href="/blog/">
+    <a class="nav-chip blog-nav-chip" href="/blog/">
       blog
-      <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,6 T95,7 Q97,21 96,32 Q60,37 30,34 T5,33 Q3,20 5,8 Z" fill="none" stroke="#3a352c" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
+      <span class="blog-pointer" aria-hidden="true">글 써요<svg viewBox="0 0 28 16"><path d="M2 10 C9 2 18 2 26 8 M22 4 L26 8 L20 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,6 T95,7 Q97,21 96,32 Q60,37 30,34 T5,33 Q3,20 5,8 Z" fill="none" stroke="#2F5FA8" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
     </a>
     <a class="nav-chip" href="mailto:pepper@peppinch.com" title="pepper@peppinch.com">
       contact

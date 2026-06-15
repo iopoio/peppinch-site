@@ -1,51 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <!-- 종이 톤 배경 -->
-  <defs>
-    <filter id="grain" x="0%" y="0%" width="100%" height="100%">
-      <feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
-      <feColorMatrix values="0 0 0 0 0.15  0 0 0 0 0.13  0 0 0 0 0.08  0 0 0 0.08 0"/>
-      <feComposite operator="in" in2="SourceGraphic"/>
-    </filter>
-    <radialGradient id="coffee" cx="85%" cy="20%" r="12%">
-      <stop offset="0%" stop-color="rgb(168,120,60)" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="rgb(168,120,60)" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-
-  <!-- paper bg -->
+  <!-- Vector base for the unified peppinch OG image.
+       Text is baked into og-image.png with Pillow + fonts/KyoboHandwriting2019.otf. -->
   <rect width="1200" height="630" fill="#FAF6EC"/>
 
-  <!-- coffee ring stain -->
-  <rect width="1200" height="630" fill="url(#coffee)"/>
-
-  <!-- paper fibers (horizontal lines) -->
-  <g opacity="0.08" stroke="#3A352C" stroke-width="0.5">
-    <line x1="0" y1="60" x2="1200" y2="58"/>
-    <line x1="0" y1="120" x2="1200" y2="122"/>
-    <line x1="0" y1="180" x2="1200" y2="178"/>
-    <line x1="0" y1="240" x2="1200" y2="242"/>
-    <line x1="0" y1="300" x2="1200" y2="298"/>
-    <line x1="0" y1="360" x2="1200" y2="362"/>
-    <line x1="0" y1="420" x2="1200" y2="418"/>
-    <line x1="0" y1="480" x2="1200" y2="482"/>
-    <line x1="0" y1="540" x2="1200" y2="538"/>
+  <!-- faint notebook ruling; keep lower 110px free for X title overlays -->
+  <g stroke="#EFE9D8" stroke-width="1.2" stroke-linecap="round">
+    <line x1="0" y1="58" x2="1200" y2="60"/>
+    <line x1="0" y1="118" x2="1200" y2="116"/>
+    <line x1="0" y1="178" x2="1200" y2="180"/>
+    <line x1="0" y1="238" x2="1200" y2="236"/>
+    <line x1="0" y1="298" x2="1200" y2="300"/>
+    <line x1="0" y1="358" x2="1200" y2="356"/>
+    <line x1="0" y1="418" x2="1200" y2="420"/>
+    <line x1="0" y1="478" x2="1200" y2="476"/>
   </g>
 
-  <!-- left margin hole punches -->
+  <!-- left spring dots -->
   <g>
-    <circle cx="40" cy="120" r="12" fill="#C0B89E" stroke="#A8A087" stroke-width="1"/>
-    <circle cx="40" cy="250" r="12" fill="#C0B89E" stroke="#A8A087" stroke-width="1"/>
-    <circle cx="40" cy="380" r="12" fill="#C0B89E" stroke="#A8A087" stroke-width="1"/>
-    <circle cx="40" cy="510" r="12" fill="#C0B89E" stroke="#A8A087" stroke-width="1"/>
+    <circle cx="40" cy="100" r="11" fill="#C0B89E" stroke="#A8A087" stroke-width="1.5"/>
+    <circle cx="40" cy="220" r="11" fill="#C0B89E" stroke="#A8A087" stroke-width="1.5"/>
+    <circle cx="40" cy="340" r="11" fill="#C0B89E" stroke="#A8A087" stroke-width="1.5"/>
+    <circle cx="40" cy="500" r="11" fill="#C0B89E" stroke="#A8A087" stroke-width="1.5"/>
   </g>
 
-  <!-- 후추통 (좌측 상단·살짝 영역 내림) -->
-  <g transform="translate(130, 60) rotate(-6) scale(1.7)">
-    <!-- cap -->
-    <path d="M14,8 Q15,5 18,4 L52,4 Q56,5 57,8 L58,22 Q57,24 54,24 L16,24 Q13,24 12,22 Z"
-          fill="#3A352C" stroke="#3A352C" stroke-width="1.5" stroke-linejoin="round"/>
-    <!-- cap dots -->
+  <!-- restrained blue structure: small block + fine underline only -->
+  <rect x="88" y="352" width="12" height="78" rx="0" fill="#2F5FA8"/>
+  <path d="M105 429 C170 421 246 423 510 416" fill="none" stroke="#2F5FA8" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- logo underline and red period, aligned with Pillow-rendered wordmark -->
+  <path d="M95 216 C246 198 424 211 590 203 C650 200 696 201 732 205"
+        fill="none" stroke="#C8412C" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="742" cy="165" r="17" fill="#C8412C"/>
+
+  <!-- upper-right shaker: same source mark as index.html, scaled for OG -->
+  <svg class="shaker" x="944" y="60" width="171" height="220" viewBox="0 0 70 90" overflow="visible" transform="rotate(-6 1029.5 170)">
+    <path d="M14,8 Q15,5 18,4 L52,4 Q56,5 57,8 L58,22 Q57,24 54,24 L16,24 Q13,24 12,22 Z" fill="#3A352C" stroke="#3A352C" stroke-width="1.5" stroke-linejoin="round"/>
     <circle cx="22" cy="13" r="1.3" fill="#FAF6EC"/>
     <circle cx="30" cy="11" r="1.3" fill="#FAF6EC"/>
     <circle cx="38" cy="13" r="1.3" fill="#FAF6EC"/>
@@ -53,76 +43,16 @@
     <circle cx="26" cy="17" r="1.3" fill="#FAF6EC"/>
     <circle cx="34" cy="18" r="1.3" fill="#FAF6EC"/>
     <circle cx="42" cy="17" r="1.3" fill="#FAF6EC"/>
-    <!-- body -->
-    <path d="M10,26 Q10,24 13,24 L57,24 Q60,24 60,27 L60,80 Q60,84 56,85 L14,85 Q10,84 10,80 Z"
-          fill="none" stroke="#3A352C" stroke-width="2" stroke-linejoin="round"/>
-    <!-- label oval -->
+    <path d="M10,26 Q10,24 13,24 L57,24 Q60,24 60,27 L60,80 Q60,84 56,85 L14,85 Q10,84 10,80 Z" fill="none" stroke="#3A352C" stroke-width="2" stroke-linejoin="round"/>
     <ellipse cx="35" cy="55" rx="18" ry="15" fill="none" stroke="#C8412C" stroke-width="1.6" stroke-dasharray="2 2"/>
-    <text x="35" y="54" text-anchor="middle" font-family="Kyobo Handwriting 2019, Marker Felt, Chalkboard SE, Apple SD Gothic Neo, Helvetica, sans-serif" font-size="11" fill="#C8412C" font-weight="700">PEPPER</text>
-    <text x="35" y="66" text-anchor="middle" font-family="Kyobo Handwriting 2019, Marker Felt, Chalkboard SE, Apple SD Gothic Neo, Helvetica, sans-serif" font-size="8" fill="#C8412C">후추</text>
-    <!-- pepper grains falling -->
-    <circle cx="30" cy="-4" r="1.4" fill="#2A2823"/>
-    <circle cx="38" cy="-8" r="1.2" fill="#2A2823"/>
-    <circle cx="33" cy="-13" r="1" fill="#2A2823"/>
-    <circle cx="42" cy="-14" r="1.1" fill="#2A2823"/>
-    <circle cx="28" cy="-17" r="0.9" fill="#2A2823"/>
-  </g>
-
-  <!-- main title "peppinch" — 글자별 font-weight gradient (왼쪽 가늘게 → 오른쪽 굵게) -->
-  <g transform="rotate(-1.4 100 370)" font-family="Kyobo Handwriting 2019, Marker Felt, Chalkboard SE, Apple SD Gothic Neo, Helvetica, sans-serif" font-size="200" fill="#2A2823" letter-spacing="-6">
-    <text x="100"  y="370" font-weight="200">p</text>
-    <text x="217"  y="370" font-weight="300">e</text>
-    <text x="328"  y="370" font-weight="400">p</text>
-    <text x="445"  y="370" font-weight="500">p</text>
-    <text x="566"  y="370" font-weight="600">i</text>
-    <text x="630"  y="370" font-weight="700">n</text>
-    <text x="755"  y="370" font-weight="800">c</text>
-    <text x="868"  y="370" font-weight="900">h</text>
-  </g>
-
-  <!-- 빨간 dot — peppinch 마지막 "h" 옆·underline 끝점 영역 (살짝 위) -->
-  <circle cx="1000" cy="365" r="18" fill="#C8412C" transform="rotate(-1.4 100 370)"/>
-
-  <!-- underline — dot 영역 옆에서 자연스럽게 끝남 -->
-  <path d="M105,395 Q300,375 600,388 T985,378" fill="none" stroke="#C8412C" stroke-width="6" stroke-linecap="round" transform="rotate(-1.4 100 370)"/>
-
-  <!-- tagline 영문 -->
-  <text x="100" y="445" font-family="Kyobo Handwriting 2019, Marker Felt, Chalkboard SE, Apple SD Gothic Neo, Helvetica, sans-serif" font-size="32" font-style="italic"
-        fill="#3A352C" opacity="0.85">A Pinch Of Pepper.</text>
-
-  <!-- tagline 한글 -->
-  <text x="100" y="495" font-family="Kyobo Handwriting 2019, Marker Felt, Chalkboard SE, Apple SD Gothic Neo, Helvetica, sans-serif" font-size="38" font-weight="400"
-        fill="#3A352C" opacity="0.75">한 꼬집의 후추.</text>
-
-  <!-- sub line — 후추님 톤 -->
-  <text x="100" y="555" font-family="Kyobo Handwriting 2019, Marker Felt, Chalkboard SE, Apple SD Gothic Neo, Helvetica, sans-serif" font-size="22" fill="#3A352C" opacity="0.65">
-    이런 거 왜 없지 싶은 걸, 한 꼬집씩 만듭니다. 혼자, AI랑 같이.
-  </text>
-
-  <!-- meta 우상단 stamp -->
-  <g transform="translate(990, 90) rotate(6)">
-    <rect x="0" y="0" width="160" height="50" fill="none" stroke="#C8412C" stroke-width="2.5" opacity="0.85"/>
-    <text x="80" y="22" text-anchor="middle" font-family="Kyobo Handwriting 2019, Marker Felt, Chalkboard SE, Apple SD Gothic Neo, Helvetica, sans-serif" font-size="14" font-weight="700"
-          fill="#C8412C" letter-spacing="2">PEPPINCH</text>
-    <text x="80" y="40" text-anchor="middle" font-family="Kyobo Handwriting 2019, Marker Felt, Chalkboard SE, Apple SD Gothic Neo, Helvetica, sans-serif" font-size="10"
-          fill="#C8412C" opacity="0.85" letter-spacing="1.5">SOLO LAB · SEOUL</text>
-  </g>
-
-  <!-- footer scribble — peppinch.com -->
-  <text x="100" y="605" font-family="Kyobo Handwriting 2019, Marker Felt, Chalkboard SE, Apple SD Gothic Neo, Helvetica, sans-serif" font-size="18" font-weight="600"
-        fill="#C8412C">peppinch.com</text>
-  <text x="280" y="605" font-family="Kyobo Handwriting 2019, Marker Felt, Chalkboard SE, Apple SD Gothic Neo, Helvetica, sans-serif" font-size="16"
-        fill="#3A352C" opacity="0.55">· pepper@peppinch.com · @peppinch_</text>
-
-  <!-- salt pinch 우하단 — 점 영역 굵게·더 visible -->
-  <g transform="translate(1100, 575)">
-    <ellipse cx="0" cy="0" rx="28" ry="10" fill="none" stroke="#3A352C" stroke-width="2.5"/>
-    <circle cx="-10" cy="-15" r="3" fill="#2A2823"/>
-    <circle cx="4" cy="-19" r="2.8" fill="#2A2823"/>
-    <circle cx="-2" cy="-26" r="2.5" fill="#2A2823"/>
-    <circle cx="12" cy="-30" r="2.7" fill="#2A2823"/>
-    <circle cx="-14" cy="-32" r="2.3" fill="#2A2823"/>
-    <circle cx="6" cy="-38" r="2.1" fill="#2A2823"/>
-    <circle cx="-6" cy="-42" r="1.9" fill="#2A2823"/>
-  </g>
+    <text x="35" y="54" text-anchor="middle" font-family="Kyobo, Kyobo Handwriting 2019, Shantell Sans, cursive" font-size="11" fill="#C8412C" font-weight="700">PEPPER</text>
+    <g fill="#C8412C" aria-label="후추" transform="translate(29.696 66) scale(0.008 -0.008)">
+      <path d="M122 344C120 333 119 321 119 308C119 220 188 163 285 166C399 169 510 271 510 365C510 435 469 470 415 495C389 507 360 514 335 512C317 511 297 504 297 494C201 487 136 420 122 344ZM194 330C201 378 241 420 298 426C319 429 363 419 372 436C407 428 437 401 437 365C437 308 359 237 290 233C223 230 184 267 194 330ZM137 542C223 549 314 549 385 538C397 530 412 524 427 525C450 527 460 547 462 562C461 589 447 602 411 606C319 615 231 618 136 611C112 609 101 593 101 575C101 557 114 540 137 542ZM175 666C229 656 292 653 338 652C352 648 368 644 380 644C406 644 422 653 425 679C427 700 419 717 392 721C366 724 351 721 333 720C288 718 231 724 185 732C164 736 146 726 142 705C138 683 152 671 175 666ZM350 -96C352 -70 357 25 357 48C406 47 467 43 511 31C536 25 557 28 565 55C572 79 553 97 522 105C486 114 409 118 358 120C277 123 154 122 71 122C47 122 28 114 26 91C24 68 41 54 64 52C80 51 121 51 142 51C177 51 244 51 277 52C276 29 267 -72 267 -95C267 -121 282 -139 307 -139C331 -139 348 -120 350 -96ZM999 497C930 421 858 355 760 273C737 253 732 230 750 212C770 192 799 203 817 218C872 262 915 299 955 340L1104 247C1114 235 1141 219 1153 218C1171 217 1184 226 1189 236C1201 257 1197 272 1177 290C1145 313 1043 377 1006 398C1038 428 1072 464 1094 497C1118 531 1100 566 1059 566C967 568 882 567 843 569C823 572 805 577 787 579C763 581 740 572 738 545C736 524 748 508 763 503C784 497 814 500 835 499C874 498 948 498 999 497ZM1221 60C1248 58 1263 74 1265 97C1267 119 1252 138 1222 140C1180 143 1133 143 1088 145C1036 147 865 151 774 150C749 150 727 158 697 158C667 158 652 140 653 115C654 86 673 74 702 74C775 75 852 75 927 74C928 36 928 -9 930 -50C931 -66 920 -85 920 -104C920 -134 934 -148 961 -149C998 -150 1009 -114 1010 -69C1011 -26 1009 26 1006 73C1060 72 1112 70 1160 68C1182 67 1202 61 1221 60ZM832 696C811 698 792 690 785 670C778 647 790 626 815 622C893 609 982 617 1050 627C1073 630 1088 647 1086 667C1084 690 1064 700 1041 698C974 692 932 688 876 689C863 689 845 694 832 696Z"/>
+    </g>
+    <circle cx="30" cy="-2" r="1.4" fill="#2A2823"/>
+    <circle cx="38" cy="-6" r="1.2" fill="#2A2823"/>
+    <circle cx="33" cy="-11" r="1" fill="#2A2823"/>
+    <circle cx="42" cy="-12" r="1.1" fill="#2A2823"/>
+    <circle cx="28" cy="-15" r="0.9" fill="#2A2823"/>
+  </svg>
 </svg>
