@@ -55,8 +55,12 @@ h1.ptitle{font-size:clamp(25px,4.4vw,34px);line-height:1.32;font-weight:800;lett
 /* 검색 노출용 요약 (실텍스트·맥락 먼저) */
 .lead-sum{font-size:16px;color:#3d474e;line-height:1.85;margin:0 0 22px}
 
-/* 리포트 — Pepwrap 생성 HTML을 그대로 임베드 (높이는 리포트가 postMessage로 알려줌) */
-.rpt{display:block;width:100%;border:1px solid var(--line);border-radius:12px;min-height:500px;background:#f6f8f9;overflow:hidden;margin:0 0 26px}
+/* 글 본문 카드 — 옅은 크림 패널(노트 감성과 안 부딪힘) */
+.card{background:#fffdf8;border:1px solid #ece7da;border-radius:18px;padding:34px 38px 30px;box-shadow:0 3px 18px rgba(40,35,25,.06);margin-bottom:10px}
+@media(max-width:600px){.card{padding:20px 16px;border-radius:14px}}
+
+/* 리포트 — Pepwrap 생성 HTML을 그대로 임베드 (높이는 리포트가 postMessage로 알려줌). 카드가 프레임이라 자체 테두리 제거 */
+.rpt{display:block;width:100%;border:0;border-radius:0;min-height:500px;background:transparent;overflow:hidden;margin:0 0 8px}
 
 /* 내 생각 */
 .myview{border-left:4px solid var(--red);padding:4px 0 4px 18px;margin:36px 0 4px}
@@ -90,6 +94,7 @@ footer b{color:var(--red)}
     <a href="mailto:pepper@peppinch.com">contact</a>
   </nav>
 
+  <div class="card">
   <span class="meta-date">{{DATE_DISPLAY}}</span>
   <h1 class="ptitle">{{TITLE}}</h1>
 
@@ -108,6 +113,7 @@ footer b{color:var(--red)}
     <button id="likeBtn" class="likebtn" aria-pressed="false">♡ 좋아요 <span id="likeCount"></span></button>
     <span class="likenote">댓글은 준비 중이에요. 좋아요로 반응 남겨주시면 힘이 됩니다 🙏</span>
   </div>
+  </div><!-- /card -->
 
   <nav class="nextnav">
     <a href="/blog/">← 다른 글 보기</a>
