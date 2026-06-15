@@ -86,5 +86,17 @@ a{color:#9bd7ff;text-decoration:none}
   <section><h2>관심이 생겼다면 — 다음 액션</h2><table class="actions action-table"><colgroup><col style="width:42%"><col style="width:29%"><col style="width:29%"></colgroup><thead><tr><th>해볼 액션</th><th>따라올 산출물</th><th>왜</th></tr></thead><tbody><tr class="must-row"><td>⭐ 지금 쓰는 AI 도구의 데이터 보관·사용 약관 확인 (Fable 5의 30일 저장처럼 뭐가 걸려 있는지).</td><td>내 AI 도구 점검 메모 한 장</td><td>약관 때문에 막히거나 데이터가 새는 걸 미리 피하려고.</td></tr><tr><td>대안 오픈소스 모델 하나 가볍게 테스트 (중국 포함, 진짜 쓸 만한지 체감).</td><td>"이건 되고 저건 안 되더라" 비교 한 줄</td><td>한 모델에 락인되지 않게 퇴로를 확보하려고.</td></tr><tr><td>(서학개미) 인플레로 금리·유가 체크 + AI 규제 뉴스를 밸류에이션 변수로 주시.</td><td>관심 종목 체크에 "금리·규제" 한 줄 추가</td><td>거시·규제가 포지션을 흔드는 변수라 신호를 미리 잡으려고.</td></tr></tbody></table><p class="note">⭐ = 꼭 해볼 것</p></section>
   <section><div class="panel warn"><h2>미검증·주의</h2><ul><li>앤트로픽이 Fable 5 모델 출시와 함께 규제 도입을 유도하려는 의도가 명확하다는 주장</li><li>중국 오픈소스 AI 모델이 미국 모델보다 전반적으로 우수하다는 평가</li><li>샘 알트먼이 OpenAI 이사회에서 해임된 구체적인 사유와 내부 갈등의 전말은 명확히 밝혀지지 않았다.</li></ul></div></section>
 </main>
+<script>
+// 부모(블로그 글 페이지)에 리포트 실제 높이를 알려 iframe 높이를 정확히 맞춤 (아코디언 펼침 포함)
+(function(){
+  function send(){ try{ parent.postMessage({rptH: Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)}, '*'); }catch(e){} }
+  document.addEventListener('DOMContentLoaded', send);
+  window.addEventListener('load', function(){ send(); setTimeout(send,150); setTimeout(send,600); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(send);
+  document.addEventListener('toggle', function(){ send(); setTimeout(send,40); }, true);
+  if(window.ResizeObserver) new ResizeObserver(send).observe(document.body);
+  window.addEventListener('resize', send);
+})();
+</script>
 </body>
 </html>

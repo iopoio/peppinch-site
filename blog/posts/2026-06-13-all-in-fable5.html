@@ -129,6 +129,8 @@ footer b{color:var(--red)}
     }catch(e){}
   });
   window.addEventListener('resize',function(){ clearTimeout(window.__rt); window.__rt=setTimeout(fit,200); });
+  // 리포트가 직접 알려주는 높이 (레이스 없는 정확한 맞춤·아코디언 펼침 포함)
+  window.addEventListener('message',function(e){ var h=e.data&&e.data.rptH; if(h&&h>50&&h<60000) f.style.height=h+'px'; });
   // 좋아요 토글
   var KEY='peppinch_like_2026-06-13-all-in-fable5';
   var b=document.getElementById('likeBtn');
