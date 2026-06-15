@@ -51,10 +51,10 @@ body{background:var(--paper);color:var(--ink);font-family:"Pretendard",-apple-sy
 
 /* 제목 — 단정한 폰트 */
 .meta-date{font-size:12.5px;letter-spacing:.12em;color:var(--red);font-weight:700}
-h1.ptitle{font-size:clamp(25px,4.4vw,34px);line-height:1.32;font-weight:800;letter-spacing:-.01em;margin:8px 0 18px;color:var(--ink)}
+h1.ptitle{font-size:clamp(25px,4.4vw,34px);line-height:1.32;font-weight:800;letter-spacing:-.01em;margin:8px 0 18px;color:var(--ink);word-break:keep-all;overflow-wrap:anywhere}
 
 /* 리포트 — 원래 모습 그대로 (끼워넣기) */
-.rpt{display:block;width:100%;border:1px solid var(--line);border-radius:12px;min-height:600px;background:#f5f7f8;overflow:hidden}
+.rpt{display:block;width:100%;border:1px solid var(--line);border-radius:12px;min-height:600px;background:#f6f8f9;overflow:hidden}
 
 /* 내 생각 */
 .myview{border-left:4px solid var(--red);padding:4px 0 4px 18px;margin:36px 0 4px}
@@ -109,7 +109,6 @@ footer b{color:var(--red)}
 
   <nav class="nextnav">
     <a href="/blog/">← 다른 글 보기</a>
-    <span>다음 글: 준비 중</span>
   </nav>
 </div>
 
