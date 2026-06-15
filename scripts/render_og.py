@@ -46,11 +46,11 @@ def main():
     font_tagline = ImageFont.truetype(str(FONT_PATH), 46)
     font_intro = ImageFont.truetype(str(FONT_PATH), 31)
 
-    draw.text((102, 42), "peppinch", font=font_logo, fill=COLORS["ink"])
-    draw.text((112, 228), "한 꼬집의 후추.", font=font_ko, fill=COLORS["red"])
-    draw.text((112, 360), "A Pinch Of Pepper.", font=font_tagline, fill=COLORS["pencil"])
+    draw.text((102, 70), "peppinch", font=font_logo, fill=COLORS["ink"])
+    draw.text((112, 280), "한 꼬집의 후추.", font=font_ko, fill=COLORS["red"])
+    draw.text((112, 420), "A Pinch Of Pepper.", font=font_tagline, fill=COLORS["pencil"])
     draw.text(
-        (112, 456),
+        (112, 512),
         "이런 거 왜 없지 싶은 걸, 한 꼬집씩 만들고, 관심있는 것들을 한꼬집씩 적어봅니다",
         font=font_intro,
         fill=COLORS["pencil"],
