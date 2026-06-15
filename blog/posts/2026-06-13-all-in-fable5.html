@@ -54,7 +54,18 @@ body{background:var(--paper);color:var(--ink);font-family:"Pretendard",-apple-sy
 h1.ptitle{font-size:clamp(25px,4.4vw,34px);line-height:1.32;font-weight:800;letter-spacing:-.01em;margin:8px 0 18px;color:var(--ink);word-break:keep-all;overflow-wrap:anywhere}
 
 /* 리포트 — 원래 모습 그대로 (끼워넣기) */
-.rpt{display:block;width:100%;border:1px solid var(--line);border-radius:12px;min-height:600px;background:#f6f8f9;overflow:hidden}
+.lead-sum{font-size:16px;color:#3d474e;line-height:1.85;margin:0 0 20px}
+details.rptbox{margin:0 0 26px;border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
+details.rptbox>summary{cursor:pointer;list-style:none;padding:14px 18px;font-weight:700;color:var(--blue);font-size:15px;-webkit-user-select:none;user-select:none}
+details.rptbox>summary::-webkit-details-marker{display:none}
+details.rptbox>summary::before{content:"▸  ";color:var(--red)}
+details.rptbox[open]>summary{border-bottom:1px solid var(--line)}
+details.rptbox[open]>summary::before{content:"▾  "}
+/* PC에서 리포트만 넓게 — 글 본문은 860 유지, 리포트 박스만 최대 1180으로 바깥 확장 */
+@media(min-width:980px){
+  details.rptbox{width:min(1180px,94vw);margin-left:50%;transform:translateX(-50%)}
+}
+.rpt{display:block;width:100%;border:0;min-height:600px;background:#f6f8f9;overflow:hidden}
 
 /* 내 생각 */
 .myview{border-left:4px solid var(--red);padding:4px 0 4px 18px;margin:36px 0 4px}
@@ -91,8 +102,13 @@ footer b{color:var(--red)}
   <span class="meta-date">2026 · 06 · 13</span>
   <h1 class="ptitle">앤트로픽 Fable 백래시 · AI 국유화 · 인플레 재점화</h1>
 
-  <!-- 리포트 그대로 -->
-  <iframe class="rpt" id="rpt" src="/blog/posts/2026-06-13-all-in-fable5-report" title="All-In 정리 리포트" loading="eager" scrolling="no"></iframe>
+  <p class="lead-sum">앤트로픽이 새 모델 Fable 5를 내놓으며 30일 데이터 보관·경쟁 연구 차단 같은 제한을 걸자 개발자들이 반발했다. 이 통제가 오히려 중국 오픈소스 AI를 키운다는 우려, AI 이익을 국부펀드로 일부 사회에 환원하자는 논쟁, 다시 뜨거워진 미국 인플레까지 — All-In 팟캐스트 1시간 42분에서 오간 핵심만 펩랩 방식으로 표로 정리했다. (정치 파트는 뺐다.)</p>
+
+  <!-- 리포트 그대로 (기본 접힘·텍스트 누르면 펼침) -->
+  <details class="rptbox" id="rptbox">
+    <summary>정리 리포트 펼쳐보기 — All-In 1시간 42분</summary>
+    <iframe class="rpt" id="rpt" src="/blog/posts/2026-06-13-all-in-fable5-report" title="All-In 정리 리포트" loading="lazy" scrolling="no"></iframe>
+  </details>
 
   <section class="myview">
     <div class="lbl">✍️ 내 생각</div>
@@ -126,6 +142,9 @@ footer b{color:var(--red)}
     }catch(e){}
   });
   window.addEventListener('resize',function(){ clearTimeout(window.__rt); window.__rt=setTimeout(fit,200); });
+  // 접기/펼치기 — 펼칠 때 높이 재계산 (접힌 동안은 iframe이 숨겨져 0이므로)
+  var box=document.getElementById('rptbox');
+  if(box) box.addEventListener('toggle',function(){ if(box.open){ fit(); setTimeout(fit,300); setTimeout(fit,1200); } });
   // 좋아요 토글
   var KEY='peppinch_like_2026-06-13-all-in-fable5';
   var b=document.getElementById('likeBtn');
