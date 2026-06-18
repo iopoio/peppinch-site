@@ -340,15 +340,16 @@
   }
   .nav-chip .blog-pointer {
     position: absolute;
-    right: -28px;
-    top: -19px;
+    left: 50%;
+    top: -36px;
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    gap: 2px;
-    font-size: 13px;
+    gap: 1px;
+    font-size: 14px;
     line-height: 1;
     color: var(--blue);
-    transform: rotate(-7deg);
+    transform: translateX(-50%) rotate(-4deg);
     white-space: nowrap;
   }
   .nav-chip .blog-pointer svg {
@@ -380,7 +381,7 @@
   }
   .section-sub {
     font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     color: var(--pencil);
     opacity: .7;
     margin-bottom: 30px;
@@ -807,7 +808,7 @@
     </a>
     <a class="nav-chip blog-nav-chip" href="/blog/">
       blog
-      <span class="blog-pointer" aria-hidden="true">글 써요<svg viewBox="0 0 28 16"><path d="M2 10 C9 2 18 2 26 8 M22 4 L26 8 L20 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="blog-pointer" aria-hidden="true">글 써요<svg viewBox="0 0 24 18"><path d="M12 1 C8 7 8 10 12 17 M7 11 L12 17 L17 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,6 T95,7 Q97,21 96,32 Q60,37 30,34 T5,33 Q3,20 5,8 Z" fill="none" stroke="#2F5FA8" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
     </a>
     <a class="nav-chip" href="mailto:pepper@peppinch.com" title="pepper@peppinch.com">
