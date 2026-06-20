@@ -14,9 +14,27 @@
   </url>
   <url>
     <loc>https://www.peppinch.com/blog/</loc>
-    <lastmod>2026-06-13</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.peppinch.com/blog/posts/2026-06-20-publace-nationwide-restrooms</loc>
+    <lastmod>2026-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.peppinch.com/blog/posts/2026-06-18-saida-eonni</loc>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.peppinch.com/blog/posts/2026-06-17-ark-how-to-read</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.peppinch.com/blog/posts/2026-06-13-all-in-fable5</loc>
