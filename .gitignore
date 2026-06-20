@@ -6,3 +6,8 @@ node_modules/
 _*.html
 .claude/
 inbox/
+
+# 2026-06-20 보안 점검 — root 전체 배포 구조라 .env 실수 커밋 시 즉시 공개. 차단.
+.env
+.env.*
+!.env.example
