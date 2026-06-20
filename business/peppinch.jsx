@@ -67,7 +67,15 @@ const PROJECTS = [
     href: "https://publace.site"
   },
   {
-    id: 2, name: "EatScan", ko: "잇스캔",
+    id: 2, name: "pepstocks", ko: "펩스탁",
+    line: "오늘 시장이 왜 이렇게 됐는지, 그 흐름이 한눈에.",
+    tag: "미국·한국 주식 흐름 한눈에",
+    year: "2026",
+    role: "Live",
+    href: "https://pepstocks.com"
+  },
+  {
+    id: 3, name: "EatScan", ko: "잇스캔",
     line: "라벨을 한 번 비추면, 먹어도 되는지 아닌지를 조용히 알려준다.",
     tag: "식품 알레르기 라벨 스캐너",
     year: "2024",
@@ -75,7 +83,7 @@ const PROJECTS = [
     href: "https://eatscan.site"
   },
   {
-    id: 3, name: "이달여행", ko: "IdalTrip",
+    id: 4, name: "이달여행", ko: "IdalTrip",
     line: "이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.",
     tag: "축제 기반 여행 코스",
     year: "2025",
@@ -83,7 +91,7 @@ const PROJECTS = [
     href: "https://idaltrip.vercel.app"
   },
   {
-    id: 4, name: "잡솔트", ko: "JobSort",
+    id: 5, name: "잡솔트", ko: "JobSort",
     line: "공고는 너무 많고, 나에게 맞는 건 늘 한두 개.",
     tag: "공공기관 직무 매칭",
     year: "2025",
@@ -91,7 +99,7 @@ const PROJECTS = [
     href: "https://jobsort.peppinch.com"
   },
   {
-    id: 5, name: "TickDeck", ko: "틱덱",
+    id: 6, name: "TickDeck", ko: "틱덱",
     line: "URL 한 줄을, 발표 슬라이드 한 벌로.",
     tag: "URL → Slides",
     year: "2025",
@@ -99,7 +107,7 @@ const PROJECTS = [
     href: "#"
   },
   {
-    id: 6, name: "etc", ko: "기타",
+    id: 7, name: "etc", ko: "기타",
     line: "틈틈이 재미로 만든 작은 도구들의 진열대.",
     tag: "작은 실험 묶음",
     year: "2025",
