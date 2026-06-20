@@ -71,7 +71,7 @@ const PROJECTS = [
     line: "오늘 시장이 왜 이렇게 됐는지, 그 흐름이 한눈에.",
     tag: "미국·한국 주식 흐름 한눈에",
     year: "2026",
-    role: "Live",
+    role: "Beta",
     href: "https://pepstocks.com"
   },
   {
