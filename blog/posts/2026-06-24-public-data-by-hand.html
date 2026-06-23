@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>공공 정보는 모으는 게 아니라 손으로 맞추는 거였다 · peppinch blog</title>
+<meta name="description" content="동네 교육강좌를 모아보려고 구청 데이터를 받았는데, '대상' 칸부터 기관마다 다 제각각이라 손으로 끊어야 했다. 데이터는 이미 공개돼 있고, 진짜 일은 사람이 알아볼 수 있게 맞추는 거였던 이야기.">
+<meta property="og:title" content="공공 정보는 모으는 게 아니라 손으로 맞추는 거였다">
+<meta property="og:description" content="데이터는 이미 다 공개돼 있다. 진짜 일은 모으는 게 아니라, 기관마다 제각각인 걸 사람이 알아볼 수 있게 맞추는 거였다.">
+<meta property="og:image" content="https://www.peppinch.com/og-image.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.peppinch.com/blog/posts/2026-06-24-public-data-by-hand">
+<meta property="og:site_name" content="peppinch">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2026-06-24T00:00:00+09:00">
+<meta property="article:section" content="AI랑 만들기">
+<meta property="article:tag" content="퍼블레이스"><meta property="article:tag" content="빌드인퍼블릭"><meta property="article:tag" content="공공데이터">
+<meta name="author" content="peppinch">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@peppinch_">
+<meta name="twitter:title" content="공공 정보는 모으는 게 아니라 손으로 맞추는 거였다">
+<meta name="twitter:description" content="데이터는 이미 다 공개돼 있고, 진짜 일은 기관마다 제각각인 걸 사람 손으로 맞추는 거였다.">
+<meta name="twitter:image" content="https://www.peppinch.com/og-image.png">
+<link rel="canonical" href="https://www.peppinch.com/blog/posts/2026-06-24-public-data-by-hand">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧂</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"공공 정보는 모으는 게 아니라 손으로 맞추는 거였다","description":"데이터는 이미 다 공개돼 있다. 진짜 일은 모으는 게 아니라, 기관마다 제각각인 걸 사람이 알아볼 수 있게 맞추는 거였다.","datePublished":"2026-06-24T00:00:00+09:00","dateModified":"2026-06-24T00:00:00+09:00","inLanguage":"ko-KR","url":"https://www.peppinch.com/blog/posts/2026-06-24-public-data-by-hand","mainEntityOfPage":"https://www.peppinch.com/blog/posts/2026-06-24-public-data-by-hand","image":"https://www.peppinch.com/og-image.png","author":{"@type":"Person","name":"peppinch","url":"https://www.peppinch.com/"},"publisher":{"@type":"Organization","name":"peppinch","logo":{"@type":"ImageObject","url":"https://www.peppinch.com/favicon.svg"}}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LZ7ZXMFEBM');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+@font-face{font-family:"Kyobo";src:url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),url("/fonts/KyoboHandwriting2019.otf") format("opentype");font-display:swap}
+:root{--paper:#faf6ec;--ink:#1f2a31;--pencil:#5b6670;--red:#c8412c;--blue:#1565c0;--line:#dfe4e6}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:"Pretendard",-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.page{max-width:900px;margin:0 auto;padding:40px 26px 96px}
+.nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:38px}
+.nav a{font-family:"Kyobo","Caveat",cursive;font-weight:500;font-size:22px;color:var(--pencil);text-decoration:none;line-height:1}
+.nav a:hover{color:var(--red)}
+.nav a[data-active]{color:var(--red)}
+.meta-date{font-size:13px;letter-spacing:.14em;color:var(--red);font-weight:700;text-transform:uppercase}
+h1.ptitle{font-size:clamp(27px,4.8vw,40px);line-height:1.3;font-weight:800;letter-spacing:-.01em;margin:12px 0 30px;color:var(--ink);word-break:keep-all}
+.post-body{font-size:18px;color:#2c363d;line-height:1.9}
+.post-body p{margin:0 0 22px}
+.post-body em{font-style:normal;font-weight:700;color:var(--ink)}
+.post-body h2{font-size:24px;font-weight:800;color:var(--ink);margin:46px 0 18px;letter-spacing:-.01em}
+.post-body blockquote{margin:24px 0;padding:16px 22px;background:#fffdf8;border-left:4px solid var(--red);border-radius:0 10px 10px 0;color:#3d474e;font-size:17px;line-height:1.65}
+.post-body .takeaway{font-weight:700;color:var(--blue);font-size:18.5px;margin-top:40px}
+.post-body .sitenote{margin-top:14px;font-size:16px;color:var(--pencil)}
+.post-body .sitenote a{color:var(--blue);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--blue)}
+hr.rule{border:0;border-top:1px solid var(--line);margin:52px 0 30px}
+footer{display:flex;justify-content:space-between;align-items:center;font-family:"Kyobo","Caveat",cursive;font-size:19px;color:var(--pencil);flex-wrap:wrap;gap:14px}
+footer b{color:var(--red)}
+.backlink{font-family:"Kyobo","Caveat",cursive;font-size:19px;color:var(--blue);text-decoration:none}
+.backlink:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="page">
+<nav class="nav">
+<a href="/">home</a>
+<a href="/business/">business</a>
+<a href="/blog/" data-active>blog</a>
+<a href="mailto:pepper@peppinch.com">contact</a>
+</nav>
+
+<span class="meta-date">2026 · 06 · 24</span>
+<h1 class="ptitle">공공 정보는 모으는 게 아니라 손으로 맞추는 거였다</h1>
+
+<div class="post-body">
+<p>"OO자녀를 둔 학(조)부모"</p>
+
+<p>동네 교육강좌 데이터를 받아서 딱 열었는데 '대상' 칸에서 멈췄음 🤔<br>어 이거 애가 듣는 거 아니라 보호자가 듣는 거잖아? 같은 '대상' 칸인데 갑자기 애가 아니라 성인을 가리키는 거임</p>
+
+<p>동네 공공시설 찾는 서비스에 '동네 교육강좌' 페이지를 하나 붙여보려던 참이었는데, 데이터 받자마자 첫 칸에서 이러고 있는 거지</p>
+
+<h2>'대상' 한 칸에서 멈췄다</h2>
+
+<p>다시 쭉 보니까 이게 기관마다 적는 말이 다 다른 거임<br>누구는 "미취학 아동"이라고 적어놨고<br>누구는 그냥 "누구나"라고 적어놨고<br>누구는 아까 그 "OO자녀를 둔 학(조)부모"… 다 같은 '대상'인데 누구는 듣는 사람을, 누구는 데려오는 사람을 적어놓은 거지<br>이걸 그냥 그대로 보여주면, 우리 애 들을 거 찾으려고 들어온 사람이 보호자 강좌까지 같이 보게 되는 거고</p>
+
+<p>통일된 기준 같은 건 없으니까 결국 내가 그냥 <em>선을 그어버렸음</em><br>유아 / 초등 / 중등 / 청소년 / 성인 / 어르신 / 전체<br>이게 어디 정답이 있어서 나눈 게 아니라, 그냥 내가 보기 편하게 끊은 거라… 지금도 어디다 넣어야 할지 애매한 애들이 남아있음 ㅋㅋㅋ</p>
+
+<h2>마감을 뭐라고 부르는지가 여섯 가지였다</h2>
+
+<p>대상만 그런 게 아니더라고<br>신청 끝난 강좌가 그대로 떠 있으면, 그거 보고 찾아간 사람은 헛걸음하는 거잖아<br>그래서 마감된 건 걸러내려고 봤더니, 이번엔 '마감'을 부르는 말이 출처마다 다 달랐음</p>
+
+<blockquote>접수마감 · 종료 · 강의종료 · 마감 · 접수불가 · 정원마감</blockquote>
+
+<p>…같은 "이거 끝났음"인데 여섯 가지 ㅋㅋ<br>한쪽은 '종료'라 적고 한쪽은 '정원마감'이라 적고, 사람 눈엔 둘 다 끝난 건데 기계한텐 그냥 다른 글자거든<br>그래서 이 여섯 개를 다 그러모아서 "이 중에 하나라도 걸리면 끝난 걸로 친다"고 손으로 정해줘야 했음</p>
+
+<h2>게다가 매달 새로 올라온다</h2>
+
+<p>여기까지만 해도 어휴 했는데, 진짜 문제는 이게 한 번 맞춘다고 끝이 아니라는 거였음<br>강좌가 <em>6월 따로 7월 따로</em>, 매달 새로 올라와<br>긁어오는 건 자동으로 돌게 해놨는데, 새로 올라온 그게 또 표기가 제각각이란 말이지<br>그러니까 자동으로 가져온다고 끝이 아니고, 매달 사람이 다시 들여다보면서 "아 이번 달엔 이렇게 적었네" 하고 또 맞춰야 하는 거임</p>
+
+<p>한 번 정리하면 끝나는 게 아니라 매달 다시 정리해야 하는 일… 이걸 깨닫는 순간이 좀 멍했음</p>
+
+<p>사실 얼마 전에 주차장 데이터 넣을 때도 비슷했거든 (좌표가 엉켜 있거나 엉뚱한 게 섞여 있어서 손으로 골라냈음) — 그건 그것대로 한 편 따로 쓸 만한 얘기라 여기선 줄이는데, 아무튼 공공 정보가 전반적으로 이런 결이더라고</p>
+
+<h2>그래서 아무도 안 모아둔 거구나 싶었다</h2>
+
+<p>영등포랑 양천, 딱 두 개 구만 봤는데도 공공기관이 <em>55곳에 강좌가 2,111건</em>이었음<br>두 구만 해도 이만큼인데, 이게 다 표기가 제각각이라는 게 핵심이지</p>
+
+<p>여기서 좀 생각이 바뀌었는데<br>나는 처음에 이게 '데이터 모으는 일'인 줄 알았거든<br>근데 데이터는 이미 다 공개돼 있어 — 구청마다 다 올려놨음<br>모으는 건 그렇게 안 어려워</p>
+
+<p>진짜 일은 이걸 사람이 한눈에 알아볼 수 있게 <em>맞추는</em> 쪽이었던 거<br>대상을 같은 기준으로 끊고, 마감을 같은 말로 묶고, 그걸 매달 다시 하고<br>모으는 게 아니라 맞추는 일… 게다가 끝이 없는 일</p>
+
+<p>그러다 보니 왜 이걸 여태 아무도 한곳에 깔끔하게 모아두지 않았는지 좀 알 것 같더라고<br>데이터가 없어서가 아니라, 맞추는 게 까다롭고 매달 다시 해야 하니까 손이 안 가는 거지<br>나도 지금 다 못 맞췄고 ㅋㅋㅋ</p>
+
+<p>그래도 누군가는 해야 동네 사람이 강좌 하나 찾을 때 헛걸음 안 하는 거니까, 일단 내가 해보는 중임 🙂<br>대상을 어디까지 자동으로 끊고 어디부터 손으로 봐야 할지, 그 선을 아직 못 정했는데… 그건 다음 기회에</p>
+
+<p class="takeaway">내가 필요해서 만들어봤지만.. 이거 참 돈도 안 되는 일이라 나서서 하는 사람이 없구만.. 안타까운 현실이다</p>
+
+<p class="sitenote">오늘은 <a href="https://publace.site/">publace.site</a> 이야기</p>
+</div>
+
+<hr class="rule">
+<footer>
+<a class="backlink" href="/blog/">← 다른 글 보기</a>
+<span>made slow, in seoul — <b>peppinch</b> 🧂 <a href="mailto:pepper@peppinch.com" aria-label="메일 보내기" title="궁금하거나 하고싶은 말이 있으면 메일로 부탁드려요" style="margin-left:8px;text-decoration:none;border:0;">✉️</a></span>
+</footer>
+</div>
+</body>
+</html>
