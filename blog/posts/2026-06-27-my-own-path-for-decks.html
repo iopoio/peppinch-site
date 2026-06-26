@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI가 덱도 만들어주는 시대지만, 아직 내가 원하는 딸깍은 오지 않은 듯 · peppinch blog</title>
+<meta name="description" content="AI 덱 생성 도구는 빠르고 그럴듯한데, 내가 원하는 '딸깍'은 아직 안 왔다. 회사 다닐 때 발표자료 만들던 고통에서 시작해, 자료부터 짜고 출처를 끝까지 확인하며 직접 만들어본 이야기.">
+<meta property="og:title" content="AI가 덱도 만들어주는 시대지만, 아직 내가 원하는 딸깍은 오지 않은 듯">
+<meta property="og:description" content="빠르고 그럴듯한 자료는 나오는데 출처가 없더라. 회사 때 그 고통 없애보려고, 자료부터 짜고 출처를 끝까지 확인하며 직접 만들어본 이야기.">
+<meta property="og:image" content="https://www.peppinch.com/blog/posts/2026-06-27-deck-4cut.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.peppinch.com/blog/posts/2026-06-27-my-own-path-for-decks">
+<meta property="og:site_name" content="peppinch">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2026-06-27T00:00:00+09:00">
+<meta property="article:section" content="AI랑 만들기">
+<meta property="article:tag" content="빌드인퍼블릭"><meta property="article:tag" content="틱덱"><meta property="article:tag" content="AI">
+<meta name="author" content="peppinch">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@peppinch_">
+<meta name="twitter:title" content="AI가 덱도 만들어주는 시대지만, 아직 내가 원하는 딸깍은 오지 않은 듯">
+<meta name="twitter:description" content="빠르고 그럴듯한 자료는 나오는데 출처가 없더라. 회사 때 그 고통 없애보려고 직접 만들어본 이야기.">
+<meta name="twitter:image" content="https://www.peppinch.com/blog/posts/2026-06-27-deck-4cut.png">
+<link rel="canonical" href="https://www.peppinch.com/blog/posts/2026-06-27-my-own-path-for-decks">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧂</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI가 덱도 만들어주는 시대지만, 아직 내가 원하는 딸깍은 오지 않은 듯","description":"AI 덱 생성 도구는 빠르고 그럴듯한데 출처가 없더라. 회사 때 발표자료 만들던 고통에서 시작해, 자료부터 짜고 출처를 끝까지 확인하며 직접 만들어본 이야기.","datePublished":"2026-06-27T00:00:00+09:00","dateModified":"2026-06-27T00:00:00+09:00","inLanguage":"ko-KR","url":"https://www.peppinch.com/blog/posts/2026-06-27-my-own-path-for-decks","mainEntityOfPage":"https://www.peppinch.com/blog/posts/2026-06-27-my-own-path-for-decks","image":"https://www.peppinch.com/blog/posts/2026-06-27-deck-4cut.png","author":{"@type":"Person","name":"peppinch","url":"https://www.peppinch.com/"},"publisher":{"@type":"Organization","name":"peppinch","logo":{"@type":"ImageObject","url":"https://www.peppinch.com/favicon.svg"}}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LZ7ZXMFEBM');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+@font-face{font-family:"Kyobo";src:url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),url("/fonts/KyoboHandwriting2019.otf") format("opentype");font-display:swap}
+:root{--paper:#faf6ec;--ink:#1f2a31;--pencil:#5b6670;--red:#c8412c;--blue:#1565c0;--line:#dfe4e6}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:"Pretendard",-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.85;-webkit-font-smoothing:antialiased}
+.page{max-width:900px;margin:0 auto;padding:40px 26px 96px}
+.nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:38px}
+.nav a{font-family:"Kyobo","Caveat",cursive;font-weight:500;font-size:22px;color:var(--pencil);text-decoration:none;line-height:1}
+.nav a:hover{color:var(--red)}
+.nav a[data-active]{color:var(--red)}
+.meta-date{font-size:13px;letter-spacing:.14em;color:var(--red);font-weight:700;text-transform:uppercase}
+h1.ptitle{font-size:clamp(27px,4.8vw,40px);line-height:1.3;font-weight:800;letter-spacing:-.01em;margin:12px 0 30px;color:var(--ink);word-break:keep-all}
+.post-body{font-size:18px;color:#2c363d;line-height:1.9}
+.post-body p{margin:0 0 22px}
+.post-body em{font-style:normal;font-weight:700;color:var(--ink)}
+.post-body h2{font-size:24px;font-weight:800;color:var(--ink);margin:46px 0 18px;letter-spacing:-.01em}
+.post-body blockquote{margin:24px 0;padding:16px 22px;background:#fffdf8;border-left:4px solid var(--red);border-radius:0 10px 10px 0;color:#3d474e;font-size:17px;line-height:1.65}
+.post-body figure{margin:34px 0;text-align:center}
+.post-body figure img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
+.post-body figure figcaption{margin-top:10px;font-size:14px;color:var(--pencil)}
+.post-body .takeaway{font-weight:700;color:var(--blue);font-size:18.5px;margin-top:40px}
+.post-body .sitenote{margin-top:14px;font-size:16px;color:var(--pencil)}
+.post-body .sitenote a{color:var(--blue);font-weight:700;text-decoration:none;border-bottom:1.5px solid var(--blue)}
+hr.rule{border:0;border-top:1px solid var(--line);margin:52px 0 30px}
+footer{display:flex;justify-content:space-between;align-items:center;font-family:"Kyobo","Caveat",cursive;font-size:19px;color:var(--pencil);flex-wrap:wrap;gap:14px}
+footer b{color:var(--red)}
+.backlink{font-family:"Kyobo","Caveat",cursive;font-size:19px;color:var(--blue);text-decoration:none}
+.backlink:hover{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="page">
+<nav class="nav">
+<a href="/">home</a>
+<a href="/business/">business</a>
+<a href="/blog/" data-active>blog</a>
+<a href="mailto:pepper@peppinch.com">contact</a>
+</nav>
+
+<span class="meta-date">2026 · 06 · 27</span>
+<h1 class="ptitle">AI가 덱도 만들어주는 시대지만, 아직 내가 원하는 딸깍은 오지 않은 듯</h1>
+
+<div class="post-body">
+<p>"이 숫자 어디에서 나온 거지?"</p>
+
+<p>AI 덱 생성 도구에 주제 하나 넣어놨는데 몇 초 만에 슬라이드가 좌라락 나오면서 표도 그래프도 다 갖춰 나오는데, 딱 봐도 오?! 그럴듯해!<br>근데 이거 어디서 나온 숫자야? 출처가 없잖아??</p>
+
+<p>오해 없이 말하자면 요즘 진짜 많잖아… 티비 방송하는 애들도 있고<br>근데 내가 원하는 수준으로 딸깍하고 나오는 게 없더라고</p>
+
+<p>사실 나 회사 다닐 때 이런 발표자료, 기획서 만드는 게 일이었거든<br>그때 이게 어찌나 괴롭던지… 내 고통부터 좀 없애보려고 시작한 거라 더 그런가 봐<br>빨리 뽑는 거보다 내가 납득되는 수준이 될 때까지 만드는 쪽으로 자꾸 디벨롭 중이야</p>
+
+<h2>디자인부터 손대면 꼭 갈아엎는다</h2>
+
+<p>예전에도 그랬는데 <em>내용을 잡고 디자인을 맞춰야지</em>, 디자인 잡고 내용 맞추려고 하면 막 다 어그러지던데 또 그러더라고<br>옷부터 사고 거기에 몸을 맞추려는 그런 격인 거지</p>
+
+<p>그래서 이전 경험을 토대로 자료를 우선 짜고 디자인을 그 자료에 맞는 걸로 맞춰 넣었고, 색도 내 취향으로 안 뽑고 디자인 사이트들 참고해서 조사해서 뽑아봤어</p>
+
+<figure>
+<img src="2026-06-27-deck-4cut.png" alt="직접 만든 14장 마케팅 트렌드 덱 중 네 컷 — 커버, 핵심 수치, 차트, 흐름도">
+<figcaption>직접 만든 14장 중 네 컷</figcaption>
+</figure>
+
+<h2>출처는 이름만 다는 게 아니더라</h2>
+
+<p>만들면서 제일 크게 와닿은 게 이거였음<br>AI가 뽑아준 자료는 숫자가 딱딱 박혀서 완벽해 보이는데, 막상 그 숫자가 어디서 왔는지 내가 자신 있게 말을 못 하겠는 거지</p>
+
+<p>그래서 거꾸로, 실제 보고서를 열 군데쯤 뒤져서 숫자를 직접 확인했음<br>근데 이게 출처 이름만 적는 걸로는 안 돼 — "어디어디원" 달아놓는다고 검증이 아니라, <em>그 숫자가 진짜 그 보고서 안에 있는지</em>까지 봐야 비로소 검증이더라고<br>모으는 것보다 이 확인이 훨씬 일이었는데, 여기가 빠른 길이랑 깊은 길을 가르는 지점 같았음</p>
+
+<h2>결국 내 눈으로 본다</h2>
+
+<p>이건 좀 웃긴 얘긴데<br>다 만들고 나서 AI한테 검수 좀 시켜봤거든?<br>근데 없는 오류를 세 번이나, 이거 꼭 고치라고 별표까지 달고 짚어줘서 🤣</p>
+
+<p>하… 그래 날 도와주려는 건 알겠는데, 맞는지 아닌지는 결국 내가 직접 확인해봐야 하더라고</p>
+
+<p>빠른 길이 나쁜 게 아니야<br>누군가는 그 속도와 그 정도 퀄리티를 원하는 사람도 많이 있겠지<br>근데 나는 그냥 손이 좀 더 가더라도 내가 만족할 만한 자료가 나왔으면 해서 그걸 파보는 중이고</p>
+
+<p>솔직히 딸깍 한 번에 뚝딱 나오면 좋겠지만 아직 그 정도 수준까진 아니네<br>근데 이렇게 좀 손보고 나니까 내부 보고용으로 쓸 만한 수준까지는 나온 거 같아서 좀 만족스러움</p>
+
+<p>여기서 좀 더 다듬고 좀 더 손보면…… 🫠</p>
+
+<p class="takeaway">AI가 빠르게 다 채워줄수록, 근거가 어디서 왔는지·할루시네이션이 아닌지 확인하는 인간의 몫은 계속 필요한 것 같다</p>
+
+<p class="sitenote">오늘은 아직 만들고 있는 중인 <em>TickDeck</em> 이야기<br>덱 만드는 건 아직도 다듬는 중이라, 다음엔 이 과정을 좀 덜 고생스럽게 만들 수 없나 좀 더 디벨롭해볼 듯</p>
+</div>
+
+<hr class="rule">
+<footer>
+<a class="backlink" href="/blog/">← 다른 글 보기</a>
+<span>made slow, in seoul — <b>peppinch</b> 🧂 <a href="mailto:pepper@peppinch.com" aria-label="메일 보내기" title="궁금하거나 하고싶은 말이 있으면 메일로 부탁드려요" style="margin-left:8px;text-decoration:none;border:0;">✉️</a></span>
+</footer>
+</div>
+</body>
+</html>
