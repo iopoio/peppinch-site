@@ -510,7 +510,8 @@
     color: var(--red);
     font-variation-settings: "wght" 750, "BNCE" 0, "INFM" 60;
   }
-  /* 수동 SVG handwriting — 잡솔트 시범 */
+  /* handwriting SVG — Kyobo 글자 clipPath + 스켈레톤 획 붓 reveal (7/2).
+     획별 duration·delay·stroke-width = SVG 인라인 (assets/handwriting-svgs.js) */
   .name .hw-svg {
     display: inline-block;
     width: auto;
@@ -521,39 +522,18 @@
   .name .hw {
     fill: none;
     stroke: var(--red);
-    stroke-width: 8;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
+    /* 101 (pathLength 100보다 1 크게) — dash 경계 round cap 점 새는 것 차단 */
+    stroke-dasharray: 101;
+    stroke-dashoffset: 101;
   }
   .name.hw-on .hw {
-    animation: hw-draw 0.22s ease-out forwards;
+    animation-name: hw-draw;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
   }
   @keyframes hw-draw { to { stroke-dashoffset: 0; } }
-  /* stagger — 22 stroke 각 0.1s 간격 */
-  .name.hw-on .hw:nth-child(1)  { animation-delay: 0.00s; }
-  .name.hw-on .hw:nth-child(2)  { animation-delay: 0.10s; }
-  .name.hw-on .hw:nth-child(3)  { animation-delay: 0.20s; }
-  .name.hw-on .hw:nth-child(4)  { animation-delay: 0.30s; }
-  .name.hw-on .hw:nth-child(5)  { animation-delay: 0.40s; }
-  .name.hw-on .hw:nth-child(6)  { animation-delay: 0.50s; }
-  .name.hw-on .hw:nth-child(7)  { animation-delay: 0.60s; }
-  .name.hw-on .hw:nth-child(8)  { animation-delay: 0.70s; }
-  .name.hw-on .hw:nth-child(9)  { animation-delay: 0.80s; }
-  .name.hw-on .hw:nth-child(10) { animation-delay: 0.90s; }
-  .name.hw-on .hw:nth-child(11) { animation-delay: 1.00s; }
-  .name.hw-on .hw:nth-child(12) { animation-delay: 1.10s; }
-  .name.hw-on .hw:nth-child(13) { animation-delay: 1.20s; }
-  .name.hw-on .hw:nth-child(14) { animation-delay: 1.30s; }
-  .name.hw-on .hw:nth-child(15) { animation-delay: 1.40s; }
-  .name.hw-on .hw:nth-child(16) { animation-delay: 1.50s; }
-  .name.hw-on .hw:nth-child(17) { animation-delay: 1.60s; }
-  .name.hw-on .hw:nth-child(18) { animation-delay: 1.70s; }
-  .name.hw-on .hw:nth-child(19) { animation-delay: 1.80s; }
-  .name.hw-on .hw:nth-child(20) { animation-delay: 1.90s; }
-  .name.hw-on .hw:nth-child(21) { animation-delay: 2.00s; }
-  .name.hw-on .hw:nth-child(22) { animation-delay: 2.10s; }
   .card .ko {
     font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
     font-size: 20px;
@@ -881,6 +861,7 @@
   <div class="row" style="margin-top:6px; opacity:.7; font-style: italic;">— not pixel-final —</div>
 </div>
 
+<script src="assets/handwriting-svgs.js"></script>
 <script>
 /* PROJECTS — 메인 + /business 데이터 공유. 6번째 etc 카드 (혜택잡이 → toys → etc·5/14 갱신). */
 const PROJECTS = [
@@ -937,117 +918,7 @@ function endTypewriter(el) {
   if (el.dataset.original) el.textContent = el.dataset.original;
 }
 
-/* 카드 수동 SVG handwriting — 제미나이 영역 작성·본진 적용 (5/14) */
-const PUBLACE_SVG = `<svg class="hw-svg" viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path class="hw" d="M 15,15 L 15,70" pathLength="100"/>
-  <path class="hw" d="M 15,15 Q 45,15 45,32 Q 45,45 15,45" pathLength="100"/>
-  <path class="hw" d="M 55,35 Q 55,65 72,65 Q 85,65 85,35" pathLength="100"/>
-  <path class="hw" d="M 85,35 L 85,65" pathLength="100"/>
-  <path class="hw" d="M 100,10 L 100,65" pathLength="100"/>
-  <path class="hw" d="M 100,45 Q 125,45 125,55 Q 125,65 100,65" pathLength="100"/>
-  <path class="hw" d="M 140,10 L 140,65" pathLength="100"/>
-  <path class="hw" d="M 175,50 Q 155,50 155,60 Q 155,70 175,70 Q 185,70 185,60" pathLength="100"/>
-  <path class="hw" d="M 185,45 L 185,70" pathLength="100"/>
-  <path class="hw" d="M 225,45 Q 200,45 200,60 Q 200,75 225,75" pathLength="100"/>
-  <path class="hw" d="M 245,60 Q 275,60 275,45 Q 275,35 255,35 Q 240,35 240,55 Q 240,75 275,75" pathLength="100"/>
-</svg>`;
-
-const EATSCAN_SVG = `<svg class="hw-svg" viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path class="hw" d="M 15,15 L 15,65" pathLength="100"/>
-  <path class="hw" d="M 15,15 L 40,15" pathLength="100"/>
-  <path class="hw" d="M 15,38 L 35,38" pathLength="100"/>
-  <path class="hw" d="M 15,65 L 45,65" pathLength="100"/>
-  <path class="hw" d="M 75,50 Q 55,50 55,60 Q 55,70 75,70 Q 85,70 85,60" pathLength="100"/>
-  <path class="hw" d="M 85,45 L 85,70" pathLength="100"/>
-  <path class="hw" d="M 110,15 L 110,65" pathLength="100"/>
-  <path class="hw" d="M 100,30 L 125,30" pathLength="100"/>
-  <path class="hw" d="M 165,15 Q 140,15 140,30 Q 140,45 165,45 Q 190,45 190,60 Q 190,75 165,75" pathLength="100"/>
-  <path class="hw" d="M 225,45 Q 200,45 200,60 Q 200,75 225,75" pathLength="100"/>
-  <path class="hw" d="M 255,50 Q 235,50 235,60 Q 235,70 255,70 Q 265,70 265,60" pathLength="100"/>
-  <path class="hw" d="M 265,45 L 265,70" pathLength="100"/>
-  <path class="hw" d="M 285,40 L 285,70" pathLength="100"/>
-  <path class="hw" d="M 285,40 Q 310,40 310,70" pathLength="100"/>
-</svg>`;
-
-const IDALTRIP_SVG = `<svg class="hw-svg" viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <!-- 이: ㅇ + ㅣ -->
-  <path class="hw" d="M 25,15 Q 10,15 10,27 Q 10,40 25,40 Q 40,40 40,27 Q 40,15 25,15" pathLength="100"/>
-  <path class="hw" d="M 52,10 L 52,65" pathLength="100"/>
-  <!-- 달: ㄷ(위) + ㅏ(오) + ㄹ(받침) -->
-  <path class="hw" d="M 70,15 L 105,15" pathLength="100"/>
-  <path class="hw" d="M 70,15 Q 69,28 70,38 Q 72,40 105,39" pathLength="100"/>
-  <path class="hw" d="M 115,10 L 115,48" pathLength="100"/>
-  <path class="hw" d="M 115,25 L 125,25" pathLength="100"/>
-  <path class="hw" d="M 72,50 L 108,50" pathLength="100"/>
-  <path class="hw" d="M 108,50 L 108,58 L 72,58" pathLength="100"/>
-  <path class="hw" d="M 72,62 L 108,62" pathLength="100"/>
-  <path class="hw" d="M 72,62 L 72,70 L 108,70" pathLength="100"/>
-  <!-- 여: ㅇ + ㅕ -->
-  <path class="hw" d="M 155,15 Q 140,15 140,27 Q 140,40 155,40 Q 170,40 170,27 Q 170,15 155,15" pathLength="100"/>
-  <path class="hw" d="M 175,20 L 185,20" pathLength="100"/>
-  <path class="hw" d="M 175,34 L 185,34" pathLength="100"/>
-  <path class="hw" d="M 192,10 L 192,55" pathLength="100"/>
-  <!-- 행: ㅎ(위) + ㅐ(오·세로+가로+세로) + ㅇ(받침) -->
-  <path class="hw" d="M 220,8 L 235,8" pathLength="100"/>
-  <path class="hw" d="M 210,16 L 245,16" pathLength="100"/>
-  <path class="hw" d="M 228,22 Q 213,22 213,32 Q 213,42 228,42 Q 243,42 243,32 Q 243,22 228,22" pathLength="100"/>
-  <path class="hw" d="M 260,10 L 260,48" pathLength="100"/>
-  <path class="hw" d="M 260,28 L 275,28" pathLength="100"/>
-  <path class="hw" d="M 275,10 L 275,48" pathLength="100"/>
-  <path class="hw" d="M 233,55 Q 218,55 218,65 Q 218,75 233,75 Q 248,75 248,65 Q 248,55 233,55" pathLength="100"/>
-</svg>`;
-
-const JAPSALT_SVG = `<svg class="hw-svg" viewBox="0 0 165 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path class="hw" d="M 10,15 Q 25,12 40,16" pathLength="100"/>
-  <path class="hw" d="M 25,16 Q 18,28 10,38" pathLength="100"/>
-  <path class="hw" d="M 25,16 Q 32,28 42,38" pathLength="100"/>
-  <path class="hw" d="M 52,10 L 52,45" pathLength="100"/>
-  <path class="hw" d="M 52,28 L 62,28" pathLength="100"/>
-  <path class="hw" d="M 15,50 L 15,75 L 45,75 L 45,50" pathLength="100"/>
-  <path class="hw" d="M 15,62 L 45,62" pathLength="100"/>
-  <path class="hw" d="M 90,12 Q 80,25 70,38" pathLength="100"/>
-  <path class="hw" d="M 90,12 Q 100,25 110,38" pathLength="100"/>
-  <path class="hw" d="M 90,42 L 90,52" pathLength="100"/>
-  <path class="hw" d="M 75,52 L 105,52" pathLength="100"/>
-  <path class="hw" d="M 78,58 L 102,58 L 102,66 L 78,66 L 78,74 L 102,74" pathLength="100"/>
-  <path class="hw" d="M 130,15 L 155,15" pathLength="100"/>
-  <path class="hw" d="M 130,30 L 155,30" pathLength="100"/>
-  <path class="hw" d="M 130,15 L 130,50 L 155,50" pathLength="100"/>
-  <path class="hw" d="M 125,65 L 160,65" pathLength="100"/>
-</svg>`;
-
-const TICKDECK_SVG = `<svg class="hw-svg" viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path class="hw" d="M 10,15 L 40,15" pathLength="100"/>
-  <path class="hw" d="M 25,15 L 25,65" pathLength="100"/>
-  <path class="hw" d="M 55,15 Q 56,15 55,16" pathLength="100"/>
-  <path class="hw" d="M 55,35 L 55,65" pathLength="100"/>
-  <path class="hw" d="M 85,45 Q 65,45 65,60 Q 65,75 85,75" pathLength="100"/>
-  <path class="hw" d="M 105,10 L 105,65" pathLength="100"/>
-  <path class="hw" d="M 125,40 L 105,52 L 130,68" pathLength="100"/>
-  <path class="hw" d="M 155,15 L 155,65" pathLength="100"/>
-  <path class="hw" d="M 155,15 Q 195,15 195,40 Q 195,65 155,65" pathLength="100"/>
-  <path class="hw" d="M 210,60 Q 240,60 240,45 Q 240,35 220,35 Q 205,35 205,55 Q 205,75 240,75" pathLength="100"/>
-  <path class="hw" d="M 270,45 Q 245,45 245,60 Q 245,75 270,75" pathLength="100"/>
-  <path class="hw" d="M 290,10 L 290,65" pathLength="100"/>
-  <path class="hw" d="M 310,40 L 290,52 L 315,68" pathLength="100"/>
-</svg>`;
-
-const ETC_SVG = `<svg class="hw-svg" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path class="hw" d="M 15,60 Q 45,60 45,45 Q 45,35 25,35 Q 10,35 10,55 Q 10,75 45,75" pathLength="100"/>
-  <path class="hw" d="M 65,15 L 65,65" pathLength="100"/>
-  <path class="hw" d="M 55,30 L 80,30" pathLength="100"/>
-  <path class="hw" d="M 110,45 Q 85,45 85,60 Q 85,75 110,75" pathLength="100"/>
-</svg>`;
-
-// 5/14 후추님 결정 — 메인 6 카드 전부 typewriter (handwriting SVG 영역 코드 keep·필요 시 활성)
-const HANDWRITING_SVGS = {
-  // 'Publace': PUBLACE_SVG,
-  // 'EatScan': EATSCAN_SVG,
-  // '이달여행': IDALTRIP_SVG,
-  // '잡솔트': JAPSALT_SVG,
-  // 'TickDeck': TICKDECK_SVG,
-  // 'etc': ETC_SVG,
-};
+/* HANDWRITING_SVGS — assets/handwriting-svgs.js (Kyobo 폰트 붓 reveal·scripts/gen_handwriting_svg.py 생성·7/2) */
 
 function startHandwriting(el) {
   if (el._hw) return;
