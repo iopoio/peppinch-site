@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>데이터 다 주고 뒤통수 맞은 회사 이야기 (Palantir·Nvidia·Figma) · peppinch blog</title>
+<meta name="description" content="올인 팟캐스트 팔란티어·엔비디아 소버린 AI 정리 — 데이터 넘긴 회사가 모델 제공사한테 뒤통수 맞는 이야기, 그리고 왜 팔란티어·엔비디아를 보는지.">
+<meta property="og:title" content="데이터 다 주고 뒤통수 맞은 회사 이야기 (Palantir·Nvidia·Figma)">
+<meta property="og:description" content="AI 모델 제공사한테 데이터·노하우 다 넘긴 회사에 무슨 일이 생기는지 — 피그마 사례로 본 AI 주권 이야기.">
+<meta property="og:image" content="https://www.peppinch.com/og-image.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.peppinch.com/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia">
+<meta property="og:site_name" content="peppinch">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2026-07-04T00:00:00+09:00">
+<meta property="article:section" content="관심있는 것들 정리">
+<meta property="article:tag" content="팔란티어"><meta property="article:tag" content="엔비디아"><meta property="article:tag" content="AI주권"><meta property="article:tag" content="알렉스카프">
+<meta name="author" content="peppinch">
+<meta name="keywords" content="팔란티어, Palantir, 엔비디아, Nvidia, 알렉스 카프, AI 주권, 앤트로픽, 인디해커">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@peppinch_">
+<meta name="twitter:title" content="데이터 다 주고 뒤통수 맞은 회사 이야기 (Palantir·Nvidia·Figma)">
+<meta name="twitter:description" content="AI 모델 제공사한테 데이터·노하우 다 넘긴 회사에 무슨 일이 생기는지 — 피그마 사례로 본 AI 주권 이야기.">
+<meta name="twitter:image" content="https://www.peppinch.com/og-image.png">
+<link rel="canonical" href="https://www.peppinch.com/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧂</text></svg>">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"데이터 다 주고 뒤통수 맞은 회사 이야기 (Palantir·Nvidia·Figma)","description":"AI 모델 제공사한테 데이터·노하우 다 넘긴 회사에 무슨 일이 생기는지 — 피그마 사례로 본 AI 주권 이야기.","datePublished":"2026-07-04T00:00:00+09:00","dateModified":"2026-07-04T00:00:00+09:00","inLanguage":"ko-KR","url":"https://www.peppinch.com/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia","mainEntityOfPage":"https://www.peppinch.com/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia","image":"https://www.peppinch.com/og-image.png","keywords":"팔란티어, 엔비디아, AI 주권, 알렉스 카프, 앤트로픽","author":{"@type":"Person","name":"peppinch","url":"https://www.peppinch.com/"},"publisher":{"@type":"Organization","name":"peppinch","logo":{"@type":"ImageObject","url":"https://www.peppinch.com/favicon.svg"}},"isBasedOn":{"@type":"VideoObject","name":"AI Sovereignty Wars, Palantir-Nvidia Deal","url":"https://youtu.be/wgdxSCsmS-Q"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LZ7ZXMFEBM');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+
+<style>
+@font-face{font-family:"Kyobo";src:url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),url("/fonts/KyoboHandwriting2019.otf") format("opentype");font-display:swap}
+:root{--paper:#faf6ec;--ink:#1f2a31;--pencil:#5b6670;--red:#c8412c;--blue:#1565c0;--line:#dfe4e6}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:"Pretendard",-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+.page{max-width:1180px;margin:0 auto;padding:40px 22px 90px}
+.nav{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.nav a{font-family:"Kyobo","Caveat",cursive;font-weight:500;font-size:21px;color:var(--pencil);text-decoration:none;line-height:1}
+.nav a:hover{color:var(--red)}
+.nav a[data-active]{color:var(--red)}
+.meta-date{font-size:12.5px;letter-spacing:.12em;color:var(--red);font-weight:700}
+h1.ptitle{font-size:clamp(25px,4.4vw,34px);line-height:1.32;font-weight:800;letter-spacing:-.01em;margin:8px 0 18px;color:var(--ink);word-break:keep-all;overflow-wrap:anywhere}
+.lead-sum{font-size:16px;color:#3d474e;line-height:1.85;margin:0 0 22px}
+.card{background:#fffdf8;border:1px solid #ece7da;border-radius:18px;padding:34px 38px 30px;box-shadow:0 3px 18px rgba(40,35,25,.06);margin-bottom:10px}
+@media(max-width:600px){.card{padding:20px 16px;border-radius:14px}}
+.rpt{display:block;width:100%;border:0;border-radius:0;min-height:500px;background:transparent;overflow:hidden;margin:0 0 8px}
+.myview{border-left:4px solid var(--red);padding:4px 0 4px 18px;margin:36px 0 4px}
+.myview .lbl{font-size:17px;font-weight:800;color:var(--red);margin-bottom:6px}
+.myview p{font-size:16.5px;color:#3d474e;line-height:1.85;margin:12px 0}
+.myview .ask{font-weight:700;color:var(--ink)}
+.likebar{display:flex;align-items:center;gap:12px;margin:24px 0 4px;flex-wrap:wrap}
+.likebtn{font:inherit;font-size:15px;font-weight:700;color:var(--red);background:#fff;border:1.5px solid var(--red);border-radius:999px;padding:8px 18px;cursor:pointer;transition:.15s}
+.likebtn:hover{background:#fdeceb}
+.likebtn.on{background:var(--red);color:#fff}
+.likenote{color:var(--pencil);font-size:13px}
+.nextnav{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:30px;padding-top:22px;font-size:14px}
+.nextnav a{color:var(--blue);font-weight:700;text-decoration:none}
+.nextnav a:hover{color:var(--red)}
+.nextnav span{color:var(--pencil)}
+footer{margin-top:40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:"Kyobo","Caveat",cursive;font-size:18px;color:var(--pencil)}
+footer b{color:var(--red)}
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="nav">
+    <a href="/">home</a>
+    <a href="/business/">business</a>
+    <a href="/blog/" data-active>blog</a>
+    <a href="mailto:pepper@peppinch.com">contact</a>
+  </nav>
+
+  <div class="card">
+  <span class="meta-date">2026 · 07 · 04</span>
+  <h1 class="ptitle">데이터 다 주고 뒤통수 맞은 회사 이야기 (Palantir·Nvidia·Figma)</h1>
+
+  <p class="lead-sum">올인 팟캐스트에서 팔란티어-엔비디아 소버린 AI 파트너십 얘기가 나왔다. 그러다 알렉스 카프의 CNBC 클립으로 이어지는데, 요지는 "AI 모델 회사한테 내 데이터·노하우 다 넘겼다가 그 회사가 나중에 내 사업이랑 경쟁하면 어떡하나"는 얘기였다. 먼저 핵심 정리, 그 아래 내 생각.</p>
+
+  <iframe class="rpt" id="rpt" src="/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia-report" title="팔란티어·엔비디아 소버린 AI 정리 리포트" loading="eager" scrolling="no"></iframe>
+
+  <section class="myview">
+    <div class="lbl">✍️ 내 생각</div>
+    <p>알렉스 카프 CNBC 클립 보고 소름 돋았음<br>"국가의 전장을 실리콘밸리 컨센서스에 맡길 거냐"는 저 한마디에 다 들어있음</p>
+    <p>근데 진짜 킬링포인트는 피그마 얘기였음<br>앤트로픽 임원이 피그마 이사로 있다가 사퇴하고 딱 3일 뒤에 Claude Design 내놓은 거<br>피그마 주가 반토막 나는 동안 앤트로픽 몸값은 치솟았고<br>이게 자기 데이터·노하우 다 넘긴 회사들 다음 차례라는 뜻이라 남 얘기 같지가 않음</p>
+    <p>나는 원래도 팔란티어 기술 믿고 카프가 천재라고 생각했는데 이 클립 보니까 확신만 더 굳어짐<br>엔비디아도 마찬가지 — 칩만 파는 회사가 아니라 스택 전체를 먹으려는 그림이 계속 보여서<br>젠슨 있는 동안은 계속 기대되는 회사인 듯..</p>
+    <p><span class="ask" style="color:var(--blue)">방송에서 나온 숫자(16배 저렴 이런 거)는 검증된 수치 아니니 그냥 감으로만 들으면 될 듯</span></p>
+  </section>
+
+  <div class="likebar">
+    <button id="likeBtn" class="likebtn" aria-pressed="false">♡ 좋아요 <span id="likeCount"></span></button>
+    <span class="likenote">댓글은 준비 중이에요. 좋아요로 반응 남겨주시면 힘이 됩니다 🙏</span>
+  </div>
+  </div><!-- /card -->
+
+  <nav class="nextnav">
+    <a href="/blog/">← 다른 글 보기</a>
+  </nav>
+</div>
+
+<script>
+(function(){
+  var f=document.getElementById('rpt');
+  function fit(){ try{ var d=f.contentWindow.document; var h=Math.max(d.documentElement.scrollHeight,d.body.scrollHeight,d.documentElement.offsetHeight); if(h>50) f.style.height=h+'px'; }catch(e){} }
+  f.addEventListener('load',function(){
+    fit(); setTimeout(fit,300); setTimeout(fit,1000);
+    try{
+      var w=f.contentWindow;
+      if(w.document.fonts&&w.document.fonts.ready){ w.document.fonts.ready.then(fit); }
+      if(window.ResizeObserver){ new ResizeObserver(fit).observe(w.document.body); }
+    }catch(e){}
+  });
+  window.addEventListener('resize',function(){ clearTimeout(window.__rt); window.__rt=setTimeout(fit,200); });
+  window.addEventListener('message',function(e){ var h=e.data&&e.data.rptH; if(h&&h>50&&h<60000) f.style.height=h+'px'; });
+  var KEY='peppinch_like_2026-07-04-ai-sovereignty-palantir-nvidia';
+  var b=document.getElementById('likeBtn');
+  var liked=localStorage.getItem(KEY)==='1';
+  function render(){ b.classList.toggle('on',liked); b.firstChild.textContent=(liked?'♥ 좋아요 ':'♡ 좋아요 '); b.setAttribute('aria-pressed',liked); }
+  render();
+  b.addEventListener('click',function(){ liked=!liked; localStorage.setItem(KEY,liked?'1':'0'); render(); if(window.gtag) gtag('event',liked?'like':'unlike',{post:'ai-sovereignty-palantir-nvidia'}); });
+})();
+</script>
+</body>
+</html>
