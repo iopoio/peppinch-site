@@ -1,5 +1,12 @@
 # 블로그 글 기본 레이아웃 (2026-06-15 확정)
 
+> 🔄 **2026-07-07 디자인 개편** (claude.ai/design "Peppinch 블로그"·"Peppinch 블로그 글" 시안 적용, 후추님 지시)
+> - 셸 = 세이지 그린 노트 디자인 (Gowun Dodum 본문 + Kyobo 손글씨 + Shantell Sans 영문). 현행 template 참고.
+> - 리포트 = **iframe 임베드 → 링크 카드(`.rptcard`)**로 변경. postMessage 높이 동기화 불필요해짐. 리포트 페이지는 그대로 별도 파일(+noindex).
+> - 텍스트형 글 블록(h2/blockquote/`.takeaway`/`.sitenote`/`.deck-fold`)은 template `<style>`이 스타일링.
+> - 좋아요 토글·localStorage 키(`peppinch_like_<slug>`)·SEO head(래퍼 요약 = 검색 본문 규칙 포함)는 유지.
+> - 아래 본문의 iframe 관련 서술은 구버전 기록.
+
 펩핀치 블로그 글의 표준 구조. 첫 글(`2026-06-13-all-in-fable5`)에서 확정했고, 다음 글부터 이걸 기본으로 제작한다.
 
 ## 구조 = 2개 파일
