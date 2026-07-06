@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Peppinch — paper sketch</title>
-<meta name="description" content="한 꼬집의 후추 — 펩핀치. 마이크로 도구·실험·시스템 진열대. 1인 인디해커가 직접 빌드한 SaaS·자동화·콘텐츠." />
+<title>Peppinch — 한 꼬집의 후추</title>
+<meta name="description" content="한 꼬집의 후추 — 펩핀치. 이런 거 왜 없지 싶은 걸, 한 꼬집씩 만듭니다. 마이크로 도구·실험·시스템 진열대." />
 <link rel="canonical" href="https://www.peppinch.com/" />
 <meta property="og:title" content="Peppinch — 한 꼬집의 후추" />
-<meta property="og:description" content="마이크로 도구·실험·시스템 진열대. 1인 인디해커 펩핀치의 빌드 누적." />
+<meta property="og:description" content="이런 거 왜 없지 싶은 걸, 한 꼬집씩 만듭니다. 마이크로 도구·실험·시스템 진열대." />
 <meta property="og:image" content="https://www.peppinch.com/og-image.png" />
 <meta property="og:url" content="https://www.peppinch.com/" />
 <meta property="og:type" content="website" />
@@ -17,7 +17,7 @@
 <meta name="twitter:site" content="@peppinch_" />
 <meta name="twitter:creator" content="@peppinch_" />
 <meta name="twitter:title" content="Peppinch — 한 꼬집의 후추" />
-<meta name="twitter:description" content="마이크로 도구·실험·시스템 진열대. 1인 인디해커 펩핀치의 빌드 누적." />
+<meta name="twitter:description" content="이런 거 왜 없지 싶은 걸, 한 꼬집씩 만듭니다. 마이크로 도구·실험·시스템 진열대." />
 <meta name="twitter:image" content="https://www.peppinch.com/og-image.png" />
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -42,7 +42,7 @@
       "name": "Peppinch",
       "alternateName": "펩핀치",
       "url": "https://www.peppinch.com/",
-      "logo": "https://www.peppinch.com/favicon.svg",
+      "logo": "https://www.peppinch.com/assets/peppinch-logo.svg",
       "description": "1인 인디해커 스튜디오. 마이크로 SaaS·자동화·콘텐츠 빌드.",
       "sameAs": [
         "https://x.com/peppinch_"
@@ -63,1023 +63,218 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet" />
-
-<script src="https://unpkg.com/roughjs@4.6.6/bundled/rough.js" integrity="sha384-1NLkwxMO2sOqcq7rQkFBhIAUJtbt8ziLxhVKVgKfFGMEU8pF+GEq5LVogviveup6" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
 
 <style>
-  @font-face {
-    font-family: "Kyobo";
-    src: url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),
-         url("/fonts/KyoboHandwriting2019.otf") format("opentype");
-    font-display: swap;
-  }
-  :root {
-    --paper: #faf6ec;
-    --paper-shade: #efe9d8;
-    --ink: #2a2823;
-    --pencil: #3a352c;
-    --red: #c8412c;
-    --blue: #2f5fa8;
-  }
+@font-face {
+  font-family: "Kyobo";
+  src: url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),
+       url("/fonts/KyoboHandwriting2019.otf") format("opentype");
+  font-display: swap;
+}
 
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Kyobo", "Shantell Sans", sans-serif;
-    font-weight: 400;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-  }
+/* 테마 — 세이지 그린 (디자인 시안 accent prop 그대로.
+   머스타드 전환 시: --acc:#B07E1E --accD:#8A6114 --accS:rgba(217,164,65,0.30) --accT:rgba(217,164,65,0.26) --accBg:#F3EAD3) */
+body {
+  margin: 0;
+  background: #F6F4ED;
+  --acc: #3E7C5B;
+  --accD: #2C5A41;
+  --accS: rgba(62,124,91,0.22);
+  --accT: rgba(62,124,91,0.18);
+  --accBg: #E9EFE4;
+  --rule: rgba(51,49,43,0.09);
+}
 
-  /* paper texture — fibers */
-  body::before {
-    content: "";
-    position: fixed; inset: 0;
-    background-image:
-      repeating-linear-gradient(91deg, transparent 0 38px, rgba(0,0,0,.022) 38px 39px),
-      repeating-linear-gradient(2deg, transparent 0 46px, rgba(0,0,0,.022) 46px 47px);
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    z-index: 1;
-  }
-  /* paper grain noise */
-  body::after {
-    content: "";
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.15  0 0 0 0 0.13  0 0 0 0 0.08  0 0 0 0.16 0'/></filter><rect width='220' height='220' filter='url(%23n)' opacity='0.5'/></svg>");
-    opacity: .45;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    z-index: 2;
-  }
+/* hover — 시안의 data-hover 런타임을 정적 CSS로 (inline style 위라 !important) */
+.hov-press:hover { transform: rotate(0deg) translateY(2px) !important; box-shadow: 0 1px 0 var(--accD) !important; }
+.hov-acc:hover   { border-color: var(--acc) !important; color: var(--acc) !important; }
+.hov-fill:hover  { background: var(--acc) !important; color: #F6F4ED !important; }
+.card:hover      { transform: rotate(0deg) translateY(var(--hy)) !important; box-shadow: var(--hx) 12px 0 var(--accS) !important; }
 
-  .page {
-    position: relative;
-    max-width: 1320px;
-    margin: 0 auto;
-    padding: 60px 56px 120px;
-    z-index: 3;
-  }
-
-  /* hole-punch dots on left margin — 1440px 이상 화면에서 page 영역 옆에 고정 */
-  .holes {
-    position: absolute;
-    left: 22px; top: 80px;
-    display: flex; flex-direction: column;
-    gap: 90px;
-    z-index: 4;
-  }
-  .holes span {
-    width: 16px; height: 16px;
-    border-radius: 50%;
-    background:
-      radial-gradient(circle at 35% 35%, #d4cdb8 0%, #c0b89e 60%, #a8a087 100%);
-    box-shadow: inset 1px 1px 2px rgba(0,0,0,.25), 0 1px 0 rgba(255,255,255,.5);
-  }
-  /* 1320px 이상 화면 영역 — holes를 page 영역 옆 30px 자리 고정 (와이드 화면 어색함 회피) */
-  @media (min-width: 1320px) {
-    .holes { left: calc(50vw - 660px - 30px); }
-  }
-  /* 1440px 이상 영역에서도 동일 영역 (page max 1320px 정합) */
-  @media (min-width: 1440px) {
-    .holes { left: calc(50vw - 660px - 30px); }
-  }
-
-  /* TOP BAR — sticky note style header */
-  .topbar {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    gap: 24px; flex-wrap: wrap;
-    margin-bottom: 60px;
-    position: relative;
-  }
-  .logo {
-    font-family: "Kyobo", "Shantell Sans", cursive;
-    font-weight: 700;
-    font-size: clamp(44px, 6vw, 82px);
-    line-height: .9;
-    color: var(--ink);
-    margin: 0;
-    letter-spacing: -0.01em;
-    transform: rotate(-1.4deg);
-    position: relative;
-    display: inline-block;
-  }
-  .logo .dot {
-    display: inline-block;
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    background: var(--red);
-    margin-left: 8px;
-    transform: translateY(-8px);
-  }
-  .logo .underline {
-    display: block;
-    width: 100%; height: 18px;
-    margin-top: -8px;
-  }
-
-  .stamp {
-    transform: rotate(6deg);
-    border: 2.5px solid var(--red);
-    color: var(--red);
-    padding: 8px 14px 6px;
-    font-family: "Kyobo", "Shantell Sans", sans-serif;
-    font-size: 13px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    line-height: 1.2;
-    box-shadow: inset 0 0 0 1px rgba(200,65,44,.3);
-    opacity: .85;
-    text-align: center;
-  }
-  .stamp small {
-    display: block;
-    font-size: 9px;
-    opacity: .85;
-  }
-
-  .meta {
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 13px;
-    color: var(--pencil);
-    opacity: .75;
-    text-align: right;
-    line-height: 1.5;
-    transform: rotate(-.5deg);
-  }
-  .meta b { color: var(--ink); font-weight: 700; }
-
-  /* B2B link — 비즈니스 페이지 진입 강조 (헤더·푸터 양쪽). 색연필 동그라미 영역 안 박힘 */
-  .b2b-link {
-    font-family: "Kyobo", "Shantell Sans", cursive;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--blue);
-    text-decoration: none;
-    transform: rotate(-1deg);
-    margin-top: 12px;
-    display: inline-block;
-    position: relative;
-    transition: color 0.2s, transform 0.25s;
-    padding: 8px 18px;
-  }
-  .b2b-link:hover { color: var(--red); transform: rotate(-1deg) translateX(4px); }
-  .b2b-link-foot {
-    font-family: "Kyobo", "Shantell Sans", cursive;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--blue);
-    text-decoration: none;
-    margin-left: 16px;
-    display: inline-block;
-    position: relative;
-    padding: 6px 16px;
-    transition: color 0.2s;
-  }
-  .b2b-link-foot:hover { color: var(--red); }
-  .b2b-link .link-doodle, .b2b-link-foot .link-doodle {
-    position: absolute;
-    inset: -4px -8px;
-    width: calc(100% + 16px);
-    height: calc(100% + 8px);
-    pointer-events: none;
-    overflow: visible;
-  }
-
-  /* annotations */
-  .anno {
-    font-family: "Kyobo", "Shantell Sans", cursive;
-    color: var(--red);
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 1.1;
-    pointer-events: none;
-  }
-  .anno-blue { color: var(--blue); }
-
-  /* HERO area */
-  .hero {
-    margin-bottom: 70px;
-    position: relative;
-  }
-  .hero-line1 {
-    /* Shantell Sans 1순위 — 영문 글리프 영역 variable wght 활성 의무 (Kyobo가 영문 영역 갖고 있으면 fallback X) */
-    font-family: "Shantell Sans", "Kyobo", cursive;
-    font-weight: 600;
-    font-size: clamp(56px, 13vw, 220px);
-    line-height: .88;
-    white-space: nowrap;
-    color: var(--ink);
-    margin: 0;
-    transform: rotate(-.8deg);
-    letter-spacing: -0.01em;
-    /* Shantell Sans variable wght — cursor-reactive (JS에서 wght 동적 변경) */
-    font-variation-settings: "wght" 500;
-    transition: font-variation-settings 0.15s ease-out, font-weight 0.15s ease-out;
-  }
-  .hero-line1 em {
-    font-style: italic;
-    color: var(--red);
-    font-weight: 400;
-  }
-  .hero-ko {
-    font-family: "Kyobo", "Gaegu", sans-serif;
-    font-size: clamp(28px, 4vw, 52px);
-    margin-top: 24px;
-    color: var(--pencil);
-    transform: rotate(.5deg);
-    display: inline-block;
-    opacity: .75;
-  }
-  .hero-sub {
-    font-family: "Kyobo", "Shantell Sans", sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.6;
-    max-width: 480px;
-    margin-top: 30px;
-    color: var(--pencil);
-    transform: rotate(-.2deg);
-  }
-  .hero-anno {
-    position: absolute;
-    /* 한 꼬집의 후추 영역 옆 (h2 영역 영역 아래·hero-ko 영역 옆) */
-    right: 4%;
-    top: 45%;
-    transform: rotate(-6deg);
-    text-align: center;
-    max-width: 200px;
-    z-index: 5;
-  }
-  .hero-anno svg { display: block; margin: 6px auto 0; }
-  @media (max-width: 900px) { .hero-anno { display: none; } }
-
-  /* NAV chips */
-  .nav {
-    display: flex; gap: 22px; flex-wrap: wrap;
-    margin: 30px 0 40px;
-  }
-  .nav-chip {
-    font-family: "Kyobo", "Shantell Sans", cursive;
-    font-weight: 500;
-    font-size: 24px;
-    color: var(--ink);
-    padding: 6px 18px 4px;
-    position: relative;
-    text-decoration: none;
-    line-height: 1;
-  }
-  .nav-chip[data-active] { color: var(--red); }
-  .nav-chip svg { position: absolute; inset: 0; pointer-events: none; }
-  .nav-chip.blog-nav-chip {
-    color: var(--blue);
-  }
-  .nav-chip .blog-pointer {
-    position: absolute;
-    left: 50%;
-    top: -36px;
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1px;
-    font-size: 14px;
-    line-height: 1;
-    color: var(--blue);
-    transform: translateX(-50%) rotate(-4deg);
-    white-space: nowrap;
-  }
-  .nav-chip .blog-pointer svg {
-    position: static;
-    inset: auto;
-    width: 24px;
-    height: 14px;
-  }
-
-  /* SECTION LABEL */
-  h2.section-label {
-    font-family: "Kyobo", "Shantell Sans", cursive;
-    font-weight: 500;
-    font-size: 30px;
-    color: var(--ink);
-    margin: 60px 0 8px;
-    display: inline-block;
-    position: relative;
-    transform: rotate(-.4deg);
-  }
-  .section-label .num {
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 14px;
-    color: var(--red);
-    margin-right: 12px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  .section-sub {
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 18px;
-    color: var(--pencil);
-    opacity: .7;
-    margin-bottom: 30px;
-  }
-
-  /* PROJECT CARD GRID — grid-auto-rows: 1fr 영역으로 행별 동일 height·card frame 어긋남 회피 */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 1fr;
-    align-items: stretch;
-    gap: 32px 28px;
-    margin-top: 28px;
-    position: relative;
-  }
-  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); gap: 26px 22px; } }
-  @media (max-width: 600px) {
-    /* layout */
-    .grid { grid-template-columns: 1fr; gap: 22px; margin-top: 20px; }
-    .page { padding: 36px 22px 72px; }
-    .holes { display: none; }
-    .hero-anno { display: none; }
-    .legend { display: none; }
-
-    /* top bar */
-    .topbar { margin-bottom: 40px; gap: 16px; }
-    .logo-row { gap: 10px !important; flex-wrap: wrap; }
-    .logo-row .shaker { width: 44px !important; height: 56px !important; margin-bottom: 4px !important; }
-    .logo { font-size: 44px; }
-    .logo .underline { height: 11px; margin-top: -5px; }
-    .logo .dot { width: 9px; height: 9px; margin-left: 5px; transform: translateY(-5px); }
-    .stamp { font-size: 11px; padding: 6px 10px 5px; }
-    .stamp small { font-size: 8px; }
-    .meta { font-size: 12px; line-height: 1.5; }
-    .b2b-link { font-size: 16px; margin-top: 8px; white-space: nowrap; padding: 6px 12px; }
-
-    /* hero */
-    .hero { margin-bottom: 48px; }
-    .hero-line1 { line-height: .88; }
-    .hero-ko { font-size: clamp(26px, 7vw, 36px); margin-top: 16px; }
-    .hero-sub { font-size: 16px; line-height: 1.55; margin-top: 22px; }
-
-    /* nav */
-    .nav { gap: 14px 18px; margin: 22px 0 28px; }
-    .nav-chip { font-size: 20px; padding: 5px 14px 3px; }
-
-    /* section labels */
-    .section-label { font-size: 26px; margin: 44px 0 8px; }
-    .section-label .num { font-size: 12px; margin-right: 8px; }
-    .section-sub { font-size: 13px; margin-bottom: 22px; }
-
-    /* cards */
-    .card { padding: 22px 20px 18px; min-height: 200px; }
-    .card .name { font-size: 34px; }
-    .card .ko { font-size: 19px; margin-bottom: 10px; }
-    .card .line { font-size: 18px; line-height: 1.55; }
-    .card .details { font-size: 17px; margin-top: 10px; padding-top: 8px; }
-    .card .foot { font-size: 15px; margin-top: 12px; }
-    .card.wip::after { font-size: 14px; padding: 7px 11px 5px; }
-    .card.wip::after { font-size: 11px; padding: 5px 8px 3px; top: -8px; right: -6px; }
-
-    /* todo */
-    .todo { margin-top: 64px; padding: 24px 28px 22px 34px; }
-    .todo h3 { font-size: 28px; margin-bottom: 12px; }
-    .todo ul { grid-template-columns: 1fr; gap: 4px 16px; }
-    .todo li { font-size: 14px; padding: 3px 0; }
-
-    /* footer */
-    .foot-scrib { margin-top: 72px; font-size: 14px; padding-top: 16px; gap: 14px; }
-    .foot-scrib > div { width: 100%; }
-    .b2b-link-foot { font-size: 15px; margin-left: 10px; white-space: nowrap; }
-
-    /* anno / arrow scatter — mobile 영역에서 거추장스러우니 숨김 */
-    .arrow-anno { display: none; }
-  }
-  @media (max-width: 380px) {
-    .page { padding: 32px 18px 64px; }
-    .logo { font-size: 38px; }
-    .logo-row .shaker { width: 38px !important; height: 48px !important; }
-    /* 380px 영역 = hero clamp 영역으로 정합 (별도 룰 X) */
-    .card .name { font-size: 26px; }
-    .topbar { margin-bottom: 32px; }
-  }
-
-  .card {
-    position: relative;
-    padding: 28px 24px 22px;
-    min-height: 240px;
-    height: 100%;
-    transform: rotate(var(--r, 0deg));
-    display: flex; flex-direction: column;
-  }
-  .card:hover { z-index: 10; }
-  .card svg.frame { position: absolute; inset: 0; pointer-events: none; width: 100%; height: 100%; z-index: 0; }
-  .card > *:not(svg.frame) { position: relative; z-index: 1; }
-  .card .num {
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: .15em;
-    color: var(--red);
-    margin-bottom: 8px;
-  }
-  .card .name {
-    font-family: "Shantell Sans", "Kyobo", cursive;
-    font-weight: 700;
-    font-size: 42px;
-    line-height: .95;
-    color: var(--ink);
-    margin: 0 0 6px;
-    /* 가만 있을 땐 정적 — Shantell Sans variable axis 영역 default */
-    font-variation-settings: "wght" 700, "BNCE" 0, "INFM" 30;
-    transition: letter-spacing 0.3s, color 0.3s;
-    transform-origin: left;
-  }
-  /* .name 영역 = 한 줄 keep + 너비·높이 변화 차단 (typewriter 글자 변화 시 카드 영역 움찔 방지) */
-  .card .name {
-    white-space: nowrap;
-    overflow: visible;
-    line-height: 1.18;
-    height: 1.2em;
-  }
-  /* card hover — 색 빨강 (SVG stroke = JS·CSS 별도 처리) */
-  .card:hover .name {
-    letter-spacing: 0.04em;
-    color: var(--red);
-    font-variation-settings: "wght" 750, "BNCE" 0, "INFM" 60;
-  }
-  /* handwriting SVG — Kyobo 글자 clipPath + 스켈레톤 획 붓 reveal (7/2).
-     획별 duration·delay·stroke-width = SVG 인라인 (assets/handwriting-svgs.js) */
-  .name .hw-svg {
-    display: inline-block;
-    width: auto;
-    height: 1.05em;
-    vertical-align: middle;
-    overflow: visible;
-  }
-  .name .hw {
-    fill: none;
-    stroke: var(--red);
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    /* 101 (pathLength 100보다 1 크게) — dash 경계 round cap 점 새는 것 차단 */
-    stroke-dasharray: 101;
-    stroke-dashoffset: 101;
-  }
-  .name.hw-on .hw {
-    animation-name: hw-draw;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-  }
-  @keyframes hw-draw { to { stroke-dashoffset: 0; } }
-  .card .ko {
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 20px;
-    color: var(--pencil);
-    opacity: .8;
-    margin-bottom: 14px;
-  }
-  .card .line {
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 19px;
-    line-height: 1.55;
-    color: var(--pencil);
-    flex: 1;
-  }
-  /* 항상 펼침 영역 — 후추님 #3 결정 (collapse X·details 영역 일관 visible) */
-  .card .details {
-    margin-top: 12px;
-    padding-top: 10px;
-    border-top: 1px dashed rgba(0,0,0,0.12);
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-    color: var(--pencil);
-    opacity: 0.85;
-  }
-  .card .details a {
-    color: var(--red);
-    text-decoration: underline;
-    text-decoration-style: wavy;
-    text-underline-offset: 3px;
-    font-weight: 700;
-  }
-  .card .details .ready { opacity: 0.55; pointer-events: none; font-style: italic; }
-  .card .foot {
-    margin-top: 14px;
-    display: flex; justify-content: space-between; align-items: baseline;
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 15.5px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--pencil);
-    opacity: .7;
-  }
-  .card .foot .arrow { font-family: "Kyobo", "Shantell Sans", cursive; font-size: 18px; color: var(--red); }
-
-  /* sticky note — 한글 영역 ("작업중") */
-  .card.wip::after {
-    content: "작업중";
-    position: absolute;
-    top: -12px; right: -10px;
-    background: #fde88a;
-    font-family: "Kyobo", "Shantell Sans", sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--ink);
-    padding: 8px 13px 6px;
-    transform: rotate(8deg);
-    box-shadow: 0 2px 4px rgba(0,0,0,.1);
-    letter-spacing: .1em;
-    z-index: 5;
-  }
-
-  /* TODO list */
-  .todo {
-    margin-top: 88px;
-    padding: 32px 44px 32px 52px;
-    position: relative;
-    transform: rotate(-.6deg);
-  }
-  .todo { position: relative; }
-  .todo svg.frame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
-  .todo > *:not(svg.frame) { position: relative; z-index: 1; }
-  .todo h3 {
-    font-family: "Kyobo", "Shantell Sans", cursive;
-    font-weight: 700;
-    font-size: 36px;
-    margin: 0 0 16px;
-    color: var(--ink);
-  }
-  .todo ul {
-    list-style: none; padding: 0; margin: 0;
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 8px 24px;
-  }
-  .todo li {
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 16px;
-    color: var(--pencil);
-    display: flex;
-    gap: 12px;
-    align-items: baseline;
-    padding: 4px 0;
-  }
-  .todo li .box {
-    flex-shrink: 0; width: 16px; height: 16px;
-    border: 1.5px solid var(--pencil);
-    transform: rotate(-2deg);
-    display: inline-block;
-    margin-top: 2px;
-    position: relative;
-  }
-  .todo li.done .box::after {
-    content: "✓";
-    position: absolute;
-    inset: -8px -4px auto auto;
-    font-family: "Kyobo", "Shantell Sans", cursive;
-    font-size: 26px;
-    color: var(--red);
-    line-height: 1;
-  }
-  .todo li.done { text-decoration: line-through; opacity: .55; }
-
-  /* FOOTER scribble */
-  .foot-scrib {
-    margin-top: 100px;
-    display: flex; justify-content: space-between; align-items: baseline;
-    gap: 24px; flex-wrap: wrap;
-    font-family: "Kyobo", "Shantell Sans", cursive;
-    font-size: 17px;
-    color: var(--pencil);
-    border-top: 2px dashed rgba(58,53,44,.2);
-    padding-top: 20px;
-  }
-  .foot-scrib b { color: var(--red); }
-  .foot-scrib .foot-link {
-    color: var(--pencil);
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: rgba(58,53,44,0.35);
-    text-underline-offset: 3px;
-    transition: color 0.2s, text-decoration-color 0.2s;
-  }
-  .foot-scrib .foot-link:hover {
-    color: var(--red);
-    text-decoration-color: var(--red);
-  }
-
-  /* arrows scattered */
-  .arrow-anno {
-    position: absolute;
-    font-family: "Kyobo", "Shantell Sans", cursive;
-    color: var(--blue);
-    font-size: 16px;
-    pointer-events: none;
-    z-index: 4;
-  }
-
-  /* color legend bottom right */
-  .legend {
-    position: fixed;
-    right: 24px; bottom: 24px;
-    background: #fff8e0;
-    padding: 14px 16px 12px;
-    transform: rotate(2.5deg);
-    box-shadow: 0 4px 14px rgba(0,0,0,.15);
-    font-family: "Kyobo", "Just Me Again Down Here", "Shantell Sans", sans-serif;
-    font-size: 12px;
-    color: var(--pencil);
-    z-index: 50;
-    max-width: 200px;
-  }
-  .legend b { font-family: "Kyobo", "Shantell Sans", cursive; font-size: 18px; color: var(--ink); display: block; margin-bottom: 6px; font-weight: 700; }
-  .legend .row { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
-  .legend .sw { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,.2); }
+/* 모바일 최소 대응 — 시안 todo "폰에서도 어색하지 않게" 전까지의 안전판 */
+@media (max-width: 760px) {
+  .wrap { padding: 0 22px !important; }
+  .topbar { flex-wrap: wrap !important; gap: 14px !important; }
+  .hero-h1 { font-size: 54px !important; }
+  .hero-pepper { font-size: 62px !important; text-underline-offset: 9px !important; }
+  .hero-row { flex-wrap: wrap !important; gap: 14px !important; }
+  .hero-nav { flex-wrap: wrap !important; }
+  .works-grid { grid-template-columns: 1fr !important; gap: 26px !important; }
+  .foot { flex-direction: column !important; align-items: flex-start !important; gap: 14px !important; }
+}
 </style>
 </head>
 <body>
+<div data-screen-label="Peppinch 홈" style="min-height:100vh; background:#F6F4ED; font-family:'Gowun Dodum',sans-serif; color:#33312B">
+<div class="wrap" style="max-width:1220px; margin:0 auto; padding:0 40px">
 
-<div class="holes">
-  <span></span><span></span><span></span><span></span><span></span>
-</div>
-
-<div class="page">
-
-  <!-- TOP BAR -->
-  <div class="topbar">
-    <div>
-      <div class="logo-row" style="display:flex; align-items:center; gap:18px;">
-        <svg class="shaker" viewBox="0 0 70 90" style="width:50px; height:64px; transform:rotate(-6deg); flex-shrink:0; margin-bottom:6px;">
-          <path d="M14,8 Q15,5 18,4 L52,4 Q56,5 57,8 L58,22 Q57,24 54,24 L16,24 Q13,24 12,22 Z" fill="#3a352c" stroke="#3a352c" stroke-width="1.5" stroke-linejoin="round"/>
-          <circle cx="22" cy="13" r="1.3" fill="#faf6ec"/>
-          <circle cx="30" cy="11" r="1.3" fill="#faf6ec"/>
-          <circle cx="38" cy="13" r="1.3" fill="#faf6ec"/>
-          <circle cx="46" cy="11" r="1.3" fill="#faf6ec"/>
-          <circle cx="26" cy="17" r="1.3" fill="#faf6ec"/>
-          <circle cx="34" cy="18" r="1.3" fill="#faf6ec"/>
-          <circle cx="42" cy="17" r="1.3" fill="#faf6ec"/>
-          <path d="M10,26 Q10,24 13,24 L57,24 Q60,24 60,27 L60,80 Q60,84 56,85 L14,85 Q10,84 10,80 Z" fill="none" stroke="#3a352c" stroke-width="2" stroke-linejoin="round"/>
-          <ellipse cx="35" cy="55" rx="18" ry="15" fill="none" stroke="#c8412c" stroke-width="1.6" stroke-dasharray="2 2"/>
-          <text x="35" y="54" text-anchor="middle" font-family="Kyobo, Shantell Sans, cursive" font-size="11" fill="#c8412c" font-weight="700">PEPPER</text>
-          <text x="35" y="66" text-anchor="middle" font-family="Kyobo, Shantell Sans, cursive" font-size="8" fill="#c8412c">후추</text>
-          <circle cx="30" cy="-2" r="1.4" fill="#2a2823"/>
-          <circle cx="38" cy="-6" r="1.2" fill="#2a2823"/>
-          <circle cx="33" cy="-11" r="1" fill="#2a2823"/>
-          <circle cx="42" cy="-12" r="1.1" fill="#2a2823"/>
-          <circle cx="28" cy="-15" r="0.9" fill="#2a2823"/>
-        </svg>
-        <h1 class="logo">
-          Peppinch<span class="dot"></span>
-          <svg class="underline" viewBox="0 0 400 18" preserveAspectRatio="none">
-            <path d="M2,10 Q60,2 130,8 T270,9 T395,6" fill="none" stroke="#c8412c" stroke-width="3" stroke-linecap="round"/>
-          </svg>
-        </h1>
-      </div>
-      <div style="font-family: 'Kyobo', 'Just Me Again Down Here', sans-serif; font-size: 14px; color: var(--pencil); margin-top: 4px; transform: rotate(-.8deg); display:inline-block;">
-        = <em>A Pinch Of Pepper.</em> &nbsp;·&nbsp; 한 꼬집의 후추
-      </div>
+  <!-- top bar -->
+  <div class="topbar" style="display:flex; align-items:center; justify-content:space-between; padding-top:30px">
+    <div style="display:flex; align-items:center; gap:11px">
+      <img src="/assets/peppinch-logo.svg" alt="Peppinch 로고 — 후추 세 알" style="width:27px; height:27px; margin-bottom:2px">
+      <span style="font-family:'Shantell Sans',cursive; font-weight:700; font-size:25px">Peppinch</span>
+      <span style="font-family:'Kyobo'; font-size:15px; color:#8F8B7D; padding-top:6px">한 꼬집의 후추</span>
     </div>
-    <div style="display:flex; gap: 20px; align-items: center;">
-      <div class="stamp">
-        WIREFRAME<br>
-        <small>v0.3 — paper draft</small>
-      </div>
-      <div class="meta">
-        <b>www.peppinch.com</b><br>
-        sketch — 2026.05.14<br>
-        for: solo lab homepage<br>
-        <a href="/business/" class="b2b-link">
-          <span style="position:relative; z-index:2;">비즈니스 ver 사이트 보기 →</span>
-          <svg class="link-doodle" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true">
-            <ellipse cx="120" cy="28" rx="112" ry="22" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".75" transform="rotate(-2.2 120 28)" stroke-linecap="round"/>
-            <ellipse cx="120" cy="28" rx="116" ry="25" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55" transform="rotate(2.8 120 28)" stroke-linecap="round" stroke-dasharray="3,2"/>
-            <ellipse cx="120" cy="28" rx="108" ry="19" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".5" transform="rotate(-4.5 120 28)" stroke-linecap="round"/>
-            <path d="M 14,30 Q 65,6 140,10 T 232,26 Q 218,48 110,50 Q 18,46 8,28" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".42" stroke-linecap="round"/>
-            <path d="M 20,36 Q 75,14 145,18 T 226,34" fill="none" stroke="currentColor" stroke-width="1.1" opacity=".35" stroke-linecap="round"/>
-          </svg>
-        </a>
+    <a href="/business/" style="font-family:'Kyobo'; font-size:18px; color:#F6F4ED; background:var(--acc); text-decoration:none; padding:9px 22px; border-radius:230px 20px 210px 24px / 24px 210px 18px 230px; transform:rotate(-1deg); display:inline-block; box-shadow:0 3px 0 var(--accD); transition:all .15s" class="hov-press">비즈니스 버전 보기 →</a>
+  </div>
+
+  <!-- hero -->
+  <div style="padding:86px 0 40px; background-image:repeating-linear-gradient(transparent, transparent 43px, var(--rule) 43px, var(--rule) 44px); background-position:0 30px">
+    <h1 class="hero-h1" style="margin:0; font-family:'Shantell Sans',cursive; font-weight:700; font-size:108px; line-height:1.05; letter-spacing:-0.02em">A Pinch of</h1>
+    <div class="hero-row" style="display:flex; align-items:flex-end; gap:28px">
+      <div class="hero-pepper" style="font-family:'Shantell Sans',cursive; font-style:italic; font-weight:800; font-size:122px; line-height:1.14; color:var(--acc); text-decoration:underline wavy var(--accS) 3px; text-underline-offset:16px">Pepper.</div>
+      <div style="font-family:'Kyobo'; font-size:18px; line-height:1.55; color:var(--acc); padding-bottom:28px; transform:rotate(-2deg)">↖ 뭐든, 한 꼬집이면<br>맛이 달라져요.</div>
+    </div>
+    <div style="font-family:'Kyobo'; font-size:30px; margin-top:34px">한 꼬집의 후추.</div>
+    <div style="font-size:16.5px; line-height:2.66; color:#615D51; margin-top:6px">이런 거 왜 없지 싶은 걸, 한 꼬집씩 만듭니다. 혼자, AI랑 같이. 서울에서 슬렁슬렁.</div>
+    <nav class="hero-nav" style="display:flex; gap:12px; margin-top:36px; font-family:'Kyobo'; font-size:18px">
+      <a href="/" style="padding:6px 20px; background:var(--acc); color:#F6F4ED; text-decoration:none; border-radius:220px 18px 200px 20px / 20px 200px 16px 220px">home</a>
+      <a href="/business/" style="padding:6px 20px; border:1.6px dashed #8F8B7D; text-decoration:none; border-radius:18px 210px 22px 190px / 200px 20px 220px 18px; color:#615D51; transition:all .15s" class="hov-acc">business</a>
+      <a href="/blog/" style="padding:6px 20px; border:1.6px dashed #8F8B7D; text-decoration:none; border-radius:200px 22px 215px 16px / 18px 225px 20px 205px; color:#615D51; transition:all .15s" class="hov-acc">blog</a>
+      <a href="mailto:pepper@peppinch.com" style="padding:6px 20px; border:1.6px dashed #8F8B7D; text-decoration:none; border-radius:16px 190px 20px 230px / 210px 18px 195px 22px; color:#615D51; transition:all .15s" class="hov-acc">contact</a>
+    </nav>
+  </div>
+
+  <!-- works -->
+  <div style="padding:56px 0 10px">
+    <div style="display:flex; align-items:baseline; gap:16px">
+      <span style="font-family:'Shantell Sans',cursive; font-weight:700; font-size:36px">Works</span>
+      <span style="font-family:'Kyobo'; font-size:17px; color:#8F8B7D">선반 위에 흩어 놓은 도구들</span>
+      <span style="flex:1; border-bottom:1.5px dashed #C9C5B6; transform:translateY(-8px)"></span>
+      <img src="/assets/peppinch-logo.svg" alt="" style="width:34px; height:34px; flex:none; transform:rotate(-6deg) translateY(6px); opacity:0.85">
+    </div>
+
+    <div class="works-grid" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:34px 30px; margin-top:40px">
+
+      <a href="https://publace.peppinch.com" style="--hy:-10px; --hx:8px; display:block; text-decoration:none; color:#33312B; background:#FFFFFF; padding:26px 24px 20px; transform:rotate(-1.4deg); box-shadow:0 2px 8px rgba(51,49,43,0.12); border:1.6px solid #33312B; border-radius:14px 225px 16px 240px / 230px 14px 245px 16px; transition:transform .22s, box-shadow .22s; cursor:pointer; position:relative" class="card">
+        <span style="position:absolute; top:-9px; left:38%; width:74px; height:20px; background:var(--accT); transform:rotate(-3deg)"></span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-size:11.5px; color:var(--acc); letter-spacing:0.12em">PROJECT · 01</span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-weight:700; font-size:26px; margin-top:8px">Publace</span>
+        <span style="display:block; font-family:'Kyobo'; font-size:16px; color:#8F8B7D">퍼블레이스</span>
+        <span style="display:block; font-size:14px; line-height:1.75; color:#615D51; margin-top:13px; min-height:74px">도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.</span>
+        <span style="display:flex; justify-content:space-between; align-items:baseline; margin-top:10px">
+          <span style="font-family:'Shantell Sans',cursive; font-size:12px; color:#8F8B7D">2024 · beta</span>
+          <span style="font-family:'Kyobo'; font-size:17px; color:var(--acc); border-bottom:1.5px solid var(--acc)">열기 →</span>
+        </span>
+      </a>
+
+      <a href="https://pepstocks.peppinch.com" style="--hy:-2px; --hx:-8px; display:block; text-decoration:none; color:#33312B; background:#FFFFFF; padding:26px 24px 20px; transform:rotate(1deg) translateY(8px); box-shadow:0 2px 8px rgba(51,49,43,0.12); border:1.6px solid #33312B; border-radius:14px 225px 16px 240px / 230px 14px 245px 16px; transition:transform .22s, box-shadow .22s; cursor:pointer; position:relative" class="card">
+        <span style="position:absolute; top:-9px; left:34%; width:74px; height:20px; background:var(--accT); transform:rotate(2deg)"></span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-size:11.5px; color:var(--acc); letter-spacing:0.12em">PROJECT · 02</span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-weight:700; font-size:26px; margin-top:8px">Pepstocks</span>
+        <span style="display:block; font-family:'Kyobo'; font-size:16px; color:#8F8B7D">펩스탁</span>
+        <span style="display:block; font-size:14px; line-height:1.75; color:#615D51; margin-top:13px; min-height:74px">오늘 시장이 왜 이렇게 됐는지, 그 흐름이 한눈에.</span>
+        <span style="display:flex; justify-content:space-between; align-items:baseline; margin-top:10px">
+          <span style="font-family:'Shantell Sans',cursive; font-size:12px; color:#8F8B7D">2026 · beta</span>
+          <span style="font-family:'Kyobo'; font-size:17px; color:var(--acc); border-bottom:1.5px solid var(--acc)">열기 →</span>
+        </span>
+      </a>
+
+      <a href="https://eatscan.peppinch.com" style="--hy:-7px; --hx:8px; display:block; text-decoration:none; color:#33312B; background:#FFFFFF; padding:26px 24px 20px; transform:rotate(-0.6deg) translateY(3px); box-shadow:0 2px 8px rgba(51,49,43,0.12); border:1.6px solid #33312B; border-radius:14px 225px 16px 240px / 230px 14px 245px 16px; transition:transform .22s, box-shadow .22s; cursor:pointer; position:relative" class="card">
+        <span style="position:absolute; top:-9px; left:40%; width:74px; height:20px; background:var(--accT); transform:rotate(-2deg)"></span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-size:11.5px; color:var(--acc); letter-spacing:0.12em">PROJECT · 03</span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-weight:700; font-size:26px; margin-top:8px">EatScan</span>
+        <span style="display:block; font-family:'Kyobo'; font-size:16px; color:#8F8B7D">잇스캔</span>
+        <span style="display:block; font-size:14px; line-height:1.75; color:#615D51; margin-top:13px; min-height:74px">라벨을 한 번 비추면, 먹어도 되는지 아닌지 조용히 알려준다.</span>
+        <span style="display:flex; justify-content:space-between; align-items:baseline; margin-top:10px">
+          <span style="font-family:'Shantell Sans',cursive; font-size:12px; color:#8F8B7D">2024 · live</span>
+          <span style="font-family:'Kyobo'; font-size:17px; color:var(--acc); border-bottom:1.5px solid var(--acc)">열기 →</span>
+        </span>
+      </a>
+
+      <a href="https://idaltrip.peppinch.com" style="--hy:-4px; --hx:-8px; display:block; text-decoration:none; color:#33312B; background:#FFFFFF; padding:26px 24px 20px; transform:rotate(0.8deg) translateY(6px); box-shadow:0 2px 8px rgba(51,49,43,0.12); border:1.6px solid #33312B; border-radius:14px 225px 16px 240px / 230px 14px 245px 16px; transition:transform .22s, box-shadow .22s; cursor:pointer; position:relative" class="card">
+        <span style="position:absolute; top:-11px; right:20px; font-family:'Kyobo'; font-size:14px; color:#F6F4ED; background:var(--acc); padding:3px 12px; transform:rotate(3deg); border-radius:2px">작업중</span>
+        <span style="position:absolute; top:-9px; left:32%; width:74px; height:20px; background:var(--accT); transform:rotate(2deg)"></span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-size:11.5px; color:var(--acc); letter-spacing:0.12em">PROJECT · 04</span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-weight:700; font-size:26px; margin-top:8px">이달여행</span>
+        <span style="display:block; font-family:'Kyobo'; font-size:16px; color:#8F8B7D">IdalTrip</span>
+        <span style="display:block; font-size:14px; line-height:1.75; color:#615D51; margin-top:13px; min-height:74px">이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.</span>
+        <span style="display:flex; justify-content:space-between; align-items:baseline; margin-top:10px">
+          <span style="font-family:'Shantell Sans',cursive; font-size:12px; color:#8F8B7D">2025 · wip</span>
+          <span style="font-family:'Kyobo'; font-size:17px; color:var(--acc); border-bottom:1.5px solid var(--acc)">열기 →</span>
+        </span>
+      </a>
+
+      <a href="https://jobsort.peppinch.com" style="--hy:-10px; --hx:8px; display:block; text-decoration:none; color:#33312B; background:#FFFFFF; padding:26px 24px 20px; transform:rotate(-1.1deg); box-shadow:0 2px 8px rgba(51,49,43,0.12); border:1.6px solid #33312B; border-radius:14px 225px 16px 240px / 230px 14px 245px 16px; transition:transform .22s, box-shadow .22s; cursor:pointer; position:relative" class="card">
+        <span style="position:absolute; top:-11px; right:20px; font-family:'Kyobo'; font-size:14px; color:#F6F4ED; background:var(--acc); padding:3px 12px; transform:rotate(-2deg); border-radius:2px">작업중</span>
+        <span style="position:absolute; top:-9px; left:36%; width:74px; height:20px; background:var(--accT); transform:rotate(-3deg)"></span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-size:11.5px; color:var(--acc); letter-spacing:0.12em">PROJECT · 05</span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-weight:700; font-size:26px; margin-top:8px">잡솔트</span>
+        <span style="display:block; font-family:'Kyobo'; font-size:16px; color:#8F8B7D">JobSort</span>
+        <span style="display:block; font-size:14px; line-height:1.75; color:#615D51; margin-top:13px; min-height:74px">공고는 너무 많고, 나에게 맞는 건 늘 한두 개.</span>
+        <span style="display:flex; justify-content:space-between; align-items:baseline; margin-top:10px">
+          <span style="font-family:'Shantell Sans',cursive; font-size:12px; color:#8F8B7D">2025 · wip</span>
+          <span style="font-family:'Kyobo'; font-size:17px; color:var(--acc); border-bottom:1.5px solid var(--acc)">열기 →</span>
+        </span>
+      </a>
+
+      <a href="https://tickdeck.peppinch.com" style="--hy:-1px; --hx:-8px; display:block; text-decoration:none; color:#33312B; background:#FFFFFF; padding:26px 24px 20px; transform:rotate(1.2deg) translateY(9px); box-shadow:0 2px 8px rgba(51,49,43,0.12); border:1.6px solid #33312B; border-radius:14px 225px 16px 240px / 230px 14px 245px 16px; transition:transform .22s, box-shadow .22s; cursor:pointer; position:relative" class="card">
+        <span style="position:absolute; top:-11px; right:20px; font-family:'Kyobo'; font-size:14px; color:#F6F4ED; background:var(--acc); padding:3px 12px; transform:rotate(2deg); border-radius:2px">작업중</span>
+        <span style="position:absolute; top:-9px; left:38%; width:74px; height:20px; background:var(--accT); transform:rotate(3deg)"></span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-size:11.5px; color:var(--acc); letter-spacing:0.12em">PROJECT · 06</span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-weight:700; font-size:26px; margin-top:8px">TickDeck</span>
+        <span style="display:block; font-family:'Kyobo'; font-size:16px; color:#8F8B7D">틱덱</span>
+        <span style="display:block; font-size:14px; line-height:1.75; color:#615D51; margin-top:13px; min-height:74px">URL 한 줄을, 발표 슬라이드 한 벌로.</span>
+        <span style="display:flex; justify-content:space-between; align-items:baseline; margin-top:10px">
+          <span style="font-family:'Shantell Sans',cursive; font-size:12px; color:#8F8B7D">2025 · wip</span>
+          <span style="font-family:'Kyobo'; font-size:17px; color:var(--acc); border-bottom:1.5px solid var(--acc)">열기 →</span>
+        </span>
+      </a>
+
+      <a href="#etc" style="--hy:-8px; --hx:8px; display:block; text-decoration:none; color:#33312B; background:#FFFFFF; padding:26px 24px 20px; transform:rotate(-0.9deg) translateY(2px); box-shadow:0 2px 8px rgba(51,49,43,0.12); border:1.6px solid #33312B; border-radius:14px 225px 16px 240px / 230px 14px 245px 16px; transition:transform .22s, box-shadow .22s; cursor:pointer; position:relative" class="card">
+        <span style="position:absolute; top:-11px; right:20px; font-family:'Kyobo'; font-size:14px; color:#F6F4ED; background:var(--acc); padding:3px 12px; transform:rotate(3deg); border-radius:2px">작업중</span>
+        <span style="position:absolute; top:-9px; left:35%; width:74px; height:20px; background:var(--accT); transform:rotate(-2deg)"></span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-size:11.5px; color:var(--acc); letter-spacing:0.12em">PROJECT · 07</span>
+        <span style="display:block; font-family:'Shantell Sans',cursive; font-weight:700; font-size:26px; margin-top:8px">etc</span>
+        <span style="display:block; font-family:'Kyobo'; font-size:16px; color:#8F8B7D">기타</span>
+        <span style="display:block; font-size:14px; line-height:1.75; color:#615D51; margin-top:13px; min-height:74px">틈틈이 재미로 만든 작은 도구들의 진열대. 한 꼬집씩 모이는 작은 묶음, 곧 공개.</span>
+        <span style="display:flex; justify-content:space-between; align-items:baseline; margin-top:10px">
+          <span style="font-family:'Shantell Sans',cursive; font-size:12px; color:#8F8B7D">2025 · wip</span>
+          <span style="font-family:'Kyobo'; font-size:17px; color:var(--acc); border-bottom:1.5px solid var(--acc)">곧 →</span>
+        </span>
+      </a>
+
+      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; font-family:'Kyobo'; font-size:17px; color:#B4B0A2; border:1.6px dashed #C9C5B6; border-radius:3px; min-height:200px; transform:rotate(0.6deg)">
+        <span style="position:relative; display:inline-block; width:34px; height:34px; transform:rotate(-6deg); opacity:0.6">
+          <span style="position:absolute; top:5px; left:19px; width:7px; height:6px; background:#B4B0A2; border-radius:50%; transform:rotate(-15deg)"></span>
+          <span style="position:absolute; top:10px; left:5px; width:9px; height:8px; background:#B4B0A2; border-radius:50%; transform:rotate(-10deg)"></span>
+          <span style="position:absolute; top:20px; left:19px; width:12px; height:10px; background:#B4B0A2; border-radius:50%; transform:rotate(8deg)"></span>
+        </span>
+        <span>다음 칸은 비워뒀어요 — 곧.</span>
       </div>
     </div>
   </div>
 
-  <!-- HERO sketch -->
-  <div class="hero">
-    <h2 class="hero-line1">A Pinch Of<br><em>Pepper.</em></h2>
-    <div class="hero-ko">한 꼬집의 후추.</div>
-    <p class="hero-sub">
-      이런 거 왜 없지 싶은 걸, 한 꼬집씩 만듭니다.<br>
-      혼자, AI랑 같이. 서울에서 슬렁슬렁.
-    </p>
-
-    <div class="hero-anno">
-      <span class="anno">↖ 마우스 갖다대면<br>글자가 두꺼워짐</span>
+  <!-- todo sticky -->
+    <div style="padding:40px 0 0">
+    <div style="display:inline-block; background:var(--accBg); padding:26px 36px 22px; transform:rotate(-0.5deg); box-shadow:0 3px 10px rgba(51,49,43,0.1); border-radius:3px">
+      <div style="display:flex; align-items:center; gap:10px">
+        <span style="font-size:20px">🧂</span>
+        <span style="font-family:'Shantell Sans',cursive; font-weight:700; font-size:18px; color:var(--acc)">to-do / 다음 작업</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:6px 34px; font-family:'Kyobo'; font-size:17px; line-height:2; color:#615D51; margin-top:10px">
+        <span>☐ 지금 뭐 하는지 솔직히 쓰기</span>
+        <span>☐ 카드마다 작은 그림 한 장씩</span>
+        <span>☐ 폰에서도 어색하지 않게 다듬기</span>
+        <span>☐ 공유 시 뜨는 그림 한 장</span>
+      </div>
     </div>
   </div>
+  
 
-  <!-- NAV chips -->
-  <div class="nav">
-    <a class="nav-chip" data-active href="/">
-      home
-      <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,3 50,5 T95,7 Q97,20 95,32 Q60,38 30,35 T5,32 Q3,20 5,8 Z" fill="none" stroke="#c8412c" stroke-width="2"/></svg>
-    </a>
-    <a class="nav-chip" href="/business/">
-      business
-      <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,5 T95,8 Q98,20 95,33 Q60,36 30,34 T5,32 Q4,20 5,8 Z" fill="none" stroke="#3a352c" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
-    </a>
-    <a class="nav-chip blog-nav-chip" href="/blog/">
-      blog
-      <span class="blog-pointer" aria-hidden="true">글 써요<svg viewBox="0 0 24 18"><path d="M12 1 C8 7 8 10 12 17 M7 11 L12 17 L17 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,6 T95,7 Q97,21 96,32 Q60,37 30,34 T5,33 Q3,20 5,8 Z" fill="none" stroke="#2F5FA8" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
-    </a>
-    <a class="nav-chip" href="mailto:pepper@peppinch.com" title="pepper@peppinch.com">
-      contact
-      <svg viewBox="0 0 100 40" preserveAspectRatio="none"><path d="M5,8 Q20,4 50,5 T95,8 Q98,20 96,33 Q60,36 30,34 T5,32 Q4,20 5,8 Z" fill="none" stroke="#3a352c" stroke-width="1.5" stroke-dasharray="3 2"/></svg>
-    </a>
-  </div>
-
-  <!-- WORKS section -->
-  <div style="position:relative;">
-    <h2 class="section-label"><span class="num">02 —</span>인덱스 · works</h2>
-    <div class="section-sub">호버 시 글자가 살짝 들썩 — 살아있는 진열대</div>
-
-    <div class="grid" id="grid">
-      <!-- cards filled by JS -->
-    </div>
-
-    <span class="arrow-anno" style="right: 10px; bottom: -32px; transform: rotate(-2deg);">
-      ← 카드 더 추가될 자리
+  <!-- footer -->
+  <div class="foot" style="display:flex; justify-content:space-between; align-items:center; padding:44px 0 40px; margin-top:44px; border-top:1.5px solid #D8D4C6">
+    <span style="display:inline-flex; align-items:center; gap:9px; font-family:'Shantell Sans',cursive; font-size:15px; color:#8F8B7D">made slow, in seoul — <span style="color:#33312B; font-weight:700">Peppinch</span>
+      <span style="font-size:15px; transform:rotate(8deg)">🧂</span>
+    </span>
+    <span style="display:flex; align-items:center; gap:18px; font-family:'Kyobo'; font-size:16px; color:#8F8B7D">
+      <span>pepper@peppinch.com · @peppinch_</span>
+      <a href="/business/" style="color:var(--acc); text-decoration:none; border:1.6px solid var(--acc); padding:4px 14px; border-radius:210px 18px 190px 20px / 20px 190px 16px 210px; transition:all .15s" class="hov-fill">비즈니스 버전 →</a>
     </span>
   </div>
 
-  <!-- TODO sticky -->
-  <div class="todo" id="todo">
-    <svg class="frame"></svg>
-    <h3>🧂 to-do / 다음 작업</h3>
-    <ul>
-      <li class="done"><span class="box"></span> 히어로 문구 확정</li>
-      <li class="done"><span class="box"></span> 색 팔레트 (한지·새벽·골목)</li>
-      <li class="done"><span class="box"></span> 인덱스 펼침 구조</li>
-      <li class="done"><span class="box"></span> 파비콘 (🧂)</li>
-      <li class="done"><span class="box"></span> etc 카드 영역</li>
-      <li class="done"><span class="box"></span> 비즈니스 페이지 (cinematic 톤)</li>
-      <li class="done"><span class="box"></span> 블로그 섹션 만들어서 글 써보기</li>
-      <li><span class="box"></span> 카드마다 작은 그림 한 장씩</li>
-      <li><span class="box"></span> 지금 뭐 하는지 솔직히 쓰기</li>
-      <li><span class="box"></span> 폰에서도 어색하지 않게 다듬기</li>
-      <li><span class="box"></span> 공유 시 뜨는 그림 한 장</li>
-    </ul>
-  </div>
-
-  <div class="foot-scrib">
-    <span>made slow, in seoul — <b>Peppinch</b> 🧂</span>
-    <span><a href="mailto:pepper@peppinch.com" class="foot-link">pepper@peppinch.com</a> · <a href="https://x.com/peppinch_" target="_blank" rel="noopener noreferrer" class="foot-link">@peppinch_</a> <a href="/business/" class="b2b-link-foot">
-      <span style="position:relative; z-index:2;">비즈니스 ver 사이트 보기 →</span>
-      <svg class="link-doodle" viewBox="0 0 230 50" preserveAspectRatio="none" aria-hidden="true">
-        <ellipse cx="115" cy="25" rx="108" ry="20" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".75" transform="rotate(-2 115 25)" stroke-linecap="round"/>
-        <ellipse cx="115" cy="25" rx="112" ry="23" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".55" transform="rotate(3 115 25)" stroke-linecap="round" stroke-dasharray="3,2"/>
-        <ellipse cx="115" cy="25" rx="104" ry="17" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".5" transform="rotate(-5 115 25)" stroke-linecap="round"/>
-        <path d="M 14,28 Q 60,4 130,8 T 222,24 Q 206,44 105,46 Q 18,42 6,26" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".42" stroke-linecap="round"/>
-      </svg>
-    </a></span>
-  </div>
-
-  <div class="biz-info" style="margin-top: 18px; font-family: 'Just Me Again Down Here', 'Kyobo', sans-serif; font-size: 12px; color: rgba(58,53,44,0.45); line-height: 1.7; letter-spacing: 0.01em;">
-    <div>운영 주체: 시즌드 · 대표 채영화 · 사업자등록번호 890-19-01928</div>
-    <div>업태 정보통신업 · 종목 컴퓨터 프로그래밍 서비스업 · 서울특별시 관악구</div>
-  </div>
-
 </div>
-
-<div class="legend">
-  <b>legend</b>
-  <div class="row"><span class="sw" style="background:#c8412c"></span> active / accent</div>
-  <div class="row"><span class="sw" style="background:#2f5fa8"></span> note to self</div>
-  <div class="row"><span class="sw" style="background:#3a352c"></span> pencil / body</div>
-  <div class="row" style="margin-top:6px; opacity:.7; font-style: italic;">— not pixel-final —</div>
 </div>
-
-<script src="assets/handwriting-svgs.js"></script>
-<script>
-/* PROJECTS — 메인 + /business 데이터 공유. 6번째 etc 카드 (혜택잡이 → toys → etc·5/14 갱신). */
-const PROJECTS = [
-  { n:"01", name:"Publace",   ko:"퍼블레이스", icon:"pin",   line:"도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.", meta:"2024 · 베타", url:"https://publace.site", detail:"도시 빈 공간 매칭. 베타 운영 중·다음 단계 준비." },
-  { n:"02", name:"Pepstocks", ko:"펩스탁", icon:"chart", line:"오늘 시장이 왜 이렇게 됐는지, 그 흐름이 한눈에.", meta:"2026 · 베타", url:"https://pepstocks.com", detail:"미국·한국 주식 흐름을 쉽게 보는 사이트. 베타 운영 중." },
-  { n:"03", name:"EatScan",   ko:"잇스캔",   icon:"scan",  line:"라벨을 한 번 비추면, 먹어도 되는지 아닌지 조용히 알려준다.", meta:"2024 · 가동중", url:"https://eatscan.site", detail:"식품 라벨 한 번 비추면 끝. 조용히, 확실하게." },
-  { n:"04", name:"이달여행",   ko:"IdalTrip", icon:"trip",  line:"이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.", meta:"2025 · 작업중·가동중", wip:true, url:"https://idaltrip.vercel.app", detail:"시즌 축제 기반 여행 큐레이션. 지금 가볼 수 있음·계속 다듬는 중." },
-  { n:"05", name:"잡솔트",     ko:"JobSort",  icon:"job",   line:"공고는 너무 많고, 나에게 맞는 건 늘 한두 개.", meta:"2025 · 작업중·가동중", wip:true, url:"https://jobsort.peppinch.com", detail:"채용 매칭 더 빠르게. 조용히 다듬는 중·미리 둘러봐도 OK." },
-  { n:"06", name:"TickDeck",  ko:"틱덱",     icon:"deck",  line:"URL 한 줄을, 발표 슬라이드 한 벌로.", meta:"2025 · 작업중", wip:true, detail:"긴 글을 슬라이드로. 발표 준비 시간 한 꼬집." },
-  { n:"07", name:"etc",       ko:"기타",     icon:"etc",   line:"틈틈이 재미로 만든 작은 도구들의 진열대.", meta:"2025 · 작업중", wip:true, detail:"한 꼬집씩 모이는 작은 묶음. 곧 공개." }
-];
-
-const grid = document.getElementById("grid");
-const rotations = [-1.5, .8, -.6, 1.2, -1.1, .5, -0.9];
-PROJECTS.forEach((p, i) => {
-  const div = document.createElement("div");
-  div.className = "card" + (p.wip ? " wip" : "");
-  div.style.setProperty("--r", rotations[i] + "deg");
-  const footCta = p.url
-    ? `<a href="${p.url}" target="_blank" rel="noopener noreferrer" class="arrow">→ 열기</a>`
-    : `<span class="arrow ready">→ 작업중</span>`;
-  div.innerHTML = `
-    <svg class="frame"></svg>
-    <div class="num"><span class="ico" data-icon="${p.icon||''}" style="display:inline-block;width:38px;height:38px;vertical-align:middle;margin-right:9px"></span>PROJECT · ${p.n}</div>
-    <h4 class="name" data-original="${p.name}">${p.name}</h4>
-    <div class="ko">${p.ko}</div>
-    <p class="line">${p.line}</p>
-    <div class="details">
-      <p>${p.detail}</p>
-    </div>
-    <div class="foot">
-      <span>${p.meta}</span>
-      ${footCta}
-    </div>
-  `;
-  grid.appendChild(div);
-});
-
-/* Typewriter hover — 한 글자씩 영역 그어지는 영역 (90ms per char) */
-function startTypewriter(el) {
-  const original = el.dataset.original;
-  if (!original) return;
-  clearInterval(el._sint);
-  el.textContent = '​'; // zero-width space — 높이 영역 keep (움찔 차단)
-  let i = 0;
-  el._sint = setInterval(() => {
-    i++;
-    el.textContent = original.slice(0, i);
-    if (i >= original.length) clearInterval(el._sint);
-  }, 90);
-}
-function endTypewriter(el) {
-  clearInterval(el._sint);
-  if (el.dataset.original) el.textContent = el.dataset.original;
-}
-
-/* HANDWRITING_SVGS — assets/handwriting-svgs.js (Kyobo 폰트 붓 reveal·scripts/gen_handwriting_svg.py 생성·7/2) */
-
-function startHandwriting(el) {
-  if (el._hw) return;
-  const svg = HANDWRITING_SVGS[el.dataset.original];
-  if (!svg) return;
-  el._hw = true;
-  el.innerHTML = svg;
-  requestAnimationFrame(() => el.classList.add('hw-on'));
-}
-function endHandwriting(el) {
-  el._hw = false;
-  el.classList.remove('hw-on');
-  el.textContent = el.dataset.original || '';
-}
-
-const HANDWRITING_NAMES = new Set(Object.keys(HANDWRITING_SVGS));
-document.querySelectorAll('.card').forEach(card => {
-  const nameEl = card.querySelector('.name');
-  const isHandwriting = HANDWRITING_NAMES.has(nameEl.dataset.original);
-  card.addEventListener('mouseenter', () => {
-    if (isHandwriting) startHandwriting(nameEl);
-    else startTypewriter(nameEl);
-  });
-  card.addEventListener('mouseleave', () => {
-    if (isHandwriting) endHandwriting(nameEl);
-    else endTypewriter(nameEl);
-  });
-});
-
-/* Hero cursor-reactive variable wght — 영문 hero-line1 + 한글 hero-ko 통일 */
-const heroTargets = document.querySelectorAll('.hero-line1, .hero-ko');
-heroTargets.forEach(target => {
-  const walker = document.createTreeWalker(target, NodeFilter.SHOW_TEXT);
-  const textNodes = [];
-  let node;
-  while ((node = walker.nextNode())) textNodes.push(node);
-  textNodes.forEach(tn => {
-    const text = tn.textContent;
-    const frag = document.createDocumentFragment();
-    text.split('').forEach(ch => {
-      const span = document.createElement('span');
-      span.className = 'ch';
-      span.textContent = ch === ' ' ? ' ' : ch;
-      span.style.display = 'inline-block';
-      span.style.transition = 'font-variation-settings 0.12s ease-out, font-weight 0.12s ease-out, text-shadow 0.12s ease-out';
-      frag.appendChild(span);
-    });
-    tn.parentNode.replaceChild(frag, tn);
-  });
-});
-
-if (heroTargets.length) {
-  let lastFrame = 0;
-  let mx = -9999, my = -9999;
-  window.addEventListener('mousemove', (e) => {
-    mx = e.clientX;
-    my = e.clientY;
-  });
-  function tick() {
-    const now = performance.now();
-    if (now - lastFrame >= 16) {
-      lastFrame = now;
-      heroTargets.forEach(target => {
-        const chars = target.querySelectorAll('.ch');
-        const isKo = target.classList.contains('hero-ko');
-        const radius = isKo ? 200 : 280;
-        chars.forEach(ch => {
-          const r = ch.getBoundingClientRect();
-          if (r.bottom < -100 || r.top > window.innerHeight + 100) return;
-          const cx = r.left + r.width / 2;
-          const cy = r.top + r.height / 2;
-          const dist = Math.hypot(mx - cx, my - cy);
-          const t = Math.max(0, Math.min(1, 1 - dist / radius));
-          const wght = Math.round(300 + t * 500);
-          ch.style.fontVariationSettings = `"wght" ${wght}`;
-          ch.style.fontWeight = wght;
-          // Kyobo 폰트 variable axis 없음 → text-shadow로 굵음 시뮬레이션
-          if (isKo) {
-            const s = (t * 1.1).toFixed(2);
-            ch.style.textShadow = t > 0.05 ? `0 0 ${s}px currentColor, ${(s*0.3).toFixed(2)}px 0 0 currentColor, -${(s*0.3).toFixed(2)}px 0 0 currentColor` : 'none';
-          }
-        });
-      });
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-
-/* Draw rough rectangles into every .frame svg */
-function drawFrames() {
-  document.querySelectorAll("svg.frame").forEach(svg => {
-    const parent = svg.parentElement;
-    const r = parent.getBoundingClientRect();
-    svg.setAttribute("viewBox", `0 0 ${r.width} ${r.height}`);
-    svg.innerHTML = "";
-    const rc = rough.svg(svg);
-    const isTodo = parent.classList.contains("todo");
-    const node = rc.rectangle(4, 4, r.width - 8, r.height - 8, {
-      stroke: isTodo ? "#c8412c" : "#3a352c",
-      strokeWidth: isTodo ? 2.4 : 1.8,
-      roughness: 2.4,
-      bowing: 2.2,
-      fillStyle: "hachure",
-      hachureAngle: -41 + Math.random() * 10,
-      hachureGap: 6.5,
-      fillWeight: 0.7,
-      fill: "#f1e6d2",
-    });
-    svg.appendChild(node);
-
-    // little corner tick for non-todo cards
-    if (!isTodo) {
-      const tick = rc.line(r.width - 28, 6, r.width - 6, 28, {
-        stroke: "#c8412c", strokeWidth: 1.5, roughness: 2
-      });
-      svg.appendChild(tick);
-    }
-  });
-  // 손그림 아이콘 (rough.js · 한 번만 그림)
-  document.querySelectorAll(".ico[data-icon]").forEach(box => {
-    if (box._done || !box.dataset.icon) return;
-    box._done = true;
-    drawIcon(box, box.dataset.icon);
-  });
-}
-function drawIcon(box, type){
-  const NS = "http://www.w3.org/2000/svg";
-  const s = document.createElementNS(NS, "svg");
-  s.setAttribute("viewBox", "0 0 32 32");
-  s.style.width = "100%"; s.style.height = "100%"; s.style.display = "block"; s.style.overflow = "visible";
-  const rc = rough.svg(s);
-  const o = { stroke: "#3a352c", strokeWidth: 1.7, roughness: 1.5, bowing: 1.0 };
-  const add = el => s.appendChild(el);
-  switch (type) {
-    case "pin":   add(rc.circle(15,12,14,o)); add(rc.circle(15,12,5,o)); add(rc.line(15,20,15,29,o)); break;
-    case "chart": add(rc.line(4,27,28,27,o)); add(rc.rectangle(6,18,5,9,o)); add(rc.rectangle(13,12,5,15,o)); add(rc.rectangle(20,7,5,20,o)); break;
-    case "scan":  add(rc.rectangle(5,9,22,14,o)); add(rc.line(10,12,10,20,o)); add(rc.line(15,12,15,20,o)); add(rc.line(20,12,20,20,o)); break;
-    case "trip":  add(rc.linearPath([[4,16],[28,7],[22,21],[16,18],[13,27],[11,18],[4,16]],o)); break;
-    case "job":   add(rc.rectangle(8,5,16,23,o)); add(rc.line(11,12,13,14,o)); add(rc.line(13,14,18,9,o)); add(rc.line(11,19,20,19,o)); break;
-    case "deck":  add(rc.rectangle(4,8,18,14,o)); add(rc.rectangle(10,13,18,14,o)); break;
-    case "etc":   add(rc.circle(8,16,4,o)); add(rc.circle(16,16,4,o)); add(rc.circle(24,16,4,o)); break;
-  }
-  box.innerHTML = "";
-  box.appendChild(s);
-}
-
-window.addEventListener("load", () => {
-  drawFrames();
-  // 폰트 load 후 layout shift 영역 정합 = 다시 draw (Shantell Sans·Kyobo 폰트 영역 load 시점에 카드 영역 size 변경 영역)
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(() => setTimeout(drawFrames, 100));
-  }
-  // 추가 안전 영역 — 1초 후 한 번 더
-  setTimeout(drawFrames, 1000);
-});
-window.addEventListener("resize", () => {
-  clearTimeout(window.__rt);
-  window.__rt = setTimeout(drawFrames, 150);
-});
-</script>
-
 </body>
 </html>
