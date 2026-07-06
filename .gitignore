@@ -11,3 +11,4 @@ inbox/
 .env
 .env.*
 !.env.example
+.gstack/
