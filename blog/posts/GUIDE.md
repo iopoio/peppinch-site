@@ -42,11 +42,21 @@ js 한 줄로 .md fetch + 렌더. 빌드 X·근데 첫 load 살짝 느림.
 
 지금은 **summary만 index에 노출·.md는 draft 보관용**으로 시작. 본문 link 필요해지면 그때 결정.
 
-## 4. commit·push
+## 4. 발행 스크립트 (필수 · 2026-07-07 신설)
+
+```bash
+python3 scripts/publish.py
+```
+
+- `blog/posts/*.html` meta 태그를 읽어 **sitemap.xml·rss.xml 전체 재생성** (손 편집 X — 스크립트가 SoT)
+- `blog/index.html`에 안 걸린 글이 있으면 붙여넣을 snippet까지 출력 (index는 손으로 유지)
+- 배경: 6/24~7/4 글 5건이 sitemap에 빠진 채 발행됨 — 절차에 이 단계가 없어서 생긴 구조적 누락
+
+## 5. commit·push
 
 ```bash
 cd ~/Projects/Automation/peppinch-site
-git add blog/
+git add blog/ sitemap.xml rss.xml
 git commit -m "blog: <글 제목 한 줄>"
 git push
 ```

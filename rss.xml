@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>peppinch blog</title>
+  <link>https://www.peppinch.com/blog/</link>
+  <description>흥미롭고 관심있는 주제를 끄적입니다. 천천히, 한 꼬집씩.</description>
+  <language>ko</language>
+  <atom:link href="https://www.peppinch.com/rss.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>데이터 다 주고 뒤통수 맞은 회사 이야기 (Palantir·Nvidia·Figma)</title>
+    <link>https://www.peppinch.com/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia</guid>
+    <description>올인 팟캐스트 팔란티어·엔비디아 소버린 AI 정리 — 데이터 넘긴 회사가 모델 제공사한테 뒤통수 맞는 이야기, 그리고 왜 팔란티어·엔비디아를 보는지.</description>
+    <pubDate>Sat, 04 Jul 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>다들 AI만 볼 때, 진짜 기회는 아이스링크에 있었다</title>
+    <link>https://www.peppinch.com/blog/posts/2026-07-02-vertical-saas-ice-rink</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-07-02-vertical-saas-ice-rink</guid>
+    <description>레플릿 창업자 대담 정리 — 진짜 기회는 AI가 아니라 소프트웨어가 아직 안 닿은 지루한 분야에 있다. 아이스링크가 그 예시.</description>
+    <pubDate>Thu, 02 Jul 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>AI에 돈은 93%, 사람에는 7% — 리포트 8개 같이 놓고 보다 걸린 거</title>
+    <link>https://www.peppinch.com/blog/posts/2026-07-01-tech-report</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-07-01-tech-report</guid>
+    <description>2026 테크 리포트를 8개쯤 같이 놓고 봤는데, 제일 걸린 건 제일 큰 숫자가 아니라 안 맞는 두 숫자였다. 기업이 AI에 쓰는 돈의 93%는 기술에, 사람과 일하는 방식엔 7%. 그리고 숫자마다 출처를 붙여 브리핑 18장으로 정리해본 이야기.</description>
+    <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>AI가 덱도 만들어주는 시대지만, 아직 내가 원하는 딸깍은 오지 않은 듯</title>
+    <link>https://www.peppinch.com/blog/posts/2026-06-27-my-own-path-for-decks</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-06-27-my-own-path-for-decks</guid>
+    <description>AI 덱 생성 도구는 빠르고 그럴듯한데, 내가 원하는 '딸깍'은 아직 안 왔다. 회사 다닐 때 발표자료 만들던 고통에서 시작해, 자료부터 짜고 출처를 끝까지 확인하며 직접 만들어본 이야기.</description>
+    <pubDate>Sat, 27 Jun 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>공공 정보는 모으는 게 아니라 손으로 맞추는 거였다</title>
+    <link>https://www.peppinch.com/blog/posts/2026-06-24-public-data-by-hand</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-06-24-public-data-by-hand</guid>
+    <description>동네 교육강좌를 모아보려고 구청 데이터를 받았는데, '대상' 칸부터 기관마다 다 제각각이라 손으로 끊어야 했다. 데이터는 이미 공개돼 있고, 진짜 일은 사람이 알아볼 수 있게 맞추는 거였던 이야기.</description>
+    <pubDate>Wed, 24 Jun 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>서울만 보던 지도를 전국으로 폈더니, 화장실 5만 개가 나타났다</title>
+    <link>https://www.peppinch.com/blog/posts/2026-06-20-publace-nationwide-restrooms</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-06-20-publace-nationwide-restrooms</guid>
+    <description>퍼블레이스를 서울·경기에서 전국으로 확대하고 화장실을 얹었다. 4,620개였던 화장실이 5만 개로 늘었는데, 그중 일부가 '문화체험 공간'으로 잡혀 있던 이야기.</description>
+    <pubDate>Sat, 20 Jun 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>종목 뉴스 붙였더니 삼성전자 옆에 '사이다 언니'가 떴다</title>
+    <link>https://www.peppinch.com/blog/posts/2026-06-18-saida-eonni</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-06-18-saida-eonni</guid>
+    <description>펩스탁 종목카드에 관련 소식을 붙였더니 엉뚱한 뉴스가 떴다. 코드 잘못이 아니라 '관련'의 정의가 나랑 검색엔진이 달랐던 이야기.</description>
+    <pubDate>Thu, 18 Jun 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>캐시 우드, 그대로 믿어도 될까 — ARK식 전망 읽는 법</title>
+    <link>https://www.peppinch.com/blog/posts/2026-06-17-ark-how-to-read</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-06-17-ark-how-to-read</guid>
+    <description>캐시 우드가 삼성·하이닉스·테슬라를 띄우는 영상 핵심 정리 + 어제 ARK Big Ideas 4년치 비교로 본 '전망 거르는 법'.</description>
+    <pubDate>Wed, 17 Jun 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>앤트로픽 Fable 백래시 · AI 국유화 · 인플레 재점화</title>
+    <link>https://www.peppinch.com/blog/posts/2026-06-13-all-in-fable5</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-06-13-all-in-fable5</guid>
+    <description>All-In 팟캐스트 1시간 42분 핵심 정리 + Fable 백래시에 대한 내 생각.</description>
+    <pubDate>Sat, 13 Jun 2026 00:00:00 +0900</pubDate>
+  </item>
+</channel>
+</rss>
