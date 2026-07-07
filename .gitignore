@@ -12,3 +12,6 @@ inbox/
 .env.*
 !.env.example
 .gstack/
+
+# python
+__pycache__/

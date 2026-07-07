@@ -1,65 +1,50 @@
 # blog 글 추가 흐름 가이드
 
-peppinch.com/blog/ 새 글 추가하는 절차. 빌드 시스템 X — 손으로 직접 추가.
+peppinch.com/blog/ 새 글 추가하는 절차. **2026-07-08 빌드 시스템 도입** — md 한 장 쓰고 커맨드 한 번.
 
-## 1. draft 작성 (posts/.md)
+## 1. draft 작성 (posts/*.md)
 
 ```bash
-cp _template.md 2026-05-20-tickdeck-week1.md
+cp _template.md 2026-07-10-slug.md
 ```
 
-파일명 룰: `YYYY-MM-DD-slug.md` (날짜 + 영문 슬러그). 마음 가는 대로 .md로 작성.
+파일명 룰: `YYYY-MM-DD-slug.md`. front-matter(title·description·section 필수) 채우고 본문은 md로.
+특수 요소(리포트 카드·내생각 박스)는 raw HTML 블록으로 붙여넣으면 그대로 통과됨.
 
-## 2. index.html에 snippet 추가
+## 2. 빌드 (발행)
 
-draft 완성되면 `blog/index.html` 안 `.stack` div 최상단 (가장 최근 글이 위)에 아래 snippet 삽입:
+완성되면 `status: published`로 바꾸고:
 
-```html
-<article class="post">
-  <span class="date">2026 · 05 · 20</span>
-  <h2 class="title">tickdeck 1주차 — URL 한 줄로 PPT가 나오는가</h2>
-  <p class="summary">
-    DESIGN.md만 던지면 진짜 슬라이드가 나올까. 6주 실험 시작.
-    첫 주는 명세서 한 장 쓰는 데서 막혔다.
-  </p>
-</article>
+```bash
+python3 scripts/build.py
 ```
 
-- 날짜 = `YYYY · MM · DD` (공백 + 가운뎃점)
-- 제목 = 한 줄 (`.title`)
-- 요약 = 2~3줄 (`.summary`)
-- 본문 link 없음 — 본문은 .md 자체에 남기고 index는 summary만 (지금 단계)
+이 한 번으로 전부 자동:
+- **글 HTML 렌더** — `scripts/post_template.html` 디자인 그대로 (OG·JSON-LD·좋아요 버튼 포함)
+- **blog/index.html 자동 삽입** — 해당 분류 최상단 + 분류 카운트 갱신 (분류 없으면 신설)
+- **sitemap.xml·rss.xml 전체 재생성** (publish.py 자동 호출)
 
-## 3. 본문 link (선택)
+md 없이 손으로 만든 옛 글 HTML은 절대 안 건드림. md 수정 후 재빌드하면 HTML만 다시 생성.
 
-본문 자체를 사이트에 노출하고 싶으면 두 옵션:
+## 3. commit·push
 
-### A. 별도 HTML 페이지 (수동)
-`blog/posts/2026-05-20-tickdeck-week1.html` 새로 만들고 `<a href="/blog/posts/2026-05-20-tickdeck-week1.html">` link 추가. 본문 HTML로 변환.
+```bash
+git add blog/ sitemap.xml rss.xml
+git commit -m "blog: <글 제목 한 줄>"
+git push
+```
 
-### B. .md 그대로 (marked.js 런타임 렌더링)
-js 한 줄로 .md fetch + 렌더. 빌드 X·근데 첫 load 살짝 느림.
+Cloudflare Pages 자동 deploy. 1~2분 뒤 반영.
 
-지금은 **summary만 index에 노출·.md는 draft 보관용**으로 시작. 본문 link 필요해지면 그때 결정.
+## 참고 — publish.py 단독 실행
 
-## 4. 발행 스크립트 (필수 · 2026-07-07 신설)
+빌드 없이 sitemap/RSS만 다시 만들고 싶을 때 (예: HTML 직접 수정 후):
 
 ```bash
 python3 scripts/publish.py
 ```
 
-- `blog/posts/*.html` meta 태그를 읽어 **sitemap.xml·rss.xml 전체 재생성** (손 편집 X — 스크립트가 SoT)
-- `blog/index.html`에 안 걸린 글이 있으면 붙여넣을 snippet까지 출력 (index는 손으로 유지)
-- 배경: 6/24~7/4 글 5건이 sitemap에 빠진 채 발행됨 — 절차에 이 단계가 없어서 생긴 구조적 누락
-
-## 5. commit·push
-
-```bash
-cd ~/Projects/Automation/peppinch-site
-git add blog/ sitemap.xml rss.xml
-git commit -m "blog: <글 제목 한 줄>"
-git push
-```
+배경: 6/24~7/4 글 5건이 sitemap에 빠진 채 발행됨(7/7 발견) → 발행 절차 자동화가 근본 해결.
 
 Cloudflare Pages 자동 deploy. 1~2분 뒤 peppinch.com/blog/ 반영.
 

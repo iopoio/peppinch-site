@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}} · peppinch blog</title>
+<meta name="description" content="{{DESC}}">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESC}}">
+<meta property="og:image" content="https://www.peppinch.com/og-image.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{URL}}">
+<meta property="og:site_name" content="peppinch">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="{{DATE}}T00:00:00+09:00">
+<meta property="article:section" content="{{SECTION}}">
+{{TAGS_META}}
+<meta name="author" content="peppinch">
+<meta name="keywords" content="{{KEYWORDS}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@peppinch_">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{DESC}}">
+<meta name="twitter:image" content="https://www.peppinch.com/og-image.png">
+<link rel="canonical" href="{{URL}}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">
+{{JSONLD}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LZ7ZXMFEBM');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+<style>
+@font-face{font-family:"Kyobo";src:url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),url("/fonts/KyoboHandwriting2019.otf") format("opentype");font-display:swap}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:clip}
+body{background:#F6F4ED;color:#33312B;font-family:'Gowun Dodum',sans-serif;-webkit-font-smoothing:antialiased;
+--acc:#3E7C5B;--accD:#2C5A41;--accS:rgba(62,124,91,0.22);--accT:rgba(62,124,91,0.18);--accBg:#E9EFE4;--rule:rgba(51,49,43,0.09)}
+.wrap{max-width:760px;margin:0 auto;padding:0 40px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:30px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#33312B}
+.brand img{width:27px;height:27px;margin-bottom:2px}
+.brand .bn{font-family:'Shantell Sans',cursive;font-weight:700;font-size:25px}
+.pill{font-family:'Kyobo';font-size:17px;color:#615D51;text-decoration:none;padding:5px 16px;border:1.6px dashed #8F8B7D;border-radius:18px 210px 22px 190px / 200px 20px 220px 18px;transition:all .15s}
+.pill:hover{border-color:var(--acc);color:var(--acc)}
+.phead{padding:66px 0 10px}
+.pmeta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pdate{font-family:'Shantell Sans',cursive;font-size:13px;color:#8F8B7D}
+.pcat{font-family:'Kyobo';font-size:15px;color:var(--acc);border:1.4px solid var(--acc);padding:2px 12px;border-radius:190px 16px 210px 14px / 16px 200px 14px 190px;transform:rotate(-1deg)}
+h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-spacing:-0.01em;word-break:keep-all;overflow-wrap:anywhere}
+.hrule{width:130px;border-bottom:3px solid var(--accS);margin-top:18px;transform:rotate(-0.6deg)}
+.content{font-size:16.5px;line-height:2.05;color:#44413A;padding:26px 0 0}
+.content p{margin:0 0 26px}
+.content a{color:var(--acc)}
+.content h2{font-family:'Kyobo';font-size:24px;font-weight:400;color:var(--acc);margin:36px 0 16px;line-height:1.6}
+.content blockquote{margin:0 0 26px;font-family:'Kyobo';font-size:19px;line-height:1.9;background:#FFFFFF;border:1.6px solid #33312B;border-radius:8px 190px 10px 210px / 200px 10px 220px 8px;padding:16px 24px;transform:rotate(-0.4deg)}
+.content ul,.content ol{margin:0 0 26px;padding-left:24px}
+.content li{margin:0 0 8px}
+.content img{max-width:100%;height:auto}
+.content em,.content strong{font-style:normal;font-weight:700;background:linear-gradient(transparent 62%,var(--accS) 62%,var(--accS) 92%,transparent 92%)}
+.rptcard{display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;color:#33312B;background:#FFFFFF;border:1.6px solid #33312B;border-radius:8px 190px 10px 210px / 200px 10px 220px 8px;padding:18px 24px;margin:0 0 40px;transition:all .18s}
+.rptcard:hover{transform:translateY(-3px);box-shadow:5px 7px 0 var(--accS)}
+.rptcard .rl{display:flex;flex-direction:column;gap:2px}
+.rptcard .rk{font-family:'Kyobo';font-size:15px;color:var(--acc)}
+.rptcard .rt{font-size:15.5px;font-weight:700}
+.rptcard .ra{font-family:'Kyobo';font-size:18px;color:var(--acc);flex:none}
+.mv{background-image:repeating-linear-gradient(transparent,transparent 45px,var(--rule) 45px,var(--rule) 46px);background-position:0 12px;padding:6px 4px 20px;margin-bottom:36px}
+.mvh{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.mvh .ic{font-size:19px}
+.mvh .tt{font-family:'Kyobo';font-size:24px;color:var(--acc)}
+.mvb{font-family:'Kyobo';font-size:20px;line-height:2.3;color:#44413A}
+.mvb p{margin:0 0 22px}
+.mvb p:last-child{margin:0}
+.mvb b,.mvb strong{font-weight:700;background:linear-gradient(transparent 62%,var(--accS) 62%,var(--accS) 92%,transparent 92%)}
+.mvb .ask{color:var(--accD);font-weight:700}
+.content .takeaway{font-family:'Kyobo';font-size:20px;line-height:2.3;color:#44413A;background-image:repeating-linear-gradient(transparent,transparent 45px,var(--rule) 45px,var(--rule) 46px);background-position:0 12px;padding:6px 4px 14px;margin:36px 0}
+.content .sitenote{font-family:'Kyobo';font-size:17px;line-height:2;color:#8F8B7D;border-top:1.5px dashed #C9C5B6;padding-top:20px;margin-top:34px}
+.deck-fold{margin:0 0 26px;border:1.6px dashed #8F8B7D;border-radius:3px;padding:14px 18px;background:#FFFFFF}
+.deck-fold summary{font-family:'Kyobo';font-size:18px;color:var(--acc);cursor:pointer}
+.deck-slides{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.deck-slides img{border:1px solid #E3DFD3;border-radius:3px}
+.deck-pdf{margin:12px 0 0;font-family:'Kyobo';font-size:16px}
+.likewrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 0 6px}
+.likebtn{font-family:'Kyobo';font-size:20px;color:var(--acc);background:#FFFFFF;border:1.8px solid var(--acc);border-radius:220px 20px 200px 24px / 22px 200px 18px 220px;padding:10px 30px;cursor:pointer;transition:all .15s}
+.likebtn:hover{background:var(--accBg);transform:rotate(-1deg)}
+.likebtn.on{background:var(--acc);color:#F6F4ED}
+.likenote{font-family:'Kyobo';font-size:16px;color:#8F8B7D;text-align:center}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:44px 0 40px;margin-top:40px;border-top:1.5px solid #D8D4C6}
+.foot .fs{display:inline-flex;align-items:center;gap:9px;font-family:'Shantell Sans',cursive;font-size:15px;color:#8F8B7D}
+.foot .fs b{color:#33312B}
+.foot .fb{font-family:'Kyobo';font-size:16px;color:var(--acc);text-decoration:none}
+@media(max-width:640px){.wrap{padding:0 22px}.pill{padding:10px 18px}h1.ptitle{font-size:26px}.phead{padding:46px 0 6px}.mvb{font-size:18px}.content .takeaway{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="brand" href="/"><img src="/assets/peppinch-logo.svg" alt="Peppinch 로고 — 후추 세 알"><span class="bn">Peppinch</span></a>
+    <a class="pill" href="/blog/">← 다른 글 보기</a>
+  </div>
+
+  <div class="phead">
+    <div class="pmeta"><span class="pdate">{{DATE_DOT}}</span><span class="pcat">{{SECTION}}</span></div>
+    <h1 class="ptitle">{{TITLE}}</h1>
+    <div class="hrule"></div>
+  </div>
+
+  <div class="content">
+{{CONTENT}}
+
+    <div class="likewrap">
+      <button id="likeBtn" class="likebtn" aria-pressed="false">♡ 좋아요 <span id="likeCount"></span></button>
+      <span class="likenote">댓글은 준비 중이에요. 좋아요로 반응 남겨주시면 힘이 됩니다 🙏</span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="fs">made slow, in seoul — <b>Peppinch</b> <span style="font-size:15px;transform:rotate(8deg)">🧂</span></span>
+    <a class="fb" href="/blog/">← 다른 글 보기</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY='peppinch_like_{{SLUG}}';
+  var b=document.getElementById('likeBtn');
+  var liked=localStorage.getItem(KEY)==='1';
+  function render(){ b.classList.toggle('on',liked); b.firstChild.textContent=(liked?'♥ 좋아요 ':'♡ 좋아요 '); b.setAttribute('aria-pressed',liked); }
+  render();
+  b.addEventListener('click',function(){ liked=!liked; localStorage.setItem(KEY,liked?'1':'0'); render(); if(window.gtag) gtag('event',liked?'like':'unlike',{post:'{{SLUG}}'}); });
+})();
+</script>
+</body>
+</html>
