@@ -120,7 +120,7 @@ def render_post(meta, body):
 
 def make_row(meta):
     y, mo, d = meta["date"].split("-")
-    return f'''      <a class="row" href="/blog/posts/{meta['slug']}">
+    return f'''      <a class="row" data-cat="{meta['section']}" href="/blog/posts/{meta['slug']}">
         <span class="rd">{y} · {mo} · {d}</span>
         <span>
           <span class="rt">{html.escape(meta['title'], quote=False)}</span>
@@ -131,46 +131,25 @@ def make_row(meta):
 
 
 def insert_into_index(meta):
-    """해당 분류 .plist 최상단에 행 삽입. 분류 없으면 새 섹션 생성."""
+    """시간순 리스트(#plist) 최상단에 행 삽입 + 분류 칩 없으면 신설.
+
+    2026-07-08 인덱스 개편 후 구조: 분류 섹션 X — 단일 리스트 + 칩 필터.
+    """
     idx = INDEX.read_text(encoding="utf-8")
     if f'/blog/posts/{meta["slug"]}"' in idx:
         return False
-    section_pat = (r'(<div class="cat-head"><span class="cn">'
-                   + re.escape(meta["section"])
-                   + r'</span>.*?<div class="plist">\n)')
-    m = re.search(section_pat, idx, re.S)
-    row = make_row(meta)
-    if m:
-        idx = idx[:m.end()] + row + "\n" + idx[m.end():]
-    else:  # 새 분류 — 마지막 </section> 뒤에 신설
-        new_sec = f'''
-  <section class="cat">
-    <div class="cat-head"><span class="cn">{meta['section']}</span><span class="cc">0</span><span class="cl"></span></div>
-    <div class="plist">
-{row}
-    </div>
-  </section>
-'''
-        last = idx.rfind("</section>")
-        if last == -1:
-            raise ValueError("index.html에 </section> 없음 — 구조 변경됨, 수동 확인 필요")
-        idx = idx[:last + len("</section>")] + new_sec + idx[last + len("</section>"):]
+    anchor = '<div class="plist" id="plist">\n'
+    pos = idx.find(anchor)
+    if pos == -1:
+        raise ValueError("index.html에 #plist 없음 — 구조 변경됨, 수동 확인 필요")
+    pos += len(anchor)
+    idx = idx[:pos] + make_row(meta) + "\n" + idx[pos:]
+    if f'data-cat="{meta["section"]}">' not in idx.split(anchor)[0]:  # 칩 존재 검사
+        chip = f'<button class="chip" data-cat="{meta["section"]}">{meta["section"]}</button>'
+        chips_end = idx.find("</div>", idx.find('<div class="chips">'))
+        idx = idx[:chips_end] + "  " + chip + "\n  " + idx[chips_end:]
     INDEX.write_text(idx, encoding="utf-8")
     return True
-
-
-def update_counts():
-    """각 분류의 .cc 카운트를 실제 행 수로 재계산."""
-    idx = INDEX.read_text(encoding="utf-8")
-    sections = re.split(r'(?=<section class="cat">)', idx)
-    out = []
-    for chunk in sections:
-        if chunk.startswith('<section class="cat">'):
-            n = chunk.count('class="row"')
-            chunk = re.sub(r'(<span class="cn">[^<]+</span>)(<span class="cc">\d*</span>)?',
-                           rf'\1<span class="cc">{n}</span>', chunk, count=1)
-        out.append(chunk)
-    INDEX.write_text("".join(out), encoding="utf-8")
 
 
 # ---------- main ----------
@@ -196,8 +175,6 @@ if __name__ == "__main__":
         if insert_into_index(meta):
             print(f"인덱스 삽입: {meta['slug']} → [{meta['section']}]")
         built += 1
-    if built:
-        update_counts()
     print(f"빌드 {built}건 — sitemap/RSS 갱신으로 이어감")
     posts = publish.load_posts()
     publish.write_sitemap(posts)

@@ -56,7 +56,12 @@ h1 .dot{color:var(--acc)}
 .bhead .sub{font-family:'Kyobo';font-size:26px;color:#615D51;padding-bottom:10px}
 .bhead .desc{font-size:16px;line-height:2.66;color:#615D51;margin-top:10px}
 .bhead .desc .k{font-family:'Kyobo';font-size:18px;color:var(--acc)}
-.cat{padding:34px 0 8px}
+.cat{padding:14px 0 8px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;padding:30px 0 4px}
+.chip{font-family:'Kyobo';font-size:17px;color:#615D51;background:none;cursor:pointer;padding:6px 18px;border:1.6px dashed #8F8B7D;border-radius:18px 210px 22px 190px / 200px 20px 220px 18px;transition:all .15s}
+.chip:hover{border-color:var(--acc);color:var(--acc)}
+.chip.on{background:var(--acc);color:#F6F4ED;border:1.6px solid var(--acc);border-radius:200px 22px 215px 16px / 18px 225px 20px 205px}
+
 .cat-head{display:flex;align-items:baseline;gap:14px}
 .cat-head .cn{font-family:'Kyobo';font-size:26px;color:#33312B}
 .cat-head .cc{font-family:'Shantell Sans',cursive;font-size:13px;color:var(--acc)}
@@ -107,56 +112,13 @@ h1 .dot{color:var(--acc)}
     <div class="desc">흥미롭고 관심있는 주제를 끄적여봅니다. <span class="k">천천히, 한 꼬집씩.</span></div>
   </div>
 
-  <section class="cat">
-    <div class="cat-head"><span class="cn">AI랑 만들기</span><span class="cc">5</span><span class="cl"></span></div>
-    <div class="plist">
-      <a class="row" href="/blog/posts/2026-07-01-tech-report">
-        <span class="rd">2026 · 07 · 01</span>
-        <span>
-          <span class="rt">AI에 돈은 93%, 사람에는 7% — 리포트 8개 같이 놓고 보다 걸린 거</span>
-          <span class="rs">제일 걸린 건 제일 큰 숫자가 아니라 안 맞는 두 숫자. 숫자마다 출처를 붙여 브리핑 18장으로 정리했다.</span>
-        </span>
-        <span class="go">→ 읽기</span>
-      </a>
-      <a class="row" href="/blog/posts/2026-06-27-my-own-path-for-decks">
-        <span class="rd">2026 · 06 · 27</span>
-        <span>
-          <span class="rt">AI가 덱도 만들어주는 시대지만, 아직 내가 원하는 딸깍은 오지 않은 듯</span>
-          <span class="rs">AI가 덱을 좌라락 뽑아주는데 출처가 없더라. 자료부터 짜고 출처를 끝까지 확인하며 직접 만들어봤다.</span>
-        </span>
-        <span class="go">→ 읽기</span>
-      </a>
-      <a class="row" href="/blog/posts/2026-06-24-public-data-by-hand">
-        <span class="rd">2026 · 06 · 24</span>
-        <span>
-          <span class="rt">공공 정보는 모으는 게 아니라 손으로 맞추는 거였다</span>
-          <span class="rs">데이터는 이미 공개돼 있고, 진짜 일은 사람이 알아볼 수 있게 맞추는 거였다.</span>
-        </span>
-        <span class="go">→ 읽기</span>
-      </a>
-      <a class="row" href="/blog/posts/2026-06-20-publace-nationwide-restrooms">
-        <span class="rd">2026 · 06 · 20</span>
-        <span>
-          <span class="rt">서울만 보던 지도를 전국으로 폈더니, 화장실 5만 개가 나타났다</span>
-          <span class="rs">4,620개였던 화장실이 5만 개로 늘었는데, 상당수가 '공간'으로 분류돼 안 떠서 고쳤다.</span>
-        </span>
-        <span class="go">→ 읽기</span>
-      </a>
-      <a class="row" href="/blog/posts/2026-06-18-saida-eonni">
-        <span class="rd">2026 · 06 · 18</span>
-        <span>
-          <span class="rt">종목 뉴스 붙였더니 삼성전자 옆에 '사이다 언니'가 떴다</span>
-          <span class="rs">코드가 어려울 줄 알았더니 진짜 어려운 건 따로 있더라구. 종목명으로 뉴스 긁으면 안 관련된 게 딸려온다.</span>
-        </span>
-        <span class="go">→ 읽기</span>
-      </a>
-    </div>
-  </section>
+    <div class="chips">
+    <button class="chip on" data-cat="*">전체</button><button class="chip" data-cat="관심있는 것들 정리">관심있는 것들 정리</button><button class="chip" data-cat="AI랑 만들기">AI랑 만들기</button>
+  </div>
 
   <section class="cat">
-    <div class="cat-head"><span class="cn">관심있는 것들 정리</span><span class="cc">4</span><span class="cl"></span></div>
-    <div class="plist">
-      <a class="row" href="/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia">
+    <div class="plist" id="plist">
+<a class="row" data-cat="관심있는 것들 정리" href="/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia">
         <span class="rd">2026 · 07 · 04</span>
         <span>
           <span class="rt">데이터 다 주고 뒤통수 맞은 회사 이야기 (Palantir·Nvidia·Figma)</span>
@@ -164,7 +126,7 @@ h1 .dot{color:var(--acc)}
         </span>
         <span class="go">→ 읽기</span>
       </a>
-      <a class="row" href="/blog/posts/2026-07-02-vertical-saas-ice-rink">
+<a class="row" data-cat="관심있는 것들 정리" href="/blog/posts/2026-07-02-vertical-saas-ice-rink">
         <span class="rd">2026 · 07 · 02</span>
         <span>
           <span class="rt">다들 AI만 볼 때, 진짜 기회는 아이스링크에 있었다</span>
@@ -172,7 +134,47 @@ h1 .dot{color:var(--acc)}
         </span>
         <span class="go">→ 읽기</span>
       </a>
-      <a class="row" href="/blog/posts/2026-06-17-ark-how-to-read">
+<a class="row" data-cat="AI랑 만들기" href="/blog/posts/2026-07-01-tech-report">
+        <span class="rd">2026 · 07 · 01</span>
+        <span>
+          <span class="rt">AI에 돈은 93%, 사람에는 7% — 리포트 8개 같이 놓고 보다 걸린 거</span>
+          <span class="rs">제일 걸린 건 제일 큰 숫자가 아니라 안 맞는 두 숫자. 숫자마다 출처를 붙여 브리핑 18장으로 정리했다.</span>
+        </span>
+        <span class="go">→ 읽기</span>
+      </a>
+<a class="row" data-cat="AI랑 만들기" href="/blog/posts/2026-06-27-my-own-path-for-decks">
+        <span class="rd">2026 · 06 · 27</span>
+        <span>
+          <span class="rt">AI가 덱도 만들어주는 시대지만, 아직 내가 원하는 딸깍은 오지 않은 듯</span>
+          <span class="rs">AI가 덱을 좌라락 뽑아주는데 출처가 없더라. 자료부터 짜고 출처를 끝까지 확인하며 직접 만들어봤다.</span>
+        </span>
+        <span class="go">→ 읽기</span>
+      </a>
+<a class="row" data-cat="AI랑 만들기" href="/blog/posts/2026-06-24-public-data-by-hand">
+        <span class="rd">2026 · 06 · 24</span>
+        <span>
+          <span class="rt">공공 정보는 모으는 게 아니라 손으로 맞추는 거였다</span>
+          <span class="rs">데이터는 이미 공개돼 있고, 진짜 일은 사람이 알아볼 수 있게 맞추는 거였다.</span>
+        </span>
+        <span class="go">→ 읽기</span>
+      </a>
+<a class="row" data-cat="AI랑 만들기" href="/blog/posts/2026-06-20-publace-nationwide-restrooms">
+        <span class="rd">2026 · 06 · 20</span>
+        <span>
+          <span class="rt">서울만 보던 지도를 전국으로 폈더니, 화장실 5만 개가 나타났다</span>
+          <span class="rs">4,620개였던 화장실이 5만 개로 늘었는데, 상당수가 '공간'으로 분류돼 안 떠서 고쳤다.</span>
+        </span>
+        <span class="go">→ 읽기</span>
+      </a>
+<a class="row" data-cat="AI랑 만들기" href="/blog/posts/2026-06-18-saida-eonni">
+        <span class="rd">2026 · 06 · 18</span>
+        <span>
+          <span class="rt">종목 뉴스 붙였더니 삼성전자 옆에 '사이다 언니'가 떴다</span>
+          <span class="rs">코드가 어려울 줄 알았더니 진짜 어려운 건 따로 있더라구. 종목명으로 뉴스 긁으면 안 관련된 게 딸려온다.</span>
+        </span>
+        <span class="go">→ 읽기</span>
+      </a>
+<a class="row" data-cat="관심있는 것들 정리" href="/blog/posts/2026-06-17-ark-how-to-read">
         <span class="rd">2026 · 06 · 17</span>
         <span>
           <span class="rt">캐시 우드, 그대로 믿어도 될까 — ARK식 전망 읽는 법</span>
@@ -180,7 +182,7 @@ h1 .dot{color:var(--acc)}
         </span>
         <span class="go">→ 읽기</span>
       </a>
-      <a class="row" href="/blog/posts/2026-06-13-all-in-fable5">
+<a class="row" data-cat="관심있는 것들 정리" href="/blog/posts/2026-06-13-all-in-fable5">
         <span class="rd">2026 · 06 · 13</span>
         <span>
           <span class="rt">All-In 정리 — Fable 5 백래시, AI 국유화, 인플레</span>
@@ -191,9 +193,19 @@ h1 .dot{color:var(--acc)}
     </div>
   </section>
 
-  <section class="cat">
-    <div class="cat-head"><span class="cn">주식 이야기</span><span class="cl"></span></div>
-    <div class="soon">— 곧 —</div>
+  <div class="soon">— 곧 —</div>
+
+<script>
+(function(){
+  var chips=document.querySelectorAll('.chip'), rows=document.querySelectorAll('#plist .row');
+  chips.forEach(function(c){ c.addEventListener('click',function(){
+    chips.forEach(function(x){x.classList.remove('on')}); c.classList.add('on');
+    var cat=c.dataset.cat;
+    rows.forEach(function(r){ r.style.display=(cat==='*'||r.dataset.cat===cat)?'':'none'; });
+  }); });
+})();
+</script>
+
   </section>
 
   <div class="foot">
