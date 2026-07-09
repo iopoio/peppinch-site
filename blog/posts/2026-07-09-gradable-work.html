@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI가 "채점되는 일"부터 먹는다길래, 내 걸 채점해봤다 · peppinch blog</title>
+<meta name="description" content="AI 프론티어 EP102 정리 — 프론티어 AI는 기계가 채점 가능한 분야부터 먹는다. 그 잣대를 내가 만든 덱 엔진에 대봤다가 뜨끔한 이야기.">
+<meta property="og:title" content="AI가 &quot;채점되는 일&quot;부터 먹는다길래, 내 걸 채점해봤다">
+<meta property="og:description" content="프론티어 AI는 기계가 채점 가능한 분야부터 먹는다 — 그 잣대를 내 덱 엔진에 대봤더니, 두 달 동안 내가 한 일이 전부 채점기 만들기였다.">
+<meta property="og:image" content="https://www.peppinch.com/og-image.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.peppinch.com/blog/posts/2026-07-09-gradable-work">
+<meta property="og:site_name" content="peppinch">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2026-07-09T00:00:00+09:00">
+<meta property="article:section" content="AI랑 만들기">
+<meta property="article:tag" content="AI프론티어"><meta property="article:tag" content="틱덱"><meta property="article:tag" content="빌드인퍼블릭"><meta property="article:tag" content="인디해커">
+<meta name="author" content="peppinch">
+<meta name="keywords" content="AI 프론티어, 실리콘밸리, 프론티어 랩, RLVR, 채점 가능성, 인디해커, 빌드인퍼블릭, 덱 엔진">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@peppinch_">
+<meta name="twitter:title" content="AI가 &quot;채점되는 일&quot;부터 먹는다길래, 내 걸 채점해봤다">
+<meta name="twitter:description" content="프론티어 AI는 기계가 채점 가능한 분야부터 먹는다 — 그 잣대를 내 덱 엔진에 대봤더니 뜨끔.">
+<meta name="twitter:image" content="https://www.peppinch.com/og-image.png">
+<link rel="canonical" href="https://www.peppinch.com/blog/posts/2026-07-09-gradable-work">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI가 \"채점되는 일\"부터 먹는다길래, 내 걸 채점해봤다","description":"프론티어 AI는 기계가 채점 가능한 분야부터 먹는다 — 그 잣대를 내 덱 엔진에 대봤다가 뜨끔한 이야기.","datePublished":"2026-07-09T00:00:00+09:00","dateModified":"2026-07-09T00:00:00+09:00","inLanguage":"ko-KR","url":"https://www.peppinch.com/blog/posts/2026-07-09-gradable-work","mainEntityOfPage":"https://www.peppinch.com/blog/posts/2026-07-09-gradable-work","image":"https://www.peppinch.com/og-image.png","keywords":"AI 프론티어, 채점 가능성, 인디해커, 빌드인퍼블릭","author":{"@type":"Person","name":"peppinch","url":"https://www.peppinch.com/"},"publisher":{"@type":"Organization","name":"peppinch","logo":{"@type":"ImageObject","url":"https://www.peppinch.com/favicon.svg"}},"isBasedOn":{"@type":"VideoObject","name":"AI Frontier EP102 샌프란시스코의 교훈","url":"https://youtu.be/SSIGI9mm0DU"}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LZ7ZXMFEBM');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+<style>
+@font-face{font-family:"Kyobo";src:url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),url("/fonts/KyoboHandwriting2019.otf") format("opentype");font-display:swap}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:clip}
+body{background:#F6F4ED;color:#33312B;font-family:'Gowun Dodum',sans-serif;-webkit-font-smoothing:antialiased;
+--acc:#3E7C5B;--accD:#2C5A41;--accS:rgba(62,124,91,0.22);--accT:rgba(62,124,91,0.18);--accBg:#E9EFE4;--rule:rgba(51,49,43,0.09)}
+.wrap{max-width:760px;margin:0 auto;padding:0 40px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:30px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#33312B}
+.brand img{width:27px;height:27px;margin-bottom:2px}
+.brand .bn{font-family:'Shantell Sans',cursive;font-weight:700;font-size:25px}
+.pill{font-family:'Kyobo';font-size:17px;color:#615D51;text-decoration:none;padding:5px 16px;border:1.6px dashed #8F8B7D;border-radius:18px 210px 22px 190px / 200px 20px 220px 18px;transition:all .15s}
+.pill:hover{border-color:var(--acc);color:var(--acc)}
+.phead{padding:66px 0 10px}
+.pmeta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pdate{font-family:'Shantell Sans',cursive;font-size:13px;color:#8F8B7D}
+.pcat{font-family:'Kyobo';font-size:15px;color:var(--acc);border:1.4px solid var(--acc);padding:2px 12px;border-radius:190px 16px 210px 14px / 16px 200px 14px 190px;transform:rotate(-1deg)}
+h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-spacing:-0.01em;word-break:keep-all;overflow-wrap:anywhere}
+.hrule{width:130px;border-bottom:3px solid var(--accS);margin-top:18px;transform:rotate(-0.6deg)}
+.content{font-size:16.5px;line-height:2.05;color:#44413A;padding:26px 0 0}
+.content p{margin:0 0 26px}
+.content a{color:var(--acc)}
+.content h2{font-family:'Kyobo';font-size:24px;font-weight:400;color:var(--acc);margin:36px 0 16px;line-height:1.6}
+.content blockquote{margin:0 0 26px;font-family:'Kyobo';font-size:19px;line-height:1.9;background:#FFFFFF;border:1.6px solid #33312B;border-radius:8px 190px 10px 210px / 200px 10px 220px 8px;padding:16px 24px;transform:rotate(-0.4deg)}
+.content img{max-width:100%;height:auto}
+.content em,.content strong{font-style:normal;font-weight:700;background:linear-gradient(transparent 62%,var(--accS) 62%,var(--accS) 92%,transparent 92%)}
+.rptcard{display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;color:#33312B;background:#FFFFFF;border:1.6px solid #33312B;border-radius:8px 190px 10px 210px / 200px 10px 220px 8px;padding:18px 24px;margin:0 0 40px;transition:all .18s}
+.rptcard:hover{transform:translateY(-3px);box-shadow:5px 7px 0 var(--accS)}
+.rptcard .rl{display:flex;flex-direction:column;gap:2px}
+.rptcard .rk{font-family:'Kyobo';font-size:15px;color:var(--acc)}
+.rptcard .rt{font-size:15.5px;font-weight:700}
+.rptcard .ra{font-family:'Kyobo';font-size:18px;color:var(--acc);flex:none}
+.mv{background-image:repeating-linear-gradient(transparent,transparent 45px,var(--rule) 45px,var(--rule) 46px);background-position:0 12px;padding:6px 4px 20px;margin-bottom:36px}
+.mvh{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.mvh .ic{font-size:19px}
+.mvh .tt{font-family:'Kyobo';font-size:24px;color:var(--acc)}
+.mvb{font-family:'Kyobo';font-size:20px;line-height:2.3;color:#44413A}
+.mvb p{margin:0 0 22px}
+.mvb p:last-child{margin:0}
+.mvb b,.mvb strong{font-weight:700;background:linear-gradient(transparent 62%,var(--accS) 62%,var(--accS) 92%,transparent 92%)}
+.mvb .ask{color:var(--accD);font-weight:700}
+.content .sitenote{font-family:'Kyobo';font-size:17px;line-height:2;color:#8F8B7D;border-top:1.5px dashed #C9C5B6;padding-top:20px;margin-top:34px}
+.likewrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 0 6px}
+.likebtn{font-family:'Kyobo';font-size:20px;color:var(--acc);background:#FFFFFF;border:1.8px solid var(--acc);border-radius:220px 20px 200px 24px / 22px 200px 18px 220px;padding:10px 30px;cursor:pointer;transition:all .15s}
+.likebtn:hover{background:var(--accBg);transform:rotate(-1deg)}
+.likebtn.on{background:var(--acc);color:#F6F4ED}
+.likenote{font-family:'Kyobo';font-size:16px;color:#8F8B7D;text-align:center}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:44px 0 40px;margin-top:40px;border-top:1.5px solid #D8D4C6}
+.foot .fs{display:inline-flex;align-items:center;gap:9px;font-family:'Shantell Sans',cursive;font-size:15px;color:#8F8B7D}
+.foot .fs b{color:#33312B}
+.foot .fb{font-family:'Kyobo';font-size:16px;color:var(--acc);text-decoration:none}
+@media(max-width:640px){.wrap{padding:0 22px}.pill{padding:10px 18px}h1.ptitle{font-size:26px}.phead{padding:46px 0 6px}.mvb{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="brand" href="/"><img src="/assets/peppinch-logo.svg" alt="Peppinch 로고 — 후추 세 알"><span class="bn">Peppinch</span></a>
+    <a class="pill" href="/blog/">← 다른 글 보기</a>
+  </div>
+
+  <div class="phead">
+    <div class="pmeta"><span class="pdate">2026 · 07 · 09</span><span class="pcat">AI랑 만들기</span></div>
+    <h1 class="ptitle">AI가 "채점되는 일"부터 먹는다길래, 내 걸 채점해봤다</h1>
+    <div class="hrule"></div>
+  </div>
+
+  <div class="content">
+    <p>실리콘밸리에 3주 다녀온 분이 "사람들이 다 미쳤어요"라고 하길래 무슨 소린가 하고 AI 프론티어 EP102를 정리했다. 한 시간짜리에서 제일 오래 남은 건 결국 한 문장 — AI는 채점되는 일부터 먹는다는 것. 먼저 핵심 정리, 그 아래 내 생각.</p>
+
+    <a class="rptcard" href="/blog/posts/2026-07-09-gradable-work-report">
+      <span class="rl">
+        <span class="rk">에피소드 핵심 정리 브리핑</span>
+        <span class="rt">EP102 샌프란시스코의 교훈 — 정리 리포트 보기</span>
+      </span>
+      <span class="ra">→</span>
+    </a>
+
+    <div class="mv">
+      <div class="mvh"><span class="ic">✍️</span><span class="tt">내 생각</span></div>
+      <div class="mvb">
+<p>OpenAI나 앤트로픽이 코딩·법률·바이오부터 직접 먹겠다고 선언했다는데, 왜 하필 이 셋인가 했더니 이유가 간단했음<br><b>결과물을 기계가 채점할 수 있는 분야</b>라서<br>코드는 돌려보면 바로 나오고 계약서엔 판례가 있고, 채점이 되면 AI를 밤새 무한 반복 훈련시킬 수 있으니까</p>
+<p>오 좋은 프레임이네 하고 넘어가려다가 그 잣대를 내 물건에 대봤는데<br>나는 요즘 URL 넣으면 컨설팅 보고서 스타일 덱이 나오는 엔진을 만들고 있거든 (혼자, AI 데리고)<br>두 달간 뭘 했나 보니까... 테스트 124개, 슬라이드 제목만 읽어도 논리가 서는지 검사하는 게이트, 덱에 실린 수치 전부를 출처 원문과 대조하는 팩트체커<br>그러니까 내가 두 달 동안 한 일이 한 문장으로 <b>"덱 품질을 채점 가능하게 만드는 일"</b>이었던 거임</p>
+<p>여기서 뜨끔 😱<br>채점이 가능해질수록 내 엔진은 좋아지는데, 채점이 가능해질수록 큰 회사들도 결국 이걸 잘하게 된다는 게 함정<br>내가 열심히 만든 채점기가 사실은 "이 일은 자동화됩니다"라는 증명서이기도 했던 거다</p>
+<p>한참 곱씹다가 내린 결론은 — <b>채점되는 층은 도구고, 채점 안 되는 층이 상품이다</b><br>"잘 만든 보고서"는 채점이 되니까 언젠가 딸깍이 된다 치고, "이 사장님 상황에 맞는 진단인가" "틀리면 누가 책임지나" 이건 채점기가 없음<br>채점자가 시장이고 채점에 몇 달이 걸리고, 틀리면 아픈 사람이 있어야 하니까<br>그래서 엔진은 내 시간을 아껴주는 도구로 쓰고, 팔리는 건 그 위에 얹는 것(검수, 맥락, 내 이름)이어야 한다는 쪽으로 방향을 틀고 있는데 그 얘기는 다음에...</p>
+<p><span class="ask">혼자 만드는 사람이라면 한번 대볼 만한 질문 — "내 결과물, 기계가 채점할 수 있나?" 예스면 그건 도구로 쓰고, 채점 안 되는 부분을 찾아서 그걸 팔면 되니까</span></p>
+      </div>
+    </div>
+
+    <div class="likewrap">
+      <button id="likeBtn" class="likebtn" aria-pressed="false">♡ 좋아요 <span id="likeCount"></span></button>
+      <span class="likenote">댓글은 준비 중이에요. 좋아요로 반응 남겨주시면 힘이 됩니다 🙏</span>
+    </div>
+
+    <p class="sitenote">오늘은 틱덱(덱 엔진) 이야기 · 원본: <a href="https://aifrontier.kr/ko/episodes/ep102/">AI 프론티어 EP102</a> · <a href="https://youtu.be/SSIGI9mm0DU">유튜브</a></p>
+  </div>
+
+  <div class="foot">
+    <span class="fs">made slow, in seoul — <b>Peppinch</b> <span style="font-size:15px;transform:rotate(8deg)">🧂</span></span>
+    <a class="fb" href="/blog/">← 다른 글 보기</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY='peppinch_like_2026-07-09-gradable-work';
+  var b=document.getElementById('likeBtn');
+  var liked=localStorage.getItem(KEY)==='1';
+  function render(){ b.classList.toggle('on',liked); b.firstChild.textContent=(liked?'♥ 좋아요 ':'♡ 좋아요 '); b.setAttribute('aria-pressed',liked); }
+  render();
+  b.addEventListener('click',function(){ liked=!liked; localStorage.setItem(KEY,liked?'1':'0'); render(); if(window.gtag) gtag('event',liked?'like':'unlike',{post:'2026-07-09-gradable-work'}); });
+})();
+</script>
+</body>
+</html>
