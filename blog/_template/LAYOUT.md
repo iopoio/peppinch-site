@@ -6,6 +6,7 @@
 > - 텍스트형 글 블록(h2/blockquote/`.takeaway`/`.sitenote`/`.deck-fold`)은 template `<style>`이 스타일링.
 > - 좋아요 토글·localStorage 키(`peppinch_like_<slug>`)·SEO head(래퍼 요약 = 검색 본문 규칙 포함)는 유지.
 > - 아래 본문의 iframe 관련 서술은 구버전 기록.
+> - 🔄 **2026-07-09 후추님 선호**: 펩랩 리포트를 다시 **한 페이지 안에 임베드**(iframe·`.rptwrap`+높이 postMessage 동기화)로 되돌림 — "펩랩 정리와 글이 한 페이지에 보였으면". 링크 카드(`.rptcard`)는 이 글부터 미사용. 리포트 파일은 그대로 noindex 유지, iframe src는 확장자 없는 경로(Cloudflare 라우팅). 실물 예시 = `2026-07-09-gradable-work.html`.
 
 펩핀치 블로그 글의 표준 구조. 첫 글(`2026-06-13-all-in-fable5`)에서 확정했고, 다음 글부터 이걸 기본으로 제작한다.
 

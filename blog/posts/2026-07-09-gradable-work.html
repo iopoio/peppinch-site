@@ -60,12 +60,9 @@ h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-
 .content blockquote{margin:0 0 26px;font-family:'Kyobo';font-size:19px;line-height:1.9;background:#FFFFFF;border:1.6px solid #33312B;border-radius:8px 190px 10px 210px / 200px 10px 220px 8px;padding:16px 24px;transform:rotate(-0.4deg)}
 .content img{max-width:100%;height:auto}
 .content em,.content strong{font-style:normal;font-weight:700;background:linear-gradient(transparent 62%,var(--accS) 62%,var(--accS) 92%,transparent 92%)}
-.rptcard{display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;color:#33312B;background:#FFFFFF;border:1.6px solid #33312B;border-radius:8px 190px 10px 210px / 200px 10px 220px 8px;padding:18px 24px;margin:0 0 40px;transition:all .18s}
-.rptcard:hover{transform:translateY(-3px);box-shadow:5px 7px 0 var(--accS)}
-.rptcard .rl{display:flex;flex-direction:column;gap:2px}
-.rptcard .rk{font-family:'Kyobo';font-size:15px;color:var(--acc)}
-.rptcard .rt{font-size:15.5px;font-weight:700}
-.rptcard .ra{font-family:'Kyobo';font-size:18px;color:var(--acc);flex:none}
+.rptlabel{font-family:'Kyobo';font-size:16px;color:var(--acc);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.rptwrap{border:1.6px solid #33312B;border-radius:8px;overflow:hidden;margin:0 0 40px;box-shadow:4px 5px 0 var(--accS)}
+.rpt{width:100%;border:0;display:block;min-height:640px;background:#f6f8f9}
 .mv{background-image:repeating-linear-gradient(transparent,transparent 45px,var(--rule) 45px,var(--rule) 46px);background-position:0 12px;padding:6px 4px 20px;margin-bottom:36px}
 .mvh{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .mvh .ic{font-size:19px}
@@ -104,13 +101,10 @@ h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-
   <div class="content">
     <p>실리콘밸리에 3주 다녀온 분이 "사람들이 다 미쳤어요"라고 하길래 무슨 소린가 하고 AI 프론티어 EP102를 정리했다. 한 시간짜리에서 제일 오래 남은 건 결국 한 문장 — AI는 채점되는 일부터 먹는다는 것. 먼저 핵심 정리, 그 아래 내 생각.</p>
 
-    <a class="rptcard" href="/blog/posts/2026-07-09-gradable-work-report">
-      <span class="rl">
-        <span class="rk">에피소드 핵심 정리 브리핑</span>
-        <span class="rt">EP102 샌프란시스코의 교훈 — 정리 리포트 보기</span>
-      </span>
-      <span class="ra">→</span>
-    </a>
+    <p class="rptlabel">📄 에피소드 핵심 정리 브리핑</p>
+    <div class="rptwrap">
+      <iframe class="rpt" src="/blog/posts/2026-07-09-gradable-work-report" title="EP102 샌프란시스코의 교훈 — 핵심 정리 브리핑" loading="lazy" scrolling="no"></iframe>
+    </div>
 
     <div class="mv">
       <div class="mvh"><span class="ic">✍️</span><span class="tt">내 생각</span></div>
@@ -138,6 +132,10 @@ h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-
 </div>
 
 <script>
+(function(){
+  var rpt=document.querySelector('iframe.rpt');
+  window.addEventListener('message',function(e){ if(e.data&&e.data.rptH&&rpt){ rpt.style.height=(e.data.rptH+2)+'px'; } });
+})();
 (function(){
   var KEY='peppinch_like_2026-07-09-gradable-work';
   var b=document.getElementById('likeBtn');
