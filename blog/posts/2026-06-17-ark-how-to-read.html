@@ -60,12 +60,9 @@ h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-
 .content blockquote{margin:0 0 26px;font-family:'Kyobo';font-size:19px;line-height:1.9;background:#FFFFFF;border:1.6px solid #33312B;border-radius:8px 190px 10px 210px / 200px 10px 220px 8px;padding:16px 24px;transform:rotate(-0.4deg)}
 .content img{max-width:100%;height:auto}
 .content em,.content strong{font-style:normal;font-weight:700;background:linear-gradient(transparent 62%,var(--accS) 62%,var(--accS) 92%,transparent 92%)}
-.rptcard{display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;color:#33312B;background:#FFFFFF;border:1.6px solid #33312B;border-radius:8px 190px 10px 210px / 200px 10px 220px 8px;padding:18px 24px;margin:0 0 40px;transition:all .18s}
-.rptcard:hover{transform:translateY(-3px);box-shadow:5px 7px 0 var(--accS)}
-.rptcard .rl{display:flex;flex-direction:column;gap:2px}
-.rptcard .rk{font-family:'Kyobo';font-size:15px;color:var(--acc)}
-.rptcard .rt{font-size:15.5px;font-weight:700}
-.rptcard .ra{font-family:'Kyobo';font-size:18px;color:var(--acc);flex:none}
+.rptlabel{font-family:'Kyobo';font-size:16px;color:var(--acc);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.rptwrap{border:1.6px solid #33312B;border-radius:8px;overflow:hidden;margin:0 0 40px;box-shadow:4px 5px 0 var(--accS)}
+.rpt{width:100%;border:0;display:block;min-height:640px;background:#f6f8f9}
 .mv{background-image:repeating-linear-gradient(transparent,transparent 45px,var(--rule) 45px,var(--rule) 46px);background-position:0 12px;padding:6px 4px 20px;margin-bottom:36px}
 .mvh{display:flex;align-items:center;gap:10px;margin-bottom:18px}
 .mvh .ic{font-size:19px}
@@ -110,13 +107,10 @@ h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-
   <div class="content">
     <p>캐시 우드(ARK Invest)가 삼성·하이닉스·테슬라를 콕 집어 띄우는 영상을 봤다. 듣다 보면 설렌다. 마침 어제 ARK가 매년 내는 'Big Ideas' 리포트를 2023~2026년 4년치 펼쳐놓고 비교해본 참이라 — 이런 장밋빛 전망을 그대로 믿지 않고 거르는 법을 정리했다. 먼저 영상 핵심을 표로, 그 아래 내 생각.</p>
 
-    <a class="rptcard" href="/blog/posts/2026-06-17-ark-how-to-read-report">
-      <span class="rl">
-        <span class="rk">영상 핵심 정리 브리핑</span>
-        <span class="rt">캐시 우드 한국 인터뷰 정리 리포트 보기</span>
-      </span>
-      <span class="ra">→</span>
-    </a>
+    <p class="rptlabel">📄 영상 핵심 정리 브리핑</p>
+    <div class="rptwrap">
+    <iframe class="rpt" src="/blog/posts/2026-06-17-ark-how-to-read-report" title="캐시 우드 한국 인터뷰 정리 브리핑" loading="lazy" scrolling="no"></iframe>
+    </div>
 
     <div class="mv">
       <div class="mvh"><span class="ic">✍️</span><span class="tt">내 생각</span></div>
@@ -144,6 +138,10 @@ h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-
 </div>
 
 <script>
+(function(){
+  var rpt=document.querySelector('iframe.rpt');
+  window.addEventListener('message',function(e){ if(e.data&&e.data.rptH&&rpt){ rpt.style.height=(e.data.rptH+2)+'px'; } });
+})();
 (function(){
   var KEY='peppinch_like_2026-06-17-ark-how-to-read';
   var b=document.getElementById('likeBtn');
