@@ -7,10 +7,17 @@
   <language>ko</language>
   <atom:link href="https://www.peppinch.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>AI가 &amp;quot;채점되는 일&amp;quot;부터 먹는다길래, 내 걸 채점해봤다</title>
+    <title>몇 년 전 알던 노코드 회사가 &amp;quot;미래의 외주사&amp;quot;가 돼 있었다</title>
+    <link>https://www.peppinch.com/blog/posts/2026-07-18-litmus-ai-agency</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-07-18-litmus-ai-agency</guid>
+    <description>리트머스 김웅진 대표 인터뷰 정리 — 세일즈·PM·개발을 다 없애고 '컨설턴트'로 합친 AI 네이티브 외주사 이야기. 노코드 배우던 시절 알던 회사였는데 이렇게 변해 있을 줄은.</description>
+    <pubDate>Sat, 18 Jul 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>AI가 &amp;quot;채점되는 일&amp;quot;부터 가져간다길래, 내 걸 채점해봤다</title>
     <link>https://www.peppinch.com/blog/posts/2026-07-09-gradable-work</link>
     <guid>https://www.peppinch.com/blog/posts/2026-07-09-gradable-work</guid>
-    <description>AI 프론티어 EP102 정리 — 프론티어 AI는 기계가 채점 가능한 분야부터 먹는다. 그 잣대를 내가 만든 덱 엔진에 대봤다가 뜨끔한 이야기.</description>
+    <description>AI 프론티어 EP102 정리 — 프론티어 AI는 기계가 채점 가능한 분야부터 가져간다. 그 잣대를 내가 만든 덱 엔진에 대봤다가 뜨끔한 이야기.</description>
     <pubDate>Thu, 09 Jul 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
