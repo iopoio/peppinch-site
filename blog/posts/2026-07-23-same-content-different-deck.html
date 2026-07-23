@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>같은 내용, 완전히 다른 덱 — AI한테 내 10년 치 PPT를 다 보여준 날 · peppinch blog</title>
+<meta name="description" content="옛 USB에서 건진 제안서 235개를 AI한테 학습시키고, '컬러만 바꾼 PPT' 지적 끝에 같은 내용으로 완전히 다른 덱을 만든 과정. 결과물 PDF 포함.">
+<meta property="og:title" content="같은 내용, 완전히 다른 덱 — AI한테 내 10년 치 PPT를 다 보여준 날">
+<meta property="og:description" content="디자인의 인상은 컬러가 아니라 뼈대에서 나온다는 걸 배운 하루.">
+<meta property="og:image" content="https://www.peppinch.com/og-image.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.peppinch.com/blog/posts/2026-07-23-same-content-different-deck">
+<meta property="og:site_name" content="peppinch">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2026-07-23T00:00:00+09:00">
+<meta property="article:section" content="AI랑 만들기">
+<meta property="article:tag" content="덱"><meta property="article:tag" content="PPT"><meta property="article:tag" content="AI 디자인">
+<meta name="author" content="peppinch">
+<meta name="keywords" content="AI 덱, PPT 디자인, 발표자료, 프레젠테이션 디자인, TickDeck, IT 기획자">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@peppinch_">
+<meta name="twitter:title" content="같은 내용, 완전히 다른 덱">
+<meta name="twitter:description" content="AI한테 내 10년 치 PPT를 다 보여준 날.">
+<meta name="twitter:image" content="https://www.peppinch.com/og-image.png">
+<link rel="canonical" href="https://www.peppinch.com/blog/posts/2026-07-23-same-content-different-deck">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"같은 내용, 완전히 다른 덱 — AI한테 내 10년 치 PPT를 다 보여준 날","description":"옛 USB에서 건진 제안서 235개를 AI한테 학습시키고, '컬러만 바꾼 PPT' 지적 끝에 같은 내용으로 완전히 다른 덱을 만든 과정.","datePublished":"2026-07-23T00:00:00+09:00","dateModified":"2026-07-23T00:00:00+09:00","inLanguage":"ko-KR","url":"https://www.peppinch.com/blog/posts/2026-07-23-same-content-different-deck","mainEntityOfPage":"https://www.peppinch.com/blog/posts/2026-07-23-same-content-different-deck","image":"https://www.peppinch.com/blog/posts/2026-07-23-deck-4cut.png","keywords":"AI 덱, PPT 디자인, 발표자료, TickDeck","author":{"@type":"Person","name":"peppinch","url":"https://www.peppinch.com/"},"publisher":{"@type":"Organization","name":"peppinch","logo":{"@type":"ImageObject","url":"https://www.peppinch.com/favicon.svg"}}}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LZ7ZXMFEBM');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+<style>
+@font-face{font-family:"Kyobo";src:url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),url("/fonts/KyoboHandwriting2019.otf") format("opentype");font-display:swap}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:clip}
+body{background:#F6F4ED;color:#33312B;font-family:'Gowun Dodum',sans-serif;-webkit-font-smoothing:antialiased;
+--acc:#3E7C5B;--accD:#2C5A41;--accS:rgba(62,124,91,0.22);--accT:rgba(62,124,91,0.18);--accBg:#E9EFE4;--rule:rgba(51,49,43,0.09)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 40px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:30px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#33312B}
+.brand img{width:27px;height:27px;margin-bottom:2px}
+.brand .bn{font-family:'Shantell Sans',cursive;font-weight:700;font-size:25px}
+.pill{font-family:'Kyobo';font-size:17px;color:#615D51;text-decoration:none;padding:5px 16px;border:1.6px dashed #8F8B7D;border-radius:18px 210px 22px 190px / 200px 20px 220px 18px;transition:all .15s}
+.pill:hover{border-color:var(--acc);color:var(--acc)}
+.phead{padding:66px 0 10px}
+.pmeta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pdate{font-family:'Shantell Sans',cursive;font-size:13px;color:#8F8B7D}
+.pcat{font-family:'Kyobo';font-size:15px;color:var(--acc);border:1.4px solid var(--acc);padding:2px 12px;border-radius:190px 16px 210px 14px / 16px 200px 14px 190px;transform:rotate(-1deg)}
+h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-spacing:-0.01em;word-break:keep-all;overflow-wrap:anywhere}
+.hrule{width:130px;border-bottom:3px solid var(--accS);margin-top:18px;transform:rotate(-0.6deg)}
+.content{font-size:16.5px;line-height:2.05;color:#44413A;padding:26px 0 0}
+.content p{margin:0 0 26px}
+.content a{color:var(--acc)}
+.content h2{font-family:'Kyobo';font-size:24px;font-weight:400;color:var(--acc);margin:36px 0 16px;line-height:1.6}
+.content img{max-width:100%;height:auto}
+.content figure{margin:0 0 26px}
+.content figure img{border:1.6px solid #33312B;border-radius:8px;box-shadow:4px 5px 0 var(--accS)}
+.content figcaption{font-family:'Kyobo';font-size:16px;color:#8F8B7D;margin-top:10px;text-align:center}
+.content em,.content strong{font-style:normal;font-weight:700;background:linear-gradient(transparent 62%,var(--accS) 62%,var(--accS) 92%,transparent 92%)}
+.pdfbtn{display:inline-flex;align-items:center;gap:9px;font-family:'Kyobo';font-size:19px;color:var(--acc);background:#FFFFFF;border:1.8px solid var(--acc);border-radius:220px 20px 200px 24px / 22px 200px 18px 220px;padding:12px 26px;text-decoration:none;transition:all .15s;margin:0 0 26px}
+.pdfbtn:hover{background:var(--accBg);transform:rotate(-1deg)}
+.content .takeaway{font-family:'Kyobo';font-size:20px;line-height:2.3;color:#44413A;background-image:repeating-linear-gradient(transparent,transparent 45px,var(--rule) 45px,var(--rule) 46px);background-position:0 12px;padding:6px 4px 14px;margin:36px 0}
+.content .sitenote{font-family:'Kyobo';font-size:17px;line-height:2;color:#8F8B7D;border-top:1.5px dashed #C9C5B6;padding-top:20px;margin-top:34px}
+.likewrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 0 6px}
+.likebtn{font-family:'Kyobo';font-size:20px;color:var(--acc);background:#FFFFFF;border:1.8px solid var(--acc);border-radius:220px 20px 200px 24px / 22px 200px 18px 220px;padding:10px 30px;cursor:pointer;transition:all .15s}
+.likebtn:hover{background:var(--accBg);transform:rotate(-1deg)}
+.likebtn.on{background:var(--acc);color:#F6F4ED}
+.likenote{font-family:'Kyobo';font-size:16px;color:#8F8B7D;text-align:center}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:44px 0 40px;margin-top:40px;border-top:1.5px solid #D8D4C6}
+.foot .fs{display:inline-flex;align-items:center;gap:9px;font-family:'Shantell Sans',cursive;font-size:15px;color:#8F8B7D}
+.foot .fs b{color:#33312B}
+.foot .fb{font-family:'Kyobo';font-size:16px;color:var(--acc);text-decoration:none}
+@media(max-width:640px){.wrap{padding:0 22px}.pill{padding:10px 18px}h1.ptitle{font-size:26px}.phead{padding:46px 0 6px}.content .takeaway{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="brand" href="/"><img src="/assets/peppinch-logo.svg" alt="Peppinch 로고 — 후추 세 알"><span class="bn">Peppinch</span></a>
+    <a class="pill" href="/blog/">← 다른 글 보기</a>
+  </div>
+
+  <div class="phead">
+    <div class="pmeta"><span class="pdate">2026 · 07 · 23</span><span class="pcat">AI랑 만들기</span></div>
+    <h1 class="ptitle">같은 내용, 완전히 다른 덱 — AI한테 내 10년 치 PPT를 다 보여준 날</h1>
+    <div class="hrule"></div>
+  </div>
+
+  <div class="content">
+<p><a href="/blog/posts/2026-06-27-my-own-path-for-decks">지난번에</a> 덱은 내용부터 잡아야 한다고 썼는데, 내용은 어찌어찌 잡혔거든?<br>근데 이번엔 디자인이 발목을 잡네</p>
+
+<p>AI가 뽑아준 덱을 보는데… 분명 잘 만들긴 했는데 어디서 본 것 같은 PPT야<br>주제를 바꿔도 색만 바뀌고 계속 같은 양식이 나옴<br>이게 왜 이러지?? 🤔</p>
+
+<h2>서랍 속 USB에서 내 10년이 나왔다</h2>
+
+<p>디자인 참고자료를 어디서 구하나 하다가 옛날 USB 두 개가 생각났는데, 회사 다닐 때 만든 제안서들 — 아우디, BMW, 재규어랜드로버에 냈던 것들에 브랜드 공식 템플릿까지 고스란히 들어 있었음</p>
+
+<p>드라이브가 중간에 몇 번을 뻗어서 살리는 데만 한나절 걸렸는데 그래도 235개를 건짐<br>10년 전의 내가 오늘의 AI 선생님이 될 줄은 몰랐지… 😱</p>
+
+<h2>AI한테 다 보여줬더니</h2>
+
+<p>이걸 전부 AI한테 보여주고, 한두 번 나온 건 버리고 <em>반복해서 나오는 패턴만</em> 뽑아서 정리하게 했어</p>
+
+<p>AI가 정리해온 패턴 목록을 보는데 기분이 묘했음<br>제안서는 자기 회사 색이 아니라 <em>고객사, 그러니까 그 덱을 읽을 사람의 색</em>을 입는다든가 — BMW에 낼 땐 파란색, 롯데에 낼 땐 빨간색 — 프리미엄 브랜드 공식 템플릿은 검정이 아니라 <em>흰 바탕</em>이라든가<br>나한텐 몸에 배어서 당연했던 것들인데 AI한텐 이게 다 새로운 발견이더라고<br>10년 치 일이 규칙 목록으로 뽑혀 나오는 걸 보는 건 좀… 묘해 🙂</p>
+
+<h2>근데 계속 같은 PPT가 나왔다</h2>
+
+<p>여기까지 시켜놓고 다시 뽑았는데도 결과물이 또 비슷해<br>내가 정확히 뭐라고 했냐면 — "컬러만 조금 바꾼, 크게 변한 게 없는 PPT로 보여"</p>
+
+<p>알고 보니 AI가 계속 색만 갈아끼우고 있었던 거임<br>디자인의 인상은 색이 아니라 <em>뼈대</em>더라고 표지 구조, 제목 처리, 그래프를 그리는 방식 같은 거<br>그래서 주문을 바꿨어 <em>내용은 한 글자도 건드리지 말고, 배치·구성·그래프까지 전부 다시</em></p>
+
+<h2>같은 내용, 완전히 다른 덱</h2>
+
+<p>그렇게 나온 게 아래 리포트<br>내용은 'IT 기획자의 일은 어디로 가는가' — 나 같은 기획자한테 지금 제일 궁금한 주제라 골랐던 거</p>
+
+<p>물론 뽑고 끝은 아니었고 직접 넘겨보면서 잡은 것들이 있는데, 마이너스 65%가 그래프에서 제일 높이 솟아 있질 않나 (하락인데 상승처럼 보임 🤣) 문장으로 늘어진 결론 페이지는 '한 줄 요점: 짧은 설명' 형식으로 다시 쓰게 하고… 결국 "어색해"라고 말해주는 건 사람 몫이더라</p>
+
+<figure>
+<img src="2026-07-23-deck-4cut.png" alt="같은 내용으로 다시 디자인한 22장 리포트 중 네 컷 — 표지, 담론 온도 차트, 세 가지 시나리오, 결론">
+<figcaption>다시 디자인한 22장 중 네 컷</figcaption>
+</figure>
+
+<p style="text-align:center"><a class="pdfbtn" href="2026-07-23-planner-report-2026.pdf" target="_blank" rel="noopener">📎 리포트 PDF 전체 보기 (22장)</a></p>
+
+<p class="takeaway">디자인의 인상은 컬러가 아니라 뼈대에서 나온다 — 그리고 AI는 "어색해"라고 말해주는 사람이 옆에 있어야 는다</p>
+
+<p class="sitenote">오늘도 만들고 있는 중인 <em>TickDeck</em> 이야기<br>참, USB에서 8년 전에 창업해보겠다고 만들었던 덱도 같이 나왔는데… 그건 또 다른 이야기라 다음 기회에</p>
+
+    <div class="likewrap">
+      <button id="likeBtn" class="likebtn" aria-pressed="false">♡ 좋아요 <span id="likeCount"></span></button>
+      <span class="likenote">댓글은 준비 중이에요. 좋아요로 반응 남겨주시면 힘이 됩니다 🙏</span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="fs">made slow, in seoul — <b>Peppinch</b> <span style="font-size:15px;transform:rotate(8deg)">🧂</span></span>
+    <a class="fb" href="/blog/">← 다른 글 보기</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY='peppinch_like_2026-07-23-same-content-different-deck';
+  var b=document.getElementById('likeBtn');
+  var liked=localStorage.getItem(KEY)==='1';
+  function render(){ b.classList.toggle('on',liked); b.firstChild.textContent=(liked?'♥ 좋아요 ':'♡ 좋아요 '); b.setAttribute('aria-pressed',liked); }
+  render();
+  b.addEventListener('click',function(){ liked=!liked; localStorage.setItem(KEY,liked?'1':'0'); render(); if(window.gtag) gtag('event',liked?'like':'unlike',{post:'2026-07-23-same-content-different-deck'}); });
+})();
+</script>
+</body>
+</html>
