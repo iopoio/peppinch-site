@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>p05 — PART Ⅰ 간지</title>
+<style>
+  :root{ --orange:#E8590C; --deep:#9E3A05; --t1:#FFEDE0; --t2:#FFD9BF; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DDE1E7;display:flex;align-items:center;justify-content:center;min-height:100vh;
+       font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;}
+  .stage{position:relative;width:1280px;height:720px;overflow:hidden;color:#FFF;
+         background:radial-gradient(1050px 680px at 76% 16%, #F06A1F 0%, #E8590C 48%, #C74A08 100%);}
+  .motif{position:absolute;inset:0;pointer-events:none}
+  .kicker{position:absolute;top:48px;left:64px;display:inline-flex;align-items:center;gap:10px;
+          font-size:13.5px;font-weight:800;letter-spacing:0.13em;color:var(--t1);text-transform:uppercase}
+  .kicker::before{content:"";display:inline-block;width:22px;height:2px;background:#FFF}
+  .pageno{position:absolute;top:48px;right:64px;font-size:14px;font-weight:700;
+          color:rgba(255,237,224,0.72);letter-spacing:0.06em}
+  h1{position:absolute;left:64px;top:150px;font-size:66px;font-weight:850;line-height:1.14;
+     letter-spacing:-0.03em;color:#FFF}
+  .list{position:absolute;left:64px;right:96px;top:352px}
+  .row{display:grid;grid-template-columns:64px 250px 1fr;align-items:baseline;gap:18px;
+       padding:20px 0 19px;border-top:1px solid rgba(255,255,255,0.28)}
+  .row:last-child{border-bottom:1px solid rgba(255,255,255,0.28)}
+  .row .no{font-size:13px;font-weight:800;letter-spacing:0.12em;color:var(--t2)}
+  .row .kw{font-size:24px;font-weight:800;letter-spacing:-0.015em;color:#FFF}
+  .row .desc{font-size:17px;font-weight:500;color:rgba(255,240,229,0.9);letter-spacing:-0.005em}
+  .foot{position:absolute;left:64px;right:64px;bottom:34px;display:flex;justify-content:flex-end;
+        font-size:12px;color:rgba(255,237,224,0.7)}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="motif" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+    <path d="M 700 -30 C 860 90, 760 210, 960 280 S 1240 400, 1180 560"
+          stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+    <path d="M952 268 l6.5 7.5 13-15" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M1170 546 l6 7 12-14" stroke="#FFEDE0" stroke-opacity="0.42" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="kicker">PART Ⅰ · 네 가지 변화</div>
+  <div class="pageno">05 / 16</div>
+  <h1>예산을 흔드는<br>네 가지 변화</h1>
+  <div class="list">
+    <div class="row">
+      <div class="no">첫째</div><div class="kw">검색</div>
+      <div class="desc">쓰임새별로 네이버와 AI로 갈라진다</div>
+    </div>
+    <div class="row">
+      <div class="no">둘째</div><div class="kw">AI 제작</div>
+      <div class="desc">싸게 만드는 건 해결, 믿게 만드는 게 숙제</div>
+    </div>
+    <div class="row">
+      <div class="no">셋째</div><div class="kw">에이전틱 AI</div>
+      <div class="desc">말은 많은데 해낸 곳은 드물다</div>
+    </div>
+    <div class="row">
+      <div class="no">넷째</div><div class="kw">마케팅 예산</div>
+      <div class="desc">숫자로 못 보여주면 깎인다</div>
+    </div>
+  </div>
+  <div class="foot">© 2026 Peppinch · All rights reserved</div>
+</div>
+</body>
+</html>

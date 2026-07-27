@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>p06 — 검색</title>
+<style>
+  :root{
+    --orange:#E8590C; --orange-deep:#9E3A05; --t1:#FFEDE0; --t2:#FFD9BF; --t3:#FF9E66;
+    --ink:#201C16; --sub:#6B665E; --bg:#F1F3F6; --card:#FFFFFF; --line:#E4E7EC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DDE1E7;display:flex;align-items:center;justify-content:center;min-height:100vh;
+       font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;}
+  .stage{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--bg);color:var(--ink)}
+  .motif{position:absolute;inset:0;pointer-events:none}
+  .head{position:absolute;top:44px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:flex-start}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:800;letter-spacing:0.13em;
+          color:var(--orange);text-transform:uppercase;margin-bottom:14px}
+  .kicker::before{content:"";display:inline-block;width:22px;height:2px;background:var(--orange)}
+  h1{font-size:34px;font-weight:850;letter-spacing:-0.025em;line-height:1.26;max-width:1020px}
+  h1 .hl{color:var(--orange)}
+  .pageno{font-size:14px;color:#9A958C;font-weight:700;letter-spacing:0.06em;padding-top:6px}
+  .band{position:absolute;left:64px;right:64px;top:202px;height:258px;background:var(--card);
+        border-radius:20px;box-shadow:0 14px 36px rgba(32,28,22,0.09);padding:22px 34px 18px}
+  .band .tt{display:flex;align-items:center;gap:12px}
+  .band h2{font-size:16.5px;font-weight:800;letter-spacing:-0.01em}
+  .pill{font-size:11.5px;font-weight:800;color:var(--orange-deep);border:1.5px solid var(--orange);
+        border-radius:999px;padding:4px 12px;background:#FFF7F1;letter-spacing:0.01em}
+  .band .sub{font-size:12.5px;color:var(--sub);margin-top:4px}
+  .rows{margin-top:12px}
+  .brow{display:grid;grid-template-columns:238px 1fr 88px;align-items:center;gap:16px;margin-top:9px}
+  .brow:first-child{margin-top:0}
+  .blabel{font-size:13px;color:var(--sub);line-height:1.3}
+  .blabel b{display:block;font-size:15px;font-weight:800;color:var(--ink)}
+  .track{position:relative;height:30px;background:#EEF1F5;border-radius:8px;overflow:hidden}
+  .track .fill{position:absolute;left:0;top:0;bottom:0;border-radius:8px 0 0 8px}
+  .track .cap{position:absolute;top:50%;transform:translateY(-50%);font-size:11px;font-weight:700;color:#B4AEA4}
+  .val{font-size:22px;font-weight:850;letter-spacing:-0.02em;text-align:right}
+  .bcap{grid-column:2 / 4;font-size:11.5px;color:#8B857B;margin-top:-10px;padding-left:2px}
+  .axis{margin-top:9px;font-size:11.5px;color:#9A958C;border-top:1px dashed #E0E4EA;padding-top:8px}
+  .axis b{color:#7d7870;font-weight:700}
+  .bottom{position:absolute;left:64px;right:64px;top:478px;display:grid;grid-template-columns:1.18fr 1fr;gap:20px}
+  .card{background:var(--card);border-radius:18px;box-shadow:0 10px 26px rgba(32,28,22,0.08);padding:22px 26px}
+  .card h3{font-size:15px;font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+  .card h3::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--orange);display:inline-block}
+  .card p{font-size:13.3px;line-height:1.6;color:#3E3A33}
+  .num{font-weight:800;color:var(--orange-deep)}
+  .sat{display:flex;gap:10px;margin-top:12px}
+  .schip{flex:1;border-radius:12px;padding:9px 14px;font-size:12.5px;font-weight:700}
+  .schip b{font-size:17px;font-weight:850;letter-spacing:-0.02em;margin-left:6px}
+  .schip.win{background:#FFF1E7;border:1.5px solid var(--t3);color:var(--orange-deep)}
+  .schip.lose{background:#F4F6F9;border:1.5px solid #E0E4EA;color:var(--sub)}
+  .note{background:#FBF4EE;border:1px solid #F3DCCB;box-shadow:none}
+  .note p{font-size:12.6px;color:#7A6A59}
+  .note p b{color:#5C4A37}
+  .vbadge{position:absolute;right:88px;top:442px;z-index:3;display:flex;align-items:center;gap:9px;background:#FFF;
+          border:1.5px solid var(--orange);border-radius:999px;padding:9px 18px 9px 12px;
+          box-shadow:0 6px 18px rgba(232,89,12,0.13)}
+  .vbadge .tick{width:19px;height:19px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:none}
+  .vbadge span{font-size:12.8px;font-weight:800;color:var(--orange-deep)}
+  .foot{position:absolute;left:64px;right:64px;bottom:34px;display:flex;justify-content:space-between;font-size:12px;color:#9A958C}
+  .foot b{font-weight:700;color:#7d7870}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="motif" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+    <path d="M -40 680 C 260 640, 520 700, 820 660 S 1220 640, 1320 680"
+          stroke="#E8590C" stroke-opacity="0.16" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+    <path d="M1212 176 l6 7 12-14" stroke="#E8590C" stroke-opacity="0.42" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="head">
+    <div>
+      <div class="kicker">첫째 — 검색</div>
+      <h1>지금 보이는 것 — 업무·학습 검색은 생성형 AI로,<br>생활 정보는 네이버로 <span class="hl">갈라지고 있다</span></h1>
+    </div>
+    <div class="pageno">06 / 16</div>
+  </div>
+
+  <div class="band">
+    <div class="tt">
+      <h2>같은 검색, 두 시장 — 목적별 이용률</h2>
+      <span class="pill">단일 점유율 아님 · 목적별 별도 문항</span>
+    </div>
+    <div class="sub">오픈서베이 조사 — 검색 목적마다 따로 물은 이용률 두 개를 나란히 놓은 것</div>
+    <div class="rows">
+      <div class="brow">
+        <div class="blabel"><b>생활 정보를 찾을 때</b>주 이용 — 네이버</div>
+        <div class="track">
+          <div class="fill" style="width:67.1%;background:#FF9E66"></div>
+          <span class="cap" style="right:10px">100%</span>
+        </div>
+        <div class="val" style="color:var(--orange-deep)">67.1%</div>
+        <div class="bcap">포털이 우위 유지하는 목적 지대</div>
+      </div>
+      <div class="brow">
+        <div class="blabel"><b>업무·학습 자료를 찾을 때</b>생성형 AI 비중</div>
+        <div class="track">
+          <div class="fill" style="width:36.5%;background:#E8590C"></div>
+          <span class="cap" style="right:10px">100%</span>
+        </div>
+        <div class="val" style="color:var(--orange)">36.5%</div>
+        <div class="bcap">AI로 이동한 목적 지대</div>
+      </div>
+    </div>
+    <div class="axis">각 줄은 <b>서로 다른 문항</b>의 이용률(0~100%) — 한 시장을 나눠 갖는 점유율 대결이 아님</div>
+  </div>
+
+  <div class="bottom">
+    <div class="card">
+      <h3>이유는 — 답의 품질, 그리고 열린 지면</h3>
+      <p>모델 경쟁으로 답의 품질이 올라왔고(같은 조사의 이용자 만족도 비교), 사람이 옮겨간 곳부터 네이버·오픈AI가 광고 지면을 실제로 열었다</p>
+      <div class="sat">
+        <div class="schip win">제미나이 만족도<b>77.3%</b></div>
+        <div class="schip lose">챗GPT 만족도<b>70.6%</b></div>
+      </div>
+    </div>
+    <div class="card note">
+      <h3>그래서 무엇을</h3>
+      <p>AI 검색 광고 지면은 막 열려서 2026년 <span class="num">51억 달러</span> → 2030년 <span class="num">1,000억 달러</span> 전망(벤더 추계)만 있고 실적은 없다. 아직은 소액 테스트만 — AI발 유입이 눈에 띄게 늘면 예산을 본격적으로 늘린다(기준은 제언에)</p>
+    </div>
+  </div>
+
+  <div class="vbadge">
+    <div class="tick"><svg width="11" height="9" viewBox="0 0 12 10"><path d="M1.5 5.2 4.6 8.3 10.5 1.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <span>이 페이지 수치 6/6 — 출처 원문 대조 ✓</span>
+  </div>
+
+  <div class="foot">
+    <div>출처 — <b>오픈서베이</b> · KT 나스미디어 · 바이라인네트워크 · WPP Media</div>
+    <div>© 2026 Peppinch · All rights reserved</div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>p08 — 에이전틱 AI</title>
+<style>
+  :root{ --orange:#E8590C; --deep:#9E3A05; --t1:#FFEDE0; --t2:#FFD9BF; --t3:#FF9E66; --dim:#8D8779; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DDE1E7;display:flex;align-items:center;justify-content:center;min-height:100vh;
+       font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;}
+  .stage{position:relative;width:1280px;height:720px;overflow:hidden;color:#F5F1EA;
+         background:radial-gradient(1100px 700px at 78% 18%, #221B12 0%, #17130E 55%, #120F0B 100%);}
+  .motif{position:absolute;inset:0;pointer-events:none}
+  .head{position:absolute;top:44px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:flex-start}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:800;letter-spacing:0.13em;
+          color:var(--t2);text-transform:uppercase;margin-bottom:14px}
+  .kicker::before{content:"";display:inline-block;width:22px;height:2px;background:var(--orange)}
+  h1{font-size:38px;font-weight:850;letter-spacing:-0.025em;line-height:1.24;color:#FBF8F3}
+  h1 .hl{color:var(--t3)}
+  .pageno{font-size:14px;color:var(--dim);font-weight:700;letter-spacing:0.06em;padding-top:6px}
+  .hero{position:absolute;left:64px;top:224px;width:640px;height:400px}
+  .tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:0.04em}
+  .tag .sq{width:9px;height:9px;border-radius:2px;display:inline-block}
+  .hollow{font-size:150px;font-weight:850;line-height:0.95;letter-spacing:-0.04em;
+          color:transparent;-webkit-text-stroke:2.5px rgba(255,217,191,0.62)}
+  .solid{font-size:150px;font-weight:850;line-height:0.95;letter-spacing:-0.04em;color:var(--orange)}
+  .pct{font-size:0.42em;font-weight:800;letter-spacing:0}
+  .sublab{font-size:12.5px;color:#B8B2A8;margin-top:6px}
+  .gap-pill{position:absolute;left:298px;top:172px;z-index:3;display:inline-flex;align-items:center;gap:8px;
+            background:var(--orange);border-radius:999px;padding:9px 18px;box-shadow:0 10px 26px rgba(232,89,12,0.35)}
+  .gap-pill b{font-size:15px;font-weight:850;color:#FFF;letter-spacing:-0.01em}
+  .gap-pill span{font-size:11.5px;font-weight:700;color:#FFD9BF}
+  .col{position:absolute;right:64px;top:206px;width:472px;display:flex;flex-direction:column;gap:13px}
+  .glass{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 22px}
+  .glass h3{font-size:14.5px;font-weight:800;color:var(--t2);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .glass h3::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--orange);display:inline-block}
+  .glass p{font-size:13.4px;line-height:1.62;color:#CFC8BD}
+  .glass p b{color:#FBF8F3}
+  .glass p .num{font-weight:800;color:var(--t3)}
+  .note{border-left:3px solid var(--orange);background:rgba(232,89,12,0.1);border-radius:0 14px 14px 0;
+        border-top:none;border-right:none;border-bottom:none;padding:13px 20px}
+  .note p{font-size:12.6px;line-height:1.58;color:#E8DFD2}
+  .fnote{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:13px 20px}
+  .fnote p{font-size:11.4px;line-height:1.56;color:#A79F91}
+  .fnote p b{color:#CFC8BD}
+  .vbadge{display:flex;align-items:center;gap:9px;align-self:flex-start;margin-top:-4px;margin-left:18px;z-index:3;
+          border:1px solid rgba(232,89,12,0.55);background:rgba(232,89,12,0.12);border-radius:999px;padding:9px 18px 9px 13px}
+  .vbadge .tick{width:19px;height:19px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:none}
+  .vbadge span{font-size:12.5px;font-weight:800;color:#FFE1CE}
+  .foot{position:absolute;left:64px;right:64px;bottom:34px;display:flex;justify-content:space-between;
+        font-size:12px;color:var(--dim)}
+  .foot b{font-weight:700;color:#B8B2A8}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="motif" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+    <path d="M 1000 -30 C 1090 110, 980 220, 1150 320 S 1330 470, 1240 620"
+          stroke="#E8590C" stroke-opacity="0.26" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+    <path d="M1142 308 l7 8 14-16" stroke="#FF9E66" stroke-opacity="0.7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="head">
+    <div>
+      <div class="kicker">셋째 — 에이전틱 AI</div>
+      <h1>에이전틱 AI — 하겠다는 조직은 많은데,<br><span class="hl">해낸 조직</span>은 극소수다</h1>
+    </div>
+    <div class="pageno">08 / 16</div>
+  </div>
+
+  <div class="hero">
+    <div class="tag"><span class="sq" style="background:transparent;border:2px solid rgba(255,217,191,0.62)"></span><span style="color:var(--t2)">기대 — 연말까지 최고 성숙 도달 (응답자 예측치)</span></div>
+    <div class="hollow" style="margin-top:8px">50<span class="pct">%</span></div>
+    <svg width="640" height="70" viewBox="0 0 640 70" fill="none" style="display:block">
+      <path d="M 96 4 C 150 34, 200 44, 262 56" stroke="#E8590C" stroke-opacity="0.6"
+            stroke-width="2.2" stroke-dasharray="4 7" stroke-linecap="round"/>
+      <path d="M254 50 l6.5 7.5 13-15" stroke="#FF9E66" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="gap-pill"><b>격차 39%p</b><span>야심과 현실의 거리</span></div>
+    <div style="margin-left:200px;margin-top:-12px">
+      <div class="solid">11<span class="pct">%</span></div>
+      <div style="width:200px;height:10px;border-radius:4px;background:var(--orange);margin-top:10px"></div>
+      <div class="tag" style="margin-top:12px"><span class="sq" style="background:var(--orange)"></span><span style="color:#F5F1EA">현재 — 완전 확장 단계 조직</span></div>
+      <div class="sublab">10개 기술 분야 평균 · 2025</div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="glass">
+      <h3>속사정은</h3>
+      <p>투자 선언(<span class="num">88%</span>)과 파일럿은 쉽고, 확장의 병목은 기술 부채(<span class="num">63%</span>)와 가치 증명 실패(<span class="num">55%</span>)다. 격차는 '안 되는 기술'의 증거가 아니라 <b>양극화의 증거</b> — 상위 조직의 기술 투자 수익은 <span class="num">4.5배</span>, 평균은 <span class="num">2배</span> 수준</p>
+    </div>
+    <div class="glass note">
+      <p><b style="color:#FFD9BF">먼저 할 일은</b> — 하반기 예산 시즌 전까지 주요 AI 과제의 재무 연결 산식 보유 비율부터 점검한다 — 구체 기준은 마지막 제언에 있다</p>
+    </div>
+    <div class="fnote">
+      <p><b>ⓘ 기대-현재 격차</b> — 39%p는 '연말까지 도달하겠다'는 기대와 '현재 도달' 응답 사이의 거리 — 야심과 현실의 거리이지 지표가 하락했다는 뜻이 아님 · 성숙도·투자 수익 수치 = KPMG 글로벌 조사(10개 기술 분야 평균) · '최고 성숙' = 기술을 전사에 완전 확장해 운영 중이라고 자평한 단계 · 유럽 마케팅 조직은 6%로 더 낮음(별도 조사)</p>
+    </div>
+    <div class="vbadge">
+      <div class="tick"><svg width="11" height="9" viewBox="0 0 12 10"><path d="M1.5 5.2 4.6 8.3 10.5 1.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <span>이 페이지 수치 8/8 — 출처 원문 대조 ✓</span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>출처 — <b>KPMG International</b> · McKinsey &amp; Company</div>
+    <div>© 2026 Peppinch · All rights reserved</div>
+  </div>
+</div>
+</body>
+</html>

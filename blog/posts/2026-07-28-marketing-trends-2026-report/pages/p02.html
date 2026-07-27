@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>p02 — 핵심 요약</title>
+<style>
+  :root{
+    --orange:#E8590C; --orange-deep:#9E3A05; --t1:#FFEDE0; --t2:#FFD9BF; --t3:#FF9E66;
+    --ink:#201C16; --sub:#6B665E; --bg:#F1F3F6; --card:#FFFFFF; --line:#E4E7EC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DDE1E7;display:flex;align-items:center;justify-content:center;min-height:100vh;
+       font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;}
+  .stage{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--bg);color:var(--ink)}
+  .motif{position:absolute;inset:0;pointer-events:none}
+  .head{position:absolute;top:44px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:flex-start}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:800;letter-spacing:0.13em;
+          color:var(--orange);text-transform:uppercase;margin-bottom:14px}
+  .kicker::before{content:"";display:inline-block;width:22px;height:2px;background:var(--orange)}
+  h1{font-size:38px;font-weight:850;letter-spacing:-0.025em;line-height:1.22;max-width:920px}
+  h1 .hl{color:var(--orange)}
+  .pageno{font-size:14px;color:#9A958C;font-weight:700;letter-spacing:0.06em;padding-top:6px}
+  .main{position:absolute;left:64px;top:192px;width:640px;height:330px;background:var(--card);
+        border-radius:20px;box-shadow:0 14px 36px rgba(32,28,22,0.09);padding:28px 32px 24px}
+  .main h2{font-size:16.5px;font-weight:800;letter-spacing:-0.01em}
+  .main .sub{font-size:12.5px;color:var(--sub);margin-top:4px;margin-bottom:16px}
+  .item{display:flex;gap:16px;padding:13px 0;border-top:1px solid var(--line)}
+  .item .no{font-size:21px;font-weight:850;color:var(--orange);line-height:1.4;flex:none;width:26px}
+  .item p{font-size:13.9px;line-height:1.58;color:#3E3A33;word-break:keep-all}
+  .item p b{color:var(--ink)}
+  .side{position:absolute;left:728px;top:192px;width:488px;display:flex;flex-direction:column;gap:14px}
+  .tile{background:var(--card);border-radius:18px;box-shadow:0 10px 26px rgba(32,28,22,0.08);padding:18px 24px 16px}
+  .tile .lb{font-size:12.5px;font-weight:800;color:var(--sub);letter-spacing:0.02em;display:flex;align-items:center;gap:8px}
+  .tile .lb::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--orange);display:inline-block}
+  .tile .val{font-size:33px;font-weight:850;letter-spacing:-0.02em;margin-top:6px;line-height:1.1}
+  .tile .val small{font-size:17px;font-weight:800;color:var(--sub);letter-spacing:0}
+  .tile .scope{font-size:11px;color:#9A958C;margin-top:6px}
+  .duo{display:flex;align-items:center;gap:20px;margin-top:8px}
+  .duo .num{font-size:33px;font-weight:850;letter-spacing:-0.02em;line-height:1.05}
+  .duo .num small{font-size:17px;font-weight:800;color:var(--sub)}
+  .duo .cap{font-size:11px;font-weight:700;color:#9A958C;margin-top:4px;white-space:nowrap}
+  .duo .arrow{flex:none;padding-bottom:16px}
+  .gpill{position:absolute;top:16px;right:20px;font-size:11px;font-weight:800;color:var(--orange-deep);
+         background:var(--t1);border-radius:999px;padding:4px 11px}
+  .tile{position:relative}
+  .v-orange{color:var(--orange)}
+  .v-deep{color:var(--orange-deep)}
+  .fnote{position:absolute;left:64px;top:560px;width:640px;background:#FBF4EE;border:1px solid #F3DCCB;
+         border-radius:16px;padding:14px 20px}
+  .fnote p{font-size:12px;line-height:1.55;color:#7A6A59;word-break:keep-all}
+  .fnote p b{color:#5C4A37}
+  .vbadge{position:absolute;right:64px;top:548px;z-index:2;display:flex;align-items:center;gap:9px;background:#FFF;border:1.5px solid var(--orange);
+          border-radius:999px;padding:9px 18px 9px 12px;box-shadow:0 6px 18px rgba(232,89,12,0.13)}
+  .vbadge .tick{width:19px;height:19px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:none}
+  .vbadge span{font-size:12.8px;font-weight:800;color:var(--orange-deep)}
+  .foot{position:absolute;left:64px;right:64px;bottom:32px;display:flex;justify-content:space-between;font-size:12px;color:#9A958C}
+  .foot b{font-weight:700;color:#7d7870}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="motif" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+    <path d="M -40 680 C 260 640, 460 700, 760 650 S 1180 620, 1320 670"
+          stroke="#E8590C" stroke-opacity="0.16" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+    <path d="M1222 150 l6 7 12-14" stroke="#E8590C" stroke-opacity="0.45" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="head">
+    <div>
+      <div class="kicker">Executive Summary — 핵심 요약</div>
+      <h1>광고 시장이 늘지 않으면,<br><span class="hl">성과를 보여준 쪽</span>이 예산을 가져간다</h1>
+    </div>
+    <div class="pageno">02 / 16</div>
+  </div>
+
+  <div class="main">
+    <h2>결론 세 줄</h2>
+    <div class="sub">임원용 — 이 장만 봐도 되게</div>
+    <div class="item">
+      <div class="no">1</div>
+      <p><b>한국 광고 시장은 사실상 제자리</b> — 방송은 세 해 연속 줄고 온라인만 늘었다. 2026년은 시장이 커져서 얻는 해가 아니라 남의 몫을 가져와야 크는 해다</p>
+    </div>
+    <div class="item">
+      <div class="no">2</div>
+      <p>네 가지 변화 모두 <b>계획과 기대는 앞서가는데 실제가 못 미친다</b> — 성숙도의 기대와 현재, 신뢰의 긍정과 부정, 증액 계획과 실적 사이가 다 그렇다</p>
+    </div>
+    <div class="item">
+      <div class="no">3</div>
+      <p><b>성과를 숫자로 보여준 소수가 재분배 예산을 가져간다</b> — 상위 조직과 평균의 기술 투자 수익이 배수로 벌어진 것이 그 근거</p>
+    </div>
+  </div>
+
+  <div class="side">
+    <div class="tile">
+      <div class="lb">국내 총광고비 (2025e)</div>
+      <div class="val">172,717<small>억 원</small></div>
+      <div class="scope">2025e 국내 방송통신광고비 총액 — KOBACO 전망치</div>
+    </div>
+    <div class="tile">
+      <div class="lb">기술 최고 성숙도</div>
+      <div class="gpill">야심-현실 갭</div>
+      <div class="duo">
+        <div>
+          <div class="num">11<small>%</small></div>
+          <div class="cap">기술 최고 성숙 도달 — 현재</div>
+        </div>
+        <div class="arrow"><svg width="34" height="12" viewBox="0 0 34 12" fill="none"><path d="M0 6 h28 M23 1 l6 5 -6 5" stroke="#C9CED6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <div class="num v-orange">50<small>%</small></div>
+          <div class="cap">기술 최고 성숙 기대 — 연말</div>
+        </div>
+      </div>
+      <div class="scope">10개 기술 분야 평균 · 완전 확장 단계 조직 — KPMG</div>
+    </div>
+    <div class="tile">
+      <div class="lb">상위 조직 기술 투자 수익</div>
+      <div class="val v-deep">4.5<small>배</small></div>
+      <div class="scope">상위 5% 조직의 기술 ROI — 평균(2배) 대비 · KPMG</div>
+    </div>
+  </div>
+
+  <div class="fnote">
+    <p><b>ⓘ</b> 오른쪽 수치 출처 — 총광고비 = KOBACO 전망치 · 성숙 기대/도달·투자 수익 = KPMG 글로벌 조사(상위 조직 vs 평균). 상세는 본문 각 장</p>
+  </div>
+  <div class="vbadge">
+    <div class="tick"><svg width="11" height="9" viewBox="0 0 12 10"><path d="M1.5 5.2 4.6 8.3 10.5 1.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <span>이 페이지 수치 4/4 — 출처 원문 대조 ✓</span>
+  </div>
+
+  <div class="foot">
+    <div>출처 — <b>방송미디어통신위원회·한국방송광고진흥공사(KOBACO)</b> · KPMG International · McKinsey &amp; Company</div>
+    <div>© 2026 Peppinch · All rights reserved</div>
+  </div>
+</div>
+</body>
+</html>

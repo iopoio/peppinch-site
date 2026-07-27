@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>p13 — 결론</title>
+<style>
+  :root{ --orange:#E8590C; --orange-deep:#9E3A05; --t2:#FFD9BF; --t3:#FF9E66;
+         --ink:#F5F1EA; --sub:#B8B2A8; --dim:#8D8779; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DDE1E7;display:flex;align-items:center;justify-content:center;min-height:100vh;
+       font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;}
+  .stage{position:relative;width:1280px;height:720px;overflow:hidden;
+         background:radial-gradient(1100px 700px at 78% 18%, #221B12 0%, #17130E 55%, #120F0B 100%);
+         color:var(--ink)}
+  .motif{position:absolute;inset:0;pointer-events:none}
+  .head{position:absolute;top:44px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:flex-start}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:800;letter-spacing:0.13em;
+          color:var(--t3);text-transform:uppercase;margin-bottom:14px}
+  .kicker::before{content:"";display:inline-block;width:22px;height:2px;background:var(--orange)}
+  h1{font-size:38px;font-weight:850;letter-spacing:-0.025em;line-height:1.2;color:#FBF8F3;max-width:980px}
+  h1 .hl{color:var(--t3)}
+  .pageno{font-size:14px;color:var(--dim);font-weight:700;letter-spacing:0.06em;padding-top:6px}
+  .rows{position:absolute;left:64px;top:176px;width:1152px;display:flex;flex-direction:column;gap:12px}
+  .row{display:flex;align-items:center;gap:26px;background:rgba(255,255,255,0.045);
+       border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:14px 28px 14px 24px;height:94px}
+  .row .tag{width:150px;flex:none;border-left:3px solid var(--orange);padding-left:14px;word-break:keep-all}
+  .row .tag b{display:block;font-size:15.5px;font-weight:800;color:#FBF8F3;letter-spacing:-0.01em}
+  .row .tag span{display:block;font-size:11px;color:var(--dim);margin-top:4px;line-height:1.4}
+  .row p{flex:1;font-size:15px;line-height:1.55;color:#CFC8BD;letter-spacing:-0.005em}
+  .row p b{color:#FBF8F3;font-weight:700}
+  .row p .o{color:var(--t3);font-weight:800}
+  .row p .g{color:#C6CCD4;font-weight:800}
+  .row svg{flex:none}
+  .callout{position:absolute;left:64px;top:512px;width:1152px;height:118px;
+           background:rgba(232,89,12,0.09);border:1px solid rgba(232,89,12,0.5);border-radius:18px;
+           display:flex;align-items:center;padding:0 40px 0 392px}
+  .roi{position:absolute;left:36px;top:-24px;display:flex;align-items:center;gap:20px;
+       background:var(--orange);border-radius:14px;padding:20px 28px;box-shadow:0 14px 36px rgba(232,89,12,0.35)}
+  .roi .big{font-size:52px;font-weight:850;letter-spacing:-0.03em;color:#FFF;line-height:1}
+  .roi .big small{font-size:24px;font-weight:800}
+  .roi .cap{border-left:1px solid rgba(255,255,255,0.35);padding-left:18px}
+  .roi .cap b{display:block;font-size:13.5px;font-weight:800;color:#FFF}
+  .roi .cap span{display:block;font-size:12px;color:var(--t2);margin-top:4px;line-height:1.45}
+  .callout p{font-size:17px;line-height:1.6;color:#EFE9DF;letter-spacing:-0.005em}
+  .callout p b{color:#FBF8F3;font-weight:700}
+  .callout p .hl{color:var(--t3);font-weight:800}
+  .callout .scope{position:absolute;right:40px;bottom:12px;font-size:11px;color:rgba(255,217,191,0.55)}
+  .vbadge{position:absolute;right:64px;bottom:68px;display:flex;align-items:center;gap:9px;
+          border:1.5px solid var(--orange);background:rgba(232,89,12,0.12);
+          border-radius:999px;padding:8px 16px 8px 11px}
+  .vbadge .tick{width:19px;height:19px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:none}
+  .vbadge span{font-size:12.5px;font-weight:800;color:var(--t2)}
+  .foot{position:absolute;left:64px;right:64px;bottom:32px;display:flex;justify-content:space-between;font-size:12px;color:var(--dim)}
+  .foot b{font-weight:700;color:#A59F93}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="motif" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+    <path d="M 1020 -40 C 1120 130, 980 260, 1180 380 S 1340 560, 1240 700"
+          stroke="#E8590C" stroke-opacity="0.22" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+    <path d="M1172 372 l6 7 12-14" stroke="#FF9E66" stroke-opacity="0.6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="head">
+    <div>
+      <div class="kicker">결론 — Conclusion</div>
+      <h1>성과를 <span class="hl">숫자로 보여준 소수</span>가 예산을 가져간다</h1>
+    </div>
+    <div class="pageno">13 / 16</div>
+  </div>
+
+  <div class="rows">
+    <div class="row">
+      <div class="tag"><b>에이전틱 AI</b><span>10개 분야 평균 · 완전 확장 단계</span></div>
+      <p>연말 최고 성숙 기대 <span class="g">50%</span> vs 현재 도달 <span class="o">11%</span> — <b>기대가 현실보다 한참 앞서 있다</b></p>
+      <svg width="320" height="66" viewBox="0 0 320 66" fill="none">
+        <line x1="10" y1="38" x2="290" y2="38" stroke="#4A443B" stroke-width="2"/>
+        <line x1="10" y1="33" x2="10" y2="43" stroke="#4A443B" stroke-width="2"/>
+        <line x1="290" y1="33" x2="290" y2="43" stroke="#4A443B" stroke-width="2"/>
+        <line x1="40.8" y1="38" x2="150" y2="38" stroke="#8D8779" stroke-width="3"/>
+        <circle cx="150" cy="38" r="6" fill="#A9B0BA" stroke="#17130E" stroke-width="2"/>
+        <circle cx="40.8" cy="38" r="7.5" fill="#E8590C" stroke="#FFD9BF" stroke-width="2"/>
+        <text x="150" y="20" text-anchor="middle" font-size="12" font-weight="800" fill="#C6CCD4">기대 50%</text>
+        <text x="40.8" y="62" text-anchor="middle" font-size="12" font-weight="800" fill="#FF9E66">현재 11%</text>
+      </svg>
+    </div>
+    <div class="row">
+      <div class="tag"><b>AI 광고 신뢰</b><span>생성형 AI 광고 소비자 인식</span></div>
+      <p>긍정 <span class="g">16%</span> vs 부정 <span class="o">33%</span> — <b>만들 수는 있는데 아직 못 믿게 한다</b></p>
+      <svg width="320" height="66" viewBox="0 0 320 66" fill="none">
+        <line x1="10" y1="38" x2="290" y2="38" stroke="#4A443B" stroke-width="2"/>
+        <line x1="10" y1="33" x2="10" y2="43" stroke="#4A443B" stroke-width="2"/>
+        <line x1="290" y1="33" x2="290" y2="43" stroke="#4A443B" stroke-width="2"/>
+        <line x1="54.8" y1="38" x2="102.4" y2="38" stroke="#8D8779" stroke-width="3"/>
+        <circle cx="54.8" cy="38" r="6" fill="#A9B0BA" stroke="#17130E" stroke-width="2"/>
+        <circle cx="102.4" cy="38" r="7.5" fill="#E8590C" stroke="#FFD9BF" stroke-width="2"/>
+        <text x="48" y="20" text-anchor="middle" font-size="12" font-weight="800" fill="#C6CCD4">긍정 16%</text>
+        <text x="110" y="62" text-anchor="middle" font-size="12" font-weight="800" fill="#FF9E66">부정 33%</text>
+      </svg>
+    </div>
+    <div class="row">
+      <div class="tag"><b>마케팅 예산</b><span>유럽 마케팅 리더 · 계획 vs 실적</span></div>
+      <p>증액 계획 <span class="g">72%</span> vs 전년 실적 <span class="o">49%</span> — <b>올리겠다는 곳은 많고 실제 올린 곳은 절반이다</b></p>
+      <svg width="320" height="66" viewBox="0 0 320 66" fill="none">
+        <line x1="10" y1="38" x2="290" y2="38" stroke="#4A443B" stroke-width="2"/>
+        <line x1="10" y1="33" x2="10" y2="43" stroke="#4A443B" stroke-width="2"/>
+        <line x1="290" y1="33" x2="290" y2="43" stroke="#4A443B" stroke-width="2"/>
+        <line x1="147.2" y1="38" x2="211.6" y2="38" stroke="#8D8779" stroke-width="3"/>
+        <circle cx="211.6" cy="38" r="6" fill="#A9B0BA" stroke="#17130E" stroke-width="2"/>
+        <circle cx="147.2" cy="38" r="7.5" fill="#E8590C" stroke="#FFD9BF" stroke-width="2"/>
+        <text x="211.6" y="20" text-anchor="middle" font-size="12" font-weight="800" fill="#C6CCD4">계획 72%</text>
+        <text x="147.2" y="62" text-anchor="middle" font-size="12" font-weight="800" fill="#FF9E66">실적 49%</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="roi">
+      <div class="big">4.5<small>배</small></div>
+      <div class="cap"><b>상위 5% 조직 기술 ROI</b><span>vs 평균 2배</span></div>
+    </div>
+    <p>예산은 성과를 보여준 쪽으로 움직인다 — 상위 조직의 기술 투자 수익은 <b>4.5배</b>, 평균은 <b>2배</b>. <span class="hl">성과를 잴 줄 아는 조직</span>이 이 차이를 만든다</p>
+    <div class="scope">과거 12개월 · 응답자 자체 추정 기반</div>
+  </div>
+
+  <div class="vbadge">
+    <div class="tick"><svg width="11" height="9" viewBox="0 0 12 10"><path d="M1.5 5.2 4.6 8.3 10.5 1.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <span>이 페이지 수치 8/8 — 출처 원문 대조 ✓</span>
+  </div>
+  <div class="foot">
+    <div>출처 — <b>KPMG International</b> · McKinsey &amp; Company · 메조미디어</div>
+    <div>© 2026 Peppinch · All rights reserved</div>
+  </div>
+</div>
+</body>
+</html>

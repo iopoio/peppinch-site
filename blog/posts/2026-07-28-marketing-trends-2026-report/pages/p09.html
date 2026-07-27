@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>p09 — 마케팅 예산</title>
+<style>
+  :root{
+    --orange:#E8590C; --orange-deep:#9E3A05; --t1:#FFEDE0; --t2:#FFD9BF; --t3:#FF9E66;
+    --ink:#201C16; --sub:#6B665E; --bg:#F1F3F6; --card:#FFFFFF; --line:#E4E7EC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DDE1E7;display:flex;align-items:center;justify-content:center;min-height:100vh;
+       font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;}
+  .stage{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--bg);color:var(--ink)}
+  .motif{position:absolute;inset:0;pointer-events:none}
+  .head{position:absolute;top:44px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:flex-start}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:800;letter-spacing:0.13em;
+          color:var(--orange);text-transform:uppercase;margin-bottom:14px}
+  .kicker::before{content:"";display:inline-block;width:22px;height:2px;background:var(--orange)}
+  h1{font-size:37px;font-weight:850;letter-spacing:-0.025em;line-height:1.2;max-width:1000px}
+  h1 .hl{color:var(--orange)}
+  .lead{margin-top:12px;font-size:16px;color:#4A453D;letter-spacing:-0.005em;max-width:1080px}
+  .lead .hl{color:var(--orange);font-weight:800;font-style:normal}
+  .pageno{font-size:14px;color:#9A958C;font-weight:700;letter-spacing:0.06em;padding-top:6px}
+  .card{position:absolute;background:var(--card);border-radius:20px;box-shadow:0 14px 36px rgba(32,28,22,0.09)}
+  .card h2{font-size:16.5px;font-weight:800;letter-spacing:-0.01em}
+  .card .csub{font-size:12.5px;color:var(--sub);margin-top:5px}
+  /* 좌 — 도넛 */
+  .donutcard{left:64px;top:192px;width:552px;height:288px;padding:26px 30px}
+  .donutrow{display:flex;align-items:center;gap:26px;margin-top:16px}
+  .legend{display:flex;flex-direction:column;gap:18px}
+  .li{display:flex;gap:11px}
+  .li .sw{width:12px;height:12px;border-radius:3px;margin-top:5px;flex:none}
+  .li .val{font-size:29px;font-weight:800;letter-spacing:-0.02em;line-height:1.05}
+  .li .lab{font-size:13px;color:#3E3A33;font-weight:600;margin-top:3px}
+  .li.cmo .val{color:var(--orange)}
+  .li.rest .val{color:#6B665E;font-size:23px}
+  .li.rest .lab{color:var(--sub)}
+  /* 우 — TSR 바 */
+  .tsrcard{left:640px;top:192px;width:576px;height:288px;padding:26px 30px}
+  .bars{margin-top:20px;display:flex;flex-direction:column;gap:22px}
+  .bg-item .blab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+  .bg-item .blab b{font-size:14px;font-weight:800;color:var(--ink)}
+  .bg-item .blab span{font-size:12px;color:var(--sub)}
+  .barrow{display:flex;align-items:center;gap:12px}
+  .bar{height:30px;border-radius:6px}
+  .bar.lead-bar{width:348px;background:linear-gradient(90deg,#E8590C,#C94A08)}
+  .bar.lag-bar{width:195px;background:#D8DCE2}
+  .bval{font-size:22px;font-weight:800;letter-spacing:-0.02em}
+  .bval.o{color:var(--orange-deep)}
+  .bval.g{color:#6B665E}
+  .axisnote{margin-top:16px;font-size:11.5px;color:#9A958C;border-top:1px dashed var(--line);padding-top:11px}
+  /* 하단 — 배경·할 일 + 정직 각주 */
+  .ctxcard{left:64px;top:498px;width:552px;height:142px;padding:20px 26px}
+  .ctxcard .body{font-size:13.8px;line-height:1.55;color:#3E3A33}
+  .ctxcard .body b{color:var(--ink)}
+  .ctxcard .todo{margin-top:11px;padding:9px 0 0 13px;border-left:3px solid var(--orange);
+                 font-size:13px;line-height:1.5;color:#3E3A33;font-weight:600}
+  .ctxcard .todo em{font-style:normal;font-weight:800;color:var(--orange-deep)}
+  .note{left:640px;top:498px;width:576px;height:142px;background:#FBF4EE;border:1px solid #F3DCCB;
+        border-radius:18px;padding:18px 24px;box-shadow:none;position:absolute}
+  .note p{font-size:12.3px;line-height:1.6;color:#7A6A59}
+  .note p b{color:#5C4A37}
+  .vbadge{position:absolute;top:174px;right:84px;display:flex;align-items:center;gap:9px;background:#FFF;
+          border:1.5px solid var(--orange);border-radius:999px;padding:8px 17px 8px 11px;
+          box-shadow:0 6px 18px rgba(232,89,12,0.13);z-index:3}
+  .vbadge .tick{width:19px;height:19px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:none}
+  .vbadge span{font-size:12.8px;font-weight:800;color:var(--orange-deep)}
+  .foot{position:absolute;left:64px;right:64px;bottom:30px;display:flex;justify-content:space-between;font-size:12px;color:#9A958C}
+  .foot b{font-weight:700;color:#7d7870}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="motif" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+    <path d="M -40 672 C 260 706, 480 620, 760 672 S 1160 704, 1320 630"
+          stroke="#E8590C" stroke-opacity="0.16" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+    <path d="M1224 128 l6 7 12-14" stroke="#E8590C" stroke-opacity="0.42" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="head">
+    <div>
+      <div class="kicker">넷째 — 마케팅 예산</div>
+      <h1>마케팅 예산 — <span class="hl">숫자로 못 보여주면 깎인다</span></h1>
+      <div class="lead">숫자부터 보면 — 수익성을 우선하는 CMO는 셋 중 하나뿐, 그런데 <b class="hl">주가 성과</b>는 마케팅 선도 기업 쪽이 좋았다</div>
+    </div>
+    <div class="pageno">09 / 16</div>
+  </div>
+
+  <div class="card donutcard">
+    <h2>수익성을 보는 눈 — CMO와 나머지 경영진의 어긋남</h2>
+    <div class="csub">수익성을 우선시하는 비율 · Deloitte NL 조사</div>
+    <div class="donutrow">
+      <svg width="186" height="186" viewBox="0 0 190 190" fill="none">
+        <circle cx="95" cy="95" r="72" stroke="#DFE3E9" stroke-width="26"/>
+        <circle cx="95" cy="95" r="72" stroke="#E8590C" stroke-width="26"
+                stroke-dasharray="149.29 452.39" transform="rotate(-90 95 95)"/>
+        <text x="95" y="90" text-anchor="middle" font-size="33" font-weight="800" fill="#E8590C" letter-spacing="-0.02em">33%</text>
+        <text x="95" y="112" text-anchor="middle" font-size="11" font-weight="600" fill="#6B665E">수익성 우선 CMO</text>
+      </svg>
+      <div class="legend">
+        <div class="li cmo">
+          <span class="sw" style="background:#E8590C"></span>
+          <div><div class="val">33%</div><div class="lab">수익성 우선 CMO</div></div>
+        </div>
+        <div class="li rest">
+          <span class="sw" style="background:#D8DCE2"></span>
+          <div><div class="val">67%</div><div class="lab">수익성 최우선 — 비마케팅 C레벨</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card tsrcard">
+    <h2>그런데 주가는 — 마케팅 선도 기업이 앞섰다</h2>
+    <div class="csub">연환산 TSR · 2019~2024</div>
+    <div class="bars">
+      <div class="bg-item">
+        <div class="blab"><b>마케팅 선도 기업 TSR — 연간</b><span>실행·브랜드 가치·수익 승수 선도</span></div>
+        <div class="barrow"><div class="bar lead-bar"></div><div class="bval o">16.1%</div></div>
+      </div>
+      <div class="bg-item">
+        <div class="blab"><b>마케팅 낙후 기업 TSR — 연간</b><span>3대 성과 모두 낙후</span></div>
+        <div class="barrow"><div class="bar lag-bar"></div><div class="bval g">9.0%</div></div>
+      </div>
+    </div>
+    <div class="axisnote">막대 길이 = 연환산 TSR 비례 · 격차는 함께 나타난 결과 — 인과 입증 아님 (아래 각주)</div>
+  </div>
+
+  <div class="card ctxcard">
+    <div class="body">배경은 — 저성장과 AI 전환 비용 속에 <b>CFO 발언권이 세지고</b>, 재무 언어로 설명 못 하는 예산부터 깎인다</div>
+    <div class="todo"><em>당장 할 일은</em> — 증액을 요구하기 전에 수익성 인식의 어긋남부터 진단한다. 구체 기준은 마지막 제언에</div>
+  </div>
+
+  <div class="note">
+    <p><b>ⓘ TSR</b> — 총주주수익률 — 주가 상승과 배당을 합친 수익률(PwC·2019~2024). 선도-낙후 차이는 함께 나타난 결과로 인과 입증은 아님 · 증액 계획 <b>72%</b> vs 실적 <b>49%</b>(맥킨지) — 계획과 실적의 틈은 예산에도 있다</p>
+  </div>
+
+  <div class="vbadge">
+    <div class="tick"><svg width="11" height="9" viewBox="0 0 12 10"><path d="M1.5 5.2 4.6 8.3 10.5 1.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <span>이 페이지 수치 6/6 — 출처 원문 대조 ✓</span>
+  </div>
+
+  <div class="foot">
+    <div>출처 — <b>Deloitte Netherlands</b> · PwC Consulting · McKinsey &amp; Company</div>
+    <div>© 2026 Peppinch · All rights reserved</div>
+  </div>
+</div>
+</body>
+</html>

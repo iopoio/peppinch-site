@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>p04 — 한국 광고비 시계열</title>
+<style>
+  :root{
+    --orange:#E8590C; --orange-deep:#9E3A05; --t1:#FFEDE0; --t2:#FFD9BF; --t3:#FF9E66;
+    --ink:#201C16; --sub:#6B665E; --bg:#F1F3F6; --card:#FFFFFF; --line:#E4E7EC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DDE1E7;display:flex;align-items:center;justify-content:center;min-height:100vh;
+       font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;}
+  .stage{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--bg);color:var(--ink)}
+  .motif{position:absolute;inset:0;pointer-events:none}
+  .head{position:absolute;top:44px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:flex-start}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:800;letter-spacing:0.13em;
+          color:var(--orange);text-transform:uppercase;margin-bottom:14px}
+  .kicker::before{content:"";display:inline-block;width:22px;height:2px;background:var(--orange)}
+  h1{font-size:38px;font-weight:850;letter-spacing:-0.025em;line-height:1.22;max-width:940px}
+  h1 .hl{color:var(--orange)}
+  .pageno{font-size:14px;color:#9A958C;font-weight:700;letter-spacing:0.06em;padding-top:6px}
+  .chart{position:absolute;left:64px;top:182px;width:1152px;height:412px;background:var(--card);
+         border-radius:20px;box-shadow:0 14px 36px rgba(32,28,22,0.09);padding:26px 36px 18px}
+  .chart h2{font-size:17px;font-weight:800;letter-spacing:-0.01em}
+  .chart .sub{font-size:13px;color:var(--sub);margin-top:5px}
+  .chart .note{display:flex;align-items:baseline;gap:9px;font-size:12px;color:var(--sub);margin-top:2px}
+  .chart .note::before{content:"";width:14px;height:2px;background:var(--orange);display:inline-block;flex:none;transform:translateY(-3px)}
+  .gchip{position:absolute;top:164px;right:84px;z-index:2;display:flex;align-items:baseline;gap:8px;background:var(--ink);color:#F5F1EA;
+         border-radius:999px;padding:9px 18px;box-shadow:0 8px 20px rgba(32,28,22,0.22)}
+  .gchip b{font-size:13px;font-weight:800;color:#FFD9BF}
+  .gchip span{font-size:11.5px;color:#B8B2A8}
+  .fnote{position:absolute;left:64px;top:606px;width:852px;background:#FBF4EE;border:1px solid #F3DCCB;
+         border-radius:16px;padding:13px 20px}
+  .fnote p{font-size:11.8px;line-height:1.52;color:#7A6A59;word-break:keep-all}
+  .fnote p b{color:#5C4A37}
+  .vbadge{position:absolute;right:64px;top:618px;display:flex;align-items:center;gap:9px;background:#FFF;border:1.5px solid var(--orange);
+          border-radius:999px;padding:9px 18px 9px 12px;box-shadow:0 6px 18px rgba(232,89,12,0.13)}
+  .vbadge .tick{width:19px;height:19px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:none}
+  .vbadge span{font-size:12.8px;font-weight:800;color:var(--orange-deep)}
+  .foot{position:absolute;left:64px;right:64px;bottom:30px;display:flex;justify-content:space-between;font-size:12px;color:#9A958C}
+  .foot b{font-weight:700;color:#7d7870}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="motif" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+    <path d="M -50 120 C 150 80, 300 160, 470 110"
+          stroke="#E8590C" stroke-opacity="0.13" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+    <path d="M448 104 l6 7 12-14" stroke="#E8590C" stroke-opacity="0.4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="head">
+    <div>
+      <div class="kicker">도입 — 광고 시장 지형</div>
+      <h1>글로벌 전망은 성장을 말하지만,<br>한국 광고 시장은 <span class="hl">사실상 제자리</span>다</h1>
+    </div>
+    <div class="pageno">04 / 16</div>
+  </div>
+
+  <div class="gchip"><b>글로벌 광고 수익 성장 전망 8.9%</b><span>2026 · WPP 전 채널 추계 — 직접 비교 불가</span></div>
+
+  <div class="chart">
+    <h2>한국 방송통신광고비 추이 — 총액은 평탄, 방송과 온라인은 반대 방향</h2>
+    <div class="sub">단위 — 억 원 · 2025e = KOBACO 전망치 · 방송통신광고비 조사(국가승인통계)</div>
+    <svg width="1080" height="300" viewBox="0 0 1080 300" fill="none" style="margin-top:4px">
+      <!-- 축 -->
+      <line x1="40" y1="268" x2="1040" y2="268" stroke="#D8DCE2" stroke-width="2"/>
+      <text x="70" y="290" text-anchor="middle" font-size="11.5" fill="#9A958C" font-weight="600">2022</text>
+      <text x="360" y="290" text-anchor="middle" font-size="11.5" fill="#9A958C" font-weight="600">2023</text>
+      <text x="650" y="290" text-anchor="middle" font-size="11.5" fill="#9A958C" font-weight="600">2024</text>
+      <text x="940" y="290" text-anchor="middle" font-size="11.5" fill="#9A958C" font-weight="600">2025e</text>
+
+      <!-- 총액 (그레이 비교군 · 평탄) -->
+      <polyline points="70,37.7 360,37.4 650,29.2 940,27.2" stroke="#7A8089" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="70" cy="37.7" r="4.5" fill="#7A8089" stroke="#fff" stroke-width="2"/>
+      <circle cx="360" cy="37.4" r="4.5" fill="#7A8089" stroke="#fff" stroke-width="2"/>
+      <circle cx="650" cy="29.2" r="4.5" fill="#7A8089" stroke="#fff" stroke-width="2"/>
+      <circle cx="940" cy="27.2" r="4.5" fill="#7A8089" stroke="#fff" stroke-width="2"/>
+      <text x="70" y="24.7" text-anchor="middle" font-size="10.5" font-weight="700" fill="#565B63">165,203</text>
+      <text x="360" y="24.4" text-anchor="middle" font-size="10.5" font-weight="700" fill="#565B63">165,410</text>
+      <text x="650" y="16.2" text-anchor="middle" font-size="10.5" font-weight="700" fill="#565B63">171,263</text>
+      <text x="940" y="14.2" text-anchor="middle" font-size="10.5" font-weight="700" fill="#565B63">172,717</text>
+      <text x="960" y="32" font-size="13" font-weight="800" fill="#565B63">총액</text>
+
+      <!-- 온라인 (오렌지 · 상승) -->
+      <polyline points="70,146.6 360,137.4 650,127.2 940,118.5" stroke="#E8590C" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="70" cy="146.6" r="5" fill="#E8590C" stroke="#fff" stroke-width="2"/>
+      <circle cx="360" cy="137.4" r="5" fill="#E8590C" stroke="#fff" stroke-width="2"/>
+      <circle cx="650" cy="127.2" r="5" fill="#E8590C" stroke="#fff" stroke-width="2"/>
+      <circle cx="940" cy="118.5" r="5" fill="#E8590C" stroke="#fff" stroke-width="2"/>
+      <text x="70" y="165.6" text-anchor="middle" font-size="10.8" font-weight="800" fill="#9E3A05">87,062</text>
+      <text x="360" y="156.4" text-anchor="middle" font-size="10.8" font-weight="800" fill="#9E3A05">93,653</text>
+      <text x="650" y="146.2" text-anchor="middle" font-size="10.8" font-weight="800" fill="#9E3A05">101,011</text>
+      <text x="940" y="137.5" text-anchor="middle" font-size="10.8" font-weight="800" fill="#9E3A05">107,204</text>
+      <text x="960" y="123.5" font-size="13" font-weight="800" fill="#E8590C">온라인</text>
+
+      <!-- 온라인 비중 주석 -->
+      <rect x="568" y="80" width="164" height="24" rx="12" fill="#FFEDE0"/>
+      <text x="650" y="96" text-anchor="middle" font-size="11" font-weight="800" fill="#B23E05">2024 온라인 비중 59.0%</text>
+      <line x1="650" y1="106" x2="650" y2="118" stroke="#E8590C" stroke-width="1.5" stroke-dasharray="2 4" stroke-opacity="0.6"/>
+
+      <!-- 방송 (그레이 · 하락) -->
+      <polyline points="70,211.9 360,220.7 650,223.1 940,229.3" stroke="#B4BAC3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+      <circle cx="70" cy="211.9" r="4.5" fill="#B4BAC3" stroke="#fff" stroke-width="2"/>
+      <circle cx="360" cy="220.7" r="4.5" fill="#B4BAC3" stroke="#fff" stroke-width="2"/>
+      <circle cx="650" cy="223.1" r="4.5" fill="#B4BAC3" stroke="#fff" stroke-width="2"/>
+      <circle cx="940" cy="229.3" r="4.5" fill="#B4BAC3" stroke="#fff" stroke-width="2"/>
+      <text x="70" y="230.9" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6B665E">40,212</text>
+      <text x="360" y="239.7" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6B665E">33,898</text>
+      <text x="650" y="242.1" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6B665E">32,191</text>
+      <text x="940" y="248.3" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6B665E">27,744</text>
+      <text x="960" y="234" font-size="13" font-weight="800" fill="#8A9099">방송</text>
+
+      <!-- 재분배 화살표 -->
+      <line x1="800" y1="214" x2="800" y2="140" stroke="#E8590C" stroke-width="2" stroke-dasharray="4 5" stroke-opacity="0.55"/>
+      <path d="M793 149 L800 139 L807 149" stroke="#E8590C" stroke-width="2" stroke-opacity="0.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="812" y="181" font-size="11.5" font-weight="800" fill="#B23E05">방송 → 온라인 재분배</text>
+    </svg>
+    <div class="note">전통 매체 대행·렙의 구조조정이 이 이동의 실물 신호 · 마케팅 전체 지출을 재는 국가 통계는 없어, 광고비가 가장 가까운 실측</div>
+  </div>
+
+  <div class="fnote">
+    <p><b>ⓘ 2025e</b> — 2025년 한국 수치는 KOBACO 전망치(확정치는 2026년 발표) · 글로벌 +8.9% 전망은 벤더 추계·전 채널 기준이라 직접 비교 불가 · 2024년 실적 +3.5%로 침체가 아닌 저성장 속 구조 전환</p>
+  </div>
+  <div class="vbadge">
+    <div class="tick"><svg width="11" height="9" viewBox="0 0 12 10"><path d="M1.5 5.2 4.6 8.3 10.5 1.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <span>이 페이지 수치 14/14 — 출처 원문 대조 ✓</span>
+  </div>
+
+  <div class="foot">
+    <div>출처 — <b>방송미디어통신위원회·한국방송광고진흥공사(KOBACO)</b> · WPP Media · 한국광고주협회(KAA)</div>
+    <div>© 2026 Peppinch · All rights reserved</div>
+  </div>
+</div>
+</body>
+</html>

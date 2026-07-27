@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>p11 — 아직 지켜보는 다섯 가지</title>
+<style>
+  :root{
+    --orange:#E8590C; --orange-deep:#9E3A05; --ink:#201C16; --sub:#6B665E;
+    --bg:#F1F3F6; --card:#FFFFFF; --line:#E4E7EC;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DDE1E7;display:flex;align-items:center;justify-content:center;min-height:100vh;
+       font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;}
+  .stage{position:relative;width:1280px;height:720px;overflow:hidden;background:var(--bg);color:var(--ink)}
+  .motif{position:absolute;inset:0;pointer-events:none}
+  .head{position:absolute;top:40px;left:64px;right:64px;display:flex;justify-content:space-between;align-items:flex-start}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:13.5px;font-weight:800;letter-spacing:0.13em;
+          color:var(--orange);text-transform:uppercase;margin-bottom:12px}
+  .kicker::before{content:"";display:inline-block;width:22px;height:2px;background:var(--orange)}
+  h1{font-size:34px;font-weight:850;letter-spacing:-0.025em;line-height:1.24;max-width:1040px}
+  h1 .hl{color:var(--orange)}
+  .pageno{font-size:14px;color:#9A958C;font-weight:700;letter-spacing:0.06em;padding-top:6px}
+  .tablecard{position:absolute;left:64px;top:176px;width:1152px;height:412px;background:var(--card);
+             border-radius:20px;box-shadow:0 14px 36px rgba(32,28,22,0.09);padding:24px 32px 18px;overflow:hidden}
+  table{width:100%;border-collapse:collapse;table-layout:fixed}
+  col.c1{width:120px} col.c2{width:446px} col.c3{width:322px} col.c4{width:200px}
+  thead th{font-size:12px;font-weight:800;letter-spacing:0.08em;color:var(--sub);text-align:left;
+           padding:2px 14px 10px;border-bottom:2px solid rgba(232,89,12,0.4)}
+  thead th.c4h{color:var(--orange-deep)}
+  tbody td{font-size:13.5px;line-height:1.55;color:#3E3A33;padding:15px 14px;vertical-align:middle;
+           border-bottom:1px solid #E9ECF0}
+  tbody tr:last-child td{border-bottom:none}
+  td.item{font-size:15px;font-weight:800;color:var(--ink);border-left:3px solid var(--orange);padding-left:13px}
+  td.now .num{font-weight:800;color:var(--orange-deep)}
+  td.signal{font-size:13px;color:#57534B}
+  td.expect{font-size:13.2px;font-weight:800;color:var(--orange-deep);background:#FFF7EF}
+  .bottom{position:absolute;left:64px;top:602px;width:836px;background:#FBF4EE;border:1px solid #F3DCCB;
+          border-radius:16px;padding:14px 20px}
+  .bottom p{font-size:12.3px;line-height:1.58;color:#7A6A59}
+  .bottom p b{color:#5C4A37}
+  .vbadge{position:absolute;top:576px;right:84px;display:flex;align-items:center;gap:9px;background:#FFF;
+          border:1.5px solid var(--orange);border-radius:999px;padding:8px 17px 8px 11px;
+          box-shadow:0 6px 18px rgba(232,89,12,0.13);z-index:3}
+  .vbadge .tick{width:19px;height:19px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:none}
+  .vbadge span{font-size:12.8px;font-weight:800;color:var(--orange-deep)}
+  .foot{position:absolute;left:64px;right:64px;bottom:26px;display:flex;justify-content:space-between;font-size:12px;color:#9A958C}
+  .foot b{font-weight:700;color:#7d7870}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="motif" width="1280" height="720" viewBox="0 0 1280 720" fill="none">
+    <path d="M -40 690 C 300 712, 560 664, 860 700 S 1200 712, 1320 668"
+          stroke="#E8590C" stroke-opacity="0.15" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round"/>
+    <path d="M1228 118 l6 7 12-14" stroke="#E8590C" stroke-opacity="0.42" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="head">
+    <div>
+      <div class="kicker">아직 지켜보는 것들</div>
+      <h1>다섯 줄 다 같은 틀이다 — <span class="hl">지금은 이런데, 신호가 확인되면 예상대로 간다</span></h1>
+    </div>
+    <div class="pageno">11 / 16</div>
+  </div>
+
+  <div class="tablecard">
+    <table>
+      <colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"></colgroup>
+      <thead>
+        <tr><th>항목</th><th>지금은</th><th>확인할 신호</th><th class="c4h">예상</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item">소셜</td>
+          <td class="now">이용 시간은 주 <b class="num">13.5시간</b>으로 그대로 — 새 콘텐츠를 '발견하는 창구'가 된 것만 확실</td>
+          <td class="signal">같은 방향의 독립 조사가 둘 이상 나올 때</td>
+          <td class="expect">체류지에서 발견 채널로</td>
+        </tr>
+        <tr>
+          <td class="item">크리에이터</td>
+          <td class="now">예산이 상시 운영 쪽으로 움직인다는 조짐만 — 인용할 독립 통계는 아직 없다</td>
+          <td class="signal">기관 통계 등장 또는 대형 광고주 재배분의 공시 확인</td>
+          <td class="expect">협찬에서 상시 채널로</td>
+        </tr>
+        <tr>
+          <td class="item">리테일미디어</td>
+          <td class="now">유럽선 자리 잡았지만 한국은 공식 통계가 없다 — 이커머스 기반은 세계 최상위</td>
+          <td class="signal">KOBACO 분리 집계 또는 네이버·쿠팡 광고 매출 공시 분리</td>
+          <td class="expect">유럽처럼 정식 예산 항목으로</td>
+        </tr>
+        <tr>
+          <td class="item">팬덤</td>
+          <td class="now">팬이라 여기는 사람이 <b class="num">80%</b>라는 미국 조사 — 한국 조사는 아직 없다</td>
+          <td class="signal">한국 팬덤-지출 조사 등장 또는 월드컵 캠페인 성과 축적</td>
+          <td class="expect">취향에서 구매·시청의 기준으로</td>
+        </tr>
+        <tr>
+          <td class="item">소비 심리</td>
+          <td class="now">미래 낙관 비율 <b class="num">67%</b> — 십오 년 전보다 낮아졌지만 여전히 다수</td>
+          <td class="signal">국내 독립 조사에서 같은 흐름 확인</td>
+          <td class="expect">세대 낙관의 완만한 하향</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bottom">
+    <p><b>ⓘ 세대 낙관 조사</b> — 2010년 <b>77%</b> → 2025년 <b>67%</b> — 단일 기관(Foresight Factory) 시계열. 국내 독립 조사로 교차 확인되기 전까지 방향 신호로만 읽음</p>
+  </div>
+
+  <div class="vbadge">
+    <div class="tick"><svg width="11" height="9" viewBox="0 0 12 10"><path d="M1.5 5.2 4.6 8.3 10.5 1.6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <span>이 페이지 수치 4/4 — 출처 원문 대조 ✓</span>
+  </div>
+
+  <div class="foot">
+    <div>출처 — <b>GWI</b> · Deloitte Insights · Deloitte Netherlands · 메조미디어(MezzoMedia) · Foresight Factory</div>
+    <div>© 2026 Peppinch · All rights reserved</div>
+  </div>
+</div>
+</body>
+</html>
