@@ -2867,8 +2867,10 @@ h1 {
   <div class="outro-contact-zone"><div class="presenter-contact"><span class="presenter-company">PEPPINCH</span><span class="presenter-name">채영화</span><span class="presenter-email">pepper@peppinch.com</span></div></div>
 </section>
 <script>
-(function(){function post(){try{window.parent&&window.parent.postMessage({rptH:document.documentElement.scrollHeight},'*')}catch(e){}}
-window.addEventListener('load',post);window.addEventListener('resize',post);setTimeout(post,600);setTimeout(post,2000);})();
+/* zoomfit: 슬라이드 고정폭 1280을 임베드 폭에 맞춰 축소 + 부모에 실높이 통지 */
+(function(){function post(){try{window.parent&&window.parent.postMessage({rptH:Math.round(document.documentElement.scrollHeight*(parseFloat(document.documentElement.style.zoom)||1))},'*')}catch(e){}}
+function fit(){var z=Math.min(1,window.innerWidth/1280);document.documentElement.style.zoom=z;post()}
+window.addEventListener('load',fit);window.addEventListener('resize',fit);setTimeout(fit,600);setTimeout(fit,2000);})();
 </script>
 </body>
 </html>
