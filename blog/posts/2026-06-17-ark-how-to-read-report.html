@@ -94,7 +94,8 @@ a{color:#9bd7ff;text-decoration:none}
 </main>
 <script>
 (function(){
-  function send(){ try{ parent.postMessage({rptH: Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)}, '*'); }catch(e){} }
+  var __last=0;
+  function send(){ try{ var h=document.body.offsetHeight; if(Math.abs(h-__last)>4){ __last=h; parent.postMessage({rptH:h}, '*'); } }catch(e){} }
   window.addEventListener('load',send); window.addEventListener('resize',send);
   document.addEventListener('toggle',function(e){ if(e.target&&e.target.tagName==='DETAILS') setTimeout(send,30); },true);
 })();

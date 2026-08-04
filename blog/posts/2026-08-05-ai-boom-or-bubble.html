@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>어디까지 갈지 몰라서 더 재밌다 — 마진콜, 거품론, 속도 조절의 아이러니 · peppinch blog</title>
+<meta name="description" content="AI 반도체 급락과 200억 달러 펀드 마진콜의 주간. 미국 올인 팟캐스트와 한국 AI 프론티어 코리아, 같은 사건의 두 독법을 정리하고 — 붐과 거품이 부딪히는 불확실성에 대한 내 생각.">
+<meta property="og:title" content="어디까지 갈지 몰라서 더 재밌다 — 마진콜, 거품론, 속도 조절의 아이러니">
+<meta property="og:description" content="붐이라는 쪽과 과하다는 쪽이 정면으로 부딪히는 주간. 누구도 결말을 모른다는 게 이 시대의 재미.">
+<meta property="og:image" content="https://www.peppinch.com/og-image.png">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.peppinch.com/blog/posts/2026-08-05-ai-boom-or-bubble">
+<meta property="og:site_name" content="peppinch">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2026-08-05T00:00:00+09:00">
+<meta property="article:section" content="관심있는 것들 정리">
+<meta property="article:tag" content="AI"><meta property="article:tag" content="마진콜"><meta property="article:tag" content="AI거품론">
+<meta name="author" content="peppinch">
+<meta name="keywords" content="AI 거품, 반도체 급락, 마진콜, 아셴브레너, 킴 K3, AI 규제, 속도 조절, 올인 팟캐스트">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@peppinch_">
+<meta name="twitter:title" content="어디까지 갈지 몰라서 더 재밌다">
+<meta name="twitter:description" content="붐과 거품이 부딪히는 주간, 같은 사건의 미국·한국 두 독법.">
+<meta name="twitter:image" content="https://www.peppinch.com/og-image.png">
+<link rel="canonical" href="https://www.peppinch.com/blog/posts/2026-08-05-ai-boom-or-bubble">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"어디까지 갈지 몰라서 더 재밌다 — 마진콜, 거품론, 속도 조절의 아이러니","description":"AI 반도체 급락과 대형 펀드 마진콜의 주간, 미국·한국 두 팟캐스트의 독법 정리와 불확실성에 대한 생각.","datePublished":"2026-08-05T00:00:00+09:00","dateModified":"2026-08-05T00:00:00+09:00","inLanguage":"ko-KR","url":"https://www.peppinch.com/blog/posts/2026-08-05-ai-boom-or-bubble","mainEntityOfPage":"https://www.peppinch.com/blog/posts/2026-08-05-ai-boom-or-bubble","image":"https://www.peppinch.com/og-image.png","keywords":"AI 거품, 반도체 급락, 마진콜, 킴 K3, AI 규제","author":{"@type":"Person","name":"peppinch","url":"https://www.peppinch.com/"},"publisher":{"@type":"Organization","name":"peppinch","logo":{"@type":"ImageObject","url":"https://www.peppinch.com/favicon.svg"}},"isBasedOn":[{"@type":"VideoObject","name":"Chip Stocks Crash, $20B Fund Margin Called, Frontier Labs: SLOW DOWN AI","url":"https://youtu.be/ViqYWhLimGg"},{"@type":"VideoObject","name":"EP 107. 미래란 언제나 예측불허: 주가 롤러코스터, Kimi K3 쇼크, 재귀적 자기 개선의 시작","url":"https://youtu.be/tgCoPeWsTU8"}]}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LZ7ZXMFEBM');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+<style>
+@font-face{font-family:"Kyobo";src:url("/fonts/KyoboHandwriting2019.woff2") format("woff2"),url("/fonts/KyoboHandwriting2019.otf") format("opentype");font-display:swap}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:clip}
+body{background:#F6F4ED;color:#33312B;font-family:'Gowun Dodum',sans-serif;-webkit-font-smoothing:antialiased;
+--acc:#3E7C5B;--accD:#2C5A41;--accS:rgba(62,124,91,0.22);--accT:rgba(62,124,91,0.18);--accBg:#E9EFE4;--rule:rgba(51,49,43,0.09)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 40px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:30px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:#33312B}
+.brand img{width:27px;height:27px;margin-bottom:2px}
+.brand .bn{font-family:'Shantell Sans',cursive;font-weight:700;font-size:25px}
+.pill{font-family:'Kyobo';font-size:17px;color:#615D51;text-decoration:none;padding:5px 16px;border:1.6px dashed #8F8B7D;border-radius:18px 210px 22px 190px / 200px 20px 220px 18px;transition:all .15s}
+.pill:hover{border-color:var(--acc);color:var(--acc)}
+.phead{padding:66px 0 10px}
+.pmeta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pdate{font-family:'Shantell Sans',cursive;font-size:13px;color:#8F8B7D}
+.pcat{font-family:'Kyobo';font-size:15px;color:var(--acc);border:1.4px solid var(--acc);padding:2px 12px;border-radius:190px 16px 210px 14px / 16px 200px 14px 190px;transform:rotate(-1deg)}
+h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-spacing:-0.01em;word-break:keep-all;overflow-wrap:anywhere}
+.hrule{width:130px;border-bottom:3px solid var(--accS);margin-top:18px;transform:rotate(-0.6deg)}
+.content{font-size:16.5px;line-height:2.05;color:#44413A;padding:26px 0 0}
+.content p{margin:0 0 26px}
+.content a{color:var(--acc)}
+.content em,.content strong{font-style:normal;font-weight:700;background:linear-gradient(transparent 62%,var(--accS) 62%,var(--accS) 92%,transparent 92%)}
+.rptlabel{font-family:'Kyobo';font-size:16px;color:var(--acc);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.rptwrap{border:1.6px solid #33312B;border-radius:8px;overflow:hidden;margin:0 0 40px;box-shadow:4px 5px 0 var(--accS)}
+.rpt{width:100%;border:0;display:block;min-height:640px;background:#f6f8f9}
+.mv{background-image:repeating-linear-gradient(transparent,transparent 45px,var(--rule) 45px,var(--rule) 46px);background-position:0 12px;padding:6px 4px 20px;margin-bottom:36px}
+.mvh{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.mvh .ic{font-size:19px}
+.mvh .tt{font-family:'Kyobo';font-size:24px;color:var(--acc)}
+.mvb{font-family:'Kyobo';font-size:20px;line-height:2.3;color:#44413A}
+.mvb p{margin:0 0 22px}
+.mvb p:last-child{margin:0}
+.mvb b,.mvb strong{font-weight:700;background:linear-gradient(transparent 62%,var(--accS) 62%,var(--accS) 92%,transparent 92%)}
+.mvb .ask{color:var(--accD);font-weight:700}
+.likewrap{display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 0 6px}
+.likebtn{font-family:'Kyobo';font-size:20px;color:var(--acc);background:#FFFFFF;border:1.8px solid var(--acc);border-radius:220px 20px 200px 24px / 22px 200px 18px 220px;padding:10px 30px;cursor:pointer;transition:all .15s}
+.likebtn:hover{background:var(--accBg);transform:rotate(-1deg)}
+.likebtn.on{background:var(--acc);color:#F6F4ED}
+.likenote{font-family:'Kyobo';font-size:16px;color:#8F8B7D;text-align:center}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:44px 0 40px;margin-top:40px;border-top:1.5px solid #D8D4C6}
+.foot .fs{display:inline-flex;align-items:center;gap:9px;font-family:'Shantell Sans',cursive;font-size:15px;color:#8F8B7D}
+.foot .fs b{color:#33312B}
+.foot .fb{font-family:'Kyobo';font-size:16px;color:var(--acc);text-decoration:none}
+@media(max-width:640px){.wrap{padding:0 22px}.pill{padding:10px 18px}h1.ptitle{font-size:26px}.phead{padding:46px 0 6px}.mvb{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="brand" href="/"><img src="/assets/peppinch-logo.svg" alt="Peppinch 로고 — 후추 세 알"><span class="bn">Peppinch</span></a>
+    <a class="pill" href="/blog/">← 다른 글 보기</a>
+  </div>
+
+  <div class="phead">
+    <div class="pmeta"><span class="pdate">2026 · 08 · 05</span><span class="pcat">관심있는 것들 정리</span></div>
+    <h1 class="ptitle">어디까지 갈지 몰라서 더 재밌다 — 마진콜, 거품론, 속도 조절의 아이러니</h1>
+    <div class="hrule"></div>
+  </div>
+
+  <div class="content">
+    <p>AI 반도체 주가가 급락하고, 오픈AI 출신이 만든 200억 달러 규모 펀드가 마진콜로 무너진 주간<br>같은 사건을 미국 투자자들(올인 팟캐스트)과 한국 AI 연구자들(AI 프론티어 코리아)이 완전히 다른 각도에서 읽는 게 재밌어서 두 영상을 하나로 정리했음<br>먼저 정리 브리핑, 그 아래 내 생각</p>
+
+    <p class="rptlabel">📄 두 영상 핵심 정리 브리핑</p>
+    <div class="rptwrap">
+    <iframe class="rpt" src="/blog/posts/2026-08-05-ai-boom-or-bubble-report" title="붐과 거품이 부딪힌 주간 정리 브리핑" loading="lazy" scrolling="no"></iframe>
+    </div>
+
+    <div class="mv">
+      <div class="mvh"><span class="ic">✍️</span><span class="tt">내 생각</span></div>
+      <div class="mvb">
+<p>이걸 투자 얘기로도 봐야겠지만<br>나한텐 그보다 <b>AI 붐이라고 보는 쪽과 과하다고 보는 쪽이 정면으로 부딪히는 불확실성</b> 그 자체로 보였음</p>
+<p>닷컴 때도 그랬다지 않나<br>인터넷은 진짜였고, 그때 가격은 틀렸고<br>기술이 진짜인 거랑 지금 가격이 맞는 건 서로 다른 문제라서, 둘 다 맞을 수도 있다는 게 이 게임의 함정 같음<br>이번 마진콜도 AI가 가짜라는 증거라기보단, 빌린 돈이 변동성을 만나면 어떻게 되는지 보여준 사건에 가깝고</p>
+<p>근데 제일 재밌었던 건 따로 있음<br><b>속도 조절 얘기</b><br>중국이 바로 뒤에서 쫓아오고 있는데, 미국 안에서는 AI 발전 속도를 조절해야 한다는 논의가 나옴<br>어느 쪽이 맞는 건지 참 아이러니하다 싶었는데</p>
+<p>자세히 보면 말은 늦추자고 하는데, 늦으면 뒤처지니까 투자는 또 사상 최대로 달려가고 있고<br>혼자 멈추면 뒤처지니까 멈출 수 없는 구조인 거지 ㅎㅎ<br>답이 없는 게 아니라 <b>답이 있어도 실행이 될 수 없는 구조</b>라는 게 문제인 듯<br>나 같아도 못 멈추지 😅</p>
+<p>그래서 결론이 뭐냐고 하면...<br>없다ㅎㅎㅎㅎ<br>누구도 이게 어디까지 가고 그게 어떤 걸 초래할지 모름<br>솔직히 그래서 더 재밌음 ㅋㅋ</p>
+<p>다만 나 같은 개인이 확실히 아는 건 하나 있음<br><b>거품이 꺼져도 도구는 남는다</b>는 것<br>닷컴 잔해에서도 아마존이 나왔으니까<br>주가가 어느 쪽으로 가든, 나는 도구를 잘 쓰는 쪽에 서 있으려고 함</p>
+<p class="ask">말 말고 행동에서, 투자랑 출시가 진짜로 늦어지는 첫 신호가 언제 나올까<br>그날이 진짜 변곡점 아닐까 싶음</p>
+      </div>
+    </div>
+
+    <div class="likewrap">
+      <button id="likeBtn" class="likebtn" aria-pressed="false">♡ 좋아요 <span id="likeCount"></span></button>
+      <span class="likenote">댓글은 준비 중이에요. 좋아요로 반응 남겨주시면 힘이 됩니다 🙏</span>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="fs">made slow, in seoul — <b>Peppinch</b> <span style="font-size:15px;transform:rotate(8deg)">🧂</span></span>
+    <a class="fb" href="/blog/">← 다른 글 보기</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var rpt=document.querySelector('iframe.rpt');
+  window.addEventListener('message',function(e){ if(e.data&&e.data.rptH&&rpt){ rpt.style.height=(e.data.rptH+2)+'px'; } });
+})();
+(function(){
+  var KEY='peppinch_like_2026-08-05-ai-boom-or-bubble';
+  var b=document.getElementById('likeBtn');
+  var liked=localStorage.getItem(KEY)==='1';
+  function render(){ b.classList.toggle('on',liked); b.firstChild.textContent=(liked?'♥ 좋아요 ':'♡ 좋아요 '); b.setAttribute('aria-pressed',liked); }
+  render();
+  b.addEventListener('click',function(){ liked=!liked; localStorage.setItem(KEY,liked?'1':'0'); render(); if(window.gtag) gtag('event',liked?'like':'unlike',{post:'2026-08-05-ai-boom-or-bubble'}); });
+})();
+</script>
+</body>
+</html>
