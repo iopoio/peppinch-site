@@ -17,6 +17,7 @@ peppinch(펩핀치)는 1인 인디해커가 운영하는 마이크로 도구 진
 - [메인 (paper sketch)](https://www.peppinch.com/): 작품 인덱스·진행 중 도구·todo 진열대
 - [Business (사업 소개)](https://www.peppinch.com/business/): B2B·서비스·연락처. 시즌드 운영 주체 정보
 - [Blog](https://www.peppinch.com/blog/): 빌드·실험 누적. 작업 흐름·결과·실패·다음 시도 기록
+- [최신 글: AI 붐과 거품, 속도 조절의 아이러니](https://www.peppinch.com/blog/posts/2026-08-05-ai-boom-or-bubble): 마진콜 주간을 미국·한국 두 팟캐스트 독법으로 정리 (2026-08-05)
 - [채본디 쇼츠 대본](https://www.peppinch.com/shorts/chaebondi/overcoat): 오래된 이야기에서, 여전한 사람의 마음을 봅니다 — 채본디 공개 쇼츠 대본 (유튜브 @chaebondi)
 - [나루 쇼츠 대본](https://www.peppinch.com/shorts/naru/comparison): 마음이 잠시 머물다, 다시 삶으로 건너가는 곳 — 나루 공개 쇼츠 대본 (유튜브 @naru_kr)
 - [펩핀 쇼츠](https://www.peppinch.com/shorts/): AI·IT 이야기를 다루는 쇼츠 채널. 공개 가능한 대본 전문 확인 후 추가
