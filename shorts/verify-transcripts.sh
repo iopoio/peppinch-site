@@ -20,5 +20,7 @@ check shorts/chaebondi/the-picture-of-dorian-gray.html '진짜 위험한 말은,
 check shorts/chaebondi/king-lear.html '재산을 다 물려준 딸들에게, 아버지는 문밖으로 쫓겨났습니다.'
 check shorts/naru/comparison.html '누군가의 좋은 소식을 본 뒤, 들고 있던 찻잔을 내려놓은 적이 있나요?'
 check shorts/naru/control.html '계획을 다 세워둔 날일수록, 잠이 늦게 옵니다.'
-check shorts/chaebondi/the-necklace.html '성실한 남편은 아내가 기뻐할 일이라면 뭐든 했습니다.'
+check shorts/chaebondi/the-necklace.html '무도회 초대장을 받자, 아내는 울었습니다.'
 check shorts/chaebondi/a-dolls-house.html '남편을 살리려, 아내는 몰래 돈을 빌렸습니다.'
+check shorts/chaebondi/the-death-of-a-clerk.html '나흘 내내 사과했는데도, 돌아온 건 호통이었습니다.'
+check shorts/chaebondi/the-death-of-ivan-ilyich.html '부고를 듣자, 친구들 얼굴엔 안도가 스쳤습니다.'
