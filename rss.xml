@@ -7,11 +7,32 @@
   <language>ko</language>
   <atom:link href="https://www.peppinch.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
+    <title>우리 중에 처음이면 먹히는구나</title>
+    <link>https://www.peppinch.com/blog/posts/2026-08-08-shade-app-first-or-sharp</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-08-08-shade-app-first-or-sharp</guid>
+    <description>그늘로가 하루 만에 2만 명을 모았다길래 찾아봤더니 일본은 4년 전에 했더라 기능도 더 많고 근데 왜 그늘로가 터졌을까</description>
+    <pubDate>Sat, 08 Aug 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
     <title>어디까지 갈지 몰라서 더 재밌다 — 마진콜, 거품론, 속도 조절의 아이러니</title>
     <link>https://www.peppinch.com/blog/posts/2026-08-05-ai-boom-or-bubble</link>
     <guid>https://www.peppinch.com/blog/posts/2026-08-05-ai-boom-or-bubble</guid>
-    <description>AI 반도체 급락과 200억 달러 펀드 마진콜의 주간 — 올인 팟캐스트와 AI 프론티어 코리아, 같은 사건의 두 독법 정리. 붐과 거품이 둘 다 맞을 수도 있다는 이야기.</description>
+    <description>AI 반도체 급락과 200억 달러 펀드 마진콜의 주간. 미국 올인 팟캐스트와 한국 AI 프론티어 코리아, 같은 사건의 두 독법을 정리하고 — 붐과 거품이 부딪히는 불확실성에 대한 내 생각.</description>
     <pubDate>Wed, 05 Aug 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>같은 주문, 한 달 뒤 — AI 팀이 다시 만든 2026 마케팅 트렌드 보고서</title>
+    <link>https://www.peppinch.com/blog/posts/2026-07-28-marketing-trends-2026</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-07-28-marketing-trends-2026</guid>
+    <description>한 달 전 AI 팀이 만든 보고서를 같은 주문으로 다시 만들게 했다. 숫자 28개 전수 원문 대조·차트 오독 5건 검출·AI 티 빼기까지 — 16장 보고서 전문 공개.</description>
+    <pubDate>Tue, 28 Jul 2026 00:00:00 +0900</pubDate>
+  </item>
+  <item>
+    <title>같은 내용, 완전히 다른 덱 — AI한테 내 10년 치 PPT를 다 보여준 날</title>
+    <link>https://www.peppinch.com/blog/posts/2026-07-23-same-content-different-deck</link>
+    <guid>https://www.peppinch.com/blog/posts/2026-07-23-same-content-different-deck</guid>
+    <description>옛 USB에서 건진 제안서 235개를 AI한테 학습시키고, '컬러만 바꾼 PPT' 지적 끝에 같은 내용으로 완전히 다른 덱을 만든 과정. 결과물 PDF 포함.</description>
+    <pubDate>Thu, 23 Jul 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
     <title>고객이 화면에 코멘트만 남기면, 에이전트가 알아서 고쳐놓더라</title>
