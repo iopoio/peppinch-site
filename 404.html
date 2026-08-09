@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>페이지를 찾을 수 없습니다 — Peppinch</title>
+<meta name="robots" content="noindex, follow" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+
+<style>
+body {
+  margin: 0;
+  background: #F6F4ED;
+  color: #33312B;
+  font-family: 'Gowun Dodum', sans-serif;
+  --acc: #3E7C5B;
+  --accD: #2C5A41;
+}
+.wrap {
+  min-height: 100vh;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 30px 40px 60px;
+  display: flex;
+  flex-direction: column;
+}
+.brand { display: flex; align-items: center; gap: 11px; }
+.brand-name { font-family: 'Shantell Sans', cursive; font-weight: 700; font-size: 25px; }
+.main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 60px 0; }
+.code {
+  font-family: 'Shantell Sans', cursive;
+  font-weight: 700;
+  font-size: 108px;
+  line-height: 1;
+  margin: 0 0 18px;
+  color: var(--acc);
+}
+.msg { font-size: 21px; margin: 0 0 10px; }
+.sub { font-size: 16px; color: #8F8B7D; margin: 0 0 34px; line-height: 1.7; }
+.links { display: flex; gap: 12px; flex-wrap: wrap; }
+.links a {
+  display: inline-block;
+  padding: 11px 26px;
+  border: 1px solid rgba(51,49,43,0.22);
+  border-radius: 999px;
+  text-decoration: none;
+  color: #33312B;
+  font-size: 16px;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.links a:hover { border-color: var(--acc); color: var(--acc); }
+.links a.fill { background: var(--acc); border-color: var(--acc); color: #F6F4ED; }
+.links a.fill:hover { background: var(--accD); border-color: var(--accD); color: #F6F4ED; }
+
+@media (max-width: 760px) {
+  .wrap { padding: 26px 22px 44px; }
+  .code { font-size: 68px; }
+  .msg { font-size: 19px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand">
+    <img src="/assets/peppinch-logo.svg" alt="Peppinch 로고 — 후추 세 알" style="width:27px; height:27px; margin-bottom:2px" />
+    <a href="/" style="text-decoration:none; color:#33312B"><span class="brand-name">Peppinch</span></a>
+  </div>
+
+  <div class="main">
+    <p class="code">404</p>
+    <p class="msg">이 주소엔 아무것도 없습니다.</p>
+    <p class="sub">
+      주소를 잘못 입력했거나, 글이 옮겨졌을 수 있어요.<br />
+      아래에서 다시 찾아보세요.
+    </p>
+    <div class="links">
+      <a class="fill" href="/">홈으로</a>
+      <a href="/blog/">블로그</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
