@@ -4,7 +4,8 @@
 사용: python3 scripts/publish.py   (repo 루트 어디서 실행해도 됨)
 
 - blog/posts/*.html 의 meta 태그(og:title·description·article:published_time)가 SoT.
-- *-report.html 은 본문 부록 페이지라 sitemap/RSS 에서 제외 (기존 방침 유지).
+- *-report.html 은 본문 부록 브리핑이라 RSS·인덱스에선 빼되 sitemap 에는 넣는다
+  (정보 밀도가 높아 검색·AI 인용 대상이 되는 쪽은 이 페이지다. 2026-08-21).
 - blog/index.html 은 디자인 페이지라 자동 수정 X — 누락 글이 있으면 붙여넣을 snippet 출력.
 """
 import re
@@ -46,13 +47,24 @@ def load_posts():
     return posts
 
 
+def load_briefings():
+    """부록 브리핑(-report). 짝 본문이 있는 것만. RSS·인덱스에선 빼고 sitemap 에만 넣는다."""
+    return [
+        {"url": f"{BASE}/blog/posts/{f.stem}", "date": f.stem[:10]}
+        for f in sorted(POSTS.glob("*-report.html"))
+        if (POSTS / f"{f.stem[:-7]}.html").exists()
+    ]
+
+
 def write_sitemap(posts):
     latest = posts[0]["date"]
+    briefings = load_briefings()
     urls = [
         (f"{BASE}/", latest, "weekly", "1.0"),
         (f"{BASE}/business/", "2026-05-14", "monthly", "0.8"),
         (f"{BASE}/blog/", latest, "weekly", "0.7"),
-    ] + [(p["url"], p["date"], "monthly", "0.6") for p in posts]
+    ] + [(p["url"], p["date"], "monthly", "0.6") for p in posts] \
+      + [(b["url"], b["date"], "monthly", "0.4") for b in briefings]
     body = "\n".join(
         f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{mod}</lastmod>\n"
         f"    <changefreq>{freq}</changefreq>\n    <priority>{pri}</priority>\n  </url>"
@@ -62,7 +74,7 @@ def write_sitemap(posts):
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         f"{body}\n</urlset>\n", encoding="utf-8")
-    print(f"sitemap.xml — 글 {len(posts)}개 + 고정 3페이지")
+    print(f"sitemap.xml — 글 {len(posts)}개 + 브리핑 {len(briefings)}개 + 고정 3페이지")
 
 
 def esc(s):
