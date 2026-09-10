@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI가 "채점되는 일"부터 가져간다길래, 내 걸 채점해봤다 · peppinch blog</title>
-<meta name="description" content="AI 프론티어 EP102 정리 — 프론티어 AI는 기계가 채점 가능한 분야부터 가져간다. 그 잣대를 내가 만든 덱 엔진에 대봤다가 뜨끔한 이야기.">
+<meta name="description" content="AI 프론티어 EP102에서 결과를 기계로 평가할 수 있는 일부터 AI 개발이 빨라진다는 얘길 듣고, 두 달 동안 만든 내 덱 검사 기준을 다시 봤음">
 <meta property="og:title" content="AI가 &quot;채점되는 일&quot;부터 가져간다길래, 내 걸 채점해봤다">
-<meta property="og:description" content="프론티어 AI는 기계가 채점 가능한 분야부터 가져간다 — 그 잣대를 내 덱 엔진에 대봤더니, 두 달 동안 내가 한 일이 전부 채점기 만들기였다.">
+<meta property="og:description" content="AI 프론티어 EP102에서 결과를 기계로 평가할 수 있는 일부터 AI 개발이 빨라진다는 얘길 듣고, 두 달 동안 만든 내 덱 검사 기준을 다시 봤음">
 <meta property="og:image" content="https://www.peppinch.com/og-image.png">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.peppinch.com/blog/posts/2026-07-09-gradable-work">
@@ -20,12 +20,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@peppinch_">
 <meta name="twitter:title" content="AI가 &quot;채점되는 일&quot;부터 가져간다길래, 내 걸 채점해봤다">
-<meta name="twitter:description" content="프론티어 AI는 기계가 채점 가능한 분야부터 가져간다 — 그 잣대를 내 덱 엔진에 대봤더니 뜨끔.">
+<meta name="twitter:description" content="AI 프론티어 EP102에서 결과를 기계로 평가할 수 있는 일부터 AI 개발이 빨라진다는 얘길 듣고, 두 달 동안 만든 내 덱 검사 기준을 다시 봤음">
 <meta name="twitter:image" content="https://www.peppinch.com/og-image.png">
 <link rel="canonical" href="https://www.peppinch.com/blog/posts/2026-07-09-gradable-work">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","headline":"AI가 \"채점되는 일\"부터 가져간다길래, 내 걸 채점해봤다","description":"프론티어 AI는 기계가 채점 가능한 분야부터 가져간다 — 그 잣대를 내 덱 엔진에 대봤다가 뜨끔한 이야기.","datePublished":"2026-07-09T00:00:00+09:00","dateModified":"2026-07-09T00:00:00+09:00","inLanguage":"ko-KR","url":"https://www.peppinch.com/blog/posts/2026-07-09-gradable-work","mainEntityOfPage":"https://www.peppinch.com/blog/posts/2026-07-09-gradable-work","image":"https://www.peppinch.com/og-image.png","keywords":"AI 프론티어, 채점 가능성, 인디해커, 빌드인퍼블릭","author":{"@type":"Person","name":"peppinch","url":"https://www.peppinch.com/"},"publisher":{"@type":"Organization","name":"peppinch","logo":{"@type":"ImageObject","url":"https://www.peppinch.com/favicon.svg"}},"isBasedOn":{"@type":"VideoObject","name":"AI Frontier EP102 샌프란시스코의 교훈","url":"https://youtu.be/SSIGI9mm0DU"}}
+{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "AI가 \"채점되는 일\"부터 가져간다길래, 내 걸 채점해봤다", "description": "AI 프론티어 EP102에서 결과를 기계로 평가할 수 있는 일부터 AI 개발이 빨라진다는 얘길 듣고, 두 달 동안 만든 내 덱 검사 기준을 다시 봤음", "datePublished": "2026-07-09T00:00:00+09:00", "dateModified": "2026-09-11T00:00:00+09:00", "inLanguage": "ko-KR", "url": "https://www.peppinch.com/blog/posts/2026-07-09-gradable-work", "mainEntityOfPage": "https://www.peppinch.com/blog/posts/2026-07-09-gradable-work", "image": "https://www.peppinch.com/og-image.png", "keywords": "AI 프론티어, 채점 가능성, 인디해커, 빌드인퍼블릭", "author": {"@type": "Person", "name": "peppinch", "url": "https://www.peppinch.com/"}, "publisher": {"@type": "Organization", "name": "peppinch", "logo": {"@type": "ImageObject", "url": "https://www.peppinch.com/favicon.svg"}}, "isBasedOn": {"@type": "VideoObject", "name": "AI Frontier EP102 샌프란시스코의 교훈", "url": "https://youtu.be/SSIGI9mm0DU"}}
 </script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LZ7ZXMFEBM"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-LZ7ZXMFEBM');</script>
@@ -84,6 +84,8 @@ h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-
 .foot .fb{font-family:'Kyobo';font-size:16px;color:var(--acc);text-decoration:none}
 @media(max-width:640px){.wrap{padding:0 22px}.pill{padding:10px 18px}h1.ptitle{font-size:26px}.phead{padding:46px 0 6px}.mvb{font-size:18px}}
 </style>
+<meta property="article:modified_time" content="2026-09-11T00:00:00+09:00">
+<link rel="alternate" type="text/plain" title="본문 텍스트" href="/blog/text/2026-07-09-gradable-work.txt">
 </head>
 <body>
 <div class="wrap">
@@ -95,11 +97,12 @@ h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-
   <div class="phead">
     <div class="pmeta"><span class="pdate">2026 · 07 · 09</span><span class="pcat">AI랑 만들기</span></div>
     <h1 class="ptitle">AI가 "채점되는 일"부터 가져간다길래, 내 걸 채점해봤다</h1>
+<p class="article-byline" style="font-size:13px;line-height:1.8">작성: peppinch · 발행 <time datetime="2026-07-09">2026-07-09</time> · 수정 <time datetime="2026-09-11">2026-09-11</time></p>
     <div class="hrule"></div>
   </div>
 
   <div class="content">
-    <p>실리콘밸리에 3주 다녀온 분이 "사람들이 다 미쳤어요"라고 하길래 무슨 소린가 하고 AI 프론티어 EP102를 정리했다. 한 시간짜리에서 제일 오래 남은 건 결국 한 문장 — AI는 채점되는 일부터 가져간다는 것. 먼저 핵심 정리, 그 아래 내 생각.</p>
+    <p>실리콘밸리에 3주 다녀온 분이 "사람들이 다 미쳤어요"라고 하길래 AI 프론티어 EP102를 봤음, 한 시간짜리인데 기계가 채점할 수 있는 일부터 AI 개발이 빨라진다는 얘기를 듣고 내가 만드는 덱 엔진 생각이 나더라고</p>
 
     <p class="rptlabel">📄 에피소드 핵심 정리 브리핑<a href="/blog/posts/2026-07-09-gradable-work-report" style="font-size:13px;opacity:.7">전체 보기 →</a></p>
     <div class="rptwrap">
@@ -109,11 +112,11 @@ h1.ptitle{margin:20px 0 0;font-size:36px;font-weight:700;line-height:1.5;letter-
     <div class="mv">
       <div class="mvh"><span class="ic">✍️</span><span class="tt">내 생각</span></div>
       <div class="mvb">
-<p>AI가 코딩·법률·바이오 같은 분야부터 먼저 가져간다는데, 왜 하필 이런 데냐면 이유가 간단했음<br><b>결과물을 기계가 채점할 수 있는 분야</b>라서<br>코드는 돌려보면 바로 나오고 계약서엔 판례가 있고, 채점이 되면 AI를 밤새 무한 반복 훈련시킬 수 있으니까</p>
-<p>오 좋은 프레임이네 하고 넘어가려다가 그 잣대를 내 물건에 대봤는데<br>나는 요즘 URL 넣으면 컨설팅 보고서 스타일 덱이 나오는 엔진을 만들고 있거든 (혼자, AI 데리고)<br>두 달간 뭘 했나 보니까... 테스트 124개, 슬라이드 제목만 읽어도 논리가 서는지 검사하는 게이트, 덱에 실린 수치 전부를 출처 원문과 대조하는 팩트체커<br>그러니까 내가 두 달 동안 한 일이 한 문장으로 <b>"덱 품질을 채점 가능하게 만드는 일"</b>이었던 거임</p>
-<p>여기서 뜨끔 😱<br>채점이 가능해질수록 내 엔진은 좋아지는데, 채점이 가능해질수록 큰 회사들도 결국 이걸 잘하게 된다는 게 함정<br>내가 열심히 만든 채점기가 사실은 "이 일은 자동화됩니다"라는 증명서이기도 했던 거다</p>
-<p>그래서 일단 내린 결론은 채점되는 건 도구로 쓰고, 채점 안 되는 걸(검수·맥락·내 이름) 팔자는 거였음<br>"잘 만든 보고서"는 채점이 되니까 언젠가 딸깍이 되고, "이 사장님한테 맞는 진단인가" "틀리면 누가 책임지나" 이건 아직 채점기가 없으니까</p>
-<p><span class="ask">근데 솔직히 이게 안심이 안 됨<br>지금이야 AI가 "이건 채점이 어렵다" 하지만, 다음 버전 언젠가의 AI가 이 법칙까지 알아내서 곧 또 다 해버리는 거 아닐까<br>나는 토큰만 낭비하면서 괜한 삽질을 하고 있는 건 아닐까<br>이게 진짜 요즘 심정이다 😢</span></p>
+<p>코딩·법률·바이오에 AI 회사들이 집중하는 이유를 이렇게 설명하더라<br><b>결과물을 기계가 채점할 수 있는 분야</b>라서<br>코드는 실행 결과를 보고 계약서는 판례 같은 자료와 대조하고, 맞았는지 확인할 수 있으면 AI도 반복해서 훈련시키기 좋다는 얘기</p>
+<p>듣다 보니 내가 만들고 있는 것도 이렇지 않나 싶었음<br>나는 요즘 URL 넣으면 컨설팅 보고서 스타일 덱이 나오는 엔진을 만들고 있거든 (혼자, AI 데리고)<br>두 달간 뭘 했나 보니까... 테스트 124개, 슬라이드 제목만 읽어도 논리가 서는지 검사하는 게이트, 덱에 실린 수치 전부를 출처 원문과 대조하는 팩트체커<br>내가 두 달 동안 붙들고 있던 게 <b>"덱 품질을 채점 가능하게 만드는 일"</b>이었던 거임</p>
+<p>좀 뜨끔했음 😱<br>검사 기준을 하나씩 붙일수록 내 엔진은 좋아졌는데, 큰 회사들도 이런 기준을 만들어서 훈련시키면 보고서를 잘 만들게 되겠구나<br>내가 두 달 동안 검사하는 법을 정리한 일이니까 더 그런 생각이 들더라고</p>
+<p>그래서 덱 만드는 데는 AI를 쓰고, 나는 검수하고 고객 사정에 맞게 고치고 내 이름으로 책임지는 일을 해야겠다고 생각했음<br>"잘 만든 보고서"를 자동으로 만드는 건 점점 쉬워질 것 같은데, "이 사장님한테 맞는 진단인가" "틀리면 누가 책임지나"까지 지금 내 채점기로 확인할 수는 없으니까</p>
+<p><span class="ask">근데 솔직히 이게 안심이 안 됨<br>지금은 "이건 채점이 어렵다"고 생각하지만, 다음 버전 AI가 이런 것까지 잘하게 되면 또 달라지는 거 아닐까<br>나는 토큰만 낭비하면서 괜한 삽질을 하고 있는 건 아닐까<br>이게 진짜 요즘 심정이다 😢</span></p>
       </div>
     </div>
 

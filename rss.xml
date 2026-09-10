@@ -7,10 +7,10 @@
   <language>ko</language>
   <atom:link href="https://www.peppinch.com/rss.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>우리 사이트 방문자 88퍼가 사람이 아니었음</title>
+    <title>내 사이트 요청 88퍼가 Unknown/Others로 찍혔음</title>
     <link>https://www.peppinch.com/blog/posts/2026-08-10-88-percent-not-human</link>
     <guid>https://www.peppinch.com/blog/posts/2026-08-10-88-percent-not-human</guid>
-    <description>인터넷 트래픽 60퍼가 봇이라길래 우리 집도 재봤더니 88퍼였는데 그중 절반은 내가 부른 놈이었고 나머지는 한국말도 못하면서 한국 사이트에 계속 오고 있었다</description>
+    <description>펩핀치 사이트 요청 내역을 봤더니 88퍼가 Unknown/Others였고 절반쯤은 내가 켜둔 업타임로봇이었다, 이 숫자를 방문자 수로 읽어도 되는지 궁금해짐</description>
     <pubDate>Mon, 10 Aug 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
@@ -24,35 +24,35 @@
     <title>어디까지 갈지 몰라서 더 재밌다 — 마진콜, 거품론, 속도 조절의 아이러니</title>
     <link>https://www.peppinch.com/blog/posts/2026-08-05-ai-boom-or-bubble</link>
     <guid>https://www.peppinch.com/blog/posts/2026-08-05-ai-boom-or-bubble</guid>
-    <description>AI 반도체 급락과 200억 달러 펀드 마진콜의 주간. 미국 올인 팟캐스트와 한국 AI 프론티어 코리아, 같은 사건의 두 독법을 정리하고 — 붐과 거품이 부딪히는 불확실성에 대한 내 생각.</description>
+    <description>AI 반도체 급락과 200억 달러 펀드 마진콜 보도를 다룬 두 방송을 정리했음, 투자랑 기술 전망을 듣다가 AI 속도 조절 얘기에서 든 생각</description>
     <pubDate>Wed, 05 Aug 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
     <title>같은 주문, 한 달 뒤 — AI 팀이 다시 만든 2026 마케팅 트렌드 보고서</title>
     <link>https://www.peppinch.com/blog/posts/2026-07-28-marketing-trends-2026</link>
     <guid>https://www.peppinch.com/blog/posts/2026-07-28-marketing-trends-2026</guid>
-    <description>한 달 전 AI 팀이 만든 보고서를 같은 주문으로 다시 만들게 했다. 숫자 28개 전수 원문 대조·차트 오독 5건 검출·AI 티 빼기까지 — 16장 보고서 전문 공개.</description>
+    <description>한 달 전과 같은 주문으로 보고서를 다시 만들었음, 숫자 28개를 원문과 대조하고 차트 오독 5건과 어색한 문장을 고친 16장 보고서</description>
     <pubDate>Tue, 28 Jul 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
     <title>같은 내용, 완전히 다른 덱 — AI한테 내 10년 치 PPT를 다 보여준 날</title>
     <link>https://www.peppinch.com/blog/posts/2026-07-23-same-content-different-deck</link>
     <guid>https://www.peppinch.com/blog/posts/2026-07-23-same-content-different-deck</guid>
-    <description>옛 USB에서 건진 제안서 235개를 AI한테 학습시키고, '컬러만 바꾼 PPT' 지적 끝에 같은 내용으로 완전히 다른 덱을 만든 과정. 결과물 PDF 포함.</description>
+    <description>옛 USB에서 건진 제안서 235개를 AI한테 보여줬는데도 계속 비슷한 PPT가 나왔다, 배치랑 그래프까지 다시 시켜서 만든 덱과 고친 과정을 적었음</description>
     <pubDate>Thu, 23 Jul 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
     <title>고객이 화면에 코멘트만 남기면, 에이전트가 알아서 고쳐놓더라</title>
     <link>https://www.peppinch.com/blog/posts/2026-07-18-litmus-ai-agency</link>
     <guid>https://www.peppinch.com/blog/posts/2026-07-18-litmus-ai-agency</guid>
-    <description>리트머스 김웅진 대표 인터뷰 정리 — 세일즈·PM·개발을 다 없애고 '컨설턴트' 하나로 합친 회사, 고객 코멘트에 에이전트가 바로 반응하는 실제 데모까지.</description>
+    <description>리트머스가 영업·PM·개발 담당을 컨설턴트로 합치고 AI로 일하는 방식을 바꿨다는데, 고객 코멘트가 에이전트 작업으로 이어지는 데모를 봤음</description>
     <pubDate>Sat, 18 Jul 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
-    <title>AI가 &amp;quot;채점되는 일&amp;quot;부터 가져간다길래, 내 걸 채점해봤다</title>
+    <title>AI가 "채점되는 일"부터 가져간다길래, 내 걸 채점해봤다</title>
     <link>https://www.peppinch.com/blog/posts/2026-07-09-gradable-work</link>
     <guid>https://www.peppinch.com/blog/posts/2026-07-09-gradable-work</guid>
-    <description>AI 프론티어 EP102 정리 — 프론티어 AI는 기계가 채점 가능한 분야부터 가져간다. 그 잣대를 내가 만든 덱 엔진에 대봤다가 뜨끔한 이야기.</description>
+    <description>AI 프론티어 EP102에서 결과를 기계로 평가할 수 있는 일부터 AI 개발이 빨라진다는 얘길 듣고, 두 달 동안 만든 내 덱 검사 기준을 다시 봤음</description>
     <pubDate>Thu, 09 Jul 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
@@ -63,66 +63,66 @@
     <pubDate>Wed, 08 Jul 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
-    <title>데이터 다 주고 뒤통수 맞은 회사 이야기 (Palantir·Nvidia·Figma)</title>
+    <title>팔란티어·엔비디아 대담을 보다가 데이터 소유권이 신경 쓰였음</title>
     <link>https://www.peppinch.com/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia</link>
     <guid>https://www.peppinch.com/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia</guid>
-    <description>올인 팟캐스트 팔란티어·엔비디아 소버린 AI 정리 — 데이터 넘긴 회사가 모델 제공사한테 뒤통수 맞는 이야기, 그리고 왜 팔란티어·엔비디아를 보는지.</description>
+    <description>올인 팟캐스트의 팔란티어·엔비디아 파트너십 논의를 정리했어, AI 회사에 데이터와 노하우를 맡긴 기업이 그 회사와 경쟁하게 될 수도 있다는 이야기가 걸렸음</description>
     <pubDate>Sat, 04 Jul 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
-    <title>다들 AI만 볼 때, 진짜 기회는 아이스링크에 있었다</title>
+    <title>아이스링크 관리 프로그램으로 사업한다는 얘기를 들었어</title>
     <link>https://www.peppinch.com/blog/posts/2026-07-02-vertical-saas-ice-rink</link>
     <guid>https://www.peppinch.com/blog/posts/2026-07-02-vertical-saas-ice-rink</guid>
-    <description>레플릿 창업자 대담 정리 — 진짜 기회는 AI가 아니라 소프트웨어가 아직 안 닿은 지루한 분야에 있다. 아이스링크가 그 예시.</description>
+    <description>레플릿 창업자 대담에서 아이스링크 관리 프로그램으로 사업하는 사람 얘기가 나왔어, 나도 잘 아는 분야에서 뭘 만들 수 있을지 생각해봄</description>
     <pubDate>Thu, 02 Jul 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
     <title>AI에 돈은 93%, 사람에는 7% — 리포트 8개 같이 놓고 보다 걸린 거</title>
     <link>https://www.peppinch.com/blog/posts/2026-07-01-tech-report</link>
     <guid>https://www.peppinch.com/blog/posts/2026-07-01-tech-report</guid>
-    <description>2026 테크 리포트를 8개쯤 같이 놓고 봤는데, 제일 걸린 건 제일 큰 숫자가 아니라 안 맞는 두 숫자였다. 기업이 AI에 쓰는 돈의 93%는 기술에, 사람과 일하는 방식엔 7%. 그리고 숫자마다 출처를 붙여 브리핑 18장으로 정리해본 이야기.</description>
+    <description>테크 리포트 8개쯤 같이 읽다가 AI 예산의 93%는 기술에, 7%는 사람과 업무 방식에 쓴다는 수치를 봤어, 숫자마다 출처를 붙인 브리핑 18장도 함께 올림</description>
     <pubDate>Wed, 01 Jul 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
     <title>AI가 덱도 만들어주는 시대지만, 아직 내가 원하는 딸깍은 오지 않은 듯</title>
     <link>https://www.peppinch.com/blog/posts/2026-06-27-my-own-path-for-decks</link>
     <guid>https://www.peppinch.com/blog/posts/2026-06-27-my-own-path-for-decks</guid>
-    <description>AI 덱 생성 도구는 빠르고 그럴듯한데, 내가 원하는 '딸깍'은 아직 안 왔다. 회사 다닐 때 발표자료 만들던 고통에서 시작해, 자료부터 짜고 출처를 끝까지 확인하며 직접 만들어본 이야기.</description>
+    <description>회사 다닐 때 발표자료 만들던 고생이 생각나서 AI 덱 도구를 만들고 있어, 숫자의 출처를 찾고 AI가 지적한 오류도 다시 확인해봤음</description>
     <pubDate>Sat, 27 Jun 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
-    <title>공공 정보는 모으는 게 아니라 손으로 맞추는 거였다</title>
+    <title>공공 강좌 2,111건, 대상이랑 마감 표기를 하나씩 맞춰봤다</title>
     <link>https://www.peppinch.com/blog/posts/2026-06-24-public-data-by-hand</link>
     <guid>https://www.peppinch.com/blog/posts/2026-06-24-public-data-by-hand</guid>
-    <description>동네 교육강좌를 모아보려고 구청 데이터를 받았는데, '대상' 칸부터 기관마다 다 제각각이라 손으로 끊어야 했다. 데이터는 이미 공개돼 있고, 진짜 일은 사람이 알아볼 수 있게 맞추는 거였던 이야기.</description>
+    <description>동네 교육강좌 2,111건을 모았는데 기관마다 대상과 마감을 다르게 적어놨다, 같은 뜻인지 하나씩 확인하고 다음 달 자료도 다시 봐야 했어</description>
     <pubDate>Wed, 24 Jun 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
     <title>서울만 보던 지도를 전국으로 폈더니, 화장실 5만 개가 나타났다</title>
     <link>https://www.peppinch.com/blog/posts/2026-06-20-publace-nationwide-restrooms</link>
     <guid>https://www.peppinch.com/blog/posts/2026-06-20-publace-nationwide-restrooms</guid>
-    <description>퍼블레이스를 서울·경기에서 전국으로 확대하고 화장실을 얹었다. 4,620개였던 화장실이 5만 개로 늘었는데, 그중 일부가 '문화체험 공간'으로 잡혀 있던 이야기.</description>
+    <description>퍼블레이스를 전국으로 넓히고 공중화장실 52,179곳을 넣었어, 화장실만 골라보려니 일부가 문화체험 공간으로 분류돼 있더라고</description>
     <pubDate>Sat, 20 Jun 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
     <title>종목 뉴스 붙였더니 삼성전자 옆에 '사이다 언니'가 떴다</title>
     <link>https://www.peppinch.com/blog/posts/2026-06-18-saida-eonni</link>
     <guid>https://www.peppinch.com/blog/posts/2026-06-18-saida-eonni</guid>
-    <description>펩스탁 종목카드에 관련 소식을 붙였더니 엉뚱한 뉴스가 떴다. 코드 잘못이 아니라 '관련'의 정의가 나랑 검색엔진이 달랐던 이야기.</description>
+    <description>펩스탁 삼성전자 카드에 사이다 언니 기사가 떴다, 종목명만 들어가면 뉴스를 가져오게 해둔 검색 조건부터 다시 봤어</description>
     <pubDate>Thu, 18 Jun 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
     <title>캐시 우드, 그대로 믿어도 될까 — ARK식 전망 읽는 법</title>
     <link>https://www.peppinch.com/blog/posts/2026-06-17-ark-how-to-read</link>
     <guid>https://www.peppinch.com/blog/posts/2026-06-17-ark-how-to-read</guid>
-    <description>캐시 우드가 삼성·하이닉스·테슬라를 띄우는 영상 핵심 정리 + 어제 ARK Big Ideas 4년치 비교로 본 '전망 거르는 법'.</description>
+    <description>캐시 우드의 인터뷰를 보고 ARK Big Ideas 2023~2026년 보고서와 함께 읽어봤어, 작년과 달라진 가정과 숫자도 눈에 들어오더라고</description>
     <pubDate>Wed, 17 Jun 2026 00:00:00 +0900</pubDate>
   </item>
   <item>
     <title>앤트로픽 Fable 백래시 · AI 국유화 · 인플레 재점화</title>
     <link>https://www.peppinch.com/blog/posts/2026-06-13-all-in-fable5</link>
     <guid>https://www.peppinch.com/blog/posts/2026-06-13-all-in-fable5</guid>
-    <description>All-In 팟캐스트 1시간 42분 핵심 정리 + Fable 백래시에 대한 내 생각.</description>
+    <description>All-In 팟캐스트에서 나온 Fable 5 이용 제한 논란을 정리하고, 비미국 사용자로서 든 생각을 적었어</description>
     <pubDate>Sat, 13 Jun 2026 00:00:00 +0900</pubDate>
   </item>
 </channel>

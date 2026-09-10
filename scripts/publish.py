@@ -9,6 +9,8 @@
 - blog/index.html 은 디자인 페이지라 자동 수정 X — 누락 글이 있으면 붙여넣을 snippet 출력.
 """
 import re
+import html as html_lib
+import json
 import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -21,7 +23,12 @@ KST = timezone(timedelta(hours=9))
 
 def meta(html, pattern):
     m = re.search(pattern, html)
-    return m.group(1).strip() if m else None
+    return html_lib.unescape(m.group(1).strip()) if m else None
+
+
+def modified_date(source, fallback):
+    match = re.search(r'"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})', source)
+    return match.group(1) if match else fallback
 
 
 def load_posts():
@@ -42,6 +49,7 @@ def load_posts():
             "desc": meta(html, r'name="description" content="([^"]*)"') or "",
             "section": meta(html, r'article:section" content="([^"]*)"') or "",
             "date": date,
+            "modified": modified_date(html, date),
         })
     posts.sort(key=lambda p: p["date"], reverse=True)
     return posts
@@ -50,21 +58,22 @@ def load_posts():
 def load_briefings():
     """부록 브리핑(-report). 짝 본문이 있는 것만. RSS·인덱스에선 빼고 sitemap 에만 넣는다."""
     return [
-        {"url": f"{BASE}/blog/posts/{f.stem}", "date": f.stem[:10]}
+        {"url": f"{BASE}/blog/posts/{f.stem}", "date": f.stem[:10],
+         "modified": modified_date(f.read_text(encoding="utf-8"), f.stem[:10])}
         for f in sorted(POSTS.glob("*-report.html"))
         if (POSTS / f"{f.stem[:-7]}.html").exists()
     ]
 
 
 def write_sitemap(posts):
-    latest = posts[0]["date"]
+    latest = max(p["modified"] for p in posts)
     briefings = load_briefings()
     urls = [
         (f"{BASE}/", latest, "weekly", "1.0"),
         (f"{BASE}/business/", "2026-05-14", "monthly", "0.8"),
         (f"{BASE}/blog/", latest, "weekly", "0.7"),
-    ] + [(p["url"], p["date"], "monthly", "0.6") for p in posts] \
-      + [(b["url"], b["date"], "monthly", "0.4") for b in briefings]
+    ] + [(p["url"], p["modified"], "monthly", "0.6") for p in posts] \
+      + [(b["url"], b["modified"], "monthly", "0.4") for b in briefings]
     body = "\n".join(
         f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{mod}</lastmod>\n"
         f"    <changefreq>{freq}</changefreq>\n    <priority>{pri}</priority>\n  </url>"
@@ -104,6 +113,22 @@ def write_rss(posts):
     print(f"rss.xml — {len(posts)}개 item")
 
 
+def refresh_index(posts):
+    """Existing rows use the current public title/description; preserve layout and order."""
+    path = ROOT / "blog" / "index.html"
+    source = path.read_text(encoding="utf-8")
+    for post in posts:
+        pattern = r'(<a\b[^>]*href="/blog/posts/' + re.escape(post["slug"]) + r'"[^>]*>)(.*?)(</a>)'
+        def update(match):
+            body = match.group(2)
+            for cls, value in (("rt", post["title"]), ("rs", post["desc"])):
+                body = re.sub(r'(<span class="' + cls + r'">).*?(</span>)',
+                              lambda m: m.group(1) + html_lib.escape(value) + m.group(2), body, flags=re.S)
+            return match.group(1) + body + match.group(3)
+        source = re.sub(pattern, update, source, count=1, flags=re.S)
+    path.write_text(source, encoding="utf-8")
+
+
 def check_index(posts):
     index = (ROOT / "blog" / "index.html").read_text(encoding="utf-8")
     missing = [p for p in posts if f'/blog/posts/{p["slug"]}"' not in index]
@@ -128,5 +153,8 @@ if __name__ == "__main__":
     posts = load_posts()
     write_sitemap(posts)
     write_rss(posts)
+    from readable import write_readable
+    write_readable()
+    refresh_index(posts)
     ok = check_index(posts)
     sys.exit(0 if ok else 1)

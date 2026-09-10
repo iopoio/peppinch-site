@@ -95,7 +95,7 @@ def render_post(meta, body):
         "@context": "https://schema.org", "@type": "BlogPosting",
         "headline": meta["title"], "description": meta["description"],
         "datePublished": f"{meta['date']}T00:00:00+09:00",
-        "dateModified": f"{meta['date']}T00:00:00+09:00",
+        "dateModified": f"{meta.get('modified', meta['date'])}T00:00:00+09:00",
         "inLanguage": "ko-KR", "url": url, "mainEntityOfPage": url,
         "image": f"{BASE}/og-image.png", "keywords": ", ".join(meta["tags"]),
         "author": {"@type": "Person", "name": "peppinch", "url": f"{BASE}/"},
@@ -105,7 +105,7 @@ def render_post(meta, body):
     tags_meta = "".join(f'<meta property="article:tag" content="{t}">' for t in meta["tags"])
     page = TEMPLATE.read_text(encoding="utf-8")
     for k, v in {
-        "{{TITLE}}": html.escape(meta["title"], quote=False),
+        "{{TITLE}}": html.escape(meta["title"], quote=True),
         "{{DESC}}": html.escape(meta["description"]),
         "{{URL}}": url, "{{DATE}}": meta["date"], "{{DATE_DOT}}": f"{y} · {mo} · {d}",
         "{{SECTION}}": meta["section"], "{{TAGS_META}}": tags_meta,
@@ -179,5 +179,8 @@ if __name__ == "__main__":
     posts = publish.load_posts()
     publish.write_sitemap(posts)
     publish.write_rss(posts)
+    from readable import write_readable
+    write_readable()
+    publish.refresh_index(posts)
     ok = publish.check_index(posts)
     sys.exit(0 if ok else 1)

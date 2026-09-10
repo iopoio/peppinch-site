@@ -20,7 +20,7 @@ cp _template.md 2026-07-10-slug.md
 파일명 룰: `YYYY-MM-DD-slug.md`. front-matter(title·description·section 필수) 채우고 본문은 md로.
 특수 요소(리포트 카드·내생각 박스)는 raw HTML 블록으로 붙여넣으면 그대로 통과됨.
 
-## 2. 빌드 (발행)
+## 2. 로컬 빌드
 
 완성되면 `status: published`로 바꾸고:
 
@@ -32,13 +32,15 @@ python3 scripts/build.py
 - **글 HTML 렌더** — `scripts/post_template.html` 디자인 그대로 (OG·JSON-LD·좋아요 버튼 포함)
 - **blog/index.html 자동 삽입** — 해당 분류 최상단 + 분류 카운트 갱신 (분류 없으면 신설)
 - **sitemap.xml·rss.xml 전체 재생성** (publish.py 자동 호출)
+- **공개 HTML의 작성자·발행일·수정일 표시와 JSON-LD 정합성 갱신**
+- **blog/text/*.txt와 llms.txt 전체 목록 재생성** — 본문 HTML이 정본이며 텍스트 파일은 직접 편집하지 않음
 
-md 없이 손으로 만든 옛 글 HTML은 절대 안 건드림. md 수정 후 재빌드하면 HTML만 다시 생성.
+md 없는 옛 글의 본문은 유지한다. 모든 공개 HTML의 공통 메타데이터와 작성 정보만 갱신한다. 기존 md를 수정할 때는 front-matter에 `modified: YYYY-MM-DD`를 실제 수정일로 넣는다. HTML을 직접 수정했다면 JSON-LD의 `dateModified`를 실제 수정일로 바꾼다. 최초 발행일은 유지한다.
 
 ## 3. commit·push
 
 ```bash
-git add blog/ sitemap.xml rss.xml
+git add blog/ scripts/ llms.txt sitemap.xml rss.xml
 git commit -m "blog: <글 제목 한 줄>"
 git push
 ```
@@ -47,7 +49,7 @@ Cloudflare Pages 자동 deploy. 1~2분 뒤 반영.
 
 ## 참고 — publish.py 단독 실행
 
-빌드 없이 sitemap/RSS만 다시 만들고 싶을 때 (예: HTML 직접 수정 후):
+HTML 직접 수정 후 메타데이터·본문 텍스트·llms.txt·sitemap/RSS를 다시 만들 때:
 
 ```bash
 python3 scripts/publish.py
@@ -89,3 +91,17 @@ Cloudflare Pages 자동 deploy. 1~2분 뒤 peppinch.com/blog/ 반영.
 - 디자인 톤·CSS = `blog/index.html` 상단 `<style>` 영역. snippet 추가만 하면 자동 적용
 - 모바일 styling 점검 필요 시 `python3 -m http.server 8000` 로컬 미리보기
 - 첫 글 placeholder: TickDeck 6주 검증 누적용 (5/14 시작 영역)
+
+
+## 글 수정과 AI 접근성 (2026-09-11)
+
+- 개인 글은 실제 작성자의 경험·망설임·감정을 보존한다. 새 일화나 감정을 만들어 넣지 않는다. 브리핑은 중립적인 설명과 발언 귀속을 유지한다.
+- 전역 한국어 규칙 `~/.hermes/shared/공통-가드레일.md`의 한국어 말투 부분과 실제 사용자 지적을 적용한다. 문장을 무조건 짧게 자르거나 모든 전문어를 지우지 않는다.
+- “단순한 X가 아닌 Y”, “핵심은”, “진짜 문제는”, 대상 없는 “흐름·결·자리·구조”로 문장을 마무리했다면 무엇이 어떻게 달라졌는지 쓴다. 정확한 대조나 전문 개념까지 일괄 금지하지 않는다.
+- 사이트를 집으로 바꿔 “우리 집도 재봤더니”라고 쓰는 식의 생활 비유는 사용하지 않는다(2026-09-11 독자 리뷰). 후추님 지정에 따라 자칭은 “내 사이트” 또는 “펩핀치 사이트”로 쓴다. 요청·모니터링 서비스를 그대로 지칭한다.
+- 제목·설명·목록 요약·본문의 주장이 일치해야 한다. 통계의 분류 이름을 확정된 원인으로 바꾸지 않는다. 인용은 원문 확인 없이 재작성하지 않는다.
+- 본문 텍스트는 공개된 최상위 `blog/posts/*.html`만 추출한다. 초안 md·내부 메모·스크립트·좋아요 버튼·메뉴는 싣지 않는다. 첨부 자료와 출처 링크는 남긴다.
+- `llms.txt`는 읽기 편한 안내 파일이다. 검색 노출이나 AI 인용을 보장하지 않는다. 숨은 키워드나 본문에 없는 구조화 데이터를 추가하지 않는다.
+- 검증: `python3 -m unittest discover -s scripts -p 'test_*.py'`와 `python3 scripts/build.py`. 로컬 빌드는 배포가 아니다. 게시 승인 후 commit/push한다.
+
+참고: [Google AI 기능 안내](https://developers.google.com/search/docs/appearance/ai-features), [Article 구조화 데이터](https://developers.google.com/search/docs/appearance/structured-data/article).
