@@ -6,9 +6,9 @@
 <meta name="description" content="실리콘밸리 방문 뒤 노정석이 소개한 AI 개발·투자 동향을 공식 에피소드 노트와 영상 설명에서 정리했습니다. 전체 자막은 대조하지 못했습니다.">
 <link rel="canonical" href="https://www.peppinch.com/blog/posts/2026-07-09-gradable-work-report">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "Article", "headline": "AI Frontier EP102 샌프란시스코의 교훈 — 핵심 정리", "description": "실리콘밸리 방문 뒤 노정석이 소개한 AI 개발·투자 동향을 공식 에피소드 노트와 영상 설명에서 정리했습니다. 전체 자막은 대조하지 못했습니다.", "datePublished": "2026-07-09T00:00:00+09:00", "dateModified": "2026-09-11T00:00:00+09:00", "inLanguage": "ko-KR", "url": "https://www.peppinch.com/blog/posts/2026-07-09-gradable-work-report", "mainEntityOfPage": "https://www.peppinch.com/blog/posts/2026-07-09-gradable-work-report", "author": {"@type": "Person", "name": "peppinch", "url": "https://www.peppinch.com/"}, "publisher": {"@type": "Organization", "name": "peppinch", "logo": {"@type": "ImageObject", "url": "https://www.peppinch.com/favicon.svg"}}, "isPartOf": {"@type": "BlogPosting", "name": "AI가 \"채점되는 일\"부터 가져간다길래, 내 걸 채점해봤다", "url": "https://www.peppinch.com/blog/posts/2026-07-09-gradable-work"}}
+{"@context": "https://schema.org", "@type": "Article", "headline": "AI Frontier EP102 샌프란시스코의 교훈 핵심 정리", "description": "실리콘밸리 방문 뒤 노정석이 소개한 AI 개발·투자 동향을 공식 에피소드 노트와 영상 설명에서 정리했습니다. 전체 자막은 대조하지 못했습니다.", "datePublished": "2026-07-09T00:00:00+09:00", "dateModified": "2026-09-11T00:00:00+09:00", "inLanguage": "ko-KR", "url": "https://www.peppinch.com/blog/posts/2026-07-09-gradable-work-report", "mainEntityOfPage": "https://www.peppinch.com/blog/posts/2026-07-09-gradable-work-report", "author": {"@type": "Person", "name": "peppinch", "url": "https://www.peppinch.com/"}, "publisher": {"@type": "Organization", "name": "peppinch", "logo": {"@type": "ImageObject", "url": "https://www.peppinch.com/favicon.svg"}}, "isPartOf": {"@type": "BlogPosting", "name": "AI가 \"채점되는 일\"부터 가져간다길래, 내 걸 채점해봤다", "url": "https://www.peppinch.com/blog/posts/2026-07-09-gradable-work"}}
 </script>
-<title>AI Frontier EP102 샌프란시스코의 교훈 — 핵심 정리</title>
+<title>AI Frontier EP102 샌프란시스코의 교훈 핵심 정리</title>
 <style>:root{--ink:#182024;--muted:#62707a;--line:#d9e2e8;--paper:#f6f8f9;--panel:#fff;--navy:#12313a;--teal:#1f766f;--amber:#8a5a00;--soft:#edf7f5;--soft2:#fff7e8;--blue:#eaf2ff}
 *{box-sizing:border-box}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans KR',Arial,sans-serif;line-height:1.55}
@@ -88,11 +88,11 @@ a{color:#9bd7ff;text-decoration:none}
 </main>
 <script>
 (function(){
-  // 콘텐츠 실제 높이만 잰다 — documentElement.scrollHeight는 iframe 뷰포트 높이를 되먹어
+  // 콘텐츠 실제 높이만 잰다, documentElement.scrollHeight는 iframe 뷰포트 높이를 되먹어
   // 한번 커지면 안 줄어드는 래칫 버그(모바일 여백 원인). body 경계 상자로 측정.
   function send(){ try{ parent.postMessage({rptH: Math.ceil(document.body.getBoundingClientRect().height)}, '*'); }catch(e){} }
   // ResizeObserver는 iframe 높이 변경을 되먹어 여백이 계속 자라는 루프를 만든다.
-  // 대신 로드 후 정해진 시점에만 재측정 — 모바일 리플로우·폰트 로딩까지 커버, 루프 없음.
+  // 대신 로드 후 정해진 시점에만 재측정, 모바일 리플로우·폰트 로딩까지 커버, 루프 없음.
   window.addEventListener('load',send); window.addEventListener('resize',send);
   if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(send); }
   [100,500,1200].forEach(function(t){ setTimeout(send,t); });

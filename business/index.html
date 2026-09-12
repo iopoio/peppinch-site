@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>peppinch — 한 꼬집의 후추</title>
-<meta name="description" content="펩핀치 사업 소개 — 1인 인디해커 스튜디오. 마이크로 SaaS·자동화·콘텐츠 빌드. 회사 소개·서비스·연락처." />
+<title>peppinch, 한 꼬집의 후추</title>
+<meta name="description" content="펩핀치 사업 소개, 1인 인디해커 스튜디오. 마이크로 SaaS·자동화·콘텐츠 빌드. 회사 소개·서비스·연락처." />
 <link rel="canonical" href="https://www.peppinch.com/business/" />
-<meta property="og:title" content="peppinch — 사업 소개" />
+<meta property="og:title" content="peppinch, 사업 소개" />
 <meta property="og:description" content="1인 인디해커 스튜디오 펩핀치. 마이크로 SaaS·자동화·콘텐츠 빌드." />
 <meta property="og:image" content="https://www.peppinch.com/og-image.png" />
 <meta property="og:url" content="https://www.peppinch.com/business/" />
@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="@peppinch_" />
 <meta name="twitter:creator" content="@peppinch_" />
-<meta name="twitter:title" content="peppinch — 사업 소개" />
+<meta name="twitter:title" content="peppinch, 사업 소개" />
 <meta name="twitter:description" content="1인 인디해커 스튜디오 펩핀치. 마이크로 SaaS·자동화·콘텐츠 빌드." />
 <meta name="twitter:image" content="https://www.peppinch.com/og-image.png" />
 
@@ -52,7 +52,7 @@
       "@type": "WebPage",
       "@id": "https://www.peppinch.com/business/#page",
       "url": "https://www.peppinch.com/business/",
-      "name": "peppinch — 사업 소개",
+      "name": "peppinch, 사업 소개",
       "description": "1인 인디해커 스튜디오 펩핀치. 마이크로 SaaS·자동화·콘텐츠 빌드. 회사 소개·서비스·연락처.",
       "isPartOf": { "@id": "https://www.peppinch.com/#site" },
       "about": { "@id": "https://www.peppinch.com/#org" },
@@ -109,7 +109,7 @@
 
   ::selection { background: var(--accent); color: var(--bg); }
 
-  /* Custom cursor — small ink dot */
+  /* Custom cursor, small ink dot */
   .cursor {
     position: fixed; top: 0; left: 0;
     width: 8px; height: 8px;
@@ -131,7 +131,7 @@
     pointer-events: none;
     z-index: 50;
   }
-  /* 상단·하단 가로 바 영역 (corner 영역 통합) — 후추님 5/14 view 정합 */
+  /* 상단·하단 가로 바 영역 (corner 영역 통합), 후추님 5/14 view 정합 */
   .frame::before {
     content: "";
     position: absolute;
@@ -143,7 +143,7 @@
     border-bottom: 1px solid var(--hairline);
     pointer-events: none;
   }
-  /* .frame::after 폐기 — 후추님 5/14 결정 (빈 bar 사고·footer 안 시즌드 가운데 정렬) */
+  /* .frame::after 폐기, 후추님 5/14 결정 (빈 bar 사고·footer 안 시즌드 가운데 정렬) */
   .frame .corner {
     position: absolute;
     font-family: var(--mono-font);
@@ -582,7 +582,7 @@
 
   /* small media */
   @media (max-width: 720px) {
-    /* frame 모바일 영역 — TR/BL/BR hide·TL은 PEPPINCH 로고 + 메인 사이트 보기 살림 */
+    /* frame 모바일 영역, TR/BL/BR hide·TL은 PEPPINCH 로고 + 메인 사이트 보기 살림 */
     .frame::before, .frame::after { display: none; }
     .frame .corner.tr,
     .frame .corner.bl,
@@ -603,10 +603,10 @@
     .frame .corner.tl .corner-brand { font-weight: 700; font-size: 12px; letter-spacing: .18em; color: var(--ink); opacity: .9; }
     .frame .corner.tl .corner-sub { display: none; }
     .frame .corner.tl .corner-link { font-size: 10.5px; }
-    /* 첫 hero section 영역 top spacing — corner.tl 영역 안 겹치게 */
+    /* 첫 hero section 영역 top spacing, corner.tl 영역 안 겹치게 */
     section.hero { padding-top: 12vh; }
 
-    /* section padding·min-height — 모바일 영역 vh 영역 과대 회피 */
+    /* section padding·min-height, 모바일 영역 vh 영역 과대 회피 */
     section { padding: 7vh 6vw 6vh; min-height: auto; }
     .hero { padding-top: 10vh; padding-bottom: 6vh; }
     .hero .eyebrow { margin-bottom: 4vh; font-size: 11px; }

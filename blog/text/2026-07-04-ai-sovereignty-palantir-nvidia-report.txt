@@ -1,4 +1,4 @@
-AI Sovereignty Wars, Palantir-Nvidia Deal — 영상 핵심 정리
+AI Sovereignty Wars, Palantir-Nvidia Deal 영상 핵심 정리
 
 원문: https://www.peppinch.com/blog/posts/2026-07-04-ai-sovereignty-palantir-nvidia-report
 작성: peppinch | 발행: 2026-07-04 | 수정: 2026-09-11
@@ -47,7 +47,7 @@ AI Sovereignty Wars, Palantir-Nvidia Deal — 영상 핵심 정리
 
 3. 피그마와 경쟁하게 된 앤트로픽
 
-색스앤트로픽이 Claude Design을 출시해 피그마의 사업 영역을 침범했다. 앤트로픽 임원이 피그마 이사로 있다가 사퇴한 게 출시 3일 전. 피그마 주가는 올해 50% 가까이 빠졌고, 그 사이 앤트로픽 밸류는 급등했다. Claude Science·Security·Legal·Financial·Code까지 — 자기 모델 위에서 가치가 생기는 걸 보면 직접 뛰어드는 패턴.
+색스앤트로픽이 Claude Design을 출시해 피그마의 사업 영역을 침범했다. 앤트로픽 임원이 피그마 이사로 있다가 사퇴한 게 출시 3일 전. 피그마 주가는 올해 50% 가까이 빠졌고, 그 사이 앤트로픽 밸류는 급등했다. Claude Science·Security·Legal·Financial·Code까지, 자기 모델 위에서 가치가 생기는 걸 보면 직접 뛰어드는 패턴.
 
 핵심 판단색스는 모델 제공사가 고객이 운영하는 서비스까지 직접 만들 수 있다고 경고하며, MS의 윈도우와 구글 검색 독점에 비유했다.
 
@@ -83,7 +83,7 @@ AI Sovereignty Wars, Palantir-Nvidia Deal — 영상 핵심 정리
 
 프리드버그AI 모델 개발·배포는 대형 허브-스포크 구조에서 분산형 스포크 구조로 바뀔 것. 기업들은 자체 데이터센터·온프레미스에서 AI 워크플로우를 로컬로 돌려 데이터 통제와 비용 효율을 동시에 확보하게 된다.
 
-차마스궁극적으로 기업들은 자체 모델을 개발하고 자체 하드웨어에서 실행하게 될 것 — 데이터 유출 방지와 경쟁 우위 유지를 위한 필수 과정. AI 주권과 지능 주권 확보는 선택이 아니라 필수.
+차마스궁극적으로 기업들은 자체 모델을 개발하고 자체 하드웨어에서 실행하게 될 것, 데이터 유출 방지와 경쟁 우위 유지를 위한 필수 과정. AI 주권과 지능 주권 확보는 선택이 아니라 필수.
 
 핵심 판단프리드버그와 차마스는 기업이 자체 인프라에서 AI를 운영하는 방식이 늘어날 것으로 전망했다. 데이터 통제와 비용 절감을 그 이유로 들었다.
 

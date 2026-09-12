@@ -60,7 +60,7 @@ const PAIRINGS = {
 const PROJECTS = [
   {
     id: 1, name: "Publace", ko: "퍼블레이스",
-    line: "도시의 빈 자리를 가만히 들여다보면, 다음 이야기가 보인다.",
+    line: "안 쓰는 공공 공간을 찾아서 지도에 올려둔다.",
     tag: "공공 유휴공간 × AI 매칭",
     year: "2024",
     role: "Beta",
@@ -68,7 +68,7 @@ const PROJECTS = [
   },
   {
     id: 2, name: "pepstocks", ko: "펩스탁",
-    line: "오늘 시장이 왜 이렇게 됐는지, 그 흐름이 한눈에.",
+    line: "오늘 시장이 왜 이렇게 움직였는지 정리해서 보여준다.",
     tag: "미국·한국 주식 흐름 한눈에",
     year: "2026",
     role: "Beta",
@@ -76,7 +76,7 @@ const PROJECTS = [
   },
   {
     id: 3, name: "EatScan", ko: "잇스캔",
-    line: "라벨을 한 번 비추면, 먹어도 되는지 아닌지를 조용히 알려준다.",
+    line: "라벨을 비추면 내가 피해야 할 성분이 들었는지 알려준다.",
     tag: "식품 알레르기 라벨 스캐너",
     year: "2024",
     role: "Live",
@@ -84,7 +84,7 @@ const PROJECTS = [
   },
   {
     id: 4, name: "이달여행", ko: "IdalTrip",
-    line: "이번 달, 어디에서 무엇을 먹고 — 어떤 축제를 스칠지.",
+    line: "이번 달 열리는 축제랑 그 근처에서 먹을 것을 묶어준다.",
     tag: "축제 기반 여행 코스",
     year: "2025",
     role: "Live",
@@ -100,7 +100,7 @@ const PROJECTS = [
   },
   {
     id: 6, name: "TickDeck", ko: "틱덱",
-    line: "URL 한 줄을, 발표 슬라이드 한 벌로.",
+    line: "URL을 넣으면 발표 슬라이드를 만들어준다.",
     tag: "URL → Slides",
     year: "2025",
     role: "Solo build",
@@ -108,7 +108,7 @@ const PROJECTS = [
   },
   {
     id: 7, name: "etc", ko: "기타",
-    line: "틈틈이 재미로 만든 작은 도구들의 진열대.",
+    line: "틈틈이 재미로 만든 작은 도구들을 모아두는 칸.",
     tag: "작은 실험 묶음",
     year: "2025",
     role: "WIP",
@@ -449,7 +449,7 @@ function App() {
           </span>
         </h1>
         <p className="sub">
-          세상을 바꾸진 않지만, 당신의 오늘 하루는 조금 낫게.<br/>
+          쓰는 사람 하루가 조금 편해지는 작은 것들을 만듭니다.<br/>
           가끔은 갈아엎는다, <em>혼자 혹은 AI와 함께.</em><br/>
           A solo lab in Seoul, building small useful things.
           The kind that don't change the world, only your Tuesday.
@@ -464,7 +464,7 @@ function App() {
           크지 않게.{' '}
           <span className="strike">빠르게.</span>{' '}
           <span className="accent">정확하게.</span><br/>
-          한 꼬집씩 — 무언가가 너무 심심할 때.
+          한 꼬집씩, 뭔가 밍밍하다 싶을 때.
         </p>
         <div className="signoff">
           <span>— 페핀치 / Peppinch</span>
