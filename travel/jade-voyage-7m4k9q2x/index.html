@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>공유 여행 안내 · 펩핀치</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#f7f8fa;color:#172b40;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}main{min-height:100%;display:grid;place-items:center;padding:28px}section{max-width:440px;line-height:1.8}h1{font-size:27px;line-height:1.4}p{font-size:17px;color:#536375}iframe{position:fixed;inset:0;width:100%;height:100%;height:100dvh;border:0;background:#fff}button{font:inherit;min-height:48px;border:1px solid #c3ced8;border-radius:12px;background:white;padding:10px 18px;color:#172b40;cursor:pointer}
+</style>
+</head>
+<body>
+<main id="notice"><section><p>PEPPINCH · SHARED GUIDE</p><h1 id="heading">공유 링크를 확인하고 있어요</h1><p id="message" role="status">잠시만 기다려 주세요.</p><button id="retry" hidden onclick="location.reload()">다시 열기</button><noscript><p>여행 안내를 열려면 브라우저의 JavaScript를 켜 주세요.</p></noscript></section></main>
+<script>
+(async function(){
+  'use strict';
+  const heading=document.getElementById('heading'),message=document.getElementById('message');
+  const encoded=new URLSearchParams(location.hash.slice(1)).get('key');
+  if(!encoded){heading.textContent='전달받은 전체 링크로 열어 주세요';message.textContent='이 페이지는 열쇠가 포함된 공유 링크에서만 볼 수 있습니다. 주소 뒷부분까지 모두 복사해 열어 주세요.';return;}
+  const decode=value=>Uint8Array.from(atob(value.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
+  try{
+    if(!/^[A-Za-z0-9_-]{43}$/.test(encoded))throw new Error('Invalid link');
+    const key=await crypto.subtle.importKey('raw',decode(encoded),'AES-GCM',false,['decrypt']);
+    const response=await fetch('./guide.json',{cache:'no-store',referrerPolicy:'no-referrer'});
+    if(!response.ok)throw new Error('Unavailable');
+    const payload=await response.json();
+    const decrypted=await crypto.subtle.decrypt({name:'AES-GCM',iv:decode(payload.iv)},key,decode(payload.data));
+    const frame=document.createElement('iframe');
+    frame.title='여행 일정 안내';
+    frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox');
+    frame.referrerPolicy='no-referrer';
+    frame.srcdoc=new TextDecoder().decode(decrypted);
+    frame.addEventListener('load',()=>document.getElementById('notice')?.remove(),{once:true});
+    document.body.appendChild(frame);
+  }catch(error){heading.textContent='여행 안내를 열지 못했어요';message.textContent='인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 열리면 전달받은 원래 링크를 주소 뒷부분까지 복사해 주세요.';document.getElementById('retry').hidden=false;}
+})();
+</script>
+</body>
+</html>
