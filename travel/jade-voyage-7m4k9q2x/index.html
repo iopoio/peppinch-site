@@ -23,17 +23,23 @@
   try{
     if(!/^[A-Za-z0-9_-]{43}$/.test(encoded))throw new Error('Invalid link');
     const key=await crypto.subtle.importKey('raw',decode(encoded),'AES-GCM',false,['decrypt']);
-    const response=await fetch('./guide.json',{cache:'no-store',referrerPolicy:'no-referrer'});
+    const section=new URLSearchParams(location.search).get('page')==='prep'?'prep':'itinerary';
+    const response=await fetch(section==='prep'?'./prep.json':'./guide.json',{cache:'no-store',referrerPolicy:'no-referrer'});
     if(!response.ok)throw new Error('Unavailable');
     const payload=await response.json();
     const decrypted=await crypto.subtle.decrypt({name:'AES-GCM',iv:decode(payload.iv)},key,decode(payload.data));
     const frame=document.createElement('iframe');
-    frame.title='여행 일정 안내';
+    frame.title=section==='prep'?'여행 준비 안내':'여행 일정 안내';
     frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox');
     frame.referrerPolicy='no-referrer';
     frame.srcdoc=new TextDecoder().decode(decrypted);
     frame.addEventListener('load',()=>document.getElementById('notice')?.remove(),{once:true});
     document.body.appendChild(frame);
+    window.addEventListener('message',event=>{
+      if(event.source!==frame.contentWindow||event.origin!==location.origin||event.data?.type!=='jade-page')return;
+      if(!['prep','itinerary'].includes(event.data.page))return;
+      const next=new URL(location.href);next.search=event.data.page==='prep'?'?page=prep':'';location.assign(next.href);
+    });
   }catch(error){heading.textContent='여행 안내를 열지 못했어요';message.textContent='인터넷 연결을 확인하고 다시 열어 주세요. 계속 안 열리면 전달받은 원래 링크를 주소 뒷부분까지 복사해 주세요.';document.getElementById('retry').hidden=false;}
 })();
 </script>
