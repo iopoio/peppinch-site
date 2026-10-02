@@ -358,6 +358,7 @@ function ProjectIndex({ projects }) {
                 className="idx-row"
                 onClick={() => setOpenId(isOpen ? null : p.id)}
                 aria-expanded={isOpen}
+                aria-controls={"idx-panel-" + p.id}
               >
                 <span className="idx-num">{String(i+1).padStart(2,"0")}</span>
                 <span className="idx-name">
@@ -367,7 +368,7 @@ function ProjectIndex({ projects }) {
                 <span className="idx-meta">{p.tag}</span>
                 <span className="idx-chev" aria-hidden="true">{isOpen ? "—" : "+"}</span>
               </button>
-              <div className="idx-body" style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}>
+              <div id={"idx-panel-" + p.id} className="idx-body" aria-hidden={!isOpen} inert={isOpen ? undefined : ""} style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}>
                 <div className="idx-body-inner">
                   <p className="idx-line">{p.line}</p>
                   <div className="idx-foot">
