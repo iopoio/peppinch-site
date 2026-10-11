@@ -8,15 +8,16 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>공유 여행 안내 · 펩핀치</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#f7f8fa;color:#172b40;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}main{min-height:100%;display:grid;place-items:center;padding:28px}section{max-width:440px;line-height:1.8}h1{font-size:27px;line-height:1.4}p{font-size:17px;color:#536375}iframe{position:fixed;inset:0;width:100%;height:100%;height:100dvh;border:0;background:#fff}button{font:inherit;min-height:48px;border:1px solid #c3ced8;border-radius:12px;background:white;padding:10px 18px;color:#172b40;cursor:pointer}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#f7f8fa;color:#172b40;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif}main{min-height:100%;display:grid;place-items:center;padding:28px}section{max-width:440px;line-height:1.8}h1{font-size:27px;line-height:1.4}p{font-size:17px;color:#536375}iframe{position:fixed;inset:0;width:100%;height:100%;height:100dvh;border:0;background:#fff}button,input{font:inherit;min-height:48px;border:1px solid #c3ced8;border-radius:12px;background:white;padding:10px 18px;color:#172b40}button{cursor:pointer}form:not([hidden]){display:flex;gap:8px}input{width:120px;min-width:0}form button{background:#172b40;color:white}
 </style>
 </head>
 <body>
-<main id="notice"><section><p>PEPPINCH · SHARED GUIDE</p><h1 id="heading">공유 링크를 확인하고 있어요</h1><p id="message" role="status">잠시만 기다려 주세요.</p><button id="retry" hidden onclick="location.reload()">다시 열기</button><noscript><p>여행 안내를 열려면 브라우저의 JavaScript를 켜 주세요.</p></noscript></section></main>
+<main id="notice"><section><p>PEPPINCH · SHARED GUIDE</p><h1 id="heading">공유 링크를 확인하고 있어요</h1><p id="message" role="status">잠시만 기다려 주세요.</p><form id="pin-form" hidden><input id="pin" type="password" inputmode="numeric" autocomplete="off" aria-label="비밀번호" required><button id="pin-open" type="button">열기</button></form><button id="retry" hidden onclick="location.reload()">다시 열기</button><noscript><p>여행 안내를 열려면 브라우저의 JavaScript를 켜 주세요.</p></noscript></section></main>
 <script>
 (async function(){
   'use strict';
   const heading=document.getElementById('heading'),message=document.getElementById('message');
+  const pinForm=document.getElementById('pin-form'),pinInput=document.getElementById('pin');
   const encoded=new URLSearchParams(location.hash.slice(1)).get('key');
   if(!encoded){heading.textContent='전달받은 전체 링크로 열어 주세요';message.textContent='이 페이지는 열쇠가 포함된 공유 링크에서만 볼 수 있습니다. 주소 뒷부분까지 모두 복사해 열어 주세요.';return;}
   const decode=value=>Uint8Array.from(atob(value.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
@@ -28,15 +29,45 @@
     if(!response.ok)throw new Error('Unavailable');
     const payload=await response.json();
     const decrypted=await crypto.subtle.decrypt({name:'AES-GCM',iv:decode(payload.iv)},key,decode(payload.data));
+    const inner=JSON.parse(new TextDecoder().decode(decrypted));
+    if(payload.v!==2||inner.v!==1||inner.iterations<200000)throw new Error('Unsupported guide');
+    const cacheKey='jade-pin-key:'+encoded;
+    const open=async rawKey=>{
+      const pinKey=await crypto.subtle.importKey('raw',rawKey,'AES-GCM',false,['decrypt']);
+      const html=await crypto.subtle.decrypt({name:'AES-GCM',iv:decode(inner.iv)},pinKey,decode(inner.data));
+      return new TextDecoder().decode(html);
+    };
+    let html;
+    const saved=sessionStorage.getItem(cacheKey);
+    if(saved){try{html=await open(decode(saved));}catch{sessionStorage.removeItem(cacheKey);}}
+    heading.textContent='비밀번호를 입력해 주세요';
+    message.textContent='공유 링크를 연 뒤 비밀번호를 입력하면 일정이 표시됩니다.';
+    while(!html){
+      pinForm.hidden=false;
+      pinInput.focus();
+      const pin=await new Promise(resolve=>{
+        const submit=()=>{if(!pinInput.value)return;const value=pinInput.value;pinInput.value='';pinInput.removeEventListener('keydown',onKey);document.getElementById('pin-open').removeEventListener('click',submit);resolve(value);};
+        const onKey=event=>{if(event.key==='Enter'){event.preventDefault();submit();}};
+        pinInput.addEventListener('keydown',onKey);
+        document.getElementById('pin-open').addEventListener('click',submit);
+      });
+      try{
+        const material=await crypto.subtle.importKey('raw',new TextEncoder().encode(pin),'PBKDF2',false,['deriveBits']);
+        const raw=await crypto.subtle.deriveBits({name:'PBKDF2',salt:decode(inner.salt),iterations:inner.iterations,hash:'SHA-256'},material,256);
+        html=await open(raw);
+        sessionStorage.setItem(cacheKey,btoa(String.fromCharCode(...new Uint8Array(raw))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''));
+      }catch{message.textContent='비밀번호가 맞지 않아요. 다시 입력해 주세요.';pinInput.focus();}
+    }
+    pinForm.hidden=true;
     const frame=document.createElement('iframe');
     frame.title=section==='prep'?'여행 준비 안내':'여행 일정 안내';
     frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox');
     frame.referrerPolicy='no-referrer';
-    frame.srcdoc=new TextDecoder().decode(decrypted);
+    frame.srcdoc=html;
     frame.addEventListener('load',()=>document.getElementById('notice')?.remove(),{once:true});
     document.body.appendChild(frame);
     window.addEventListener('message',event=>{
-      if(event.source!==frame.contentWindow||event.origin!==location.origin||event.data?.type!=='jade-page')return;
+      if(event.source!==frame.contentWindow||!['null',location.origin].includes(event.origin)||event.data?.type!=='jade-page')return;
       if(!['prep','itinerary'].includes(event.data.page))return;
       const next=new URL(location.href);next.search=event.data.page==='prep'?'?page=prep':'';location.assign(next.href);
     });
