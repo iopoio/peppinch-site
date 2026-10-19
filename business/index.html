@@ -654,7 +654,34 @@
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <!-- 크롤러용 정적 본문. peppinch.jsx 가 마운트되면 createRoot 가 이 내용을 교체한다. 문구는 jsx 와 같게 유지. -->
+    <section class="hero">
+      <h1>A Pinch Of Pepper. 한 꼬집의 후추.</h1>
+      <p class="sub">쓰는 사람 하루가 조금 편해지는 작은 것들을 만듭니다. 가끔은 갈아엎는다, 혼자 혹은 AI와 함께. A solo lab in Seoul, building small useful things. The kind that don't change the world, only your Tuesday.</p>
+    </section>
+    <section class="manifesto">
+      <h2>01 — 작업 노트</h2>
+      <p>크지 않게. 빠르게. 정확하게. 한 꼬집씩, 뭔가 밍밍하다 싶을 때.</p>
+    </section>
+    <section class="index">
+      <h2>02 — 인덱스 · index of works (07)</h2>
+      <ol>
+        <li><a href="https://publace.site">Publace 퍼블레이스</a> — 공공 유휴공간 × AI 매칭. 안 쓰는 공공 공간을 찾아서 지도에 올려둔다.</li>
+        <li><a href="https://pepstocks.com">pepstocks 펩스탁</a> — 미국·한국 주식 흐름 한눈에. 오늘 시장이 왜 이렇게 움직였는지 정리해서 보여준다.</li>
+        <li><a href="https://eatscan.site">EatScan 잇스캔</a> — 식품 알레르기 라벨 스캐너. 라벨을 비추면 내가 피해야 할 성분이 들었는지 알려준다.</li>
+        <li><a href="https://idaltrip.vercel.app">이달여행 IdalTrip</a> — 축제 기반 여행 코스. 이번 달 열리는 축제랑 그 근처에서 먹을 것을 묶어준다.</li>
+        <li><a href="https://jobsort.peppinch.com">잡솔트 JobSort</a> — 공공기관 직무 매칭. 공고는 너무 많고, 나에게 맞는 건 늘 한두 개.</li>
+        <li>TickDeck 틱덱 — URL → Slides. URL을 넣으면 발표 슬라이드를 만들어준다.</li>
+        <li>etc 기타 — 작은 실험 묶음. 틈틈이 재미로 만든 작은 도구들을 모아두는 칸.</li>
+      </ol>
+    </section>
+    <section class="contact">
+      <h2>04 — 연락 · ping me</h2>
+      <p>말 걸어요. <a href="mailto:pepper@peppinch.com">pepper@peppinch.com</a> · <a href="https://x.com/peppinch_">@peppinch_</a> · <a href="https://peppinch.com">www.peppinch.com</a></p>
+      <p>신사업 개발자 · 기획자 · 솔로 메이커</p>
+    </section>
+  </div>
   <div class="cursor" id="cursor"></div>
 
   <script type="text/babel" src="./tweaks-panel.jsx"></script>
