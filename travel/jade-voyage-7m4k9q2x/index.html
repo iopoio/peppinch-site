@@ -30,18 +30,19 @@
     const payload=await response.json();
     const decrypted=await crypto.subtle.decrypt({name:'AES-GCM',iv:decode(payload.iv)},key,decode(payload.data));
     const inner=JSON.parse(new TextDecoder().decode(decrypted));
-    if(payload.v!==2||inner.v!==1||inner.iterations<200000)throw new Error('Unsupported guide');
+    let html;
+    if(payload.v===2&&inner.v===3&&typeof inner.html==='string'){html=inner.html;}
+    else if(payload.v!==2||inner.v!==1||inner.iterations<200000)throw new Error('Unsupported guide');
     const cacheKey='jade-pin-key:'+encoded;
     const open=async rawKey=>{
       const pinKey=await crypto.subtle.importKey('raw',rawKey,'AES-GCM',false,['decrypt']);
       const html=await crypto.subtle.decrypt({name:'AES-GCM',iv:decode(inner.iv)},pinKey,decode(inner.data));
       return new TextDecoder().decode(html);
     };
-    let html;
     const saved=sessionStorage.getItem(cacheKey);
-    if(saved){try{html=await open(decode(saved));}catch{sessionStorage.removeItem(cacheKey);}}
-    heading.textContent='비밀번호를 입력해 주세요';
-    message.textContent='공유 링크를 연 뒤 비밀번호를 입력하면 일정이 표시됩니다.';
+    if(!html&&saved){try{html=await open(decode(saved));}catch{sessionStorage.removeItem(cacheKey);}}
+    if(!html){heading.textContent='비밀번호를 입력해 주세요';
+    message.textContent='공유 링크를 연 뒤 비밀번호를 입력하면 일정이 표시됩니다.';}
     while(!html){
       pinForm.hidden=false;
       pinInput.focus();
