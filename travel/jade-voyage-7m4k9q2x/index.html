@@ -66,6 +66,7 @@
     frame.referrerPolicy='no-referrer';
     frame.srcdoc=html;
     frame.addEventListener('load',()=>document.getElementById('notice')?.remove(),{once:true});
+    frame.addEventListener('load',()=>{try{const d=frame.contentDocument;d.addEventListener('click',ev=>{const a=ev.target.closest&&ev.target.closest('a[href^="#"]');if(!a)return;ev.preventDefault();const id=decodeURIComponent(a.getAttribute('href').slice(1));const t=id&&id!=='top'?d.getElementById(id):null;if(t){const det=t.closest('details');if(det)det.open=true;t.scrollIntoView({behavior:'smooth',block:'start'});}else{frame.contentWindow.scrollTo({top:0,behavior:'smooth'});}},true);}catch(e){}});
     document.body.appendChild(frame);
     window.addEventListener('message',event=>{
       if(event.source!==frame.contentWindow||!['null',location.origin].includes(event.origin)||event.data?.type!=='jade-page')return;
